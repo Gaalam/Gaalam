@@ -36,5 +36,3 @@ Here’s a quick look at the technologies I work with and love:
 - ![Alt-Text](Bild2.png)
 - ![Alt-Text](Bild3.png)
 - ![Alt-Text](Bild4.png)
-
-Feel free to check them out on my repositories page!
