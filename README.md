@@ -32,5 +32,9 @@ Here’s a quick look at the technologies I work with and love:
 ## 🎯 Current Projects
 
 - **Project 1:** I’m currently working on a **Java-based application** for IT Vendor Management, integrating **SQL** databases.
+- ![Alt-Text](Bild1.png)
+- ![Alt-Text](Bild2.png)
+- ![Alt-Text](Bild3.png)
+- ![Alt-Text](Bild4.png)
 
 Feel free to check them out on my repositories page!
