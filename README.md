@@ -23,7 +23,7 @@ I specialize in creating robust, scalable applications and working with structur
 Here’s a quick look at the technologies I work with and love:
 
 - **Languages:** Java, SQL, XML, XSLT
-- **Frameworks:** Spring, Hibernate, JPA (Java-related)
+- **Frameworks:** Jakarta, EclipseLink, GraphStream 
 - **Databases:** Apache Derby, Oracle SQL, and other relational databases
 - **Tools:** Maven, Git, Netbeans
 
