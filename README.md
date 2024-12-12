@@ -36,7 +36,7 @@ IT Vendor Management Suite
 
 Motivation:
 Die Idee hinter diesem Projekt basiert auf meinen eigenen Erfahrungen als Software Entwickler, Vendor Manager, Digitalisierungsbeauftragter und Business Data Analyst. 
-Durch diese vielfältigen Perspektiven versprürte ich die Motivation dazu an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, die Prozesse ihre im Bereich Vendor Management verbessern und professionalisieren möchten.
+Durch diese vielfältigen Perspektiven versprürte ich die Motivation dazu an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, um Prozesse und die Sicht auf die Daten im Bereich Vendor Management zu verbessern.
 
 Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwarelizenzen und Vendorenbeziehungen effizienter verwalten. Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. Kein langwieriges Suchen nach Verträgen oder Excel-Listen mehr!
 
