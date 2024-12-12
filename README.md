@@ -48,7 +48,7 @@ Bisher bietet die Lösung:
     Alle relevanten Daten zu Vendoren, IT-Verträgen und Softwarelizenzen werden an einem Ort gesammelt. Anwender können jederzeit darauf zugreifen und haben die wichtigsten Kennzahlen im Blick.
 
   🔹 Vertrags- und Lizenzmanagement: 
-    Die Lösung hilft, Vertragslaufzeiten und Kosten zu überwachen und sorgt dafür, dass keine wichtigen Fristen oder Preisänderungen übersehen werden.
+    Die Lösung hilft, Vertragslaufzeiten und Kosten zu überwachen und sorgt dafür, dass keine wichtigen Fristen übersehen werden.
 
   🔹 Flexibles Reporting: 
     Daten können einfach in HTML, PDF oder XLSX exportiert werden. So lassen sich Berichte schnell erstellen und weitergeben, um sie zu analysieren oder mit anderen zu teilen.
