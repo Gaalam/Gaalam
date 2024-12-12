@@ -38,7 +38,7 @@ Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwa
 
 Die Anwendung basiert auf einer einfach zu bedienenden Swing-Oberfläche und einer relationalen Datenbank, die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch die integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen.
 
-Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Die Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
+Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Eine Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
 
 - ![Alt-Text](Bild1.png)
 - ![Alt-Text](Bild2.png)
