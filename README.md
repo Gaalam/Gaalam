@@ -35,6 +35,7 @@ GERMAN
 IT Vendor Management Suite
 
 Motivation:
+
 Die Idee hinter diesem Projekt basiert auf meinen eigenen Erfahrungen als Software Entwickler, Vendor Manager, Digitalisierungsbeauftragter und Business Data Analyst. 
 Durch diese vielfältigen Perspektiven versprürte ich die Motivation dazu an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, um Prozesse und die Sicht auf die Daten im Bereich Vendor Management zu verbessern.
 
