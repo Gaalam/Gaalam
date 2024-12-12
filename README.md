@@ -59,6 +59,7 @@ Bisher bietet die Lösung:
 News und Ausblick:
 
 Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Eine Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
+Derzeit experimentiere ich mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
 
 ** Screenshots **
 
