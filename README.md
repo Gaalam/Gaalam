@@ -30,8 +30,14 @@ Here’s a quick look at the technologies I work with and love:
 ---
 
 ## 🎯 Current Projects
+GERMAN:
 
-- **Project 1:** I’m currently working on a **Java-based application** for IT Vendor Management, integrating **SQL** databases.
+Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwarelizenzen und Vendorenbeziehungen effizienter verwalten. Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. Kein langwieriges Suchen nach Verträgen oder Excel-Listen mehr!
+
+Die Anwendung basiert auf einer einfach zu bedienenden Swing-Oberfläche und einer relationalen Datenbank, die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch die integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen.
+
+Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Die Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
+
 - ![Alt-Text](Bild1.png)
 - ![Alt-Text](Bild2.png)
 - ![Alt-Text](Bild3.png)
