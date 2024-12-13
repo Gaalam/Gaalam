@@ -46,7 +46,7 @@ Kein langwieriges Suchen nach Verträgen, Laufzeiten, Kosten, Wissensträgern od
 
 Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen. 
 
-Ja, Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen.  
+Ja, Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen, inkl. einer ad-hoc Berichtsfähigkeit. 
 
 Funktionen
 -
