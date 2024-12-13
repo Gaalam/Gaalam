@@ -44,12 +44,12 @@ Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwa
 Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. 
 Kein langwieriges Suchen nach Verträgen, Laufzeiten, Kosten, Wissensträgern oder Excel-Listen mehr!
 
-Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen. 
-
 Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen.
 
 Funktionen
 -
+Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen. 
+
   🔹 Verwaltung von Vendoren und Verträgen: 
     Alle relevanten Daten zu Vendoren, IT-Verträgen und Softwarelizenzen werden an einem Ort gesammelt. Anwender können jederzeit darauf zugreifen und haben die wichtigsten Kennzahlen im Blick.
 
