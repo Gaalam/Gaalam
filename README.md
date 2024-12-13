@@ -34,17 +34,18 @@ GERMAN
 
 IT Vendor Management Suite
 
-Motivation:
+Motivation
+-
 
 Die Idee hinter diesem Projekt basiert auf meinen eigenen Erfahrungen als Software Entwickler, Vendor Manager, Digitalisierungsbeauftragter und Business Data Analyst. 
-Durch diese vielfältigen Perspektiven versprürte ich die Motivation dazu an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, um Prozesse und die Sicht auf die Daten im Bereich Vendor Management zu verbessern.
+Mich treibt in diesem Projekt an, mit diesen vielfältigen Perspektiven an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, um Prozesse und die Sicht auf die Daten im Bereich Vendor Management zu verbessern.
 
 Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwarelizenzen und Vendorenbeziehungen effizienter verwalten. Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. Kein langwieriges Suchen nach Verträgen oder Excel-Listen mehr!
 
 Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen.
 
-Bisher bietet die Lösung:
-
+Funktionen
+-
   🔹 Verwaltung von Vendoren und Verträgen: 
     Alle relevanten Daten zu Vendoren, IT-Verträgen und Softwarelizenzen werden an einem Ort gesammelt. Anwender können jederzeit darauf zugreifen und haben die wichtigsten Kennzahlen im Blick.
 
@@ -57,13 +58,13 @@ Bisher bietet die Lösung:
   🔹 KI-gestützte Risikoanalyse: 
     Die KI erkennt potenzielle Risiken in Vendorenbeziehungen und Verträgen und gibt Handlungsempfehlungen, um Probleme frühzeitig anzugehen.
 
-News und Ausblick:
-
+News und Ausblick
+-
 Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Eine Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
 Derzeit experimentiere ich mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
 
-** Screenshots **
-
+Screenshots 
+-
 - ![Alt-Text](Bild1.png)
 - ![Alt-Text](Bild2.png)
 - ![Alt-Text](Bild3.png)
