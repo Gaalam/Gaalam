@@ -64,7 +64,7 @@ Funktionen
 
 News und Ausblick
 -
-Ich arbeite gerade an den Reporting-Funktionen die es ermöglicht, selektierte Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) u.a. in Templates zu exportieren. 
+Ich arbeite gerade an den Reporting-Funktionen die es ermöglichen sollen, selektierte Datensätze in verschiedenen Formaten (HTML, PDF, XLSX) u.a. in Templates zu exportieren. 
 Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
 
 Screenshots 
