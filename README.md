@@ -46,7 +46,7 @@ Kein langwieriges Suchen nach Verträgen, Laufzeiten, Kosten, Wissensträgern od
 
 Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen. 
 
-Ja, Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen, inkl. einer ad-hoc Berichtsfähigkeit. 
+Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen.
 
 Funktionen
 -
@@ -64,8 +64,8 @@ Funktionen
 
 News und Ausblick
 -
-Die neue Reporting-Funktion der IT Vendor Management Suite ermöglicht es Nutzern, ihre Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) zu exportieren. Eine Kombination aus datenbasierten Reports und KI-gestützten Handlungsempfehlungen kann Unternehmen dabei helfen, schneller und fundierter Entscheidungen zu treffen, ihre Vendorenbeziehungen zu optimieren und Risiken frühzeitig zu erkennen. Unternehmen können hierdurch leichter proaktiv agieren.
-Derzeit experimentiere ich mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
+Ich arbeite gerade an den Reporting-Funktionen die es ermöglicht, selektierte Daten einfach in verschiedenen Formaten (HTML, PDF, XLSX) u.a. in Templates zu exportieren. 
+Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
 
 Screenshots 
 -
