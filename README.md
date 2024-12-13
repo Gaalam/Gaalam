@@ -23,7 +23,7 @@ I specialize in creating robust, scalable applications and working with structur
 Here’s a quick look at the technologies I work with and love:
 
 - **Languages:** Java, SQL, XML, HTML
-- **Frameworks:** JPA (Jakarta, EclipseLink), Swing, GraphStream, Thymeleaf, flying-saucer-pdf 
+- **Frameworks:** JPA (Jakarta, EclipseLink), Swing, GraphStream, Apache POI, Thymeleaf, flying-saucer-pdf 
 - **Databases:** Apache Derby, Oracle SQL, and other relational databases
 - **Tools:** Maven, Git, Netbeans, Eclipse, Javadoc, PMD
 
