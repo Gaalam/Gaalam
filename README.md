@@ -68,7 +68,7 @@ Ich arbeite gerade an den Reporting-Funktionen die es ermöglichen sollen, selek
 Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
 
 Screenshots 
--
+- ![Alt-Text](Bild00.png)
 - ![Alt-Text](Bild01.png)
 - ![Alt-Text](Bild02.png)
 - ![Alt-Text](Bild03.png)
