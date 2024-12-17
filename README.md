@@ -70,7 +70,7 @@ Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für H
 Screenshots 
 -
 - ![Alt-Text](Bild01.png)
-- ![Alt-Text](Bild2.png)
-- ![Alt-Text](Bild3.png)
+- ![Alt-Text](Bild02.png)
+- ![Alt-Text](Bild03.png)
 - ![Alt-Text](Bild4.png)
 - ![Alt-Text](Bild5.png)
