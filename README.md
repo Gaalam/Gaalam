@@ -76,3 +76,5 @@ Screenshots
 - ![Alt-Text](Bild05.png)
 - ![Alt-Text](Bild06.png)
 - ![Alt-Text](Bild1.png)
+- ![Alt-Text](Bild07.png)
+- ![Alt-Text](Bild08.png)
