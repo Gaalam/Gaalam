@@ -43,7 +43,7 @@ Mich treibt in diesem Projekt an, mit diesen vielfältigen Perspektiven an einer
 Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwarelizenzen und Vendorenbeziehungen effizienter verwalten. 
 Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. 
 Kein langwieriges Suchen nach Verträgen, Laufzeiten, Kosten, Wissensträgern oder Excel-Listen mehr!
-
+ 
 Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen.
 
 Funktionen
