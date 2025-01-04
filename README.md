@@ -69,6 +69,7 @@ Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für H
 
 Screenshots 
 - ![Alt-Text](Bild1.png)
+- ![Alt-Text](Bild2.png)
 - ![Alt-Text](Bild01.png)
 - ![Alt-Text](Bild02.png)
 - ![Alt-Text](Bild03.png)
