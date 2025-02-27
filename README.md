@@ -1,6 +1,6 @@
 # 👋 Welcome to my GitHub profile! 
 
-Hello! I'm Giw and I have a passion for problem ananysis and solutio development. I possess  professional exoerience with Bid amd Vendor Management roles. My technical stack includes  Business Data Analytics, Java and SQL.
+Hello! I'm Giw and I have a passion for analysing requirements and solution development. I possess several years of professional exoerience in Bid amd Vendor Management roles. My technical stack includes  Business Data Analytics, Java and SQL as well.
 
 ---
 
