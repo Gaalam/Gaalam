@@ -29,42 +29,35 @@ Here’s a quick look at the technologies I work with and love:
 ---
 
 ## 🎯 Current Projects
-GERMAN
+
+Current Projects
 
 IT Vendor Management Suite
 
 Motivation
--
 
-Die Idee hinter diesem Projekt basiert auf meinen eigenen Erfahrungen als Software Entwickler, Vendor Manager, Digitalisierungsbeauftragter und Business Data Analyst. 
-Mich treibt in diesem Projekt an, mit diesen vielfältigen Perspektiven an einer Lösung zu arbeiten, die speziell auf die Bedürfnisse von KMU zugeschnitten ist, um Prozesse und die Sicht auf die Daten im Bereich Vendor Management zu verbessern.
+The idea behind this project is based on my own experiences as a software developer, vendor manager, digitalization officer, and business data analyst. My motivation for this project comes from combining these diverse perspectives to develop a solution specifically tailored to the needs of SMEs, improving processes and data visibility in vendor management.
 
-Mit meiner Vendor Management Suite können Unternehmen ihre IT-Verträge, Softwarelizenzen und Vendorenbeziehungen effizienter verwalten. 
-Die Lösung bietet eine benutzerfreundliche Oberfläche zur Verwaltung von Vertragslaufzeiten, Kosten und IT-Services – perfekt für Unternehmen, die ihre Ressourcen optimal nutzen möchten. 
-Kein langwieriges Suchen nach Verträgen, Laufzeiten, Kosten, Wissensträgern oder Excel-Listen mehr!
- 
-Datenpflege ("Dokumentation") erfordert einen gewissen Aufwand. Aber die klare Intention ist, diesen Aufwand auf ein hinreichendes Minimum zu reduzieren und gleichzeitig ein Optimum aus den Daten herauszuholen.
+With my Vendor Management Suite, companies can manage their IT contracts, software licenses, and vendor relationships more efficiently. The solution provides a user-friendly interface for tracking contract durations, costs, and IT services—perfect for businesses looking to optimize their resources. No more time-consuming searches for contracts, terms, costs, key knowledge holders, or Excel spreadsheets!
 
-Funktionen
--
-Die Anwendung basiert auf einer einfach zu bedienenden (Java Swing basierten) Oberfläche und einer relationalen Datenbank (bei mir derzeit ein lokaler Apache Derby DB Server), die es ermöglicht, Vendoren, Verträge, Lizenzen und IT-Services mit wenigen Klicks zu pflegen. Durch eine integrierte Verwaltung von Beziehungen, Laufzeiten und Kosten können Unternehmen nicht nur schneller auf Daten zugreifen, sondern auch fundiertere Entscheidungen treffen. 
+Maintaining data ("documentation") requires some effort. However, the clear goal is to minimize this effort to a reasonable level while maximizing the value extracted from the data.
 
-  🔹 Verwaltung von Vendoren und Verträgen: 
-    Alle relevanten Daten zu Vendoren, IT-Verträgen und Softwarelizenzen werden an einem Ort gesammelt. Anwender können jederzeit darauf zugreifen und haben die wichtigsten Kennzahlen im Blick.
+Features
 
-  🔹 Vertrags- und Lizenzmanagement: 
-    Die Lösung hilft, Vertragslaufzeiten und Kosten zu überwachen und sorgt dafür, dass keine wichtigen Fristen übersehen werden.
+The application is based on an easy-to-use (Java Swing-based) interface and a relational database (currently a local Apache Derby DB server in my setup). It allows users to manage vendors, contracts, licenses, and IT services with just a few clicks. With integrated relationship, duration, and cost management, companies can not only access data faster but also make more informed decisions.
 
-  🔹 Flexibles Reporting: 
-    Daten können einfach in HTML, PDF oder XLSX exportiert werden. So lassen sich Berichte schnell erstellen und weitergeben, um sie zu analysieren oder mit anderen zu teilen.
+🔹 Vendor and Contract Management:
+All relevant data on vendors, IT contracts, and software licenses is centralized in one place. Users can access it at any time and keep track of key metrics.
 
-  🔹 KI-gestützte Risikoanalyse: 
-    Die KI erkennt potenzielle Risiken in Vendorenbeziehungen und Verträgen und gibt Handlungsempfehlungen, um Probleme frühzeitig anzugehen.
+🔹 Contract and License Management:
+The solution helps monitor contract durations and costs, ensuring that no important deadlines are missed.
 
-News und Ausblick
--
-Ich arbeite gerade an den Reporting-Funktionen die es ermöglichen sollen, selektierte Datensätze in verschiedenen Formaten (HTML, PDF, XLSX) u.a. in Templates zu exportieren. 
-Derzeit experimentiere ich auch mit den Integrationsmöglichkeiten von KI für Handlungsempfehlungen auf Grundlage der übermittelten Daten. Es ist schon ganz interessant, was die KI da zurückliefert. 
+🔹 Flexible Reporting:
+Data can be easily exported to HTML, PDF, or XLSX. This enables quick report generation and sharing for analysis or collaboration.
+
+🔹 AI-Powered Risk Analysis:
+The AI detects potential risks in vendor relationships and contracts, providing recommendations to proactively address issues.
+
 
 Screenshots 
 - ![Alt-Text](Bild1.png)
