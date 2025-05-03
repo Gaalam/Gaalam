@@ -60,10 +60,11 @@ The AI detects potential risks in vendor relationships and contracts, providing 
 
 
 Screenshots 
-- ![Alt-Text](Bild1.png)
-- ![Alt-Text](Bild2.png)
-- ![Alt-Text](Bild01.png)
+- ![Alt-Text](Bildschirmfoto_18.png)
+- ![Alt-Text](Bildschirmfoto_17.png)
+- ![Alt-Text](Bildschirmfoto_20.png)
 - ![Alt-Text](Bild02.png)
-- ![Alt-Text](Bild03.png)
-- ![Alt-Text](Bild04.png)
+- ![Alt-Text](Bild06.png)
+- ![Alt-Text](Bildschirmfoto_24.png)
+- ![Alt-Text](Bildschirmfoto_50.png)
 - ![Alt-Text](Bild08.png)
