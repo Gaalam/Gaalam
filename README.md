@@ -1,8 +1,8 @@
 
 
 Screenshots 
-- ![Alt-Text](Bild_02.png)
-- ![Alt-Text](Bild04.png)
+- ![Alt-Text](Bild001.png)
+- ![Alt-Text](Bild002.png)
 - ![Alt-Text](Bildschirmfoto_68.png)
 - ![Alt-Text](Bildschirmfoto_18.png)
 - ![Alt-Text](Bildschirmfoto_17.png)
