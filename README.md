@@ -26,7 +26,7 @@ Verwendbar sind daher eigentlich alle relationalen Datenbanken mit JDBC-Treiber.
 | Oracle DB         | ⚠️ Möglich        | Lizenzpflichtig, JDBC-Treiber nötig          |
 | MS SQL Server     | ⚠️ Möglich        | JDBC-Treiber separat einbinden               |
 
-Als Entwicklungsdatenbank nutze ich persönlich gerade Apache Derby. Sie erfüllt meine derzeit meine Anforderungen in Bezug auf Entwicklung, Test und Eintelplatzbetrieb. 
+Als Entwicklungsdatenbank nutze ich persönlich gerade Apache Derby. Sie erfüllt meine Anforderungen in Bezug auf Entwicklung, Test und Eintelplatzbetrieb in diesem Projekt. 
 Für einen ambitionierten Ansatz, bspw. im Mehrbenutzerbetrieb, mit vielen Datensätzen und auch parallelen Abfragen, sollte man wahrscheinlich eher eine der o.g. Alternativen in Betracht ziehen. 
 
 ## Screenshots 
