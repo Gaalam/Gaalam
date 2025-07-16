@@ -26,15 +26,12 @@ Die folgende Datenbankensystwe und Treiber sollten out-of-the box kompatibel sei
 | PostgreSQL                    | ✅ Empfohlen      |                                                                                                                                                             |
 | MySQL / MariaDB               | ✅ Kompatibel     |                                                                                                                                                             |
 
-
 ## Konfiguration
 In dieser Anwendung wird eine Datenbank verwendet. 
 Die Datenbankkonfiguration befindet sich in der Datei `config.properties`, die parallel zum ausführenden JAR gespeichert ist.
 
 Hier ein Beispiel für die Konfiguration:
-
-``properties
-# PostgreSQL Database Configuration  
+### PostgreSQL Database Configuration  
 db.type=postgresql  
 db.driver=org.postgresql.Driver  
 db.url=jdbc:postgresql://localhost:5432/mydatabase  
