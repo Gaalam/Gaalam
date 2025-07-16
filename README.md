@@ -16,7 +16,7 @@
 
 ## Unterstützte Datenbanken
 
-Out-of-the box, werden folgende Datenbanken unterstützt: 
+Die folgende Datenbankensystwe und Treiber sollten out-of-the box kompatibel sei. 
 
 | Datenbank                     | Status            | Hinweise                                     |
 |-------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -24,6 +24,7 @@ Out-of-the box, werden folgende Datenbanken unterstützt:
 | Apache Derby - Client Mode    | 🧪 Entwickler     |                                                                                                                                                             |
 | PostgreSQL                    | ✅ Empfohlen      |                                                                                                                                                             |
 | MySQL / MariaDB               | ✅ Kompatibel     |                                                                                                                                                             |
+
 
 ## Konfiguration
 
