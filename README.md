@@ -40,40 +40,43 @@ This software provides a comprehensive solution for managing IT vendors, contrac
    - 
 <img src="Bild001.png" width="800px" />
 
-# Systemvoraussetzungen
+# System Requirements
 
-## Minimale Anforderungen
+## Minimum Requirements
 
-- **Betriebssystem:** Windows 10+, macOS 11+, Linux (Ubuntu/Fedora o.ä.)
-- **Java:** Java 17 kompatible JVM, wie z. B. Azul Zulu, OpenJDK, Oracle JDK, Amazon Corretto
-- **Arbeitsspeicher:** mind. 4 GB
-- **Speicherplatz:** ca. 300 MB + Datenbankdateien
-- **Bildschirmauflösung:** 1280×800 oder höher
-- **Unterstütze Datenbanksysteme:** PostgreSQL, MariaDB, MySQL, Derby (Embedded & Client)
+- **Operating System:** Windows 10+, macOS 11+, Linux (Ubuntu/Fedora or similar)
+- **Java:** JVM compatible with Java 17 (e.g., Azul Zulu, OpenJDK, Oracle JDK, Amazon Corretto)
+- **RAM:** Minimum 4 GB
+- **Storage:** Approximately 300 MB + database files
+- **Display Resolution:** 1280×800 or higher
+- **Supported Databases:** PostgreSQL, MariaDB, MySQL, Derby (Embedded & Client)
 
-## Empfohlene Konfiguration
+## Recommended Configuration
 
-- Java 17 oder neuer (64-Bit)
-- 8 GB RAM oder mehr
-- Internetverbindung (bei einer remote Datenbank und für Abfragen in der public LEI cloud database)
+- Java 17 or newer (64-bit)
+- 8 GB RAM or more
+- Internet connection (for remote database access and public LEI cloud database queries)
 
-## Unterstützte Datenbanken
+## Supported Databases
 
-Die folgende Datenbankensystwe und Treiber sollten out-of-the box kompatibel sei. 
+The following database systems and drivers should be compatible out of the box:
 
-| Datenbank                     | Status            | Hinweise                                     |
-|-------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Apache Derby - Embedded Mode  | 🧪 Fallback/Test  | Wenn keine passende Datenbankkonfiguration gefunden wird, nutzt die Software als Fallback eine File persistierende, embedded Derby Datenbank.               |
-| Apache Derby - Client Mode    | 🧪 Entwickler     |                                                                                                                                                             |
-| PostgreSQL                    | ✅ Empfohlen      |                                                                                                                                                             |
-| MySQL / MariaDB               | ✅ Kompatibel     |                                                                                                                                                             |
+| Database                     | Status            | Notes                                        |
+|------------------------------|-------------------|----------------------------------------------|
+| Apache Derby - Embedded Mode  | 🧪 Fallback/Test  | If no valid database configuration is found, the software will use an embedded Derby database as a fallback for file persistence (typically for testing). |
+| Apache Derby - Client Mode    | 🧪 Developer      |                                              |
+| PostgreSQL                    | ✅ Recommended     |                                              |
+| MySQL / MariaDB               | ✅ Compatible      |                                              |
 
-## Konfiguration
-In dieser Anwendung wird eine Datenbank verwendet. 
-Die Datenbankkonfiguration befindet sich in der Datei `config.properties`, die parallel zum ausführenden JAR gespeichert ist.
+## Configuration
 
-Hier ein Beispiel für die Konfiguration:
-### PostgreSQL Database Configuration  
+This application uses a database for data storage.  
+The database configuration is located in the `config.properties` file, which should be stored alongside the executable JAR.
+
+Example configuration for PostgreSQL:
+
+```properties
+# PostgreSQL Database Configuration  
 db.type=postgresql  
 db.driver=org.postgresql.Driver  
 db.url=jdbc:postgresql://localhost:5432/mydatabase  
@@ -81,4 +84,3 @@ db.user=postgres
 db.password=secret  
 db.schema=update
 
-Hinweis: Sollte keine separate Datenbank verfügbar sein oder die Konfiguration scheitern, wechselt die Software beim Start automatisch in einen Embedded DB mode für bspw. Tests.
