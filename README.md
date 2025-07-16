@@ -1,4 +1,4 @@
-# Vendor and Contract Management Software
+# IT Vendor and Contract Management Software
 
 This software provides a comprehensive solution for managing IT vendors, contracts, and licenses. It helps organizations track their vendor relationships, evaluate compliance, and manage software licenses effectively.
 
