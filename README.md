@@ -15,27 +15,27 @@
 - Internetverbindung (bei einer remote Datenbank und für Abfragen in der public LEI cloud database)
 
 ## Unterstützte Datenbanken
-Die Anwendung nutzt die Jakarta Persistence API (JPA) zur Datenbankanbindung. 
-Verwendbar sind daher eigentlich alle relationalen Datenbanken mit JDBC-Treiber. 
 
-| Datenbank         | Status            | Hinweise                                     |
-|-------------------|-------------------|----------------------------------------------|
-| Apache Derby      | 🧪 Entwickler     | Leichtgewichtig, nicht für hohe Last gedacht |
-| PostgreSQL        | ✅ Empfohlen      | Stabil, leistungsfähig, Open Source          |
-| MySQL / MariaDB   | ✅ Kompatibel     | Weit verbreitet, effizient                   |
-| Oracle DB         | ⚠️ Möglich        | Lizenzpflichtig, JDBC-Treiber nötig          |
-| MS SQL Server     | ⚠️ Möglich        | JDBC-Treiber separat einbinden               |
+Out-of-the box, werden folgende Datenbanken unterstützt: 
 
-Als Entwicklungsdatenbank nutze ich persönlich gerade Apache Derby. Sie erfüllt meine Anforderungen in Bezug auf Entwicklung, Test und Eintelplatzbetrieb in diesem Projekt. 
-Für einen ambitionierten Ansatz, bspw. im Mehrbenutzerbetrieb, mit vielen Datensätzen und auch parallelen Abfragen, sollte man wahrscheinlich eher eine der o.g. Alternativen in Betracht ziehen. 
+| Datenbank                     | Status            | Hinweise                                     |
+|-------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Apache Derby - Embedded Mode  | 🧪 Fallback/Test  | Wenn keine passende Datenbankkonfiguration gefunden wird, nutzt die Software als Fallback eine File persistierende, embedded Derby Datenbank.               |
+| Apache Derby - Client Mode    | 🧪 Entwickler     |                                                                                                                                                             |
+| PostgreSQL                    | ✅ Empfohlen      |                                                                                                                                                             |
+| MySQL / MariaDB               | ✅ Kompatibel     |                                                                                                                                                             |
+
+## Konfiguration
+
+---------------------------------------------------------
+ 🟣 PostgreSQL (Example)
+---------------------------------------------------------
+ db.type=postgresql
+ db.driver=org.postgresql.Driver
+ db.url=jdbc:postgresql://localhost:5432/mydatabase
+ db.user=postgres
+ db.password=secret
+ db.schema=update
 
 ## Screenshots 
-- ![Alt-Text](Bild001.png)
-- ![Alt-Text](Bild002.png)
-- ![Alt-Text](Bildschirmfoto_68.png)
-- ![Alt-Text](Bildschirmfoto_18.png)
-- ![Alt-Text](Bild003.png)
-- ![Alt-Text](Bildschirmfoto_20.png)
-- ![Alt-Text](Bildschirmfoto_24.png)
-- ![Alt-Text](Bildschirmfoto_50.png)
-- ![Alt-Text](Bild08.png)
+--
