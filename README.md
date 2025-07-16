@@ -3,10 +3,11 @@
 ## Minimale Anforderungen
 
 - **Betriebssystem:** Windows 10+, macOS 11+, Linux (Ubuntu/Fedora o.ä.)
-- **Java:** Java 17 (z. B. OpenJDK, Oracle JDK, Amazon Corretto)
+- **Java:** Java 17 kompatible JVM, wie z. B. Azul Zulu, OpenJDK, Oracle JDK, Amazon Corretto
 - **Arbeitsspeicher:** mind. 4 GB
 - **Speicherplatz:** ca. 300 MB + Datenbankdateien
 - **Bildschirmauflösung:** 1280×800 oder höher
+- **Unterstütze Datenbanksysteme:** PostgreSQL, MariaDB, MySQL, Derby (Embedded & Client)
 
 ## Empfohlene Konfiguration
 
