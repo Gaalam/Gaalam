@@ -33,7 +33,7 @@ Die Datenbankkonfiguration befindet sich in der Datei `config.properties`, die p
 
 Hier ein Beispiel für die Konfiguration:
 
-```properties
+``properties
 # PostgreSQL Database Configuration  
 db.type=postgresql  
 db.driver=org.postgresql.Driver  
