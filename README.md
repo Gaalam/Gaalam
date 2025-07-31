@@ -5,21 +5,17 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 ## Features
 
 ### 1. **Vendor Management**
-   - Manage data about your IT vendors incl. tier, privileges, contracts, contact persons, documents in one place.
-   - Note vendors’ **regulatory compliance** against legal, industry, and corporate standards in a high-level structured form.
-   - Structured evaluation scheme comprising 9 categories, with ratings (**1 - 5**).
-      
+   The Vendor Management module provides a centralized overview of all relevant information related to your IT vendors – including tier classification, access privileges, contracts, contact persons, and associated documentation. Regulatory compliance with legal, industry, and internal standards can be documented in a structured and transparent way. A standardized evaluation framework with nine categories, rated on a scale from 1 to 5, enables objective vendor assessments.
+     
 <img src="Bild_001.png" width="800px" />
    
 ### 2. **Contract Management**
-   - Track contracts, including **contract numbers**, **validity periods**, licenses and services provided 
-   - Includes financial data like **contract price**, **renewal conditions** and more
+   The Contract Management module allows for structured tracking and monitoring of contracts. It captures key details such as contract numbers, validity periods, associated licenses, and services. Financial information – including contract value, renewal terms, and other critical conditions – is clearly documented and easily accessible.
 
 <img src="Bild_002.png" width="800px" />
 
 ### 3. **License Management**
-   - Manage software licenses by metrics, criticality, data handling and costs.
-   - Monitor license validity and renewals.
+   This module supports comprehensive management of software licenses, based on key metrics such as criticality, data handling, and associated costs. It also includes tools for monitoring license validity and managing renewals to ensure ongoing compliance and cost efficiency.- Monitor license validity and renewals.
 
 <img src="Bild_006.png" width="800px" />
    
