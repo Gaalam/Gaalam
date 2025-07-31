@@ -12,8 +12,8 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 <img src="Bild_001.png" width="800px" />
    
 ### 2. **Contract Management**
-   - Track contracts, including **contract numbers**, **validity periods**, **auto-renewal settings**, and more.
-   - Includes financial data like **contract price**, **license counts**, and **renewal conditions**.
+   - Track contracts, including **contract numbers**, **validity periods**, licenses and services provided 
+   - Includes financial data like **contract price**, **renewal conditions** and more
 
 <img src="Bild_002.png" width="800px" />
 
