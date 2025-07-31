@@ -63,13 +63,13 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 
 The following database systems and drivers should be compatible out of the box:
 
-| Database                     | Status             | Notes                                        |
-|------------------------------|--------------------|----------------------------------------------|
+| Database                     | Status                  | Notes                                        |
+|------------------------------|-------------------------|----------------------------------------------|
 | Apache Derby - Embedded Mode  | 🧪Fallback/Test  | If no valid database configuration is found, the software will use an embedded Derby database as a fallback for file persistence (typically for testing). |
-| Apache Derby - Client Mode    | 🧪Developer      |                                              |
-| PostgreSQL                    | ✅Compatible     |                                              |
-| MySQL                         | ✅Compatible     |                                              |
-| MariaDB                       | ✅Compatible     |                                              |
+| Apache Derby - Client Mode    | 🧪Developer        |                                              |
+| PostgreSQL                    | ✅Compatible       |                                              |
+| MySQL                         | ✅Compatible       |                                              |
+| MariaDB                       | ✅Compatible       |                                              |
 
 ## Configuration
 
