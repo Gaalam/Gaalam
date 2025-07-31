@@ -35,10 +35,9 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 
 <img src="Bild_003.png" width="800px" />
    
-### 6. **Evaluation and Scoring**
-   - Evaluate vendors based on **Operational Value**, **Service Quality**, and **Strategic Alignment**.
-   - Use detailed evaluation levels from **Very Low** to **Very High** to assess vendor performance and risk.
-   - 
+### 6. **Strategic View**
+   - Support decision making nd planning by providing one-spot information about **Operational Value**, **Service Quality**, and **Strategic Alignment**.
+ 
 <img src="Bild001.png" width="800px" />
 
 # System Requirements
