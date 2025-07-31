@@ -71,6 +71,18 @@ The following database systems and drivers should be compatible out of the box:
 | MySQL                         | ✅Compatible       |                                              |
 | MariaDB                       | ✅Compatible       |                                              |
 
+## Open-Source Software and Third-Party Licenses
+This application utilizes several open-source libraries that are available under different open-source licenses, including the Apache License 2.0, MIT License, and others. The libraries used and their respective licenses are listed below:
+
+** Apache Log4j 2.0 – Apache License 2.0
+** Hibernate Validator – Apache License 2.0
+** GraphStream – MIT License
+** FlatLaf – MIT License
+** JFreeChart – GNU LGPL v3.0 License
+** Thymeleaf – Apache License 2.0
+** Apache POI – Apache License 2.0
+** Jakarta Mail – Eclipse Foundation License
+
 ## Configuration
 
 This application uses a database for data storage.  
