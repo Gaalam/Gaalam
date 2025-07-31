@@ -8,7 +8,7 @@ This software provides a comprehensive solution for managing IT vendors, contrac
    - Manage data about your IT vendors incl. tier, privileges, contracts, contact persons, documents in one place.
    - Note vendors’ **regulatory compliance** against legal, industry, and corporate standards in a high-level structured form. No details.
    - Structured evaluation scheme comprising 9 categories, with ratings (**1 - 5**).
-   
+      
 <img src="Bild_001.png" width="800px" />
    
 ### 2. **Contract Management**
@@ -24,13 +24,14 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 <img src="Bild_006.png" width="800px" />
    
 ### 5. **Graphical Visualization and Reporting**
-   - Interactive visualizations of vendor networks, contracts, and key relationships.
-   - Exportable reports on vendor evaluations, contract statuses, and license usage.
+   - Graph based visualizations of relations between vendor, contracts, licenses and other basic parameters.
+   
 
 <img src="Bild_003.png" width="800px" />
    
 ### 6. **Strategic View**
    - Support decision making nd planning by providing one-spot information about **Operational Value**, **Service Quality**, and **Strategic Alignment**.
+   - Exportable reports in JSON, spreadsheet format, HTML and PDF.
  
 <img src="Bild001.png" width="800px" />
 
