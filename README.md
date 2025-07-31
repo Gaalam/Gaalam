@@ -23,7 +23,7 @@ This software provides a comprehensive solution for managing IT vendors, contrac
    - Track license usage and allocations across departments or individuals.
    - Monitor license validity and renewals.
 
-
+<img src="Bild_006.png" width="800px" />
      
 ### 4. **Compliance and Risk Management**
    - Evaluate vendors’ **regulatory compliance** against legal, industry, and corporate standards.
