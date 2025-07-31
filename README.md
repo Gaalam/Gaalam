@@ -18,7 +18,7 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 <img src="Bild_002.png" width="800px" />
 
 ### 3. **License Management**
-   - Manage software licenses by metrics (e.g., **Named User**, **Concurrent User**, **Installation**).
+   - Manage software licenses by metrics, criticality, data handling and costs.
    - Monitor license validity and renewals.
 
 <img src="Bild_006.png" width="800px" />
