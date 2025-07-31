@@ -25,8 +25,8 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 <img src="Bild_006.png" width="800px" />
      
 ### 4. **Compliance and Risk Management**
-   - Keep Note of vendors’ **regulatory compliance** against legal, industry, and corporate standards in a structured "high-level" form.
-   - The evaluation scheme comprises 9 categories, with detailed ratings (e.g., **Low** to **High**).
+   - Note vendors’ **regulatory compliance** against legal, industry, and corporate standards in a high-level structured form. No details.
+   - The evaluation scheme comprises 9 categories, with ratings (**1 - 5**).
      
 
 ### 5. **Graphical Visualization and Reporting**
