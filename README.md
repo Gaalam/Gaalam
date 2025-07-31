@@ -75,7 +75,6 @@ The following database systems and drivers should be compatible out of the box:
 This application utilizes several open-source libraries that are available under different open-source licenses, including the Apache License 2.0, MIT License, and others. The libraries used and their respective licenses are listed below:
 
 - **Apache Log4j 2.0 – Apache License 2.0**
-- **Apache Log4j 2.0 – Apache License 2.0**
 - **Hibernate Validator – Apache License 2.0**
 - **GraphStream – MIT License**
 - **FlatLaf – MIT License**
