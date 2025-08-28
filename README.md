@@ -13,6 +13,8 @@ This software provides a comprehensive solution for managing IT vendors, contrac
    The Contract Management module allows for structured tracking and monitoring of contracts. It captures key details such as contract numbers, validity periods, associated licenses, and services. Financial information – including contract value, renewal terms, and other critical conditions – is clearly documented and easily accessible.
 
 <img src="Bild_002.png" width="800px" />
+<img src="Bild_08.png" width="800px" />
+
 
 ### 3. **License Management**
    This module supports comprehensive management of software licenses, based on key metrics such as criticality, data handling, and associated costs. It also includes tools for monitoring license validity and managing renewals to ensure ongoing compliance and cost efficiency.- Monitor license validity and renewals.
