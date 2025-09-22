@@ -5,7 +5,7 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 ## Features
 
 ### 1. **Vendor Management**
-   The Vendor Management module provides a centralized overview of all relevant information related to your IT vendors – including tier classification, access privileges, contracts, contact persons, and associated documentation. Regulatory compliance with legal, industry, and internal standards can be documented in a structured and transparent way. 
+   The Vendor Management module provides a centralized overview of all relevant information related to your IT vendors – including tier classification, access privileges, contracts, contact persons, and associated documentation. Support regulatory compliance checks with valuable context data. 
      
 <img src="FlatLaf000.png" width="800px" />
 <img src="FlatLaf002.png" width="800px" />
