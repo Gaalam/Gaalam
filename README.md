@@ -17,19 +17,13 @@ This software provides a comprehensive solution for managing IT vendors, contrac
 
 ### 3. **License Management**
    This module supports comprehensive management of software licenses, based on key metrics such as criticality, data handling, and associated costs. It also includes tools for monitoring license validity and managing renewals to ensure ongoing compliance and cost efficiency.- Monitor license validity and renewals.
-
-<img src="Bild_006.png" width="800px" />
    
 ### 5. **Graphical Visualization and Reporting**
    - Graph-based visualizations illustrating relationships between vendors, contracts, licenses, and key parameters.
- 
-<img src="Bild_003.png" width="800px" />
    
 ### 6. **Strategic View**
-   - Support decision making nd planning by providing one-spot information about **Operational Value**, **Service Quality**, and **Strategic Alignment**.
+   - Support decision making and planning by providing relevant one-spot information.
    - Exportable reports in JSON, spreadsheet format, HTML and PDF.
- 
-<img src="Bild001.png" width="800px" />
 
 # System Requirements
 
