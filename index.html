@@ -134,6 +134,14 @@
   figure img{ width:100%; display:block; border:1px solid var(--rule); }
   figcaption{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-faint); margin-top:8px; }
 
+  /* ---- capability grid ---- */
+  .capgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:8px 0 34px; }
+  .cap{ background:var(--paper-raised); padding:18px 20px 20px; }
+  .cap-t{ font-family:'Fraunces', serif; font-weight:600; font-size:1rem; margin-bottom:10px; }
+  .cap ul{ margin:0; padding-left:1.1em; }
+  .cap li{ font-size:.86rem; color:var(--ink-soft); margin-bottom:8px; line-height:1.5; }
+  @media (max-width:760px){ .capgrid{ grid-template-columns:1fr; } }
+
   /* ---- gallery ---- */
   .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
   .gallery figure{ margin:0; }
@@ -228,8 +236,37 @@
     <div class="section-head reveal">
       <p class="eyebrow">Das Produkt</p>
       <h2>Vendor Data Management</h2>
-      <p class="lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt — mit eingebauter DSGVO-, EU-AI-Act- und ISO-42001-Prüfung, abgeleitet aus echten gespeicherten Daten statt aus einem Fragebogen, den niemand aktuell hält. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+      <p class="lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
+      <p>Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
     </div>
+
+    <div class="capgrid reveal">
+      <div class="cap">
+        <div class="cap-t">Verträge &amp; Lizenzen</div>
+        <ul>
+          <li>GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
+          <li>Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li>IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <div class="cap-t">Compliance-Tiefe</div>
+        <ul>
+          <li>Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
+          <li>EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
+          <li>AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <div class="cap-t">Darüber hinaus</div>
+        <ul>
+          <li>RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
+          <li>KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
+          <li>Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="gallery reveal">
       <figure>
         <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy">
