@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giw Aalam — Prüfprotokoll einer KI-Pipeline</title>
+<meta name="description" content="Case Study: eine KI-Vertragsanalyse-Pipeline, die sich selbst nicht traut — und ein deterministisches Prüfsystem, das nachrechnet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eceee9;
+    --paper-raised:#f5f6f2;
+    --ink:#1b2430;
+    --ink-soft:#525c68;
+    --ink-faint:#8b9199;
+    --rule:#c7c9c1;
+    --verified:#1e6b45;
+    --verified-bg:#e3ede6;
+    --flagged:#9c3327;
+    --flagged-bg:#f3e3e0;
+    --stamp:#2b4c73;
+    --stamp-bg:#e2e7ee;
+    --max:920px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation-duration:.001ms !important; transition-duration:.001ms !important} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:17px; line-height:1.6;
+  }
+  ::selection{ background:var(--stamp); color:#fff; }
+  a{ color:var(--stamp); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible{ outline:2.5px solid var(--stamp); outline-offset:3px; }
+
+  h1,h2,h3{ font-family:'Fraunces', Georgia, serif; font-weight:600; letter-spacing:-.01em; margin:0 0 .4em; color:var(--ink); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch; }
+  .lead{ font-size:1.18rem; color:var(--ink); }
+
+  /* ---- header / nav ---- */
+  header.site{ padding:22px 0 0; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:22px; text-decoration:none; border-bottom:1px solid transparent; }
+  nav.site a:hover{ border-color:var(--ink-soft); color:var(--ink); }
+
+  /* ---- hero ---- */
+  .hero{ padding:64px 0 40px; }
+  .hero h1{ font-size:clamp(2.1rem, 4.4vw, 3.1rem); line-height:1.12; max-width:16ch; }
+  .hero .lead{ max-width:56ch; margin-top:14px; }
+  .hero .role{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.03em;
+    border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--paper-raised);
+  }
+
+  /* ---- signature element: the audit receipt ---- */
+  .receipt{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 14px 30px -18px rgba(27,36,48,.35);
+    margin: 36px 0 0;
+    max-width: 620px;
+    position:relative;
+    opacity:0; transform:translateY(14px);
+  }
+  .receipt.in{ animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0);} }
+  .receipt-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:14px 18px; border-bottom:1px dashed var(--rule);
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); letter-spacing:.03em;
+  }
+  .receipt-body{ padding:16px 18px 18px; font-family:'IBM Plex Mono', monospace; font-size:.83rem; line-height:1.75; }
+  .receipt-line{ display:flex; gap:10px; padding:3px 0; }
+  .receipt-line .mark{ flex:0 0 auto; font-weight:600; }
+  .receipt-line.ok .mark{ color:var(--verified); }
+  .receipt-line.warn .mark{ color:var(--flagged); }
+  .receipt-line .txt{ color:var(--ink); }
+  .receipt-line .txt b{ color:var(--ink); }
+  .receipt-foot{
+    display:flex; justify-content:space-between; padding:10px 18px 14px; border-top:1px dashed var(--rule);
+    font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--ink-faint);
+  }
+  .stamp{
+    position:absolute; top:-14px; right:-10px;
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:.68rem; letter-spacing:.12em;
+    color:var(--stamp); border:2px solid var(--stamp); padding:6px 10px;
+    transform: rotate(4deg); background:var(--stamp-bg);
+    opacity:0;
+  }
+  .receipt.in .stamp{ animation: stamp .35s ease-out .55s forwards; }
+  @keyframes stamp{ from{ opacity:0; transform:rotate(4deg) scale(1.5);} to{ opacity:1; transform:rotate(4deg) scale(1);} }
+
+  /* ---- sections ---- */
+  section{ padding:64px 0; border-top:1px solid var(--rule); }
+  section:first-of-type{ border-top:none; }
+  .section-head{ max-width:640px; margin-bottom:30px; }
+  .section-head h2{ font-size:clamp(1.5rem, 2.6vw, 2rem); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---- pipeline diagram ---- */
+  .pipeline{ display:flex; flex-wrap:wrap; gap:0; align-items:stretch; margin:8px 0 6px; }
+  .stage{
+    flex:1 1 140px; border:1px solid var(--rule); background:var(--paper-raised);
+    padding:14px 14px 12px; position:relative;
+  }
+  .stage + .stage{ border-left:none; }
+  .stage .k{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.08em; color:var(--ink-faint); text-transform:uppercase; }
+  .stage .t{ font-family:'Fraunces', serif; font-weight:600; font-size:1.02rem; margin-top:4px; }
+  .stage .d{ font-size:.82rem; color:var(--ink-soft); margin-top:6px; line-height:1.45; }
+  .stage.det{ background:var(--verified-bg); }
+  .stage.det .t{ color:var(--verified); }
+  @media (max-width:760px){ .stage{ flex:1 1 100%; } .stage + .stage{ border-left:1px solid var(--rule); border-top:none; margin-top:-1px; } }
+
+  /* ---- case study ---- */
+  .case{ background:var(--paper-raised); border:1px solid var(--rule); padding:30px 30px 8px; }
+  .case .eyebrow{ margin-bottom:8px; }
+  .findings{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0; }
+  .finding{ background:var(--paper-raised); padding:16px 18px; }
+  .finding .num{ font-family:'IBM Plex Mono', monospace; font-size:1.6rem; font-weight:600; color:var(--ink); }
+  .finding .lbl{ font-size:.8rem; color:var(--ink-soft); margin-top:2px; }
+  figure{ margin:26px 0 6px; }
+  figure img{ width:100%; display:block; border:1px solid var(--rule); }
+  figcaption{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-faint); margin-top:8px; }
+
+  /* ---- gallery ---- */
+  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .gallery figure{ margin:0; }
+  @media (max-width:640px){ .gallery{ grid-template-columns:1fr; } }
+
+  /* ---- stack ---- */
+  .stack-list{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
+  .stack-list span{
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft);
+    border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
+  }
+
+  footer{ padding:50px 0 70px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; }
+  footer .links a{ margin-right:18px; font-family:'IBM Plex Mono', monospace; font-size:.85rem; }
+  footer .note{ font-size:.82rem; color:var(--ink-faint); max-width:38ch; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Giw Aalam</a>
+    <nav class="site">
+      <a href="#case">Case&nbsp;Study</a><a href="#produkt">Produkt</a><a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Contracts · IT · Data · AI</p>
+    <h1>Ich vertraue meiner eigenen KI-Pipeline nicht blind.</h1>
+    <p class="lead">Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.</p>
+    <div class="role">
+      <span class="pill">Giw Aalam, M.Eng.</span>
+      <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
+    </div>
+
+    <div class="receipt" id="hero-receipt">
+      <div class="stamp">geprüft</div>
+      <div class="receipt-head"><span>PRÜFPROTOKOLL · TEST-LUECKEN01</span><span>31.07.2026 · 10:58</span></div>
+      <div class="receipt-body">
+        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt">Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b></span></div>
+        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt">Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet</span></div>
+        <div class="receipt-line warn"><span class="mark">⚠</span><span class="txt">Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.</span></div>
+      </div>
+      <div class="receipt-foot"><span>Regelbasiert · kein KI-Aufruf</span><span>MassnahmenplanValidator</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="case">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Case Study</p>
+      <h2>Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
+      <p class="lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="stage"><div class="k">Grundlage</div><div class="t">Reality-Snapshot</div><div class="d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.</div></div>
+      <div class="stage"><div class="k">Pass 1</div><div class="t">Analyse</div><div class="d">LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.</div></div>
+      <div class="stage"><div class="k">Pass 2</div><div class="t">Daten-QA</div><div class="d">Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.</div></div>
+      <div class="stage"><div class="k">Pass 3</div><div class="t">Konsistenz-QA</div><div class="d">Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.</div></div>
+      <div class="stage det"><div class="k">Danach</div><div class="t">Validierung</div><div class="d">Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.</div></div>
+    </div>
+
+    <div class="case reveal">
+      <p class="eyebrow">Live-Test, 31.07.2026</p>
+      <h3 style="margin-top:2px;">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</h3>
+      <p>Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
+
+      <div class="findings">
+        <div class="finding"><div class="num">3</div><div class="lbl">Wochenend-Termine automatisch auf Werktage verschoben</div></div>
+        <div class="finding"><div class="num">1</div><div class="lbl">Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat</div></div>
+        <div class="finding"><div class="num">0</div><div class="lbl">Zitierfehler beim anschließenden manuellen Faktenabgleich</div></div>
+      </div>
+
+      <p>Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht "die KI lag falsch", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b></p>
+
+      <figure>
+        <img src="screenshot-clause-risk-score.png" alt="Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung" loading="lazy">
+        <figcaption>Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="produkt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Das Produkt</p>
+      <h2>Vendor Data Management</h2>
+      <p class="lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt — mit eingebauter DSGVO-, EU-AI-Act- und ISO-42001-Prüfung, abgeleitet aus echten gespeicherten Daten statt aus einem Fragebogen, den niemand aktuell hält. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure>
+        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy">
+        <figcaption>TPRM- &amp; Compliance-Dashboard</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy">
+        <figcaption>Vertrags-Timeline über mehrere Jahre</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy">
+        <figcaption>Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy">
+        <figcaption>Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
+      </figure>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;">Technisch</p>
+      <div class="stack-list">
+        <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
+        <span>Google Gemini</span><span>JUnit 5 — 511 Tests</span><span>Maven</span>
+        <span>PostgreSQL / MariaDB / MySQL / Derby</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="links">
+      <a href="https://github.com/Gaalam">GitHub</a>
+      <a href="mailto:">Kontakt über GitHub</a>
+    </div>
+    <p class="note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  requestAnimationFrame(()=>{ document.getElementById('hero-receipt').classList.add('in'); });
+</script>
+</body>
+</html>
