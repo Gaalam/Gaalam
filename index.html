@@ -176,6 +176,20 @@
     border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
   }
 
+  /* ---- architecture layers ---- */
+  .layers{ display:flex; flex-direction:column; margin:22px 0 4px; max-width:540px; }
+  .layer{ border:1px solid var(--rule); background:var(--paper-raised); padding:12px 16px; }
+  .layer + .layer{ border-top:none; }
+  .layer .lt{ font-family:'Fraunces', serif; font-weight:600; font-size:.96rem; }
+  .layer .ld{ font-size:.82rem; color:var(--ink-soft); margin-top:2px; line-height:1.45; }
+  .layer.core{ background:var(--verified-bg); }
+  .layer.core .lt{ color:var(--verified); }
+  .arch-facts{ display:flex; flex-wrap:wrap; gap:9px; margin:22px 0 6px; }
+  .arch-facts span{
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft);
+    border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
+  }
+
   footer{ padding:50px 0 70px; }
   footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; }
   footer .links a{ margin-right:18px; font-family:'IBM Plex Mono', monospace; font-size:.85rem; }
@@ -188,7 +202,7 @@
   <div class="wrap">
     <a class="brand" href="#top">Giw Aalam</a>
     <nav class="site">
-      <a href="#case" data-i18n="nav.case">Case&nbsp;Study</a><a href="#produkt" data-i18n="nav.produkt">Produkt</a><a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+      <a href="#case" data-i18n="nav.case">Case&nbsp;Study</a><a href="#produkt" data-i18n="nav.produkt">Produkt</a><a href="#architektur" data-i18n="nav.architektur">Architektur</a><a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
       <span class="lang-switch">
         <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
       </span>
@@ -388,9 +402,51 @@
       <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
       <div class="stack-list">
         <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
-        <span>Google Gemini</span><span>JUnit 5 — 511 Tests</span><span>Maven</span>
+        <span>Google Gemini</span><span>JUnit 5 — 583 Tests</span><span>Maven</span>
         <span>PostgreSQL / MariaDB / MySQL / Derby</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="architektur">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
+      <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
+      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
+      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
+    </div>
+
+    <div class="layers reveal">
+      <div class="layer">
+        <div class="lt" data-i18n="layer1.t">Oberfläche</div>
+        <div class="ld" data-i18n="layer1.d">Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer2.t">Service-Schicht</div>
+        <div class="ld" data-i18n="layer2.d">ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten</div>
+      </div>
+      <div class="layer core">
+        <div class="lt" data-i18n="layer3.t">Fachlogik</div>
+        <div class="ld" data-i18n="layer3.d">Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer4.t">Daten</div>
+        <div class="ld" data-i18n="layer4.d">Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben</div>
+      </div>
+    </div>
+
+    <div class="arch-facts reveal">
+      <span data-i18n="fact1">583 Tests</span>
+      <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
+      <span data-i18n="fact3">3 Datenbank-Optionen</span>
+      <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
+      <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
+    </div>
+
+    <div class="reveal" style="margin-top:22px;">
+      <p data-i18n="arch.roadmap">Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.</p>
     </div>
   </div>
 </section>
@@ -419,6 +475,7 @@
       description: "Case Study: eine KI-Vertragsanalyse-Pipeline, die sich selbst nicht traut — und ein deterministisches Prüfsystem, das nachrechnet.",
       "nav.case": "Case&nbsp;Study",
       "nav.produkt": "Produkt",
+      "nav.architektur": "Architektur",
       "nav.kontakt": "Kontakt",
       "hero.h1": "Ich vertraue meiner eigenen KI-Pipeline nicht blind.",
       "hero.lead": "Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.",
@@ -489,6 +546,24 @@
       "img.vendor.alt": "Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges",
       "img.vendor.caption": "Lieferantenübersicht — LEI, Tier, Compliance-Status",
       "tech.eyebrow": "Technisch",
+      "arch.eyebrow": "Architektur",
+      "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
+      "arch.lead": "Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.",
+      "arch.layered": "Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.",
+      "layer1.t": "Oberfläche",
+      "layer1.d": "Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen",
+      "layer2.t": "Service-Schicht",
+      "layer2.d": "ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten",
+      "layer3.t": "Fachlogik",
+      "layer3.d": "Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar",
+      "layer4.t": "Daten",
+      "layer4.d": "Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben",
+      "fact1": "583 Tests",
+      "fact2": "25 von 26 Testklassen ganz ohne Datenbank",
+      "fact3": "3 Datenbank-Optionen",
+      "fact4": "0 Swing-Importe in den Compliance-Checkern",
+      "fact5": "Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB",
+      "arch.roadmap": "Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.",
       "footer.contact": "Kontakt über GitHub",
       "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten)."
     },
@@ -497,6 +572,7 @@
       description: "Case study: an AI contract-analysis pipeline that doesn't trust itself — and a deterministic verification system that checks its work.",
       "nav.case": "Case&nbsp;Study",
       "nav.produkt": "Product",
+      "nav.architektur": "Architecture",
       "nav.kontakt": "Contact",
       "hero.h1": "I don't blindly trust my own AI pipeline.",
       "hero.lead": "That's why every AI-generated analysis report runs through a second, fully deterministic verification layer underneath — plain Java, no model call. It checks what the AI claimed.",
@@ -567,6 +643,24 @@
       "img.vendor.alt": "Supplier overview with LEI, tier classification, and gauges",
       "img.vendor.caption": "Supplier overview — LEI, tier, compliance status",
       "tech.eyebrow": "Technical",
+      "arch.eyebrow": "Architecture",
+      "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
+      "arch.lead": "Hearing &ldquo;desktop application&rdquo; often makes people picture software that's technically stuck in the past. Here it's a deliberate choice: at an SME, vendor and contract data is usually the responsibility of one person or a small team — not a case for a multi-tenant architecture built for a hundred concurrent users. And the data always stays with the customer, on an ordinary relational database of their own choosing — not with yet another SaaS vendor you'd then need to document as your own data processor, and without the vendor lock-in risk of a closed cloud backend.",
+      "arch.layered": "Technically, the application is still built in clear layers, not as one big blob. The domain logic — compliance checks, risk scoring, the completeness score — doesn't know Swing exists at all, and runs entirely through its own service layer, independent of the UI.",
+      "layer1.t": "UI",
+      "layer1.d": "Swing / FlatLaf — desktop MDI, several windows open in parallel",
+      "layer2.t": "Service Layer",
+      "layer2.d": "ServiceFactory wraps JPA — the only permitted access path to the data",
+      "layer3.t": "Domain Logic",
+      "layer3.d": "Compliance checks, scoring, validation — doesn't know Swing exists, fully testable without any UI",
+      "layer4.t": "Data",
+      "layer4.d": "Relational database (Derby / PostgreSQL / MariaDB) — always on the customer's side, never run as the vendor's backend",
+      "fact1": "583 tests",
+      "fact2": "25 of 26 test classes run without a database",
+      "fact3": "3 database options",
+      "fact4": "0 Swing imports in the compliance checkers",
+      "fact5": "No vendor lock-in — data stays in your own relational database",
+      "arch.roadmap": "The database is swappable — embedded Derby for a quick trial, PostgreSQL or MariaDB for production on your own infrastructure, switchable via configuration. A Spring Boot REST API and a React frontend are on the roadmap (currently: planned, not built) — as an additional layer on top, not a rewrite: the service layer was built exactly for that.",
       "footer.contact": "Contact via GitHub",
       "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data)."
     }
