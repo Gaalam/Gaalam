@@ -272,18 +272,20 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
       <h2>Vendor Data Management</h2>
-      <p class="lead" data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
+      <p class="lead" data-i18n="produkt.hook">Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.</p>
+      <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
       <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
       <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
     </div>
 
     <div class="capgrid reveal">
       <div class="cap">
-        <div class="cap-t" data-i18n="cap1.t">Verträge &amp; Lizenzen</div>
+        <div class="cap-t" data-i18n="cap1.t">Verträge, Lizenzen &amp; Fristen</div>
         <ul>
-          <li data-i18n="cap1.li1">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
-          <li data-i18n="cap1.li2">Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
-          <li data-i18n="cap1.li3">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
+          <li data-i18n="cap1.li1">Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst</li>
+          <li data-i18n="cap1.li2">Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht</li>
+          <li data-i18n="cap1.li3">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
+          <li data-i18n="cap1.li4">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
         </ul>
       </div>
       <div class="cap">
@@ -298,9 +300,11 @@
       <div class="cap">
         <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
         <ul>
-          <li data-i18n="cap3.li1">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
-          <li data-i18n="cap3.li2">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
-          <li data-i18n="cap3.li3">Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing</li>
+          <li data-i18n="cap3.li1">E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt</li>
+          <li data-i18n="cap3.li2">Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
+          <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
+          <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
         </ul>
       </div>
     </div>
@@ -388,22 +392,26 @@
       "img.pipeline.alt": "Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen",
       "img.pipeline.caption": "Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.",
       "produkt.eyebrow": "Das Produkt",
-      "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
+      "produkt.hook": "Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.",
+      "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
       "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
       "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
-      "cap1.t": "Verträge &amp; Lizenzen",
-      "cap1.li1": "GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant",
-      "cap1.li2": "Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
-      "cap1.li3": "IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph",
+      "cap1.t": "Verträge, Lizenzen &amp; Fristen",
+      "cap1.li1": "Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst",
+      "cap1.li2": "Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht",
+      "cap1.li3": "GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant",
+      "cap1.li4": "IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph",
       "cap2.t": "Compliance-Tiefe",
       "cap2.li1": "Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)",
       "cap2.li2": "DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste",
       "cap2.li3": "EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten",
       "cap2.li4": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
       "cap3.t": "Darüber hinaus",
-      "cap3.li1": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
-      "cap3.li2": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
-      "cap3.li3": "Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing",
+      "cap3.li1": "E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt",
+      "cap3.li2": "Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
+      "cap3.li3": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
+      "cap3.li4": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
+      "cap3.li5": "Vendor-/Software-/CVE-Intelligence, Legal Briefing",
       "img.dashboard.alt": "TPRM- und Compliance-Dashboard mit KPI-Kacheln",
       "img.dashboard.caption": "TPRM- &amp; Compliance-Dashboard",
       "img.timeline.alt": "Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services",
@@ -450,22 +458,26 @@
       "img.pipeline.alt": "Live log of a pipeline run showing Pass-1 analysis risks and safeguards",
       "img.pipeline.caption": "Pass 1 running — the log shows live which failure modes (hallucination, silent omission) the prompt design specifically guards against, and why.",
       "produkt.eyebrow": "The Product",
-      "produkt.lead": "A desktop application that moves vendor, contract, and license management out of spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
+      "produkt.hook": "Sound familiar: the auto-renewing contract expires in three weeks — but the notice period to cancel it ran out two months ago. The only place that was ever written down was a spreadsheet nobody's maintained since the colleague who owned it left. That gap — between &ldquo;documented somewhere&rdquo; and &ldquo;actually tracked&rdquo; — is exactly what Vendor Data Management closes.",
+      "produkt.lead": "A desktop application that pulls vendor, contract, and license management out of exactly those spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
       "produkt.compliance": "Compliance here isn't a checkbox list — it's derived from exactly those stored fields. GDPR, EU AI Act, and ISO 42001 checks run through a tri-state aggregation (PASS / FAIL / UNCLEAR) instead of simple yes/no logic — a well-documented item must never mask an undocumented one. Every contract is also checked for whether anyone is actually named internally: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Data Protection Officer. Built for SMEs. Source code is currently private.",
       "produkt.swiss": "<b>For Swiss customers:</b> the same compliance logic can run against the (revised) Swiss Federal Act on Data Protection (FADP/DSG) instead of the GDPR — its own baseline criteria with the matching DSG articles, its own third-country adequacy list per Federal Council criteria (Art.&nbsp;16&ndash;17 DSG) instead of the EU/EEA check, and CHF as the base currency. Switchable per tenant, not two separate product versions.",
-      "cap1.t": "Contracts &amp; Licenses",
-      "cap1.li1": "GLEIF/LEI matching, tier classification per supplier",
-      "cap1.li2": "Privilege footprint (data processing, remote access, subcontracting …)",
-      "cap1.li3": "IT asset management with CIA classification, asset relationship graph",
+      "cap1.t": "Contracts, Licenses &amp; Deadlines",
+      "cap1.li1": "Automatic deadline monitoring — the pipeline kicks off on its own 60 days before expiry",
+      "cap1.li2": "Termination assistant — keeps notice periods and formal requirements in view before the deadline passes",
+      "cap1.li3": "GLEIF/LEI matching, tier classification per supplier",
+      "cap1.li4": "IT asset management with CIA classification, asset relationship graph",
       "cap2.t": "Compliance Depth",
       "cap2.li1": "Record of processing activities per GDPR Art.&nbsp;30, incl. Art.&nbsp;9(2)",
       "cap2.li2": "Swiss DSG as its own baseline, not just relabeled — incl. its own adequacy list",
       "cap2.li3": "EU AI Act risk classes (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26 deployer duties",
       "cap2.li4": "DPA status machine with 7 states, auto-expiry, consistency check",
       "cap3.t": "Beyond that",
-      "cap3.li1": "RfX process manager — request directly from an existing license/service",
-      "cap3.li2": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
-      "cap3.li3": "Vendor/software/CVE intelligence, termination assistant, legal briefing",
+      "cap3.li1": "Draft emails to the vendor (termination notice, RfX) are prepared, never sent automatically",
+      "cap3.li2": "Privilege footprint per supplier (data processing, remote access, subcontracting …)",
+      "cap3.li3": "RfX process manager — request directly from an existing license/service",
+      "cap3.li4": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
+      "cap3.li5": "Vendor/software/CVE intelligence, legal briefing",
       "img.dashboard.alt": "TPRM and compliance dashboard with KPI tiles",
       "img.dashboard.caption": "TPRM &amp; Compliance Dashboard",
       "img.timeline.alt": "Timeline/Gantt view across contracts, licenses, and services",
