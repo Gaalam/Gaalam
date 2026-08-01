@@ -49,8 +49,16 @@
   header.site{ padding:22px 0 0; }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
   .brand{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site{ display:flex; align-items:center; }
   nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:22px; text-decoration:none; border-bottom:1px solid transparent; }
   nav.site a:hover{ border-color:var(--ink-soft); color:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:22px; }
+  .lang-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint);
+    background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer;
+  }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
 
   /* ---- hero ---- */
   .hero{ padding:64px 0 40px; }
@@ -166,7 +174,10 @@
   <div class="wrap">
     <a class="brand" href="#top">Giw Aalam</a>
     <nav class="site">
-      <a href="#case">Case&nbsp;Study</a><a href="#produkt">Produkt</a><a href="#kontakt">Kontakt</a>
+      <a href="#case" data-i18n="nav.case">Case&nbsp;Study</a><a href="#produkt" data-i18n="nav.produkt">Produkt</a><a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
     </nav>
   </div>
 </header>
@@ -174,22 +185,22 @@
 <section class="hero" id="top">
   <div class="wrap">
     <p class="eyebrow">Contracts · IT · Data · AI</p>
-    <h1>Ich vertraue meiner eigenen KI-Pipeline nicht blind.</h1>
-    <p class="lead">Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.</p>
+    <h1 data-i18n="hero.h1">Ich vertraue meiner eigenen KI-Pipeline nicht blind.</h1>
+    <p class="lead" data-i18n="hero.lead">Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.</p>
     <div class="role">
       <span class="pill">Giw Aalam, M.Eng.</span>
       <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
     </div>
 
     <div class="receipt" id="hero-receipt">
-      <div class="stamp">geprüft</div>
-      <div class="receipt-head"><span>PRÜFPROTOKOLL · TEST-LUECKEN01</span><span>31.07.2026 · 10:58</span></div>
+      <div class="stamp" data-i18n="receipt.stamp">geprüft</div>
+      <div class="receipt-head"><span data-i18n="receipt.head">PRÜFPROTOKOLL · TEST-LUECKEN01</span><span>31.07.2026 · 10:58</span></div>
       <div class="receipt-body">
-        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt">Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b></span></div>
-        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt">Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet</span></div>
-        <div class="receipt-line warn"><span class="mark">⚠</span><span class="txt">Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.</span></div>
+        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt" data-i18n="receipt.line1">Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b></span></div>
+        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt" data-i18n="receipt.line2">Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet</span></div>
+        <div class="receipt-line warn"><span class="mark">⚠</span><span class="txt" data-i18n="receipt.line3">Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.</span></div>
       </div>
-      <div class="receipt-foot"><span>Regelbasiert · kein KI-Aufruf</span><span>MassnahmenplanValidator</span></div>
+      <div class="receipt-foot"><span data-i18n="receipt.foot">Regelbasiert · kein KI-Aufruf</span><span>MassnahmenplanValidator</span></div>
     </div>
   </div>
 </section>
@@ -197,40 +208,60 @@
 <section id="case">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Case Study</p>
-      <h2>Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
-      <p class="lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
+      <p class="eyebrow" data-i18n="case.eyebrow">Case Study</p>
+      <h2 data-i18n="case.h2">Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
+      <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
     </div>
 
     <div class="pipeline reveal">
-      <div class="stage"><div class="k">Grundlage</div><div class="t">Reality-Snapshot</div><div class="d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.</div></div>
-      <div class="stage"><div class="k">Pass 1</div><div class="t">Analyse</div><div class="d">LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.</div></div>
-      <div class="stage"><div class="k">Pass 2</div><div class="t">Daten-QA</div><div class="d">Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.</div></div>
-      <div class="stage"><div class="k">Pass 3</div><div class="t">Konsistenz-QA</div><div class="d">Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.</div></div>
-      <div class="stage det"><div class="k">Danach</div><div class="t">Validierung</div><div class="d">Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.</div></div>
+      <div class="stage">
+        <div class="k" data-i18n="stage1.k">Grundlage</div>
+        <div class="t" data-i18n="stage1.t">Reality-Snapshot</div>
+        <div class="d" data-i18n="stage1.d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage2.k">Pass 1</div>
+        <div class="t" data-i18n="stage2.t">Analyse</div>
+        <div class="d" data-i18n="stage2.d">LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage3.k">Pass 2</div>
+        <div class="t" data-i18n="stage3.t">Daten-QA</div>
+        <div class="d" data-i18n="stage3.d">Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage4.k">Pass 3</div>
+        <div class="t" data-i18n="stage4.t">Konsistenz-QA</div>
+        <div class="d" data-i18n="stage4.d">Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.</div>
+      </div>
+      <div class="stage det">
+        <div class="k" data-i18n="stage5.k">Danach</div>
+        <div class="t" data-i18n="stage5.t">Validierung</div>
+        <div class="d" data-i18n="stage5.d">Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.</div>
+      </div>
     </div>
 
     <div class="case reveal">
-      <p class="eyebrow">Live-Test, 31.07.2026</p>
-      <h3 style="margin-top:2px;">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</h3>
-      <p>Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
+      <p class="eyebrow" data-i18n="livetest.eyebrow">Live-Test, 31.07.2026</p>
+      <h3 style="margin-top:2px;" data-i18n="livetest.h3">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</h3>
+      <p data-i18n="livetest.p1">Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
 
       <div class="findings">
-        <div class="finding"><div class="num">3</div><div class="lbl">Wochenend-Termine automatisch auf Werktage verschoben</div></div>
-        <div class="finding"><div class="num">1</div><div class="lbl">Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat</div></div>
-        <div class="finding"><div class="num">0</div><div class="lbl">Zitierfehler beim anschließenden manuellen Faktenabgleich</div></div>
+        <div class="finding"><div class="num">3</div><div class="lbl" data-i18n="finding1">Wochenend-Termine automatisch auf Werktage verschoben</div></div>
+        <div class="finding"><div class="num">1</div><div class="lbl" data-i18n="finding2">Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat</div></div>
+        <div class="finding"><div class="num">0</div><div class="lbl" data-i18n="finding3">Zitierfehler beim anschließenden manuellen Faktenabgleich</div></div>
       </div>
 
-      <p>Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht "die KI lag falsch", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b></p>
+      <p data-i18n="livetest.p2">Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht "die KI lag falsch", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b></p>
 
       <figure>
-        <img src="screenshot-clause-risk-score.png" alt="Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung" loading="lazy">
-        <figcaption>Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.</figcaption>
+        <img src="screenshot-clause-risk-score.png" alt="Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung" loading="lazy" data-i18n-alt="img.clause.alt">
+        <figcaption data-i18n="img.clause.caption">Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.</figcaption>
       </figure>
 
       <figure>
-        <img src="screenshot-pipeline.png" alt="Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen" loading="lazy">
-        <figcaption>Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.</figcaption>
+        <img src="screenshot-pipeline.png" alt="Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen" loading="lazy" data-i18n-alt="img.pipeline.alt">
+        <figcaption data-i18n="img.pipeline.caption">Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.</figcaption>
       </figure>
     </div>
   </div>
@@ -239,62 +270,62 @@
 <section id="produkt">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Das Produkt</p>
+      <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
       <h2>Vendor Data Management</h2>
-      <p class="lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
-      <p>Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
-      <p><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
+      <p class="lead" data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
+      <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+      <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
     </div>
 
     <div class="capgrid reveal">
       <div class="cap">
-        <div class="cap-t">Verträge &amp; Lizenzen</div>
+        <div class="cap-t" data-i18n="cap1.t">Verträge &amp; Lizenzen</div>
         <ul>
-          <li>GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
-          <li>Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
-          <li>IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
+          <li data-i18n="cap1.li1">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
+          <li data-i18n="cap1.li2">Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li data-i18n="cap1.li3">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
         </ul>
       </div>
       <div class="cap">
-        <div class="cap-t">Compliance-Tiefe</div>
+        <div class="cap-t" data-i18n="cap2.t">Compliance-Tiefe</div>
         <ul>
-          <li>Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
-          <li>DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
-          <li>EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
-          <li>AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
+          <li data-i18n="cap2.li1">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
+          <li data-i18n="cap2.li2">DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
+          <li data-i18n="cap2.li3">EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
+          <li data-i18n="cap2.li4">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
         </ul>
       </div>
       <div class="cap">
-        <div class="cap-t">Darüber hinaus</div>
+        <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
         <ul>
-          <li>RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
-          <li>KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
-          <li>Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing</li>
+          <li data-i18n="cap3.li1">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
+          <li data-i18n="cap3.li2">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
+          <li data-i18n="cap3.li3">Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing</li>
         </ul>
       </div>
     </div>
 
     <div class="gallery reveal">
       <figure>
-        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy">
-        <figcaption>TPRM- &amp; Compliance-Dashboard</figcaption>
+        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
+        <figcaption data-i18n="img.dashboard.caption">TPRM- &amp; Compliance-Dashboard</figcaption>
       </figure>
       <figure>
-        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy">
-        <figcaption>Vertrags-Timeline über mehrere Jahre</figcaption>
+        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy" data-i18n-alt="img.timeline.alt">
+        <figcaption data-i18n="img.timeline.caption">Vertrags-Timeline über mehrere Jahre</figcaption>
       </figure>
       <figure>
-        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy">
-        <figcaption>Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
+        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy" data-i18n-alt="img.renewals.alt">
+        <figcaption data-i18n="img.renewals.caption">Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
       </figure>
       <figure>
-        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy">
-        <figcaption>Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
+        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy" data-i18n-alt="img.vendor.alt">
+        <figcaption data-i18n="img.vendor.caption">Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
       </figure>
     </div>
 
     <div class="reveal" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;">Technisch</p>
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
       <div class="stack-list">
         <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
         <span>Google Gemini</span><span>JUnit 5 — 511 Tests</span><span>Maven</span>
@@ -308,9 +339,9 @@
   <div class="wrap">
     <div class="links">
       <a href="https://github.com/Gaalam">GitHub</a>
-      <a href="mailto:">Kontakt über GitHub</a>
+      <a href="mailto:" data-i18n="footer.contact">Kontakt über GitHub</a>
     </div>
-    <p class="note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).</p>
+    <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).</p>
   </div>
 </footer>
 
@@ -320,6 +351,161 @@
   }, {threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   requestAnimationFrame(()=>{ document.getElementById('hero-receipt').classList.add('in'); });
+
+  // ---- DE/EN language toggle ----
+  const I18N = {
+    de: {
+      title: "Giw Aalam — Prüfprotokoll einer KI-Pipeline",
+      description: "Case Study: eine KI-Vertragsanalyse-Pipeline, die sich selbst nicht traut — und ein deterministisches Prüfsystem, das nachrechnet.",
+      "nav.case": "Case&nbsp;Study",
+      "nav.produkt": "Produkt",
+      "nav.kontakt": "Kontakt",
+      "hero.h1": "Ich vertraue meiner eigenen KI-Pipeline nicht blind.",
+      "hero.lead": "Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.",
+      "receipt.stamp": "geprüft",
+      "receipt.head": "PRÜFPROTOKOLL · TEST-LUECKEN01",
+      "receipt.line1": "Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b>",
+      "receipt.line2": "Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet",
+      "receipt.line3": "Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.",
+      "receipt.foot": "Regelbasiert · kein KI-Aufruf",
+      "case.eyebrow": "Case Study",
+      "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
+      "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.",
+      "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.",
+      "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.",
+      "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
+      "stage4.k": "Pass 3", "stage4.t": "Konsistenz-QA", "stage4.d": "Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.",
+      "stage5.k": "Danach", "stage5.t": "Validierung", "stage5.d": "Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.",
+      "livetest.eyebrow": "Live-Test, 31.07.2026",
+      "livetest.h3": "Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn",
+      "livetest.p1": "Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.",
+      "finding1": "Wochenend-Termine automatisch auf Werktage verschoben",
+      "finding2": "Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat",
+      "finding3": "Zitierfehler beim anschließenden manuellen Faktenabgleich",
+      "livetest.p2": "Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht \"die KI lag falsch\", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b>",
+      "img.clause.alt": "Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung",
+      "img.clause.caption": "Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.",
+      "img.pipeline.alt": "Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen",
+      "img.pipeline.caption": "Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.",
+      "produkt.eyebrow": "Das Produkt",
+      "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
+      "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
+      "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
+      "cap1.t": "Verträge &amp; Lizenzen",
+      "cap1.li1": "GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant",
+      "cap1.li2": "Privilegien-Fußabdruck (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
+      "cap1.li3": "IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph",
+      "cap2.t": "Compliance-Tiefe",
+      "cap2.li1": "Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)",
+      "cap2.li2": "DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste",
+      "cap2.li3": "EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten",
+      "cap2.li4": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
+      "cap3.t": "Darüber hinaus",
+      "cap3.li1": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
+      "cap3.li2": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
+      "cap3.li3": "Vendor-/Software-/CVE-Intelligence, Kündigungsassistent, Legal Briefing",
+      "img.dashboard.alt": "TPRM- und Compliance-Dashboard mit KPI-Kacheln",
+      "img.dashboard.caption": "TPRM- &amp; Compliance-Dashboard",
+      "img.timeline.alt": "Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services",
+      "img.timeline.caption": "Vertrags-Timeline über mehrere Jahre",
+      "img.renewals.alt": "Liste fälliger Vertragsverlängerungen mit Risikobewertung",
+      "img.renewals.caption": "Fällige Vertragsverlängerungen, mit Klauselrisiko",
+      "img.vendor.alt": "Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges",
+      "img.vendor.caption": "Lieferantenübersicht — LEI, Tier, Compliance-Status",
+      "tech.eyebrow": "Technisch",
+      "footer.contact": "Kontakt über GitHub",
+      "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten)."
+    },
+    en: {
+      title: "Giw Aalam — Audit Log of an AI Pipeline",
+      description: "Case study: an AI contract-analysis pipeline that doesn't trust itself — and a deterministic verification system that checks its work.",
+      "nav.case": "Case&nbsp;Study",
+      "nav.produkt": "Product",
+      "nav.kontakt": "Contact",
+      "hero.h1": "I don't blindly trust my own AI pipeline.",
+      "hero.lead": "That's why every AI-generated analysis report runs through a second, fully deterministic verification layer underneath — plain Java, no model call. It checks what the AI claimed.",
+      "receipt.stamp": "verified",
+      "receipt.head": "AUDIT LOG · TEST-LUECKEN01",
+      "receipt.line1": "Date fell on a weekend (Sep 12) → moved to <b>Sep 14, 2026</b>",
+      "receipt.line2": "Predecessor due date inconsistent → chain recalculated",
+      "receipt.line3": "Signature due <b>Sep 16</b> — after contract end (<b>Sep 14</b>). See Plan&nbsp;B, action item&nbsp;#4.",
+      "receipt.foot": "Rule-based · no AI call",
+      "case.eyebrow": "Case Study",
+      "case.h2": "What happens when you don't just trust an AI analysis",
+      "case.lead": "Vendor Data Management triggers a pipeline as soon as a contract is 60 days from expiry: it reads the documented data state, has an LLM (Gemini) draft an analysis report and action plan from it — then checks that result back against the same data, using pure program logic.",
+      "stage1.k": "Foundation", "stage1.t": "Reality Snapshot", "stage1.d": "Structured JSON from contract, licenses, clauses, privileges — no free text.",
+      "stage2.k": "Pass 1", "stage2.t": "Analysis", "stage2.d": "LLM drafts the report, risk classification, and action plan.",
+      "stage3.k": "Pass 2", "stage3.t": "Data QA", "stage3.d": "A second, independent model call cross-checks figures &amp; status against the snapshot.",
+      "stage4.k": "Pass 3", "stage4.t": "Consistency QA", "stage4.d": "Only runs if Pass 2 changed anything — aligns summary &amp; narrative text.",
+      "stage5.k": "After that", "stage5.t": "Validation", "stage5.d": "No more model calls. Pure arithmetic checks dates, collisions, coverage.",
+      "livetest.eyebrow": "Live test, 2026-07-31",
+      "livetest.h3": "Three model calls later, the plan still has an error — the fourth, deterministic layer catches it",
+      "livetest.p1": "For a synthetic test contract (fictional vendor, deliberately seeded with several open gaps), a full pipeline run went through all three AI passes. The result: a nine-step action plan, plausible-sounding and well-referenced. The subsequent rule-based check still found something all three model calls had missed — the signature was scheduled later than the contract's own end date.",
+      "finding1": "Weekend dates automatically moved to business days",
+      "finding2": "Contract-end collision detected, incl. automatic Plan-B reference",
+      "finding3": "Citation errors found in the subsequent manual fact-check",
+      "livetest.p2": "The second part was a manual cross-check: every figure cited in the report — vendor scores, costs, contract dates, clause status — verified by hand against the actual source data. Not a single discrepancy. The real finding here isn't \"the AI was wrong\" — it's: <b>an AI pipeline only becomes trustworthy once an independent, non-AI instance checks its work — and only if you actually test that, instead of just assuming it.</b>",
+      "img.clause.alt": "Clause risk-score dialog with AI finding rationale",
+      "img.clause.caption": "Clause-by-clause risk scoring with the AI's reasoning spelled out — every rating is traceable, not just a number.",
+      "img.pipeline.alt": "Live log of a pipeline run showing Pass-1 analysis risks and safeguards",
+      "img.pipeline.caption": "Pass 1 running — the log shows live which failure modes (hallucination, silent omission) the prompt design specifically guards against, and why.",
+      "produkt.eyebrow": "The Product",
+      "produkt.lead": "A desktop application that moves vendor, contract, and license management out of spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
+      "produkt.compliance": "Compliance here isn't a checkbox list — it's derived from exactly those stored fields. GDPR, EU AI Act, and ISO 42001 checks run through a tri-state aggregation (PASS / FAIL / UNCLEAR) instead of simple yes/no logic — a well-documented item must never mask an undocumented one. Every contract is also checked for whether anyone is actually named internally: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Data Protection Officer. Built for SMEs. Source code is currently private.",
+      "produkt.swiss": "<b>For Swiss customers:</b> the same compliance logic can run against the (revised) Swiss Federal Act on Data Protection (FADP/DSG) instead of the GDPR — its own baseline criteria with the matching DSG articles, its own third-country adequacy list per Federal Council criteria (Art.&nbsp;16&ndash;17 DSG) instead of the EU/EEA check, and CHF as the base currency. Switchable per tenant, not two separate product versions.",
+      "cap1.t": "Contracts &amp; Licenses",
+      "cap1.li1": "GLEIF/LEI matching, tier classification per supplier",
+      "cap1.li2": "Privilege footprint (data processing, remote access, subcontracting …)",
+      "cap1.li3": "IT asset management with CIA classification, asset relationship graph",
+      "cap2.t": "Compliance Depth",
+      "cap2.li1": "Record of processing activities per GDPR Art.&nbsp;30, incl. Art.&nbsp;9(2)",
+      "cap2.li2": "Swiss DSG as its own baseline, not just relabeled — incl. its own adequacy list",
+      "cap2.li3": "EU AI Act risk classes (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26 deployer duties",
+      "cap2.li4": "DPA status machine with 7 states, auto-expiry, consistency check",
+      "cap3.t": "Beyond that",
+      "cap3.li1": "RfX process manager — request directly from an existing license/service",
+      "cap3.li2": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
+      "cap3.li3": "Vendor/software/CVE intelligence, termination assistant, legal briefing",
+      "img.dashboard.alt": "TPRM and compliance dashboard with KPI tiles",
+      "img.dashboard.caption": "TPRM &amp; Compliance Dashboard",
+      "img.timeline.alt": "Timeline/Gantt view across contracts, licenses, and services",
+      "img.timeline.caption": "Multi-year contract timeline",
+      "img.renewals.alt": "List of upcoming contract renewals with risk scoring",
+      "img.renewals.caption": "Upcoming contract renewals, with clause risk",
+      "img.vendor.alt": "Supplier overview with LEI, tier classification, and gauges",
+      "img.vendor.caption": "Supplier overview — LEI, tier, compliance status",
+      "tech.eyebrow": "Technical",
+      "footer.contact": "Contact via GitHub",
+      "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data)."
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-alt');
+      if(dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
 </script>
 </body>
 </html>
