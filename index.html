@@ -243,6 +243,7 @@
       <h2>Vendor Data Management</h2>
       <p class="lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus Excel-Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
       <p>Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+      <p><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
     </div>
 
     <div class="capgrid reveal">
@@ -258,6 +259,7 @@
         <div class="cap-t">Compliance-Tiefe</div>
         <ul>
           <li>Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
+          <li>DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
           <li>EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
           <li>AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
         </ul>
