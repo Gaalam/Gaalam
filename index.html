@@ -131,6 +131,20 @@
   .stage.det .t{ color:var(--verified); }
   @media (max-width:760px){ .stage{ flex:1 1 100%; } .stage + .stage{ border-left:1px solid var(--rule); border-top:none; margin-top:-1px; } }
 
+  /* ---- report anatomy ---- */
+  .report-intro{ margin-top:26px; }
+  .report-intro h3{ font-size:1.15rem; }
+  .report-parts{ border-top:1px solid var(--rule); margin-top:10px; }
+  .part{ display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--rule); }
+  .part-n{
+    flex:0 0 auto; width:28px; height:28px; margin-top:1px;
+    border:1px solid var(--rule); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-faint);
+  }
+  .part-t{ font-family:'Fraunces', serif; font-weight:600; font-size:1rem; margin-bottom:3px; }
+  .part-d{ font-size:.88rem; color:var(--ink-soft); line-height:1.55; max-width:58ch; margin:0; }
+
   /* ---- case study ---- */
   .case{ background:var(--paper-raised); border:1px solid var(--rule); padding:30px 30px 8px; }
   .case .eyebrow{ margin-bottom:8px; }
@@ -238,6 +252,48 @@
         <div class="k" data-i18n="stage5.k">Danach</div>
         <div class="t" data-i18n="stage5.t">Validierung</div>
         <div class="d" data-i18n="stage5.d">Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.</div>
+      </div>
+    </div>
+
+    <div class="report-intro reveal">
+      <h3 data-i18n="report.h3">Das Ergebnis: ein Bericht mit fester Struktur, kein Fließtext-Blob</h3>
+      <p data-i18n="report.intro">Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschließend die Verhandlung führt.</p>
+      <div class="report-parts">
+        <div class="part">
+          <div class="part-n">0</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p0.t">Executive Summary</div>
+            <p class="part-d" data-i18n="report.p0.d">Ampel-Status, finanzielles Risiko, 3–5 Kernfakten. Für alle, die nur die erste Seite haben.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">1</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p1.t">Narrative Analyse</div>
+            <p class="part-d" data-i18n="report.p1.d">Sechs feste Betrachtungsebenen statt freier Prosa: Geschäftsbereich &amp; strategische Relevanz, Laufzeiten &amp; Fristen, Vendor-Performance, Privilege-Analyse, Informationssicherheit &amp; Datenschutz, Verhandlungsstrategie.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">2</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p2.t">Risiko-Heatmap</div>
+            <p class="part-d" data-i18n="report.p2.d">Nicht von der KI erfunden: Die App rendert die Heatmap deterministisch aus den gespeicherten Signalen — die KI liefert nur die Überschrift.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">3</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p3.t">Maßnahmenplan</div>
+            <p class="part-d" data-i18n="report.p3.d">Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">4</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p4.t">Audit-Fragebögen</div>
+            <p class="part-d" data-i18n="report.p4.d">Nur ausgelöst, wenn eine echte Risikoschwelle überschritten ist — sonst ein Satz: &bdquo;Kein Audit empfohlen.&ldquo; Wenn ja: strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag (Klauselprüfung, BCM-Planung — geht nie an den Vendor raus), exportierbar als ausfüllbares Excel.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -380,6 +436,18 @@
       "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
       "stage4.k": "Pass 3", "stage4.t": "Konsistenz-QA", "stage4.d": "Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.",
       "stage5.k": "Danach", "stage5.t": "Validierung", "stage5.d": "Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.",
+      "report.h3": "Das Ergebnis: ein Bericht mit fester Struktur, kein Fließtext-Blob",
+      "report.intro": "Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschließend die Verhandlung führt.",
+      "report.p0.t": "Executive Summary",
+      "report.p0.d": "Ampel-Status, finanzielles Risiko, 3–5 Kernfakten. Für alle, die nur die erste Seite haben.",
+      "report.p1.t": "Narrative Analyse",
+      "report.p1.d": "Sechs feste Betrachtungsebenen statt freier Prosa: Geschäftsbereich &amp; strategische Relevanz, Laufzeiten &amp; Fristen, Vendor-Performance, Privilege-Analyse, Informationssicherheit &amp; Datenschutz, Verhandlungsstrategie.",
+      "report.p2.t": "Risiko-Heatmap",
+      "report.p2.d": "Nicht von der KI erfunden: Die App rendert die Heatmap deterministisch aus den gespeicherten Signalen — die KI liefert nur die Überschrift.",
+      "report.p3.t": "Maßnahmenplan",
+      "report.p3.d": "Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.",
+      "report.p4.t": "Audit-Fragebögen",
+      "report.p4.d": "Nur ausgelöst, wenn eine echte Risikoschwelle überschritten ist — sonst ein Satz: &bdquo;Kein Audit empfohlen.&ldquo; Wenn ja: strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag (Klauselprüfung, BCM-Planung — geht nie an den Vendor raus), exportierbar als ausfüllbares Excel.",
       "livetest.eyebrow": "Live-Test, 31.07.2026",
       "livetest.h3": "Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn",
       "livetest.p1": "Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.",
@@ -446,6 +514,18 @@
       "stage3.k": "Pass 2", "stage3.t": "Data QA", "stage3.d": "A second, independent model call cross-checks figures &amp; status against the snapshot.",
       "stage4.k": "Pass 3", "stage4.t": "Consistency QA", "stage4.d": "Only runs if Pass 2 changed anything — aligns summary &amp; narrative text.",
       "stage5.k": "After that", "stage5.t": "Validation", "stage5.d": "No more model calls. Pure arithmetic checks dates, collisions, coverage.",
+      "report.h3": "The result: a report with a fixed structure, not a wall of text",
+      "report.intro": "Each part is written for a different reader — the one who only reads the first page, and the one who runs the negotiation afterwards.",
+      "report.p0.t": "Executive Summary",
+      "report.p0.d": "Traffic-light status, financial exposure, 3–5 key facts. For anyone who only has the first page.",
+      "report.p1.t": "Narrative Analysis",
+      "report.p1.d": "Six fixed perspectives instead of free-form prose: business area &amp; strategic relevance, terms &amp; deadlines, vendor performance, privilege analysis, information security &amp; data protection, negotiation strategy.",
+      "report.p2.t": "Risk Heatmap",
+      "report.p2.d": "Not invented by the AI: the app renders the heatmap deterministically from stored signals — the AI only supplies the heading.",
+      "report.p3.t": "Action Plan",
+      "report.p3.d": "Up to 12 steps, each with a phase, a named owner (Legal Counsel, CISO, Procurement Manager …), start and due dates, and a cited baseline reference. The negotiation phase additionally gets a Plan B.",
+      "report.p4.t": "Audit Questionnaires",
+      "report.p4.d": "Only triggered once a real risk threshold is crossed — otherwise a single sentence: &ldquo;No audit recommended.&rdquo; If triggered: strictly split into an external vendor questionnaire (only what the vendor itself can evidence) and an internal review assignment (clause review, BCM planning — never sent to the vendor), exportable as a fillable spreadsheet.",
       "livetest.eyebrow": "Live test, 2026-07-31",
       "livetest.h3": "Three model calls later, the plan still has an error — the fourth, deterministic layer catches it",
       "livetest.p1": "For a synthetic test contract (fictional vendor, deliberately seeded with several open gaps), a full pipeline run went through all three AI passes. The result: a nine-step action plan, plausible-sounding and well-referenced. The subsequent rule-based check still found something all three model calls had missed — the signature was scheduled later than the contract's own end date.",
