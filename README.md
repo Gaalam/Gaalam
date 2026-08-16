@@ -32,6 +32,18 @@ Key capabilities:
 
 ---
 
+## Public presentation, private codebase
+
+The **source code is private by design**.
+
+Public materials focus on:
+- product capabilities,
+- screenshots and workflows,
+- architecture approach,
+- and collaboration opportunities.
+
+---
+
 ## Tech stack
 
 Java 21 · Swing/FlatLaf · JPA/EclipseLink · Google Gemini · JUnit 5 · Maven
@@ -45,6 +57,8 @@ I’m open to:
 - consulting/advisory conversations around contract/compliance tooling,
 - professional opportunities in software engineering where product ownership and applied AI matter.
 
-📫 Reach me via [GitHub](https://github.com/Gaalam)
+📫 Email: [gaalam@gmail.com](mailto:gaalam@gmail.com)
+
+🔗 GitHub: [github.com/Gaalam](https://github.com/Gaalam)
 
 ⭐ Follow the project: [Vendor-Data-Management](https://github.com/Gaalam/Vendor-Data-Management)
