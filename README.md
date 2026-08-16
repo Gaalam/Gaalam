@@ -1,18 +1,50 @@
 ### Hi, I'm Giw Aalam 👋
 
-Contracts, IT, Data, AI — I build tools that turn scattered vendor/contract paperwork into something a compliance team can actually act on before a deadline hits, not after.
+I build practical software at the intersection of **contracts, compliance, and AI**.
 
-**Currently building:** [**Vendor Data Management**](https://github.com/Gaalam/Vendor-Data-Management) — a vendor/contract/license management platform for SMEs, built to replace the Excel-sheet-and-tribal-knowledge approach most companies still run on.
+My focus: turning scattered vendor, contract, and license documents into a workflow teams can actually use **before deadlines and risks escalate**.
 
-![Dashboard screenshot](https://raw.githubusercontent.com/Gaalam/Gaalam/main/screenshot-dashboard.png)
-
-What makes it more than another CRUD app:
-- An **AI-augmented contract-expiry pipeline** — Gemini drafts a management-ready risk analysis and negotiation plan grounded in the vendor's actual documented state, then a **second, fully deterministic Java validation pass** checks the AI's own output (date arithmetic, contract-end collisions, missing compliance references) before anything reaches a human inbox.
-- Built-in **DSGVO / EU AI Act / ISO 42001** compliance scoring derived from real stored data, not a checkbox questionnaire nobody keeps current.
-- 500+ unit tests on the business logic, deliberately structured so the core checks (compliance scoring, risk validators) run without a database or mocking framework.
-
-Tech: Java 21 · Swing/FlatLaf · JPA/EclipseLink · Google Gemini · JUnit 5 · Maven
+**Flagship project:** [**Vendor Data Management**](https://github.com/Gaalam/Vendor-Data-Management)
 
 ---
 
-📫 Reach me via [GitHub](https://github.com/Gaalam) · ⭐ the [project repo](https://github.com/Gaalam/Vendor-Data-Management) if you want to follow along
+## What I build
+
+**Vendor Data Management** is a desktop-first platform for SMEs that want to replace fragile spreadsheet-based vendor tracking with structured, auditable processes.
+
+It supports teams that need clarity on:
+- contract expiries and renewal windows,
+- compliance gaps,
+- negotiation and risk preparation,
+- documentation quality and traceability.
+
+---
+
+## Product impression
+
+![Dashboard screenshot](https://raw.githubusercontent.com/Gaalam/Gaalam/main/screenshot-dashboard.png)
+
+Key capabilities:
+- **AI-augmented contract-expiry workflow**: a first pass generates management-ready risk and negotiation guidance based on documented vendor state.
+- **Second deterministic validation pass**: all AI output is checked against rule-based validators so decisions stay reviewable and reproducible.
+- **Compliance scoring from stored evidence**: DSGVO / EU AI Act / ISO 42001 indicators are derived from actual captured data, not static checkbox forms.
+- **Tested core logic**: business-critical checks are covered with 500+ unit tests and are intentionally structured to run independently from database or heavy mocking.
+
+---
+
+## Tech stack
+
+Java 21 · Swing/FlatLaf · JPA/EclipseLink · Google Gemini · JUnit 5 · Maven
+
+---
+
+## Collaboration / contact
+
+I’m open to:
+- pilot projects,
+- consulting/advisory conversations around contract/compliance tooling,
+- professional opportunities in software engineering where product ownership and applied AI matter.
+
+📫 Reach me via [GitHub](https://github.com/Gaalam)
+
+⭐ Follow the project: [Vendor-Data-Management](https://github.com/Gaalam/Vendor-Data-Management)
