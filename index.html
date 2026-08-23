@@ -411,7 +411,7 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
       <h2>Vendor Data Management</h2>
-      <p class="lead" data-i18n="produkt.hook">Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.</p>
+      <p class="lead" data-i18n="produkt.hook">Kennen Sie das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schliesst Vendor Data Management.</p>
       <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
       <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
       <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
@@ -483,7 +483,7 @@
         <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
         <ul>
           <li data-i18n="cap3.li1">E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt</li>
-          <li data-i18n="cap3.li2">Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li data-i18n="cap3.li2">Privilegien-Fussabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
           <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
           <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
           <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
@@ -663,7 +663,7 @@
       <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
       <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
       <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
-      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
+      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein grosser Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
     </div>
 
     <div class="layers reveal">
@@ -707,19 +707,19 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="case.eyebrow">Hintergrund · Case Study</p>
       <h2 data-i18n="case.h2">Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
-      <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
+      <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
     </div>
 
     <div class="pipeline reveal">
       <div class="stage">
         <div class="k" data-i18n="stage1.k">Grundlage</div>
         <div class="t" data-i18n="stage1.t">Reality-Snapshot</div>
-        <div class="d" data-i18n="stage1.d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.</div>
+        <div class="d" data-i18n="stage1.d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.</div>
       </div>
       <div class="stage">
         <div class="k" data-i18n="stage2.k">Pass 1</div>
         <div class="t" data-i18n="stage2.t">Analyse</div>
-        <div class="d" data-i18n="stage2.d">LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.</div>
+        <div class="d" data-i18n="stage2.d">LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.</div>
       </div>
       <div class="stage">
         <div class="k" data-i18n="stage3.k">Pass 2</div>
@@ -739,8 +739,8 @@
     </div>
 
     <div class="report-intro reveal">
-      <h3 data-i18n="report.h3">Das Ergebnis: ein Bericht mit fester Struktur, kein Fließtext-Blob</h3>
-      <p data-i18n="report.intro">Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschließend die Verhandlung führt.</p>
+      <h3 data-i18n="report.h3">Das Ergebnis: ein Bericht mit fester Struktur, kein Fliesstext-Blob</h3>
+      <p data-i18n="report.intro">Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschliessend die Verhandlung führt.</p>
       <div class="report-parts">
         <div class="part">
           <div class="part-n">0</div>
@@ -766,7 +766,7 @@
         <div class="part">
           <div class="part-n">3</div>
           <div class="part-body">
-            <div class="part-t" data-i18n="report.p3.t">Maßnahmenplan</div>
+            <div class="part-t" data-i18n="report.p3.t">Massnahmenplan</div>
             <p class="part-d" data-i18n="report.p3.d">Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.</p>
           </div>
         </div>
@@ -783,12 +783,12 @@
     <div class="case reveal">
       <p class="eyebrow" data-i18n="livetest.eyebrow">Live-Test, 31.07.2026</p>
       <h3 style="margin-top:2px;" data-i18n="livetest.h3">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</h3>
-      <p data-i18n="livetest.p1">Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
+      <p data-i18n="livetest.p1">Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Massnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschliessende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
 
       <div class="findings">
         <div class="finding"><div class="num">3</div><div class="lbl" data-i18n="finding1">Wochenend-Termine automatisch auf Werktage verschoben</div></div>
         <div class="finding"><div class="num">1</div><div class="lbl" data-i18n="finding2">Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat</div></div>
-        <div class="finding"><div class="num">0</div><div class="lbl" data-i18n="finding3">Zitierfehler beim anschließenden manuellen Faktenabgleich</div></div>
+        <div class="finding"><div class="num">0</div><div class="lbl" data-i18n="finding3">Zitierfehler beim anschliessenden manuellen Faktenabgleich</div></div>
       </div>
 
       <p data-i18n="livetest.p2">Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht "die KI lag falsch", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b></p>
@@ -883,30 +883,30 @@
       "pullquote.link": "Ausführliche Fallstudie lesen →",
       "case.eyebrow": "Hintergrund · Case Study",
       "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
-      "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.",
-      "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.",
-      "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Maßnahmenplan.",
+      "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.",
+      "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.",
+      "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.",
       "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
       "stage4.k": "Pass 3", "stage4.t": "Konsistenz-QA", "stage4.d": "Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.",
       "stage5.k": "Danach", "stage5.t": "Validierung", "stage5.d": "Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.",
-      "report.h3": "Das Ergebnis: ein Bericht mit fester Struktur, kein Fließtext-Blob",
-      "report.intro": "Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschließend die Verhandlung führt.",
+      "report.h3": "Das Ergebnis: ein Bericht mit fester Struktur, kein Fliesstext-Blob",
+      "report.intro": "Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschliessend die Verhandlung führt.",
       "report.p0.t": "Executive Summary",
       "report.p0.d": "Ampel-Status, finanzielles Risiko, 3–5 Kernfakten. Für alle, die nur die erste Seite haben.",
       "report.p1.t": "Narrative Analyse",
       "report.p1.d": "Sechs feste Betrachtungsebenen statt freier Prosa: Geschäftsbereich &amp; strategische Relevanz, Laufzeiten &amp; Fristen, Vendor-Performance, Privilege-Analyse, Informationssicherheit &amp; Datenschutz, Verhandlungsstrategie.",
       "report.p2.t": "Risiko-Heatmap",
       "report.p2.d": "Nicht von der KI erfunden: Die App rendert die Heatmap deterministisch aus den gespeicherten Signalen — die KI liefert nur die Überschrift.",
-      "report.p3.t": "Maßnahmenplan",
+      "report.p3.t": "Massnahmenplan",
       "report.p3.d": "Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.",
       "report.p4.t": "Audit-Fragebögen",
       "report.p4.d": "Nur ausgelöst, wenn eine echte Risikoschwelle überschritten ist — sonst ein Satz: &bdquo;Kein Audit empfohlen.&ldquo; Wenn ja: strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag (Klauselprüfung, BCM-Planung — geht nie an den Vendor raus), exportierbar als ausfüllbares Excel.",
       "livetest.eyebrow": "Live-Test, 31.07.2026",
       "livetest.h3": "Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn",
-      "livetest.p1": "Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Maßnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschließende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.",
+      "livetest.p1": "Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Massnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschliessende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.",
       "finding1": "Wochenend-Termine automatisch auf Werktage verschoben",
       "finding2": "Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat",
-      "finding3": "Zitierfehler beim anschließenden manuellen Faktenabgleich",
+      "finding3": "Zitierfehler beim anschliessenden manuellen Faktenabgleich",
       "livetest.p2": "Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht \"die KI lag falsch\", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b>",
       "img.clause.alt": "Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung",
       "img.clause.caption": "Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.",
@@ -915,7 +915,7 @@
       "img.audit.alt": "Auditbegründung und Vendor-Fragebogen mit Baseline-Referenz je Frage",
       "img.audit.caption": "Die Auditbegründung zitiert die zwei konkreten Risikoflags, die den Fragebogen ausgelöst haben (rotes Zeit- und Informationssicherheitsrisiko) — jede Frage trägt ihre Baseline-Referenz, hier Schweizer DSG- statt DSGVO-Kriterien.",
       "produkt.eyebrow": "Das Produkt",
-      "produkt.hook": "Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.",
+      "produkt.hook": "Kennen Sie das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schliesst Vendor Data Management.",
       "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
       "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
       "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
@@ -954,7 +954,7 @@
       "cap2.li4": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
       "cap3.t": "Darüber hinaus",
       "cap3.li1": "E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt",
-      "cap3.li2": "Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
+      "cap3.li2": "Privilegien-Fussabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
       "cap3.li3": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
       "cap3.li4": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
       "cap3.li5": "Vendor-/Software-/CVE-Intelligence, Legal Briefing",
@@ -978,7 +978,7 @@
       "arch.eyebrow": "Architektur",
       "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
       "arch.lead": "Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.",
-      "arch.layered": "Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.",
+      "arch.layered": "Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein grosser Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.",
       "layer1.t": "Oberfläche",
       "layer1.d": "Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen",
       "layer2.t": "Service-Schicht",
