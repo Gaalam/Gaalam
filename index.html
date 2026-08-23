@@ -217,6 +217,19 @@
 
   .scheduler{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 6px; max-width:640px; }
   .scheduler h3{ font-size:1.1rem; margin-top:2px; }
+
+  /* ---- contact form ---- */
+  .contactform{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 24px; max-width:480px; }
+  .contactform h3{ font-size:1.1rem; margin-top:2px; }
+  .form-row{ margin-bottom:16px; }
+  .form-row label{ display:block; font-family:'IBM Plex Mono', monospace; font-size:.76rem; letter-spacing:.03em; color:var(--ink-soft); margin-bottom:6px; }
+  .form-row input, .form-row textarea{
+    width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:.92rem; color:var(--ink);
+    background:var(--paper); border:1px solid var(--rule); padding:9px 12px; resize:vertical;
+  }
+  .form-row input:focus, .form-row textarea:focus{ outline:none; border-color:var(--signal); }
+  .form-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin:14px 0 0; }
+  button.btn-primary{ cursor:pointer; appearance:none; }
   .links{ margin-top:20px; }
   .links a{ margin-right:18px; font-family:'IBM Plex Mono', monospace; font-size:.85rem; }
   footer{ padding:28px 0 50px; border-top:1px solid var(--rule); }
@@ -468,9 +481,30 @@
       <div class="calendly-inline-widget" data-url="https://calendly.com/gaalam/30min" style="min-width:280px;height:700px;"></div>
     </div>
 
+    <div class="contactform reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="kontakt.form.eyebrow">Kontakt</p>
+      <h3 data-i18n="kontakt.form.h3">Oder schreiben Sie direkt</h3>
+      <p data-i18n="kontakt.form.p">Für alles, was keinen Termin braucht: Fragen zum Produkt, zu individuellen Anforderungen oder zur Zusammenarbeit.</p>
+      <form id="contact-form" onsubmit="return sendContactMail(event)">
+        <div class="form-row">
+          <label for="cf-name" data-i18n="kontakt.form.name">Name</label>
+          <input type="text" id="cf-name" name="name" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-email" data-i18n="kontakt.form.email">E-Mail</label>
+          <input type="email" id="cf-email" name="email" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-message" data-i18n="kontakt.form.message">Nachricht</label>
+          <textarea id="cf-message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" data-i18n="kontakt.form.submit">Nachricht senden →</button>
+        <p class="form-note" data-i18n="kontakt.form.note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
+      </form>
+    </div>
+
     <div class="links reveal">
       <a href="https://github.com/Gaalam">GitHub</a>
-      <a href="mailto:" data-i18n="footer.contact">Kontakt über GitHub</a>
     </div>
   </div>
 </section>
@@ -638,6 +672,18 @@
 </footer>
 
 <script>
+  function sendContactMail(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const isEn = document.documentElement.lang === 'en';
+    const subject = (isEn ? 'Website inquiry from ' : 'Kontaktanfrage von ') + name;
+    const body = message + '\n\n---\n' + name + ' <' + email + '>';
+    window.location.href = 'mailto:gaalam@googlemail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    return false;
+  }
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.15});
@@ -791,7 +837,14 @@
       "kontakt.schedule.eyebrow": "Termin",
       "kontakt.schedule.h3": "Kostenloses Erstgespräch buchen",
       "kontakt.schedule.p": "30 Minuten, unverbindlich: wir klären Ihren Bedarf und ob Software, Vendor-Manager-Rolle oder beides passt.",
-      "footer.contact": "Kontakt über GitHub",
+      "kontakt.form.eyebrow": "Kontakt",
+      "kontakt.form.h3": "Oder schreiben Sie direkt",
+      "kontakt.form.p": "Für alles, was keinen Termin braucht: Fragen zum Produkt, zu individuellen Anforderungen oder zur Zusammenarbeit.",
+      "kontakt.form.name": "Name",
+      "kontakt.form.email": "E-Mail",
+      "kontakt.form.message": "Nachricht",
+      "kontakt.form.submit": "Nachricht senden →",
+      "kontakt.form.note": "Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.",
       "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten)."
     },
     en: {
@@ -940,7 +993,14 @@
       "kontakt.schedule.eyebrow": "Schedule",
       "kontakt.schedule.h3": "Book a free intro call",
       "kontakt.schedule.p": "30 minutes, no obligation: we clarify what you need and whether the software, the vendor-manager role, or both is the right fit.",
-      "footer.contact": "Contact via GitHub",
+      "kontakt.form.eyebrow": "Contact",
+      "kontakt.form.h3": "Or write directly",
+      "kontakt.form.p": "For anything that doesn't need a call: questions about the product, custom requirements, or working together.",
+      "kontakt.form.name": "Name",
+      "kontakt.form.email": "Email",
+      "kontakt.form.message": "Message",
+      "kontakt.form.submit": "Send message →",
+      "kontakt.form.note": "Opens your email app with a pre-filled message.",
       "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data)."
     }
   };
