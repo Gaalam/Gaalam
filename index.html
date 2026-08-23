@@ -115,6 +115,14 @@
   .service{ background:var(--paper-raised); padding:20px 20px 22px; }
   .service-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:6px; }
   .service-d{ font-size:.85rem; color:var(--ink-soft); line-height:1.5; margin:0; }
+  .service-unify{
+    grid-column:1 / -1; background:var(--signal);
+    display:flex; align-items:center; gap:20px; padding:22px 24px;
+  }
+  .service-unify .pillar-icon{ color:var(--signal-ink); margin-bottom:0; flex:0 0 auto; }
+  .service-unify .service-t{ color:var(--signal-ink); }
+  .service-unify .service-d{ color:var(--signal-ink); opacity:.92; max-width:640px; }
+  @media (max-width:600px){ .service-unify{ flex-direction:column; align-items:flex-start; gap:12px; } }
 
   /* ---- AI output examples ---- */
   .examples{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.5px; background:var(--rule); border:1px solid var(--rule); margin-top:22px; }
@@ -513,6 +521,21 @@
         <div class="service-t" data-i18n="service5.t">Digitalisierungsstrategie &amp; Prozessautomatisierung</div>
         <p class="service-d" data-i18n="service5.d">Von der IT-/Digitalisierungsstrategie bis zur konkreten Umsetzung: Risikoanalyse bestehender Abläufe, Ablösung von Legacy-Systemen und Prozessautomatisierung.</p>
       </div>
+      <div class="service service-unify">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="15" cy="15" r="3.5"/>
+          <circle cx="15" cy="4" r="2"/>
+          <circle cx="26" cy="11" r="2"/>
+          <circle cx="22" cy="24" r="2"/>
+          <circle cx="8" cy="24" r="2"/>
+          <circle cx="4" cy="11" r="2"/>
+          <path d="M15 7.5v4M23.5 12l-5 2M20 22l-3.5-4.5M10 22l3.5-4.5M6.5 12l5 2"/>
+        </svg>
+        <div>
+          <div class="service-t" data-i18n="service6.t">Fünf Blickwinkel, ein Ansatz</div>
+          <p class="service-d" data-i18n="service6.d">Strategie, Ausschreibung, Vertragsarbeit, Daten und KI-Governance hängen zusammen — deshalb kommen sie hier aus einer Hand statt von fünf verschiedenen Dienstleistern.</p>
+        </div>
+      </div>
     </div>
 
     <div class="section-head reveal" style="margin-top:34px;">
@@ -891,6 +914,8 @@
       "service4.d": "SQL-basierte Reports, Datenqualität und Entscheidungsgrundlagen aufbauen, aus mehrjähriger Praxis als Business Data Analyst in der Finanzdienstleistungsbranche.",
       "service5.t": "Digitalisierungsstrategie &amp; Prozessautomatisierung",
       "service5.d": "Von der IT-/Digitalisierungsstrategie bis zur konkreten Umsetzung: Risikoanalyse bestehender Abläufe, Ablösung von Legacy-Systemen und Prozessautomatisierung.",
+      "service6.t": "Fünf Blickwinkel, ein Ansatz",
+      "service6.d": "Strategie, Ausschreibung, Vertragsarbeit, Daten und KI-Governance hängen zusammen — deshalb kommen sie hier aus einer Hand statt von fünf verschiedenen Dienstleistern.",
       "kontakt.cred": "Ich bringe mehrjährige Erfahrung aus IT Vendor Management und Bid Management mit — vertraut mit IT-Verträgen, Lieferantensteuerung und Stakeholdermanagement, branchenübergreifend u.&nbsp;a. in Financial Services, Defence und Aviation. Dazu passende Weiterbildungen (Risikomanager TÜV, ISO/IEC&nbsp;42001 Foundation) sowie fundierte Kenntnisse in Datenanalyse, Reporting und Programmierung.",
       "kontakt.custom": "Fehlt eine Funktion, die Sie brauchen? Als Entwickler des Tools setze ich individuelle Anforderungen direkt um, statt sie auf eine allgemeine Produkt-Roadmap zu vertrösten.",
       "onboard.eyebrow": "Onboarding",
@@ -1057,6 +1082,8 @@
       "service4.d": "Building SQL-based reports, data quality, and decision-making foundations, from several years of practice as a business data analyst in financial services.",
       "service5.t": "Digital Strategy &amp; Process Automation",
       "service5.d": "From IT/digitalization strategy to hands-on implementation: analyzing existing workflows for risk, retiring legacy systems, and automating processes.",
+      "service6.t": "Five angles, one approach",
+      "service6.d": "Strategy, tendering, contract work, data, and AI governance are connected — that's why they come from one person instead of five different providers.",
       "kontakt.cred": "I bring several years of experience in IT vendor management and bid management — well-versed in IT contracts, supplier steering, and stakeholder management across industries including financial services, defence, and aviation. Alongside relevant further training (Certified Risk Manager TÜV, ISO/IEC&nbsp;42001 Foundation) and solid skills in data analysis, reporting, and programming.",
       "kontakt.custom": "Missing a feature you need? As the developer of the tool, I implement individual requirements directly instead of parking them on a generic product roadmap.",
       "onboard.eyebrow": "Onboarding",
