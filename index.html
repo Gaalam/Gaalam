@@ -452,6 +452,11 @@
           <div class="ct-cell ct-them" data-i18n="compare.r5.them">Nur der Vertragsunterzeichner</div>
           <div class="ct-cell ct-us" data-i18n="compare.r5.us">Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r</div>
         </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r6.label">Datenhoheit</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r6.them">Daten liegen beim SaaS-Anbieter — Vendor-Lock-in</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r6.us">Daten bleiben beim Kunden: in-house oder bei einem Hosting-Provider der Wahl, nie physisch auf einem Server des Anbieters — kein Vendor-Lock-in</div>
+        </div>
       </div>
     </div>
 
@@ -657,7 +662,7 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
       <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
-      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
+      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
       <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
     </div>
 
@@ -934,6 +939,9 @@
       "compare.r5.label": "Zuständigkeiten",
       "compare.r5.them": "Nur der Vertragsunterzeichner",
       "compare.r5.us": "Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r",
+      "compare.r6.label": "Datenhoheit",
+      "compare.r6.them": "Daten liegen beim SaaS-Anbieter — Vendor-Lock-in",
+      "compare.r6.us": "Daten bleiben beim Kunden: in-house oder bei einem Hosting-Provider der Wahl, nie physisch auf einem Server des Anbieters — kein Vendor-Lock-in",
       "cap1.t": "Verträge, Lizenzen &amp; Fristen",
       "cap1.li1": "Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst",
       "cap1.li2": "Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht",
@@ -969,7 +977,7 @@
       "tech.eyebrow": "Technisch",
       "arch.eyebrow": "Architektur",
       "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
-      "arch.lead": "Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.",
+      "arch.lead": "Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.",
       "arch.layered": "Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.",
       "layer1.t": "Oberfläche",
       "layer1.d": "Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen",
@@ -1122,6 +1130,9 @@
       "compare.r5.label": "Responsibilities",
       "compare.r5.them": "Just the contract signatory",
       "compare.r5.us": "Role check per contract: Contract Owner, Legal Counsel, Vendor/License Manager, Data Protection Officer",
+      "compare.r6.label": "Data sovereignty",
+      "compare.r6.them": "Data sits with the SaaS vendor — vendor lock-in",
+      "compare.r6.us": "Data stays with the customer: in-house or with a hosting provider of their choice, never physically on the vendor's own server — no vendor lock-in",
       "cap1.t": "Contracts, Licenses &amp; Deadlines",
       "cap1.li1": "Automatic deadline monitoring — the pipeline kicks off on its own 60 days before expiry",
       "cap1.li2": "Termination assistant — keeps notice periods and formal requirements in view before the deadline passes",
@@ -1157,7 +1168,7 @@
       "tech.eyebrow": "Technical",
       "arch.eyebrow": "Architecture",
       "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
-      "arch.lead": "Hearing &ldquo;desktop application&rdquo; often makes people picture software that's technically stuck in the past. Here it's a deliberate choice: at an SME, vendor and contract data is usually the responsibility of one person or a small team — not a case for a multi-tenant architecture built for a hundred concurrent users. And the data always stays with the customer, on an ordinary relational database of their own choosing — not with yet another SaaS vendor you'd then need to document as your own data processor, and without the vendor lock-in risk of a closed cloud backend.",
+      "arch.lead": "Hearing &ldquo;desktop application&rdquo; often makes people picture software that's technically stuck in the past. Here it's a deliberate choice: at an SME, vendor and contract data is usually the responsibility of one person or a small team — not a case for a multi-tenant architecture built for a hundred concurrent users. And the data always stays with the customer — in-house or with a hosting provider of their choice, never physically on the vendor's own server — not with yet another SaaS vendor you'd then need to document as your own data processor, and without the vendor lock-in risk of a closed cloud backend.",
       "arch.layered": "Technically, the application is still built in clear layers, not as one big blob. The domain logic — compliance checks, risk scoring, the completeness score — doesn't know Swing exists at all, and runs entirely through its own service layer, independent of the UI.",
       "layer1.t": "UI",
       "layer1.d": "Swing / FlatLaf — desktop MDI, several windows open in parallel",
