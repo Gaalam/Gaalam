@@ -195,6 +195,27 @@
   figure img{ width:100%; display:block; border:1px solid var(--rule); }
   figcaption{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-faint); margin-top:8px; }
 
+  /* ---- comparison table ---- */
+  .compare{ margin:8px 0 34px; max-width:820px; }
+  .compare h3{ font-size:1.15rem; }
+  .comparetable{ border:1px solid var(--rule); margin-top:20px; }
+  .ct-row{ display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--rule); }
+  .ct-row:first-child{ border-top:none; }
+  .ct-cell{ padding:14px 16px; font-size:.85rem; line-height:1.5; }
+  .ct-label{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.86rem; color:var(--ink); background:var(--paper-raised); }
+  .ct-them{ color:var(--ink-faint); }
+  .ct-them::before{ content:"✗  "; }
+  .ct-us{ color:var(--ink); }
+  .ct-us::before{ content:"✓  "; color:var(--verified); font-weight:600; }
+  .ct-head .ct-label{ background:transparent; }
+  .ct-head .ct-them, .ct-head .ct-us{ font-family:'IBM Plex Mono', monospace; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+  .ct-head .ct-them::before, .ct-head .ct-us::before{ content:""; }
+  @media (max-width:700px){
+    .ct-row{ grid-template-columns:1fr; }
+    .ct-head{ display:none; }
+    .ct-label{ border-bottom:1px dashed var(--rule); }
+  }
+
   /* ---- capability grid ---- */
   .capgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:8px 0 34px; }
   .cap{ background:var(--paper-raised); padding:18px 20px 20px; }
@@ -394,6 +415,44 @@
       <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
       <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
       <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
+    </div>
+
+    <div class="compare reveal">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="compare.eyebrow">Der Unterschied</p>
+      <h3 data-i18n="compare.h3">Was klassisches Vertragsmanagement nicht abbildet</h3>
+      <p data-i18n="compare.lead">Die meisten Vertragsmanagement-Tools verwalten das Vertragsdokument. Sie verknüpfen es nicht mit den eigentlichen Liefergegenständen, Zugriffsrechten und internen Zuständigkeiten dahinter.</p>
+      <div class="comparetable">
+        <div class="ct-row ct-head">
+          <div class="ct-cell ct-label"></div>
+          <div class="ct-cell ct-them" data-i18n="compare.them">Klassisches Vertragsmanagement</div>
+          <div class="ct-cell ct-us" data-i18n="compare.us">Vendor Data Management</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r1.label">Liefergegenstände</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r1.them">Verwaltet nur das Vertragsdokument</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r1.us">Datenmodell Vendor → Vertrag → Lizenz/Service — jede Lizenz und jeder Service einzeln erfasst und verknüpft</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r2.label">Zugriffsprivilegien</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r2.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r2.us">Privilegien-Fussabdruck je Lieferant: Datenverarbeitung, Fernzugriff, Subunternehmer</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r3.label">AVV-Status</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r3.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r3.us">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r4.label">Verfahrensverzeichnis</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r4.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r4.us">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r5.label">Zuständigkeiten</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r5.them">Nur der Vertragsunterzeichner</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r5.us">Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r</div>
+        </div>
+      </div>
     </div>
 
     <div class="capgrid reveal">
@@ -855,6 +914,26 @@
       "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
       "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
       "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
+      "compare.eyebrow": "Der Unterschied",
+      "compare.h3": "Was klassisches Vertragsmanagement nicht abbildet",
+      "compare.lead": "Die meisten Vertragsmanagement-Tools verwalten das Vertragsdokument. Sie verknüpfen es nicht mit den eigentlichen Liefergegenständen, Zugriffsrechten und internen Zuständigkeiten dahinter.",
+      "compare.them": "Klassisches Vertragsmanagement",
+      "compare.us": "Vendor Data Management",
+      "compare.r1.label": "Liefergegenstände",
+      "compare.r1.them": "Verwaltet nur das Vertragsdokument",
+      "compare.r1.us": "Datenmodell Vendor → Vertrag → Lizenz/Service — jede Lizenz und jeder Service einzeln erfasst und verknüpft",
+      "compare.r2.label": "Zugriffsprivilegien",
+      "compare.r2.them": "Nicht erfasst",
+      "compare.r2.us": "Privilegien-Fussabdruck je Lieferant: Datenverarbeitung, Fernzugriff, Subunternehmer",
+      "compare.r3.label": "AVV-Status",
+      "compare.r3.them": "Nicht erfasst",
+      "compare.r3.us": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
+      "compare.r4.label": "Verfahrensverzeichnis",
+      "compare.r4.them": "Nicht erfasst",
+      "compare.r4.us": "Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)",
+      "compare.r5.label": "Zuständigkeiten",
+      "compare.r5.them": "Nur der Vertragsunterzeichner",
+      "compare.r5.us": "Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r",
       "cap1.t": "Verträge, Lizenzen &amp; Fristen",
       "cap1.li1": "Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst",
       "cap1.li2": "Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht",
@@ -1023,6 +1102,26 @@
       "produkt.lead": "A desktop application that pulls vendor, contract, and license management out of exactly those spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
       "produkt.compliance": "Compliance here isn't a checkbox list — it's derived from exactly those stored fields. GDPR, EU AI Act, and ISO 42001 checks run through a tri-state aggregation (PASS / FAIL / UNCLEAR) instead of simple yes/no logic — a well-documented item must never mask an undocumented one. Every contract is also checked for whether anyone is actually named internally: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Data Protection Officer. Built for SMEs. Source code is currently private.",
       "produkt.swiss": "<b>For Swiss customers:</b> the same compliance logic can run against the (revised) Swiss Federal Act on Data Protection (FADP/DSG) instead of the GDPR — its own baseline criteria with the matching DSG articles, its own third-country adequacy list per Federal Council criteria (Art.&nbsp;16&ndash;17 DSG) instead of the EU/EEA check, and CHF as the base currency. Switchable per tenant, not two separate product versions.",
+      "compare.eyebrow": "The Difference",
+      "compare.h3": "What classic contract management doesn't cover",
+      "compare.lead": "Most contract management tools manage the contract document. They don't link it to the actual delivery items, access rights, and internal responsibilities behind it.",
+      "compare.them": "Classic Contract Management",
+      "compare.us": "Vendor Data Management",
+      "compare.r1.label": "Delivery items",
+      "compare.r1.them": "Manages only the contract document",
+      "compare.r1.us": "Vendor → contract → license/service data model — every license and service captured and linked individually",
+      "compare.r2.label": "Access privileges",
+      "compare.r2.them": "Not captured",
+      "compare.r2.us": "Privilege footprint per supplier: data processing, remote access, subcontracting",
+      "compare.r3.label": "DPA status",
+      "compare.r3.them": "Not captured",
+      "compare.r3.us": "DPA status machine with 7 states, auto-expiry, consistency check",
+      "compare.r4.label": "Record of processing",
+      "compare.r4.them": "Not captured",
+      "compare.r4.us": "Record of processing activities per GDPR Art.&nbsp;30, incl. Art.&nbsp;9(2)",
+      "compare.r5.label": "Responsibilities",
+      "compare.r5.them": "Just the contract signatory",
+      "compare.r5.us": "Role check per contract: Contract Owner, Legal Counsel, Vendor/License Manager, Data Protection Officer",
       "cap1.t": "Contracts, Licenses &amp; Deadlines",
       "cap1.li1": "Automatic deadline monitoring — the pipeline kicks off on its own 60 days before expiry",
       "cap1.li2": "Termination assistant — keeps notice periods and formal requirements in view before the deadline passes",
