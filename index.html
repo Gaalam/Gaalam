@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Giw Aalam — Prüfprotokoll einer KI-Pipeline</title>
-<meta name="description" content="Case Study: eine KI-Vertragsanalyse-Pipeline, die sich selbst nicht traut — und ein deterministisches Prüfsystem, das nachrechnet.">
+<title>Giw Aalam — Vendor Data Management &amp; IT Vendor Manager</title>
+<meta name="description" content="Vendor Data Management: Desktop-Software für Third-Party-Risk- und Compliance-Management bei KMU. Dazu die passende Dienstleistung: Giw Aalam als externer IT Vendor Manager.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -65,48 +65,13 @@
   .hero h1{ font-size:clamp(2.1rem, 4.4vw, 3.1rem); line-height:1.12; max-width:16ch; }
   .hero .lead{ max-width:56ch; margin-top:14px; }
   .hero .role{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+  .hero-cta{ margin-top:26px; display:flex; gap:24px; flex-wrap:wrap; }
+  .hero-cta a{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500; }
   .pill{
     font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.03em;
     border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--paper-raised);
   }
 
-  /* ---- signature element: the audit receipt ---- */
-  .receipt{
-    background:var(--paper-raised);
-    border:1px solid var(--rule);
-    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 14px 30px -18px rgba(27,36,48,.35);
-    margin: 36px 0 0;
-    max-width: 620px;
-    position:relative;
-    opacity:0; transform:translateY(14px);
-  }
-  .receipt.in{ animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards; }
-  @keyframes rise{ to{ opacity:1; transform:translateY(0);} }
-  .receipt-head{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:14px 18px; border-bottom:1px dashed var(--rule);
-    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); letter-spacing:.03em;
-  }
-  .receipt-body{ padding:16px 18px 18px; font-family:'IBM Plex Mono', monospace; font-size:.83rem; line-height:1.75; }
-  .receipt-line{ display:flex; gap:10px; padding:3px 0; }
-  .receipt-line .mark{ flex:0 0 auto; font-weight:600; }
-  .receipt-line.ok .mark{ color:var(--verified); }
-  .receipt-line.warn .mark{ color:var(--flagged); }
-  .receipt-line .txt{ color:var(--ink); }
-  .receipt-line .txt b{ color:var(--ink); }
-  .receipt-foot{
-    display:flex; justify-content:space-between; padding:10px 18px 14px; border-top:1px dashed var(--rule);
-    font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--ink-faint);
-  }
-  .stamp{
-    position:absolute; top:-14px; right:-10px;
-    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:.68rem; letter-spacing:.12em;
-    color:var(--stamp); border:2px solid var(--stamp); padding:6px 10px;
-    transform: rotate(4deg); background:var(--stamp-bg);
-    opacity:0;
-  }
-  .receipt.in .stamp{ animation: stamp .35s ease-out .55s forwards; }
-  @keyframes stamp{ from{ opacity:0; transform:rotate(4deg) scale(1.5);} to{ opacity:1; transform:rotate(4deg) scale(1);} }
 
   /* ---- sections ---- */
   section{ padding:64px 0; border-top:1px solid var(--rule); }
@@ -202,7 +167,7 @@
   <div class="wrap">
     <a class="brand" href="#top">Giw Aalam</a>
     <nav class="site">
-      <a href="#case" data-i18n="nav.case">Case&nbsp;Study</a><a href="#produkt" data-i18n="nav.produkt">Produkt</a><a href="#architektur" data-i18n="nav.architektur">Architektur</a><a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+      <a href="#produkt" data-i18n="nav.produkt">Produkt</a><a href="#kontakt" data-i18n="nav.kontakt">Zusammenarbeit</a><a href="#architektur" data-i18n="nav.architektur">Architektur</a><a href="#case" data-i18n="nav.case">Hintergrund</a>
       <span class="lang-switch">
         <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
       </span>
@@ -213,22 +178,160 @@
 <section class="hero" id="top">
   <div class="wrap">
     <p class="eyebrow">Contracts · IT · Data · AI</p>
-    <h1 data-i18n="hero.h1">Ich vertraue meiner eigenen KI-Pipeline nicht blind.</h1>
-    <p class="lead" data-i18n="hero.lead">Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.</p>
+    <h1 data-i18n="hero.h1">Vendor-, Vertrags- und Lizenzmanagement, das Lücken zeigt, bevor sie zum Problem werden.</h1>
+    <p class="lead" data-i18n="hero.lead">Vendor Data Management ist eine Desktop-Anwendung für Third-Party-Risk- und Compliance-Management bei KMU. Dazu biete ich die passende Dienstleistung gleich mit an: als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantensteuerung operativ — mit genau diesem Tool.</p>
     <div class="role">
       <span class="pill">Giw Aalam, M.Eng.</span>
       <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
     </div>
+    <div class="hero-cta">
+      <a href="#produkt" data-i18n="hero.cta1">Produkt ansehen →</a>
+      <a href="#kontakt" data-i18n="hero.cta2">Als externer IT Vendor Manager anfragen →</a>
+    </div>
+  </div>
+</section>
 
-    <div class="receipt" id="hero-receipt">
-      <div class="stamp" data-i18n="receipt.stamp">geprüft</div>
-      <div class="receipt-head"><span data-i18n="receipt.head">PRÜFPROTOKOLL · TEST-LUECKEN01</span><span>31.07.2026 · 10:58</span></div>
-      <div class="receipt-body">
-        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt" data-i18n="receipt.line1">Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b></span></div>
-        <div class="receipt-line ok"><span class="mark">✓</span><span class="txt" data-i18n="receipt.line2">Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet</span></div>
-        <div class="receipt-line warn"><span class="mark">⚠</span><span class="txt" data-i18n="receipt.line3">Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.</span></div>
+<section id="produkt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
+      <h2>Vendor Data Management</h2>
+      <p class="lead" data-i18n="produkt.hook">Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.</p>
+      <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
+      <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+      <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
+    </div>
+
+    <div class="capgrid reveal">
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap1.t">Verträge, Lizenzen &amp; Fristen</div>
+        <ul>
+          <li data-i18n="cap1.li1">Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst</li>
+          <li data-i18n="cap1.li2">Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht</li>
+          <li data-i18n="cap1.li3">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
+          <li data-i18n="cap1.li4">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
+        </ul>
       </div>
-      <div class="receipt-foot"><span data-i18n="receipt.foot">Regelbasiert · kein KI-Aufruf</span><span>MassnahmenplanValidator</span></div>
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap2.t">Compliance-Tiefe</div>
+        <ul>
+          <li data-i18n="cap2.li1">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
+          <li data-i18n="cap2.li2">DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
+          <li data-i18n="cap2.li3">EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
+          <li data-i18n="cap2.li4">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
+        <ul>
+          <li data-i18n="cap3.li1">E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt</li>
+          <li data-i18n="cap3.li2">Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
+          <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
+          <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gallery reveal">
+      <figure>
+        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
+        <figcaption data-i18n="img.dashboard.caption">TPRM- &amp; Compliance-Dashboard</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy" data-i18n-alt="img.timeline.alt">
+        <figcaption data-i18n="img.timeline.caption">Vertrags-Timeline über mehrere Jahre</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy" data-i18n-alt="img.renewals.alt">
+        <figcaption data-i18n="img.renewals.caption">Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy" data-i18n-alt="img.vendor.alt">
+        <figcaption data-i18n="img.vendor.caption">Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-asset-graph.png" alt="Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft" loading="lazy" data-i18n-alt="img.assetgraph.alt">
+        <figcaption data-i18n="img.assetgraph.caption">Ein SAP-System (SYS-ERP-01) hängt gleichzeitig an einem SAP-Support-Vertrag und einer Oracle-Datenbanklizenz — eine Abhängigkeit, die in getrennten Lizenzlisten unsichtbar bliebe, hier aber sofort auffällt.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-compliance-gaps.png" alt="Compliance-Tab mit Begründung je Kriterium und aufgedecktem Gap SEC-09" loading="lazy" data-i18n-alt="img.compliancegaps.alt">
+        <figcaption data-i18n="img.compliancegaps.caption">Die DSG-Auftragsbearbeitung ist unterzeichnet, doch die IT-Sicherheitsbaseline zeigt vier offene Kriterien (MFA, Least-Privilege, Verschlüsselung, Subunternehmer-Dokumentation) — jedes einzeln begründet, hier SEC-09 mit vollständigem Kriterientext im Tooltip.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-clause-checklist.png" alt="Vertragsklauseln-Checkliste mit Ampel-Status, Vertragszitat und Mehrfach-Baseline-Referenz (VTR-06, SEC-09, DSG-04)" loading="lazy" data-i18n-alt="img.clauselist.alt">
+        <figcaption data-i18n="img.clauselist.caption">14 Klauseln als Checkliste mit Ampel-Status. Bei der Subunternehmer-Regelung zitiert die KI wörtlich aus dem Vertrag (§ 5.6) und referenziert den Befund gleichzeitig gegen drei Kataloge — VTR-06 (Vertragsklausel), SEC-09 (Sicherheitsbaseline), DSG-04 (Schweizer Datenschutz).</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-license-warnings.png" alt="Lizenz-Bearbeitungsformular mit vier Konsistenz-Warnungen: EU-AI-Act-Verantwortlicher, DSG-06/SEC-Verschlüsselung, MFA und DSG-05-Datenresidenz" loading="lazy" data-i18n-alt="img.licensewarnings.alt">
+        <figcaption data-i18n="img.licensewarnings.caption">Vier Warnungen direkt im Lizenzformular, vor dem Speichern: Datenresidenz „US“ liegt außerhalb der Schweizer Angemessenheitsliste (DSG-05), Verschlüsselung und MFA sind laut Privilege-Profil nicht vorhanden (DSG-06/SEC-02/SEC-04) — und weil KI-Nutzung aktiv, aber kein KI-Verantwortlicher hinterlegt ist, zitiert die App direkt Art.&nbsp;26 Abs.&nbsp;2 EU AI Act.</figcaption>
+      </figure>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
+      <div class="stack-list">
+        <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
+        <span>Google Gemini</span><span>JUnit 5 — 583 Tests</span><span>Maven</span>
+        <span>PostgreSQL / MariaDB / MySQL / Derby</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="kontakt.eyebrow">Zusammenarbeit</p>
+      <h2 data-i18n="kontakt.h2">Suchen Sie einen externen IT Vendor Manager?</h2>
+      <p class="lead" data-i18n="kontakt.lead">Neben der Software biete ich die Rolle auch selbst an: Als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantenverwaltung operativ — inklusive laufender Datenpflege in genau diesem Tool und regelmäßigem Reporting an Ihre Geschäftsleitung.</p>
+      <p data-i18n="kontakt.cred">Ich bringe mehrjährige Erfahrung aus IT Vendor Management und Bid Management mit — vertraut mit IT-Verträgen, Lieferantensteuerung und Stakeholdermanagement, branchenübergreifend u.&nbsp;a. in Financial Services, Defence und Aviation. Dazu passende Weiterbildungen (Risikomanager TÜV, ISO/IEC&nbsp;42001 Foundation) sowie fundierte Kenntnisse in Datenanalyse, Reporting und Programmierung.</p>
+    </div>
+    <div class="links reveal">
+      <a href="https://github.com/Gaalam">GitHub</a>
+      <a href="mailto:" data-i18n="footer.contact">Kontakt über GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="architektur">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
+      <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
+      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
+      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
+    </div>
+
+    <div class="layers reveal">
+      <div class="layer">
+        <div class="lt" data-i18n="layer1.t">Oberfläche</div>
+        <div class="ld" data-i18n="layer1.d">Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer2.t">Service-Schicht</div>
+        <div class="ld" data-i18n="layer2.d">ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten</div>
+      </div>
+      <div class="layer core">
+        <div class="lt" data-i18n="layer3.t">Fachlogik</div>
+        <div class="ld" data-i18n="layer3.d">Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer4.t">Daten</div>
+        <div class="ld" data-i18n="layer4.d">Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben</div>
+      </div>
+    </div>
+
+    <div class="arch-facts reveal">
+      <span data-i18n="fact1">583 Tests</span>
+      <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
+      <span data-i18n="fact3">3 Datenbank-Optionen</span>
+      <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
+      <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
+    </div>
+
+    <div class="reveal" style="margin-top:22px;">
+      <p data-i18n="arch.roadmap">Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.</p>
     </div>
   </div>
 </section>
@@ -236,7 +339,7 @@
 <section id="case">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="case.eyebrow">Case Study</p>
+      <p class="eyebrow" data-i18n="case.eyebrow">Hintergrund · Case Study</p>
       <h2 data-i18n="case.h2">Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
       <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
     </div>
@@ -342,151 +445,6 @@
   </div>
 </section>
 
-<section id="produkt">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
-      <h2>Vendor Data Management</h2>
-      <p class="lead" data-i18n="produkt.hook">Kennst du das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schließt Vendor Data Management.</p>
-      <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
-      <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
-      <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
-    </div>
-
-    <div class="capgrid reveal">
-      <div class="cap">
-        <div class="cap-t" data-i18n="cap1.t">Verträge, Lizenzen &amp; Fristen</div>
-        <ul>
-          <li data-i18n="cap1.li1">Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst</li>
-          <li data-i18n="cap1.li2">Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht</li>
-          <li data-i18n="cap1.li3">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
-          <li data-i18n="cap1.li4">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
-        </ul>
-      </div>
-      <div class="cap">
-        <div class="cap-t" data-i18n="cap2.t">Compliance-Tiefe</div>
-        <ul>
-          <li data-i18n="cap2.li1">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
-          <li data-i18n="cap2.li2">DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
-          <li data-i18n="cap2.li3">EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
-          <li data-i18n="cap2.li4">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
-        </ul>
-      </div>
-      <div class="cap">
-        <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
-        <ul>
-          <li data-i18n="cap3.li1">E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt</li>
-          <li data-i18n="cap3.li2">Privilegien-Fußabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
-          <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
-          <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
-          <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="gallery reveal">
-      <figure>
-        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
-        <figcaption data-i18n="img.dashboard.caption">TPRM- &amp; Compliance-Dashboard</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy" data-i18n-alt="img.timeline.alt">
-        <figcaption data-i18n="img.timeline.caption">Vertrags-Timeline über mehrere Jahre</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy" data-i18n-alt="img.renewals.alt">
-        <figcaption data-i18n="img.renewals.caption">Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy" data-i18n-alt="img.vendor.alt">
-        <figcaption data-i18n="img.vendor.caption">Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-asset-graph.png" alt="Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft" loading="lazy" data-i18n-alt="img.assetgraph.alt">
-        <figcaption data-i18n="img.assetgraph.caption">Ein SAP-System (SYS-ERP-01) hängt gleichzeitig an einem SAP-Support-Vertrag und einer Oracle-Datenbanklizenz — eine Abhängigkeit, die in getrennten Lizenzlisten unsichtbar bliebe, hier aber sofort auffällt.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-compliance-gaps.png" alt="Compliance-Tab mit Begründung je Kriterium und aufgedecktem Gap SEC-09" loading="lazy" data-i18n-alt="img.compliancegaps.alt">
-        <figcaption data-i18n="img.compliancegaps.caption">Die DSG-Auftragsbearbeitung ist unterzeichnet, doch die IT-Sicherheitsbaseline zeigt vier offene Kriterien (MFA, Least-Privilege, Verschlüsselung, Subunternehmer-Dokumentation) — jedes einzeln begründet, hier SEC-09 mit vollständigem Kriterientext im Tooltip.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-clause-checklist.png" alt="Vertragsklauseln-Checkliste mit Ampel-Status, Vertragszitat und Mehrfach-Baseline-Referenz (VTR-06, SEC-09, DSG-04)" loading="lazy" data-i18n-alt="img.clauselist.alt">
-        <figcaption data-i18n="img.clauselist.caption">14 Klauseln als Checkliste mit Ampel-Status. Bei der Subunternehmer-Regelung zitiert die KI wörtlich aus dem Vertrag (§ 5.6) und referenziert den Befund gleichzeitig gegen drei Kataloge — VTR-06 (Vertragsklausel), SEC-09 (Sicherheitsbaseline), DSG-04 (Schweizer Datenschutz).</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-license-warnings.png" alt="Lizenz-Bearbeitungsformular mit vier Konsistenz-Warnungen: EU-AI-Act-Verantwortlicher, DSG-06/SEC-Verschlüsselung, MFA und DSG-05-Datenresidenz" loading="lazy" data-i18n-alt="img.licensewarnings.alt">
-        <figcaption data-i18n="img.licensewarnings.caption">Vier Warnungen direkt im Lizenzformular, vor dem Speichern: Datenresidenz „US“ liegt außerhalb der Schweizer Angemessenheitsliste (DSG-05), Verschlüsselung und MFA sind laut Privilege-Profil nicht vorhanden (DSG-06/SEC-02/SEC-04) — und weil KI-Nutzung aktiv, aber kein KI-Verantwortlicher hinterlegt ist, zitiert die App direkt Art.&nbsp;26 Abs.&nbsp;2 EU AI Act.</figcaption>
-      </figure>
-    </div>
-
-    <div class="reveal" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
-      <div class="stack-list">
-        <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
-        <span>Google Gemini</span><span>JUnit 5 — 583 Tests</span><span>Maven</span>
-        <span>PostgreSQL / MariaDB / MySQL / Derby</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="architektur">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
-      <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
-      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden, auf einer gewöhnlichen relationalen Datenbank der eigenen Wahl — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
-      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein großer Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
-    </div>
-
-    <div class="layers reveal">
-      <div class="layer">
-        <div class="lt" data-i18n="layer1.t">Oberfläche</div>
-        <div class="ld" data-i18n="layer1.d">Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen</div>
-      </div>
-      <div class="layer">
-        <div class="lt" data-i18n="layer2.t">Service-Schicht</div>
-        <div class="ld" data-i18n="layer2.d">ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten</div>
-      </div>
-      <div class="layer core">
-        <div class="lt" data-i18n="layer3.t">Fachlogik</div>
-        <div class="ld" data-i18n="layer3.d">Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar</div>
-      </div>
-      <div class="layer">
-        <div class="lt" data-i18n="layer4.t">Daten</div>
-        <div class="ld" data-i18n="layer4.d">Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben</div>
-      </div>
-    </div>
-
-    <div class="arch-facts reveal">
-      <span data-i18n="fact1">583 Tests</span>
-      <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
-      <span data-i18n="fact3">3 Datenbank-Optionen</span>
-      <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
-      <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
-    </div>
-
-    <div class="reveal" style="margin-top:22px;">
-      <p data-i18n="arch.roadmap">Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.</p>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="kontakt.eyebrow">Zusammenarbeit</p>
-      <h2 data-i18n="kontakt.h2">Suchen Sie einen externen IT Vendor Manager?</h2>
-      <p class="lead" data-i18n="kontakt.lead">Neben der Software biete ich die Rolle auch selbst an: Als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantenverwaltung operativ — inklusive laufender Datenpflege in genau diesem Tool und regelmäßigem Reporting an Ihre Geschäftsleitung.</p>
-      <p data-i18n="kontakt.cred">Ich bringe mehrjährige Erfahrung aus IT Vendor Management und Bid Management mit — vertraut mit IT-Verträgen, Lieferantensteuerung und Stakeholdermanagement, branchenübergreifend u.&nbsp;a. in Financial Services, Defence und Aviation. Dazu passende Weiterbildungen (Risikomanager TÜV, ISO/IEC&nbsp;42001 Foundation) sowie fundierte Kenntnisse in Datenanalyse, Reporting und Programmierung.</p>
-    </div>
-    <div class="links reveal">
-      <a href="https://github.com/Gaalam">GitHub</a>
-      <a href="mailto:" data-i18n="footer.contact">Kontakt über GitHub</a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).</p>
@@ -498,26 +456,21 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  requestAnimationFrame(()=>{ document.getElementById('hero-receipt').classList.add('in'); });
 
   // ---- DE/EN language toggle ----
   const I18N = {
     de: {
-      title: "Giw Aalam — Prüfprotokoll einer KI-Pipeline",
-      description: "Case Study: eine KI-Vertragsanalyse-Pipeline, die sich selbst nicht traut — und ein deterministisches Prüfsystem, das nachrechnet.",
-      "nav.case": "Case&nbsp;Study",
+      title: "Giw Aalam — Vendor Data Management & IT Vendor Manager",
+      description: "Vendor Data Management: Desktop-Software für Third-Party-Risk- und Compliance-Management bei KMU. Dazu die passende Dienstleistung: Giw Aalam als externer IT Vendor Manager.",
+      "nav.case": "Hintergrund",
       "nav.produkt": "Produkt",
       "nav.architektur": "Architektur",
-      "nav.kontakt": "Kontakt",
-      "hero.h1": "Ich vertraue meiner eigenen KI-Pipeline nicht blind.",
-      "hero.lead": "Deshalb läuft unter jedem KI-generierten Analysebericht eine zweite, komplett deterministische Prüfschicht — reines Java, kein Modellaufruf. Sie rechnet nach, was die KI behauptet hat.",
-      "receipt.stamp": "geprüft",
-      "receipt.head": "PRÜFPROTOKOLL · TEST-LUECKEN01",
-      "receipt.line1": "Termin auf Wochenende (12.09.) → verschoben auf <b>14.09.2026</b>",
-      "receipt.line2": "Vorgänger-Fälligkeit inkonsistent → Kette neu berechnet",
-      "receipt.line3": "Unterzeichnung fällig <b>16.09.</b> — nach Vertragsende (<b>14.09.</b>). Plan B siehe Maßnahme&nbsp;#4.",
-      "receipt.foot": "Regelbasiert · kein KI-Aufruf",
-      "case.eyebrow": "Case Study",
+      "nav.kontakt": "Zusammenarbeit",
+      "hero.h1": "Vendor-, Vertrags- und Lizenzmanagement, das Lücken zeigt, bevor sie zum Problem werden.",
+      "hero.lead": "Vendor Data Management ist eine Desktop-Anwendung für Third-Party-Risk- und Compliance-Management bei KMU. Dazu biete ich die passende Dienstleistung gleich mit an: als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantensteuerung operativ — mit genau diesem Tool.",
+      "hero.cta1": "Produkt ansehen →",
+      "hero.cta2": "Als externer IT Vendor Manager anfragen →",
+      "case.eyebrow": "Hintergrund · Case Study",
       "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
       "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.",
       "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fließtext.",
@@ -614,21 +567,17 @@
       "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten)."
     },
     en: {
-      title: "Giw Aalam — Audit Log of an AI Pipeline",
-      description: "Case study: an AI contract-analysis pipeline that doesn't trust itself — and a deterministic verification system that checks its work.",
-      "nav.case": "Case&nbsp;Study",
+      title: "Giw Aalam — Vendor Data Management & IT Vendor Manager",
+      description: "Vendor Data Management: desktop software for third-party risk and compliance management at SMEs. Plus the matching service: Giw Aalam as an external IT Vendor Manager.",
+      "nav.case": "Background",
       "nav.produkt": "Product",
       "nav.architektur": "Architecture",
-      "nav.kontakt": "Contact",
-      "hero.h1": "I don't blindly trust my own AI pipeline.",
-      "hero.lead": "That's why every AI-generated analysis report runs through a second, fully deterministic verification layer underneath — plain Java, no model call. It checks what the AI claimed.",
-      "receipt.stamp": "verified",
-      "receipt.head": "AUDIT LOG · TEST-LUECKEN01",
-      "receipt.line1": "Date fell on a weekend (Sep 12) → moved to <b>Sep 14, 2026</b>",
-      "receipt.line2": "Predecessor due date inconsistent → chain recalculated",
-      "receipt.line3": "Signature due <b>Sep 16</b> — after contract end (<b>Sep 14</b>). See Plan&nbsp;B, action item&nbsp;#4.",
-      "receipt.foot": "Rule-based · no AI call",
-      "case.eyebrow": "Case Study",
+      "nav.kontakt": "Working&nbsp;Together",
+      "hero.h1": "Vendor, contract, and license management that surfaces gaps before they become a problem.",
+      "hero.lead": "Vendor Data Management is a desktop application for third-party risk and compliance management at SMEs. I offer the matching service alongside it: as an external IT Vendor Manager, I run contract, license, and supplier management operationally — with this very tool.",
+      "hero.cta1": "See the product →",
+      "hero.cta2": "Hire me as external IT Vendor Manager →",
+      "case.eyebrow": "Background · Case Study",
       "case.h2": "What happens when you don't just trust an AI analysis",
       "case.lead": "Vendor Data Management triggers a pipeline as soon as a contract is 60 days from expiry: it reads the documented data state, has an LLM (Gemini) draft an analysis report and action plan from it — then checks that result back against the same data, using pure program logic.",
       "stage1.k": "Foundation", "stage1.t": "Reality Snapshot", "stage1.d": "Structured JSON from contract, licenses, clauses, privileges — no free text.",
