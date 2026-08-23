@@ -155,6 +155,8 @@
     border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
   }
 
+  .scheduler{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 6px; max-width:640px; }
+  .scheduler h3{ font-size:1.1rem; margin-top:2px; }
   .links{ margin-top:20px; }
   .links a{ margin-right:18px; font-family:'IBM Plex Mono', monospace; font-size:.85rem; }
   footer{ padding:24px 0 50px; }
@@ -287,12 +289,30 @@
       <p class="lead" data-i18n="kontakt.lead">Neben der Software biete ich die Rolle auch selbst an: Als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantenverwaltung operativ — inklusive laufender Datenpflege in genau diesem Tool und regelmäßigem Reporting an Ihre Geschäftsleitung.</p>
       <p data-i18n="kontakt.cred">Ich bringe mehrjährige Erfahrung aus IT Vendor Management und Bid Management mit — vertraut mit IT-Verträgen, Lieferantensteuerung und Stakeholdermanagement, branchenübergreifend u.&nbsp;a. in Financial Services, Defence und Aviation. Dazu passende Weiterbildungen (Risikomanager TÜV, ISO/IEC&nbsp;42001 Foundation) sowie fundierte Kenntnisse in Datenanalyse, Reporting und Programmierung.</p>
     </div>
+
+    <div class="reveal" style="margin-top:8px;max-width:640px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="onboard.eyebrow">Onboarding</p>
+      <p data-i18n="kontakt.onboarding">Der Einstieg erfolgt vor Ort beim Kunden: bestehende Daten aus Excel-Listen, Vertragsablagen oder vorhandenen Systemen werden eingespielt, vorhandene Systeme angeschlossen. Sie beginnen mit Ihrem tatsächlichen Datenstand, nicht mit einer leeren Datenbank.</p>
+      <div class="stack-list">
+        <span data-i18n="onboard1">Termin vor Ort beim Kunden</span><span data-i18n="onboard2">Import bestehender Daten (Excel, Vertragsablagen, Altsysteme)</span><span data-i18n="onboard3">Anbindung vorhandener Systeme</span>
+      </div>
+    </div>
+
+    <div class="scheduler reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="kontakt.schedule.eyebrow">Termin</p>
+      <h3 data-i18n="kontakt.schedule.h3">Kostenloses Erstgespräch buchen</h3>
+      <p data-i18n="kontakt.schedule.p">30 Minuten, unverbindlich: wir klären Ihren Bedarf und ob Software, Vendor-Manager-Rolle oder beides passt.</p>
+      <!-- TODO: Platzhalter-Link ersetzen, sobald der Calendly-Account eingerichtet ist -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/DEIN-CALENDLY-USERNAME/erstgespraech" style="min-width:280px;height:700px;"></div>
+    </div>
+
     <div class="links reveal">
       <a href="https://github.com/Gaalam">GitHub</a>
       <a href="mailto:" data-i18n="footer.contact">Kontakt über GitHub</a>
     </div>
   </div>
 </section>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <section id="architektur">
   <div class="wrap">
@@ -563,6 +583,14 @@
       "kontakt.h2": "Suchen Sie einen externen IT Vendor Manager?",
       "kontakt.lead": "Neben der Software biete ich die Rolle auch selbst an: Als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantenverwaltung operativ — inklusive laufender Datenpflege in genau diesem Tool und regelmäßigem Reporting an Ihre Geschäftsleitung.",
       "kontakt.cred": "Ich bringe mehrjährige Erfahrung aus IT Vendor Management und Bid Management mit — vertraut mit IT-Verträgen, Lieferantensteuerung und Stakeholdermanagement, branchenübergreifend u.&nbsp;a. in Financial Services, Defence und Aviation. Dazu passende Weiterbildungen (Risikomanager TÜV, ISO/IEC&nbsp;42001 Foundation) sowie fundierte Kenntnisse in Datenanalyse, Reporting und Programmierung.",
+      "onboard.eyebrow": "Onboarding",
+      "kontakt.onboarding": "Der Einstieg erfolgt vor Ort beim Kunden: bestehende Daten aus Excel-Listen, Vertragsablagen oder vorhandenen Systemen werden eingespielt, vorhandene Systeme angeschlossen. Sie beginnen mit Ihrem tatsächlichen Datenstand, nicht mit einer leeren Datenbank.",
+      "onboard1": "Termin vor Ort beim Kunden",
+      "onboard2": "Import bestehender Daten (Excel, Vertragsablagen, Altsysteme)",
+      "onboard3": "Anbindung vorhandener Systeme",
+      "kontakt.schedule.eyebrow": "Termin",
+      "kontakt.schedule.h3": "Kostenloses Erstgespräch buchen",
+      "kontakt.schedule.p": "30 Minuten, unverbindlich: wir klären Ihren Bedarf und ob Software, Vendor-Manager-Rolle oder beides passt.",
       "footer.contact": "Kontakt über GitHub",
       "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten)."
     },
@@ -670,6 +698,14 @@
       "kontakt.h2": "Looking for an external IT Vendor Manager?",
       "kontakt.lead": "Beyond the software, I also offer the role itself: as an external IT Vendor Manager, I run contract, license, and supplier management operationally — including ongoing data upkeep in this very tool and regular reporting to your leadership.",
       "kontakt.cred": "I bring several years of experience in IT vendor management and bid management — well-versed in IT contracts, supplier steering, and stakeholder management across industries including financial services, defence, and aviation. Alongside relevant further training (Certified Risk Manager TÜV, ISO/IEC&nbsp;42001 Foundation) and solid skills in data analysis, reporting, and programming.",
+      "onboard.eyebrow": "Onboarding",
+      "kontakt.onboarding": "Onboarding happens on-site at the customer: existing data from spreadsheets, contract archives, or existing systems gets imported, and existing systems get connected. You start from your actual data, not an empty database.",
+      "onboard1": "On-site kickoff at the customer",
+      "onboard2": "Import of existing data (spreadsheets, contract archives, legacy systems)",
+      "onboard3": "Connecting existing systems",
+      "kontakt.schedule.eyebrow": "Schedule",
+      "kontakt.schedule.h3": "Book a free intro call",
+      "kontakt.schedule.p": "30 minutes, no obligation: we clarify what you need and whether the software, the vendor-manager role, or both is the right fit.",
       "footer.contact": "Contact via GitHub",
       "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data)."
     }
