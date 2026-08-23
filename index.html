@@ -65,8 +65,45 @@
   .hero h1{ font-size:clamp(2.1rem, 4.4vw, 3.1rem); line-height:1.12; max-width:16ch; }
   .hero .lead{ max-width:56ch; margin-top:14px; }
   .hero .role{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
-  .hero-cta{ margin-top:26px; display:flex; gap:24px; flex-wrap:wrap; }
-  .hero-cta a{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero-shot{ margin:0; }
+  .hero-shot img{ width:100%; display:block; border:1px solid var(--rule); box-shadow:0 18px 40px -22px rgba(27,36,48,.45); }
+  .hero-cta{ margin-top:26px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500;
+    background:var(--ink); color:var(--paper); padding:11px 20px; border-radius:3px;
+    text-decoration:none; display:inline-block; border:1px solid var(--ink);
+  }
+  .btn-primary:hover{ background:var(--ink-soft); border-color:var(--ink-soft); }
+  .cta-secondary{ font-family:'IBM Plex Mono', monospace; font-size:.82rem; font-weight:500; }
+
+  /* ---- value pillars ---- */
+  .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px; }
+  .pillar{ background:var(--paper-raised); padding:22px 20px 24px; }
+  .pillar-icon{ color:var(--ink); margin-bottom:12px; display:block; }
+  .pillar-t{ font-family:'Fraunces', serif; font-weight:600; font-size:1.02rem; margin-bottom:6px; }
+  .pillar-d{ font-size:.87rem; color:var(--ink-soft); line-height:1.5; margin:0; }
+  @media (max-width:760px){ .pillars{ grid-template-columns:1fr; } }
+
+  /* ---- AI output examples ---- */
+  .examples{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:22px; }
+  .example{ background:var(--paper-raised); border:1px solid var(--rule); padding:18px 20px 20px; }
+  .example .tag{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px; display:block; }
+  .example p{ font-size:.9rem; margin:0; color:var(--ink-soft); }
+  .examples-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin-top:12px; }
+  @media (max-width:640px){ .examples{ grid-template-columns:1fr; } }
+
+  /* ---- case-study pullquote teaser ---- */
+  .pullquote{ border-left:2px solid var(--ink); padding:4px 0 4px 22px; margin:32px 0 6px; max-width:600px; }
+  .pullquote p{ font-family:'Fraunces', serif; font-style:italic; font-size:1.12rem; color:var(--ink); margin:0 0 8px; }
+  .pullquote a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; }
+
+  /* ---- collapsible technical facts ---- */
+  details.techdetails{ margin-top:22px; }
+  details.techdetails summary{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); cursor:pointer; }
+  details.techdetails summary:hover{ color:var(--ink); }
+  details.techdetails .arch-facts{ margin-top:14px; }
   .pill{
     font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.03em;
     border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--paper-raised);
@@ -179,16 +216,89 @@
 
 <section class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Contracts · IT · Data · AI</p>
-    <h1 data-i18n="hero.h1">Vendor-, Vertrags- und Lizenzmanagement, das Lücken zeigt, bevor sie zum Problem werden.</h1>
-    <p class="lead" data-i18n="hero.lead">Vendor Data Management ist eine Desktop-Anwendung für Third-Party-Risk- und Compliance-Management bei KMU. Dazu biete ich die passende Dienstleistung gleich mit an: als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantensteuerung operativ — mit genau diesem Tool.</p>
-    <div class="role">
-      <span class="pill">Giw Aalam, M.Eng.</span>
-      <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Contracts · IT · Data · AI</p>
+        <h1 data-i18n="hero.h1">Schluss mit verstreuten Excel-Listen für Ihre Vendor-Verträge</h1>
+        <p class="lead" data-i18n="hero.lead">Vendor Data Management zeigt auf einen Blick, welche Verträge, Lizenzen und Rollen zu jedem Anbieter gehören, wo Informationen fehlen und wo Handlungsbedarf besteht.</p>
+        <div class="role">
+          <span class="pill">Giw Aalam, M.Eng.</span>
+          <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#kontakt" data-i18n="hero.cta1">Erstgespräch vereinbaren →</a>
+          <a class="cta-secondary" href="#ki-liefert" data-i18n="hero.cta2">Beispiel-Analyse ansehen →</a>
+        </div>
+      </div>
+      <figure class="hero-shot">
+        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
+      </figure>
     </div>
-    <div class="hero-cta">
-      <a href="#produkt" data-i18n="hero.cta1">Produkt ansehen →</a>
-      <a href="#kontakt" data-i18n="hero.cta2">Als externer IT Vendor Manager anfragen →</a>
+  </div>
+</section>
+
+<section id="nutzen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="nutzen.eyebrow">Der Nutzen</p>
+      <h2 data-i18n="nutzen.h2">Mehr als eine Fristenüberwachung</h2>
+      <p class="lead" data-i18n="nutzen.lead">Weniger verpasste Kündigungsfristen ist nur der Anfang. Der eigentliche Nutzen ist eine strukturierte Übersicht über Ihre gesamte Vertragslandschaft — inklusive Verantwortlichkeiten, offener Punkte und KI-gestützter Analyse.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="7" y="4" width="16" height="22" rx="1.5"/>
+          <path d="M11 4V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+          <path d="M11 13l2.5 2.5L19 10"/>
+          <path d="M11 20h8"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar1.t">Überblick &amp; Verantwortlichkeiten</div>
+        <p class="pillar-d" data-i18n="pillar1.d">Vollständigkeits-Score und Compliance-Status pro Vendor zeigen sofort, wo Informationen oder Zuständigkeiten fehlen.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 3h10l4 4v18a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+          <path d="M18 3v4h4"/>
+          <path d="M10 15h6"/>
+          <path d="M10.5 19.5l2 2 4-4.5"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar2.t">KI-Vertragsanalyse</div>
+        <p class="pillar-d" data-i18n="pillar2.d">Bei auslaufenden Verträgen liefert die KI einen Risikobericht mit konkreten Massnahmen — automatisch gegen Ihre Daten geprüft.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 15l22-10-8 22-4-9-9-3z"/>
+          <path d="M18 7l-8 10"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar3.t">KI-gestützte Ausschreibung</div>
+        <p class="pillar-d" data-i18n="pillar3.d">Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ki-liefert">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="kiliefert.eyebrow">Was die KI konkret liefert</p>
+      <h2 data-i18n="kiliefert.h2">Zwei klar begrenzte Aufgaben, keine Blackbox</h2>
+      <p class="lead" data-i18n="kiliefert.lead">Die KI übernimmt zwei begrenzte Aufgaben: sie prüft auslaufende Verträge, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Beide Ergebnisse basieren auf Ihren hinterlegten Vertrags- und Lizenzdaten und werden anschliessend automatisch dagegen geprüft, bevor Sie sie sehen.</p>
+    </div>
+    <div class="examples reveal">
+      <div class="example">
+        <span class="tag" data-i18n="example1.tag">Beispiel · Vertragsanalyse</span>
+        <p data-i18n="example1.text">Ein Lizenzvertrag mit automatischer Verlängerung wurde erst drei Wochen nach dem eigentlichen Vertragsende intern gegengezeichnet. Die KI markierte dies im Risikobericht als Compliance-Konflikt und schlug eine nachträgliche Prüfung durch die Rechtsabteilung vor.</p>
+      </div>
+      <div class="example">
+        <span class="tag" data-i18n="example2.tag">Beispiel · KI-Ausschreibung</span>
+        <p data-i18n="example2.text">Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.</p>
+      </div>
+    </div>
+    <p class="examples-note" data-i18n="examples.note">Beispiele anonymisiert bzw. exemplarisch dargestellt.</p>
+
+    <div class="pullquote reveal">
+      <p data-i18n="livetest.h3">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</p>
+      <a href="#case" data-i18n="pullquote.link">Ausführliche Fallstudie lesen →</a>
     </div>
   </div>
 </section>
@@ -342,13 +452,16 @@
       </div>
     </div>
 
-    <div class="arch-facts reveal">
-      <span data-i18n="fact1">583 Tests</span>
-      <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
-      <span data-i18n="fact3">3 Datenbank-Optionen</span>
-      <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
-      <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
-    </div>
+    <details class="techdetails reveal">
+      <summary data-i18n="arch.techdetails">Technische Details</summary>
+      <div class="arch-facts">
+        <span data-i18n="fact1">583 Tests</span>
+        <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
+        <span data-i18n="fact3">3 Datenbank-Optionen</span>
+        <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
+        <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
+      </div>
+    </details>
 
     <div class="reveal" style="margin-top:22px;">
       <p data-i18n="arch.roadmap">Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.</p>
@@ -486,10 +599,28 @@
       "nav.produkt": "Produkt",
       "nav.architektur": "Architektur",
       "nav.kontakt": "Zusammenarbeit",
-      "hero.h1": "Vendor-, Vertrags- und Lizenzmanagement, das Lücken zeigt, bevor sie zum Problem werden.",
-      "hero.lead": "Vendor Data Management ist eine Desktop-Anwendung für Third-Party-Risk- und Compliance-Management bei KMU. Dazu biete ich die passende Dienstleistung gleich mit an: als externer IT Vendor Manager übernehme ich Vertrags-, Lizenz- und Lieferantensteuerung operativ — mit genau diesem Tool.",
-      "hero.cta1": "Produkt ansehen →",
-      "hero.cta2": "Als externer IT Vendor Manager anfragen →",
+      "hero.h1": "Schluss mit verstreuten Excel-Listen für Ihre Vendor-Verträge",
+      "hero.lead": "Vendor Data Management zeigt auf einen Blick, welche Verträge, Lizenzen und Rollen zu jedem Anbieter gehören, wo Informationen fehlen und wo Handlungsbedarf besteht.",
+      "hero.cta1": "Erstgespräch vereinbaren →",
+      "hero.cta2": "Beispiel-Analyse ansehen →",
+      "nutzen.eyebrow": "Der Nutzen",
+      "nutzen.h2": "Mehr als eine Fristenüberwachung",
+      "nutzen.lead": "Weniger verpasste Kündigungsfristen ist nur der Anfang. Der eigentliche Nutzen ist eine strukturierte Übersicht über Ihre gesamte Vertragslandschaft — inklusive Verantwortlichkeiten, offener Punkte und KI-gestützter Analyse.",
+      "pillar1.t": "Überblick &amp; Verantwortlichkeiten",
+      "pillar1.d": "Vollständigkeits-Score und Compliance-Status pro Vendor zeigen sofort, wo Informationen oder Zuständigkeiten fehlen.",
+      "pillar2.t": "KI-Vertragsanalyse",
+      "pillar2.d": "Bei auslaufenden Verträgen liefert die KI einen Risikobericht mit konkreten Massnahmen — automatisch gegen Ihre Daten geprüft.",
+      "pillar3.t": "KI-gestützte Ausschreibung",
+      "pillar3.d": "Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.",
+      "kiliefert.eyebrow": "Was die KI konkret liefert",
+      "kiliefert.h2": "Zwei klar begrenzte Aufgaben, keine Blackbox",
+      "kiliefert.lead": "Die KI übernimmt zwei begrenzte Aufgaben: sie prüft auslaufende Verträge, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Beide Ergebnisse basieren auf Ihren hinterlegten Vertrags- und Lizenzdaten und werden anschliessend automatisch dagegen geprüft, bevor Sie sie sehen.",
+      "example1.tag": "Beispiel · Vertragsanalyse",
+      "example1.text": "Ein Lizenzvertrag mit automatischer Verlängerung wurde erst drei Wochen nach dem eigentlichen Vertragsende intern gegengezeichnet. Die KI markierte dies im Risikobericht als Compliance-Konflikt und schlug eine nachträgliche Prüfung durch die Rechtsabteilung vor.",
+      "example2.tag": "Beispiel · KI-Ausschreibung",
+      "example2.text": "Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.",
+      "examples.note": "Beispiele anonymisiert bzw. exemplarisch dargestellt.",
+      "pullquote.link": "Ausführliche Fallstudie lesen →",
       "case.eyebrow": "Hintergrund · Case Study",
       "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
       "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Maßnahmenplan erstellen — und prüft das Ergebnis anschließend gegen dieselben Daten zurück, mit reiner Programmlogik.",
@@ -573,6 +704,7 @@
       "layer3.d": "Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar",
       "layer4.t": "Daten",
       "layer4.d": "Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben",
+      "arch.techdetails": "Technische Details",
       "fact1": "583 Tests",
       "fact2": "25 von 26 Testklassen ganz ohne Datenbank",
       "fact3": "3 Datenbank-Optionen",
@@ -601,10 +733,28 @@
       "nav.produkt": "Product",
       "nav.architektur": "Architecture",
       "nav.kontakt": "Working&nbsp;Together",
-      "hero.h1": "Vendor, contract, and license management that surfaces gaps before they become a problem.",
-      "hero.lead": "Vendor Data Management is a desktop application for third-party risk and compliance management at SMEs. I offer the matching service alongside it: as an external IT Vendor Manager, I run contract, license, and supplier management operationally — with this very tool.",
-      "hero.cta1": "See the product →",
-      "hero.cta2": "Hire me as external IT Vendor Manager →",
+      "hero.h1": "No more scattered spreadsheets for your vendor contracts",
+      "hero.lead": "Vendor Data Management shows at a glance which contracts, licenses, and roles belong to each supplier, where information is missing, and where action is needed.",
+      "hero.cta1": "Book an intro call →",
+      "hero.cta2": "See an example analysis →",
+      "nutzen.eyebrow": "The Value",
+      "nutzen.h2": "More than deadline monitoring",
+      "nutzen.lead": "Fewer missed cancellation deadlines is just the start. The real value is a structured view across your entire contract landscape — including responsibilities, open items, and AI-assisted analysis.",
+      "pillar1.t": "Overview &amp; Responsibilities",
+      "pillar1.d": "Completeness score and compliance status per vendor show immediately where information or ownership is missing.",
+      "pillar2.t": "AI Contract Analysis",
+      "pillar2.d": "For expiring contracts, the AI delivers a risk report with concrete actions — automatically checked against your data.",
+      "pillar3.t": "AI-Assisted Tendering",
+      "pillar3.d": "RfX requests for IT services are drafted with AI support, directly from your existing license and service data.",
+      "kiliefert.eyebrow": "What the AI Actually Delivers",
+      "kiliefert.h2": "Two narrowly scoped tasks, not a black box",
+      "kiliefert.lead": "The AI handles two limited tasks: it reviews expiring contracts, and it helps draft tender requests. Both results are based on your stored contract and license data and are automatically checked against it before you see them.",
+      "example1.tag": "Example · Contract Analysis",
+      "example1.text": "A contract with automatic renewal was countersigned internally three weeks after its actual end date. The AI flagged this in the risk report as a compliance conflict and suggested a follow-up review by legal counsel.",
+      "example2.tag": "Example · AI-Assisted Tendering",
+      "example2.text": "To replace an expiring CRM license, the AI drafted an RfX with a requirements and question catalog for alternative vendors, based on the stored license and usage data. The buyer only had to adjust and approve the draft.",
+      "examples.note": "Examples anonymized or illustrative.",
+      "pullquote.link": "Read the full case study →",
       "case.eyebrow": "Background · Case Study",
       "case.h2": "What happens when you don't just trust an AI analysis",
       "case.lead": "Vendor Data Management triggers a pipeline as soon as a contract is 60 days from expiry: it reads the documented data state, has an LLM (Gemini) draft an analysis report and action plan from it — then checks that result back against the same data, using pure program logic.",
@@ -688,6 +838,7 @@
       "layer3.d": "Compliance checks, scoring, validation — doesn't know Swing exists, fully testable without any UI",
       "layer4.t": "Data",
       "layer4.d": "Relational database (Derby / PostgreSQL / MariaDB) — always on the customer's side, never run as the vendor's backend",
+      "arch.techdetails": "Technical Details",
       "fact1": "583 tests",
       "fact2": "25 of 26 test classes run without a database",
       "fact3": "3 database options",
