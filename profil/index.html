@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giw Aalam — Berufliches Profil</title>
+<meta name="description" content="Giw Aalam: IT-Vendor-Management, Bid Management und Data/AI-Governance. Über 15 Jahre Erfahrung, verfügbar ab sofort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fafaf8;
+    --paper-raised:#f2f2ee;
+    --ink:#14151a;
+    --ink-soft:#4a4f5c;
+    --ink-faint:#868c96;
+    --rule:#d7d9d2;
+    --verified:#1b7a4b;
+    --signal:#c8371c;
+    --signal-ink:#fafaf8;
+    --max:860px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:17px; line-height:1.6; }
+  a{ color:var(--signal); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; font-weight:600; letter-spacing:-.01em; margin:0 0 .4em; color:var(--ink); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .eyebrow::before{ content:"■"; color:var(--signal); font-size:.6rem; margin-right:8px; position:relative; top:-1px; }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch; }
+  .lead{ font-size:1.1rem; color:var(--ink); }
+
+  header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:20px; text-decoration:none; }
+  nav.site a:hover{ color:var(--ink); }
+  .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:20px; text-decoration:none; display:inline-block; }
+  .nav-cta:hover{ background:var(--ink); }
+
+  .hero{ padding:52px 0 40px; }
+  .hero h1{ font-size:clamp(1.8rem, 4vw, 2.5rem); line-height:1.15; max-width:18ch; }
+  .hero .lead{ max-width:56ch; margin-top:14px; }
+  .role{ margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
+  .pill{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.03em; border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--paper-raised); }
+  .hero-cta{ margin-top:26px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:13px 22px; text-decoration:none; display:inline-block; border:1.5px solid var(--signal); }
+  .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
+  .cta-secondary{ font-family:'IBM Plex Mono', monospace; font-size:.82rem; font-weight:500; border-bottom:1.5px solid var(--rule); }
+  .cta-secondary:hover{ border-color:var(--signal); }
+
+  section{ padding:48px 0; border-top:1px solid var(--rule); }
+  section:first-of-type{ border-top:none; }
+  .section-head{ max-width:640px; margin-bottom:26px; }
+  .section-head h2{ font-size:clamp(1.3rem, 2.4vw, 1.7rem); }
+
+  .skills{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .skill{ background:var(--paper-raised); padding:20px 20px 22px; }
+  .skill-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:6px; }
+  .skill ul{ margin:0; padding-left:1.1em; }
+  .skill li{ font-size:.86rem; color:var(--ink-soft); margin-bottom:6px; line-height:1.5; }
+  @media (max-width:640px){ .skills{ grid-template-columns:1fr; } }
+
+  .credlist{ border-top:1px solid var(--rule); margin-top:6px; }
+  .cred{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:.9rem; }
+  .cred .t{ color:var(--ink); }
+  .cred .y{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-faint); white-space:nowrap; }
+
+  .stack-list{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
+  .stack-list span{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px; }
+
+  .flagship{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 22px; }
+  .flagship h3{ font-size:1.1rem; margin-top:2px; }
+
+  .scheduler{ max-width:640px; }
+  .scheduler h3{ font-size:1.1rem; }
+
+  footer{ padding:28px 0 50px; border-top:1px solid var(--rule); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
+  footer .note{ font-size:.82rem; color:var(--ink-faint); max-width:60ch; margin:0; }
+  footer .fbrand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:.95rem; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Giw Aalam</a>
+    <nav class="site">
+      <a href="../">Produkt &amp; Services</a>
+      <a class="nav-cta" href="#kontakt">Termin buchen</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Berufliches Profil</p>
+    <h1>IT-Vendor-Management, Bid Management &amp; Data/AI-Governance</h1>
+    <p class="lead">Über 15 Jahre Erfahrung an der Schnittstelle von IT-Verträgen, Lieferantensteuerung, Datenanalyse und regulatorischen Anforderungen — mit technischer Umsetzungskompetenz, die über die reine Fachrolle hinausgeht.</p>
+    <div class="role">
+      <span class="pill">Belp (BE), Schweiz</span>
+      <span class="pill">Verfügbar ab sofort — Festanstellung, Interim, Projektmandate</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#kontakt">Termin vereinbaren →</a>
+      <a class="cta-secondary" href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a>
+    </div>
+  </div>
+</section>
+
+<section id="kompetenzen">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Kompetenzfelder</p>
+      <h2>Fünf Bereiche, eine gemeinsame Praxis</h2>
+      <p class="lead">Kein Sprung zwischen unabhängigen Stationen, sondern eine Kombination, die sich über die Jahre gegenseitig verstärkt hat.</p>
+    </div>
+    <div class="skills">
+      <div class="skill">
+        <div class="skill-t">IT Vendor Management &amp; Governance</div>
+        <ul>
+          <li>Operative Steuerung von Verträgen, Lizenzen und Lieferanten über mehrere Gesellschaften/Länder hinweg</li>
+          <li>Vertragsverhandlung, Eskalationsmanagement, Budgetplanung</li>
+          <li>Audit-Unterstützung und Nachweisführung gegenüber Compliance-Anforderungen</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <div class="skill-t">Bid Management &amp; Procurement</div>
+        <ul>
+          <li>RfP/RfQ/RfI-Steuerung für komplexe IT- und Dienstleistungsausschreibungen</li>
+          <li>Technisch-kommerzielle Schnittstelle zwischen Vertrieb und Fachabteilung</li>
+          <li>Erfahrung in regulierten Branchen: Aviation, Defence/Cybersecurity</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <div class="skill-t">Digitalisierung &amp; Prozessautomatisierung</div>
+        <ul>
+          <li>Risikoanalyse bestehender Arbeitsabläufe, Verträge und Systeme</li>
+          <li>Autorenschaft von IT-/Digitalisierungsstrategien</li>
+          <li>Ablösung von Legacy-Systemen durch Automatisierung</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <div class="skill-t">Datenanalyse &amp; Programmierung</div>
+        <ul>
+          <li>SQL-basierte Reports und Entscheidungsgrundlagen</li>
+          <li>Java-Entwicklung, inkl. Aufbau eigener LLM-gestützter Pipelines</li>
+          <li>Automatisierung wiederkehrender Auswertungen</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <div class="skill-t">Compliance &amp; AI-Governance</div>
+        <ul>
+          <li>DSGVO / Schweizer DSG, EU AI Act, ISO/IEC 42001</li>
+          <li>Aufbau regelbasierter Compliance-Logik statt reiner Checklisten</li>
+          <li>Verständnis für die Grenzen von KI-Systemen, nicht nur deren Einsatz</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zertifikate">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Zertifikate &amp; Ausbildung</p>
+      <h2>Formale Qualifikationen</h2>
+    </div>
+    <div class="credlist">
+      <div class="cred"><span class="t">M.Eng. Information Science &amp; Engineering — Hochschule Darmstadt (Erasmus Granada)</span><span class="y">2010</span></div>
+      <div class="cred"><span class="t">B.Sc. Informatik — Universität des Saarlandes</span><span class="y">2007</span></div>
+      <div class="cred"><span class="t">Risikomanager — TÜV NORD</span><span class="y">2025</span></div>
+      <div class="cred"><span class="t">Aviation Manager — Steinbeis / CFAC HSG</span><span class="y">2015</span></div>
+      <div class="cred"><span class="t">APMP Certificate of Foundation (Bid &amp; Proposal Management)</span><span class="y">2016</span></div>
+      <div class="cred"><span class="t">ISO/IEC 42001 Foundation — AI Management Systems (PECB)</span><span class="y">2026</span></div>
+      <div class="cred"><span class="t">CAS Frontier Technologies in Finance — Berner Fachhochschule</span><span class="y">laufend</span></div>
+    </div>
+    <p style="margin-top:20px;" class="eyebrow" >Branchenerfahrung</p>
+    <div class="stack-list">
+      <span>Financial Services</span><span>Defence / KRITIS</span><span>Aviation</span>
+    </div>
+  </div>
+</section>
+
+<section id="flagship">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Nachweis, kein Behauptung</p>
+      <h2>Vendor Data Management</h2>
+    </div>
+    <div class="flagship">
+      <h3>Eigenständig entwickeltes Produkt als Kompetenznachweis</h3>
+      <p style="margin-bottom:10px;">Statt nur zu behaupten, IT-Vendor-Management, Datenmodellierung und KI-Integration zu verstehen, habe ich eine vollständige Desktop-Anwendung dafür gebaut — inklusive einer selbst verfassten wissenschaftlichen Arbeit (CAS-Transferarbeit) über die Grenzen automatisierter KI-Prüfung.</p>
+      <p style="margin-bottom:0;"><a href="../">Produkt, Case Study und Leistungen ansehen →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Erstgespräch buchen</h2>
+      <p class="lead">30 Minuten, unverbindlich.</p>
+    </div>
+    <div class="scheduler">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/gaalam/30min" style="min-width:280px;height:700px;"></div>
+    </div>
+    <p style="margin-top:8px;">Oder direkt per E-Mail: <a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="../">die Produktseite</a>.</p>
+    <span class="fbrand">Giw Aalam</span>
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
