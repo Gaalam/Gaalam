@@ -111,12 +111,12 @@
   @media (max-width:760px){ .pillars{ grid-template-columns:1fr; } }
 
   /* ---- services grid ---- */
-  .services{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0 8px; }
-  .service{ background:var(--paper-raised); padding:20px 20px 22px; }
+  .services{ display:flex; flex-wrap:wrap; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0 8px; }
+  .service{ background:var(--paper-raised); padding:20px 20px 22px; flex:1 1 250px; }
   .service-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:6px; }
   .service-d{ font-size:.85rem; color:var(--ink-soft); line-height:1.5; margin:0; }
   .service-unify{
-    grid-column:1 / -1; background:var(--signal);
+    flex:1 1 100%; background:var(--signal);
     display:flex; align-items:center; gap:20px; padding:22px 24px;
   }
   .service-unify .pillar-icon{ color:var(--signal-ink); margin-bottom:0; flex:0 0 auto; }
