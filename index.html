@@ -203,10 +203,13 @@
   .cap li{ font-size:.86rem; color:var(--ink-soft); margin-bottom:8px; line-height:1.5; }
   @media (max-width:760px){ .capgrid{ grid-template-columns:1fr; } }
 
-  /* ---- gallery ---- */
-  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-  .gallery figure{ margin:0; }
-  @media (max-width:640px){ .gallery{ grid-template-columns:1fr; } }
+  /* ---- product showcase ---- */
+  .showcase{ display:flex; flex-direction:column; gap:40px; max-width:820px; }
+  .showcase figure{ margin:0; }
+  .showcase img{ width:100%; display:block; border:1.5px solid var(--ink); }
+  .showcase figcaption{ margin-top:12px; }
+  .showcase .cap-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1rem; color:var(--ink); margin-bottom:4px; }
+  .showcase .cap-d{ font-family:'IBM Plex Sans', sans-serif; font-size:.86rem; color:var(--ink-soft); line-height:1.5; margin:0; max-width:68ch; }
 
   /* ---- stack ---- */
   .stack-list{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
@@ -424,38 +427,41 @@
       </div>
     </div>
 
-    <div class="gallery reveal">
+    <div class="showcase reveal">
       <figure>
-        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
-        <figcaption data-i18n="img.dashboard.caption">TPRM- &amp; Compliance-Dashboard</figcaption>
+        <img src="screenshot-executive-summary.png" alt="Executive Summary eines KI-Analyseberichts mit Ampel-Status und Kernfakten" loading="lazy" data-i18n-alt="img.exec.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.exec.t">Executive Summary auf einen Blick</div>
+          <p class="cap-d" data-i18n="img.exec.d">Ampel-Status, Kernrisiken und finanzielles Exposure in einem Absatz — für alle, die nur die erste Seite lesen.</p>
+        </figcaption>
       </figure>
       <figure>
-        <img src="screenshot-timeline-gantt.png" alt="Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services" loading="lazy" data-i18n-alt="img.timeline.alt">
-        <figcaption data-i18n="img.timeline.caption">Vertrags-Timeline über mehrere Jahre</figcaption>
+        <img src="screenshot-action-plan.png" alt="Risiko-Heatmap und Massnahmenplan mit Verantwortlichen, Terminen und Baseline-Referenzen" loading="lazy" data-i18n-alt="img.action.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.action.t">Risiko-Heatmap &amp; Massnahmenplan</div>
+          <p class="cap-d" data-i18n="img.action.d">Bis zu 12 Schritte mit Verantwortlichem, Termin und Baseline-Referenz — hier zehn Massnahmen für einen einzelnen Vertrag.</p>
+        </figcaption>
       </figure>
       <figure>
-        <img src="screenshot-contract-renewals.png" alt="Liste fälliger Vertragsverlängerungen mit Risikobewertung" loading="lazy" data-i18n-alt="img.renewals.alt">
-        <figcaption data-i18n="img.renewals.caption">Fällige Vertragsverlängerungen, mit Klauselrisiko</figcaption>
+        <img src="screenshot-clause-analysis.png" alt="Klauselweise Risikobewertung eines Vertrags mit KI-Befund je Klausel" loading="lazy" data-i18n-alt="img.clauseanalysis.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.clauseanalysis.t">Klausel-für-Klausel-Risikobewertung</div>
+          <p class="cap-d" data-i18n="img.clauseanalysis.d">Jede Klausel mit KI-Befund, Vertragszitat und Risikoeinstufung — nachvollziehbar statt nur eine Zahl.</p>
+        </figcaption>
       </figure>
       <figure>
-        <img src="screenshot-vendor-overview.png" alt="Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges" loading="lazy" data-i18n-alt="img.vendor.alt">
-        <figcaption data-i18n="img.vendor.caption">Lieferantenübersicht — LEI, Tier, Compliance-Status</figcaption>
+        <img src="screenshot-baseline-gaps.png" alt="Tabelle mit Datenlücken und Regelverletzungen, priorisiert nach Kritisch, Hoch und Mittel" loading="lazy" data-i18n-alt="img.gaps.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.gaps.t">Datenlücken &amp; Regelverletzungen</div>
+          <p class="cap-d" data-i18n="img.gaps.d">Regelbasiert ermittelte Fehlstellen je Kriterium, priorisiert nach Kritisch, Hoch und Mittel.</p>
+        </figcaption>
       </figure>
       <figure>
         <img src="screenshot-asset-graph.png" alt="Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft" loading="lazy" data-i18n-alt="img.assetgraph.alt">
-        <figcaption data-i18n="img.assetgraph.caption">Ein SAP-System (SYS-ERP-01) hängt gleichzeitig an einem SAP-Support-Vertrag und einer Oracle-Datenbanklizenz — eine Abhängigkeit, die in getrennten Lizenzlisten unsichtbar bliebe, hier aber sofort auffällt.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-compliance-gaps.png" alt="Compliance-Tab mit Begründung je Kriterium und aufgedecktem Gap SEC-09" loading="lazy" data-i18n-alt="img.compliancegaps.alt">
-        <figcaption data-i18n="img.compliancegaps.caption">Die DSG-Auftragsbearbeitung ist unterzeichnet, doch die IT-Sicherheitsbaseline zeigt vier offene Kriterien (MFA, Least-Privilege, Verschlüsselung, Subunternehmer-Dokumentation) — jedes einzeln begründet, hier SEC-09 mit vollständigem Kriterientext im Tooltip.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-clause-checklist.png" alt="Vertragsklauseln-Checkliste mit Ampel-Status, Vertragszitat und Mehrfach-Baseline-Referenz (VTR-06, SEC-09, DSG-04)" loading="lazy" data-i18n-alt="img.clauselist.alt">
-        <figcaption data-i18n="img.clauselist.caption">14 Klauseln als Checkliste mit Ampel-Status. Bei der Subunternehmer-Regelung zitiert die KI wörtlich aus dem Vertrag (§ 5.6) und referenziert den Befund gleichzeitig gegen drei Kataloge — VTR-06 (Vertragsklausel), SEC-09 (Sicherheitsbaseline), DSG-04 (Schweizer Datenschutz).</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshot-license-warnings.png" alt="Lizenz-Bearbeitungsformular mit vier Konsistenz-Warnungen: EU-AI-Act-Verantwortlicher, DSG-06/SEC-Verschlüsselung, MFA und DSG-05-Datenresidenz" loading="lazy" data-i18n-alt="img.licensewarnings.alt">
-        <figcaption data-i18n="img.licensewarnings.caption">Vier Warnungen direkt im Lizenzformular, vor dem Speichern: Datenresidenz „US“ liegt außerhalb der Schweizer Angemessenheitsliste (DSG-05), Verschlüsselung und MFA sind laut Privilege-Profil nicht vorhanden (DSG-06/SEC-02/SEC-04) — und weil KI-Nutzung aktiv, aber kein KI-Verantwortlicher hinterlegt ist, zitiert die App direkt Art.&nbsp;26 Abs.&nbsp;2 EU AI Act.</figcaption>
+        <figcaption>
+          <div class="cap-t" data-i18n="img.assetgraph.t">Asset-Beziehungsgraph</div>
+          <p class="cap-d" data-i18n="img.assetgraph.d">Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.</p>
+        </figcaption>
       </figure>
     </div>
 
@@ -866,21 +872,21 @@
       "cap3.li4": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
       "cap3.li5": "Vendor-/Software-/CVE-Intelligence, Legal Briefing",
       "img.dashboard.alt": "TPRM- und Compliance-Dashboard mit KPI-Kacheln",
-      "img.dashboard.caption": "TPRM- &amp; Compliance-Dashboard",
-      "img.timeline.alt": "Timeline/Gantt-Ansicht über Verträge, Lizenzen und Services",
-      "img.timeline.caption": "Vertrags-Timeline über mehrere Jahre",
-      "img.renewals.alt": "Liste fälliger Vertragsverlängerungen mit Risikobewertung",
-      "img.renewals.caption": "Fällige Vertragsverlängerungen, mit Klauselrisiko",
-      "img.vendor.alt": "Lieferantenübersicht mit LEI, Tier-Klassifizierung und Gauges",
-      "img.vendor.caption": "Lieferantenübersicht — LEI, Tier, Compliance-Status",
+      "img.exec.alt": "Executive Summary eines KI-Analyseberichts mit Ampel-Status und Kernfakten",
+      "img.exec.t": "Executive Summary auf einen Blick",
+      "img.exec.d": "Ampel-Status, Kernrisiken und finanzielles Exposure in einem Absatz — für alle, die nur die erste Seite lesen.",
+      "img.action.alt": "Risiko-Heatmap und Massnahmenplan mit Verantwortlichen, Terminen und Baseline-Referenzen",
+      "img.action.t": "Risiko-Heatmap &amp; Massnahmenplan",
+      "img.action.d": "Bis zu 12 Schritte mit Verantwortlichem, Termin und Baseline-Referenz — hier zehn Massnahmen für einen einzelnen Vertrag.",
+      "img.clauseanalysis.alt": "Klauselweise Risikobewertung eines Vertrags mit KI-Befund je Klausel",
+      "img.clauseanalysis.t": "Klausel-für-Klausel-Risikobewertung",
+      "img.clauseanalysis.d": "Jede Klausel mit KI-Befund, Vertragszitat und Risikoeinstufung — nachvollziehbar statt nur eine Zahl.",
+      "img.gaps.alt": "Tabelle mit Datenlücken und Regelverletzungen, priorisiert nach Kritisch, Hoch und Mittel",
+      "img.gaps.t": "Datenlücken &amp; Regelverletzungen",
+      "img.gaps.d": "Regelbasiert ermittelte Fehlstellen je Kriterium, priorisiert nach Kritisch, Hoch und Mittel.",
       "img.assetgraph.alt": "Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft",
-      "img.assetgraph.caption": "Ein SAP-System (SYS-ERP-01) hängt gleichzeitig an einem SAP-Support-Vertrag und einer Oracle-Datenbanklizenz — eine Abhängigkeit, die in getrennten Lizenzlisten unsichtbar bliebe, hier aber sofort auffällt.",
-      "img.compliancegaps.alt": "Compliance-Tab mit Begründung je Kriterium und aufgedecktem Gap SEC-09",
-      "img.compliancegaps.caption": "Die DSG-Auftragsbearbeitung ist unterzeichnet, doch die IT-Sicherheitsbaseline zeigt vier offene Kriterien (MFA, Least-Privilege, Verschlüsselung, Subunternehmer-Dokumentation) — jedes einzeln begründet, hier SEC-09 mit vollständigem Kriterientext im Tooltip.",
-      "img.clauselist.alt": "Vertragsklauseln-Checkliste mit Ampel-Status, Vertragszitat und Mehrfach-Baseline-Referenz (VTR-06, SEC-09, DSG-04)",
-      "img.clauselist.caption": "14 Klauseln als Checkliste mit Ampel-Status. Bei der Subunternehmer-Regelung zitiert die KI wörtlich aus dem Vertrag (§ 5.6) und referenziert den Befund gleichzeitig gegen drei Kataloge — VTR-06 (Vertragsklausel), SEC-09 (Sicherheitsbaseline), DSG-04 (Schweizer Datenschutz).",
-      "img.licensewarnings.alt": "Lizenz-Bearbeitungsformular mit vier Konsistenz-Warnungen: EU-AI-Act-Verantwortlicher, DSG-06/SEC-Verschlüsselung, MFA und DSG-05-Datenresidenz",
-      "img.licensewarnings.caption": "Vier Warnungen direkt im Lizenzformular, vor dem Speichern: Datenresidenz „US“ liegt außerhalb der Schweizer Angemessenheitsliste (DSG-05), Verschlüsselung und MFA sind laut Privilege-Profil nicht vorhanden (DSG-06/SEC-02/SEC-04) — und weil KI-Nutzung aktiv, aber kein KI-Verantwortlicher hinterlegt ist, zitiert die App direkt Art.&nbsp;26 Abs.&nbsp;2 EU AI Act.",
+      "img.assetgraph.t": "Asset-Beziehungsgraph",
+      "img.assetgraph.d": "Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.",
       "tech.eyebrow": "Technisch",
       "arch.eyebrow": "Architektur",
       "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
@@ -1034,21 +1040,21 @@
       "cap3.li4": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
       "cap3.li5": "Vendor/software/CVE intelligence, legal briefing",
       "img.dashboard.alt": "TPRM and compliance dashboard with KPI tiles",
-      "img.dashboard.caption": "TPRM &amp; Compliance Dashboard",
-      "img.timeline.alt": "Timeline/Gantt view across contracts, licenses, and services",
-      "img.timeline.caption": "Multi-year contract timeline",
-      "img.renewals.alt": "List of upcoming contract renewals with risk scoring",
-      "img.renewals.caption": "Upcoming contract renewals, with clause risk",
-      "img.vendor.alt": "Supplier overview with LEI, tier classification, and gauges",
-      "img.vendor.caption": "Supplier overview — LEI, tier, compliance status",
+      "img.exec.alt": "Executive summary of an AI analysis report with traffic-light status and key facts",
+      "img.exec.t": "Executive summary at a glance",
+      "img.exec.d": "Traffic-light status, key risks, and financial exposure in one paragraph — for anyone who only reads the first page.",
+      "img.action.alt": "Risk heatmap and action plan with owners, due dates, and baseline references",
+      "img.action.t": "Risk heatmap &amp; action plan",
+      "img.action.d": "Up to 12 steps with an owner, due date, and baseline reference — ten action items for a single contract, shown here.",
+      "img.clauseanalysis.alt": "Clause-by-clause risk assessment of a contract with an AI finding per clause",
+      "img.clauseanalysis.t": "Clause-by-clause risk scoring",
+      "img.clauseanalysis.d": "Every clause with an AI finding, contract quote, and risk rating — traceable, not just a number.",
+      "img.gaps.alt": "Table of data gaps and rule violations, prioritized as critical, high, and medium",
+      "img.gaps.t": "Data gaps &amp; rule violations",
+      "img.gaps.d": "Rule-based findings per criterion, prioritized as critical, high, and medium.",
       "img.assetgraph.alt": "Asset relationship graph linking licenses, contracts, and systems",
-      "img.assetgraph.caption": "One SAP system (SYS-ERP-01) hangs off both a SAP support contract and an Oracle database license at once — a dependency that separate license lists would never surface, but that's immediately visible here.",
-      "img.compliancegaps.alt": "Compliance tab reasoning through each criterion, surfacing gap SEC-09",
-      "img.compliancegaps.caption": "The DSG data-processing agreement is signed, yet the IT security baseline shows four open criteria (MFA, least privilege, encryption, subcontractor documentation) — each reasoned individually, here SEC-09 with the full criterion text in a tooltip.",
-      "img.clauselist.alt": "Contract clause checklist with traffic-light status, contract quote, and cross-baseline reference (VTR-06, SEC-09, DSG-04)",
-      "img.clauselist.caption": "14 clauses as a checklist with traffic-light status. For the subcontracting clause, the AI quotes the contract verbatim (§ 5.6) and cross-references the finding against three separate catalogs at once — VTR-06 (contract clause), SEC-09 (security baseline), DSG-04 (Swiss data protection).",
-      "img.licensewarnings.alt": "License edit form with four consistency warnings: EU AI Act coordinator, DSG-06/SEC encryption, MFA, and DSG-05 data residency",
-      "img.licensewarnings.caption": "Four warnings right in the license form, before saving: data residency \"US\" falls outside the Swiss adequacy list (DSG-05), encryption and MFA are recorded as absent in the privilege profile (DSG-06/SEC-02/SEC-04) — and because AI usage is active but no AI coordinator is assigned, the app cites EU AI Act Art.&nbsp;26(2) directly.",
+      "img.assetgraph.t": "Asset relationship graph",
+      "img.assetgraph.d": "One SAP system hangs off both a support contract and an Oracle license at once — a dependency that separate lists would never surface.",
       "tech.eyebrow": "Technical",
       "arch.eyebrow": "Architecture",
       "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
