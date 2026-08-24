@@ -43,6 +43,9 @@
   .nav-cta:hover{ background:var(--ink); }
 
   .hero{ padding:52px 0 40px; }
+  .hero-grid{ display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start; }
+  @media (max-width:640px){ .hero-grid{ grid-template-columns:1fr; } .hero-photo{ order:-1; } .hero-photo img{ width:140px; } }
+  .hero-photo img{ width:220px; height:auto; display:block; border:1.5px solid var(--ink); }
   .hero h1{ font-size:clamp(1.8rem, 4vw, 2.5rem); line-height:1.15; max-width:18ch; }
   .hero .lead{ max-width:56ch; margin-top:14px; }
   .role{ margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
@@ -111,18 +114,25 @@
 
 <section class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Berufliches Profil</p>
-    <h1>IT-Vendor-Management, Bid Management &amp; Data/AI-Governance</h1>
-    <p class="lead">Über 15 Jahre Erfahrung an der Schnittstelle von IT-Verträgen, Lieferantensteuerung, Datenanalyse und regulatorischen Anforderungen — mit technischer Umsetzungskompetenz, die über die reine Fachrolle hinausgeht.</p>
-    <div class="role">
-      <span class="pill">EU-Bürger</span>
-      <span class="pill">Jahrgang 1978, geboren in Karlsruhe</span>
-      <span class="pill">Bern (CH) / Essen (DE)</span>
-      <span class="pill">Verfügbar ab sofort — Festanstellung, Interim, Projektmandate</span>
-    </div>
-    <div class="hero-cta">
-      <a class="btn-primary" href="#kontakt">Termin vereinbaren →</a>
-      <a class="cta-secondary" href="#kontakt">Oder Nachricht schreiben →</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Berufliches Profil</p>
+        <h1>IT-Vendor-Management, Bid Management &amp; Data/AI-Governance</h1>
+        <p class="lead">Über 15 Jahre Erfahrung an der Schnittstelle von IT-Verträgen, Lieferantensteuerung, Datenanalyse und regulatorischen Anforderungen — mit technischer Umsetzungskompetenz, die über die reine Fachrolle hinausgeht.</p>
+        <div class="role">
+          <span class="pill">EU-Bürger</span>
+          <span class="pill">Jahrgang 1978, geboren in Karlsruhe</span>
+          <span class="pill">Bern (CH) / Essen (DE)</span>
+          <span class="pill">Verfügbar ab sofort — Festanstellung, Interim, Projektmandate</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#kontakt">Termin vereinbaren →</a>
+          <a class="cta-secondary" href="#kontakt">Oder Nachricht schreiben →</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="giw-aalam.jpg" alt="Portrait von Giw Aalam" width="220" height="290">
+      </div>
     </div>
   </div>
 </section>
