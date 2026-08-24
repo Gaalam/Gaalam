@@ -103,12 +103,11 @@
   @media (max-width:520px){ .diffband{ grid-template-columns:1fr; } .diff{ border-left:none; border-top:1px solid var(--rule); } .diff:first-child{ border-top:none; } }
 
   /* ---- value pillars ---- */
-  .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px; }
-  .pillar{ background:var(--paper-raised); padding:24px 22px 26px; }
+  .pillars{ display:flex; flex-wrap:wrap; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px; }
+  .pillar{ background:var(--paper-raised); padding:24px 22px 26px; flex:1 1 240px; }
   .pillar-icon{ color:var(--signal); margin-bottom:14px; display:block; }
   .pillar-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.05rem; margin-bottom:6px; }
   .pillar-d{ font-size:.87rem; color:var(--ink-soft); line-height:1.5; margin:0; }
-  @media (max-width:760px){ .pillars{ grid-template-columns:1fr; } }
 
   /* ---- services grid ---- */
   .services{ display:flex; flex-wrap:wrap; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0 8px; }
@@ -374,6 +373,17 @@
         </svg>
         <div class="pillar-t" data-i18n="pillar3.t">KI-gestützte Ausschreibung</div>
         <p class="pillar-d" data-i18n="pillar3.d">Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3h10l4 4v10"/>
+          <path d="M17 3v4h4"/>
+          <path d="M9 12h6M9 16h4"/>
+          <circle cx="20" cy="21" r="4.5"/>
+          <path d="M23.2 24.2L26 27"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar4.t">KI-gestützte Audit-Fragebögen</div>
+        <p class="pillar-d" data-i18n="pillar4.d">Bei kritischen Befunden erstellt die KI gezielt Audit-Fragebögen — strikt getrennt in externe Vendor-Fragen und internen Prüfauftrag.</p>
       </div>
     </div>
   </div>
@@ -879,6 +889,8 @@
       "pillar2.d": "Bei auslaufenden Verträgen liefert die KI einen Risikobericht mit konkreten Massnahmen — automatisch gegen Ihre Daten geprüft.",
       "pillar3.t": "KI-gestützte Ausschreibung",
       "pillar3.d": "Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.",
+      "pillar4.t": "KI-gestützte Audit-Fragebögen",
+      "pillar4.d": "Bei kritischen Befunden erstellt die KI gezielt Audit-Fragebögen — strikt getrennt in externe Vendor-Fragen und internen Prüfauftrag.",
       "kiliefert.eyebrow": "Was die KI konkret liefert",
       "kiliefert.h2": "Zwei klar begrenzte Aufgaben, keine Blackbox",
       "kiliefert.lead": "Die KI übernimmt drei begrenzte Aufgaben: sie prüft auslaufende Verträge, sie erstellt bei kritischen Befunden gezielte Audit-Fragebögen, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Der Ausschreibungsentwurf ist Zuarbeit, keine fertige Ausschreibung — Ihre fachliche Prüfung bleibt nötig.",
@@ -1074,6 +1086,8 @@
       "pillar2.d": "For expiring contracts, the AI delivers a risk report with concrete actions — automatically checked against your data.",
       "pillar3.t": "AI-Assisted Tendering",
       "pillar3.d": "RfX requests for IT services are drafted with AI support, directly from your existing license and service data.",
+      "pillar4.t": "AI-Assisted Audit Questionnaires",
+      "pillar4.d": "For critical findings, the AI drafts targeted audit questionnaires — strictly split into external vendor questions and an internal review assignment.",
       "kiliefert.eyebrow": "What the AI Actually Delivers",
       "kiliefert.h2": "Two narrowly scoped tasks, not a black box",
       "kiliefert.lead": "The AI handles three limited tasks: it reviews expiring contracts, it drafts targeted audit questionnaires for critical findings, and it helps draft tender requests. For contract analysis, the result is automatically checked against your stored data before you see it. The tender draft is groundwork, not a finished tender — your review is still required.",
