@@ -125,12 +125,11 @@
   @media (max-width:600px){ .service-unify{ flex-direction:column; align-items:flex-start; gap:12px; } }
 
   /* ---- AI output examples ---- */
-  .examples{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.5px; background:var(--rule); border:1px solid var(--rule); margin-top:22px; }
-  .example{ background:var(--paper-raised); padding:20px 22px 22px; }
+  .examples{ display:flex; flex-wrap:wrap; gap:1.5px; background:var(--rule); border:1px solid var(--rule); margin-top:22px; }
+  .example{ background:var(--paper-raised); padding:20px 22px 22px; flex:1 1 260px; }
   .example .tag{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--signal); margin-bottom:10px; display:block; }
   .example p{ font-size:.9rem; margin:0; color:var(--ink-soft); }
   .examples-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin-top:12px; }
-  @media (max-width:640px){ .examples{ grid-template-columns:1fr; } }
 
   /* ---- case-study pullquote teaser ---- */
   .pullquote{ border-left:3px solid var(--signal); padding:6px 0 6px 22px; margin:32px 0 6px; max-width:600px; }
@@ -385,7 +384,7 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="kiliefert.eyebrow">Was die KI konkret liefert</p>
       <h2 data-i18n="kiliefert.h2">Zwei klar begrenzte Aufgaben, keine Blackbox</h2>
-      <p class="lead" data-i18n="kiliefert.lead">Die KI übernimmt zwei begrenzte Aufgaben. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Beim Ausschreibungsentwurf reduziert die KI den Aufwand, ersetzt aber nicht Ihre fachliche Prüfung — der Entwurf ist Zuarbeit, keine fertige Ausschreibung.</p>
+      <p class="lead" data-i18n="kiliefert.lead">Die KI übernimmt drei begrenzte Aufgaben: sie prüft auslaufende Verträge, sie erstellt bei kritischen Befunden gezielte Audit-Fragebögen, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Der Ausschreibungsentwurf ist Zuarbeit, keine fertige Ausschreibung — Ihre fachliche Prüfung bleibt nötig.</p>
     </div>
     <div class="examples reveal">
       <div class="example">
@@ -395,6 +394,10 @@
       <div class="example">
         <span class="tag" data-i18n="example2.tag">Beispiel · KI-Ausschreibung</span>
         <p data-i18n="example2.text">Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.</p>
+      </div>
+      <div class="example">
+        <span class="tag" data-i18n="example3.tag">Beispiel · Audit-Fragebogen</span>
+        <p data-i18n="example3.text">Weil ein Vertrag ein rotes Zeit- und ein rotes Informationssicherheitsrisiko aufwies, erstellte die KI automatisch einen Audit-Fragebogen — strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag, der nie an den Vendor geht.</p>
       </div>
     </div>
     <p class="examples-note" data-i18n="examples.note">Beispiele anonymisiert bzw. exemplarisch dargestellt.</p>
@@ -878,11 +881,13 @@
       "pillar3.d": "Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.",
       "kiliefert.eyebrow": "Was die KI konkret liefert",
       "kiliefert.h2": "Zwei klar begrenzte Aufgaben, keine Blackbox",
-      "kiliefert.lead": "Die KI übernimmt zwei begrenzte Aufgaben. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Beim Ausschreibungsentwurf reduziert die KI den Aufwand, ersetzt aber nicht Ihre fachliche Prüfung — der Entwurf ist Zuarbeit, keine fertige Ausschreibung.",
+      "kiliefert.lead": "Die KI übernimmt drei begrenzte Aufgaben: sie prüft auslaufende Verträge, sie erstellt bei kritischen Befunden gezielte Audit-Fragebögen, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Der Ausschreibungsentwurf ist Zuarbeit, keine fertige Ausschreibung — Ihre fachliche Prüfung bleibt nötig.",
       "example1.tag": "Beispiel · Vertragsanalyse",
       "example1.text": "Für einen Cloud-Service mit Zugriff auf sensible Daten stellte die KI in der Privilegien-Analyse fest, dass weder rollenbasierte Zugriffskontrollen (RBAC) noch Multi-Faktor-Authentifizierung dokumentiert waren, und ordnete das im Risikobericht als kritischen Sicherheitsmangel ein.",
       "example2.tag": "Beispiel · KI-Ausschreibung",
       "example2.text": "Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.",
+      "example3.tag": "Beispiel · Audit-Fragebogen",
+      "example3.text": "Weil ein Vertrag ein rotes Zeit- und ein rotes Informationssicherheitsrisiko aufwies, erstellte die KI automatisch einen Audit-Fragebogen — strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag, der nie an den Vendor geht.",
       "examples.note": "Beispiele anonymisiert bzw. exemplarisch dargestellt.",
       "pullquote.link": "Ausführliche Fallstudie lesen →",
       "case.eyebrow": "Hintergrund · Case Study",
@@ -1071,11 +1076,13 @@
       "pillar3.d": "RfX requests for IT services are drafted with AI support, directly from your existing license and service data.",
       "kiliefert.eyebrow": "What the AI Actually Delivers",
       "kiliefert.h2": "Two narrowly scoped tasks, not a black box",
-      "kiliefert.lead": "The AI handles two limited tasks. For contract analysis, the result is automatically checked against your stored data before you see it. For tender drafts, the AI cuts down the effort but doesn't replace your review — the draft is groundwork, not a finished tender.",
+      "kiliefert.lead": "The AI handles three limited tasks: it reviews expiring contracts, it drafts targeted audit questionnaires for critical findings, and it helps draft tender requests. For contract analysis, the result is automatically checked against your stored data before you see it. The tender draft is groundwork, not a finished tender — your review is still required.",
       "example1.tag": "Example · Contract Analysis",
       "example1.text": "For a cloud service with access to sensitive data, the AI found in its privilege analysis that neither role-based access controls (RBAC) nor multi-factor authentication were documented, and flagged it in the risk report as a critical security gap.",
       "example2.tag": "Example · AI-Assisted Tendering",
       "example2.text": "To replace an expiring CRM license, the AI drafted an RfX with a requirements and question catalog for alternative vendors, based on the stored license and usage data. The buyer only had to adjust and approve the draft.",
+      "example3.tag": "Example · Audit Questionnaire",
+      "example3.text": "Because a contract showed a red time risk and a red information-security risk, the AI automatically drafted an audit questionnaire — strictly split into an external vendor questionnaire (only what the vendor can evidence itself) and an internal review assignment that never goes to the vendor.",
       "examples.note": "Examples anonymized or illustrative.",
       "pullquote.link": "Read the full case study →",
       "case.eyebrow": "Background · Case Study",
