@@ -459,7 +459,7 @@
         <div class="layer"><div class="lt" data-i18n="baseline.2.t">DSGVO-06 · Technisch-organisatorische Massnahmen — Art. 32 DSGVO</div><div class="ld" data-i18n="baseline.2.d">Dem Risiko angemessene Massnahmen (Verschlüsselung, Pseudonymisierung, Verfügbarkeit) sind umzusetzen und zu dokumentieren.</div></div>
         <div class="layer"><div class="lt" data-i18n="baseline.3.t">DSGVO-10 · Löschkonzept und Aufbewahrungsfristen — Art. 5 &amp; Art. 17 DSGVO</div><div class="ld" data-i18n="baseline.3.d">Daten sind zu löschen, sobald der Zweck entfällt; ein dokumentiertes Löschkonzept muss vorliegen.</div></div>
         <div class="layer"><div class="lt" data-i18n="baseline.4.t">DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II</div><div class="ld" data-i18n="baseline.4.d">Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.</div></div>
-        <div class="layer"><div class="lt" data-i18n="baseline.5.t">SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline</div><div class="ld" data-i18n="baseline.5.d">Eingesetzte Subunternehmer und deren Datenzugriffe sind zu erfassen und nachvollziehbar zu dokumentieren.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.5.t">SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline</div><div class="ld" data-i18n="baseline.5.d">Der Einsatz von Subunternehmern mit Zugriff auf Systeme oder Daten des Auftraggebers ist vorab schriftlich anzuzeigen und zu genehmigen; eine aktuelle Liste ist auf Anfrage vorzulegen.</div></div>
       </div>
       <p data-i18n="baseline.note" style="margin-top:14px;">Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.</p>
     </div>
@@ -581,6 +581,27 @@
         <figcaption>
           <div class="cap-t" data-i18n="img.assetgraph.t">Asset-Beziehungsgraph</div>
           <p class="cap-d" data-i18n="img.assetgraph.d">Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-compliance-status.png" alt="Compliance-Tab: Status je Kriterium mit ID, Ampel und Volltext-Tooltip zu SEC-09" loading="lazy" data-i18n-alt="img.compliance.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.compliance.t">Compliance-Status, abgeleitet aus den Daten</div>
+          <p class="cap-d" data-i18n="img.compliance.d">Je Baseline ein eigener Status pro Kriterium (erfüllt, nicht erfüllt, unklar), mit Kriterien-ID und dem vollständigen Kriterientext als Tooltip — hier SEC-09, Subunternehmer-Dokumentation.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-avv.png" alt="AVV-Verwaltung mit Statusmaschine, Datenkategorien, Betroffenengruppen und Sub-Processor-Klausel" loading="lazy" data-i18n-alt="img.avv.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.avv.t">AVV von der Bedarfsprüfung bis zur Unterschrift</div>
+          <p class="cap-d" data-i18n="img.avv.d">Statusmaschine, erfasste Datenkategorien und Betroffenengruppen, bestätigte Sub-Processor-Klausel (Art. 28 DSGVO) und Verweis auf das Verarbeitungsverzeichnis (Art. 30 DSGVO).</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-cve-euvd.png" alt="CVE-Datenbestand aus der ENISA EUVD, gefiltert je Hersteller, Produkt und CVSS-Score" loading="lazy" data-i18n-alt="img.cve.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.cve.t">CVE-Intelligence aus der EU-Schwachstellendatenbank</div>
+          <p class="cap-d" data-i18n="img.cve.d">Bekannte Schwachstellen je Anbieter und Produkt aus der ENISA EUVD, filterbar nach CVSS-Score und Meldezeitraum.</p>
         </figcaption>
       </figure>
     </div>
@@ -975,7 +996,7 @@
       "baseline.4.t": "DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II",
       "baseline.4.d": "Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.",
       "baseline.5.t": "SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline",
-      "baseline.5.d": "Eingesetzte Subunternehmer und deren Datenzugriffe sind zu erfassen und nachvollziehbar zu dokumentieren.",
+      "baseline.5.d": "Der Einsatz von Subunternehmern mit Zugriff auf Systeme oder Daten des Auftraggebers ist vorab schriftlich anzuzeigen und zu genehmigen; eine aktuelle Liste ist auf Anfrage vorzulegen.",
       "baseline.note": "Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.",
       "privileges.eyebrow": "Was je Vendor, Software und Service erfasst wird",
       "privileges.h3": "Zugriffsprivilegien und Daten-Handling",
@@ -1038,6 +1059,15 @@
       "img.assetgraph.alt": "Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft",
       "img.assetgraph.t": "Asset-Beziehungsgraph",
       "img.assetgraph.d": "Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.",
+      "img.compliance.alt": "Compliance-Tab: Status je Kriterium mit ID, Ampel und Volltext-Tooltip zu SEC-09",
+      "img.compliance.t": "Compliance-Status, abgeleitet aus den Daten",
+      "img.compliance.d": "Je Baseline ein eigener Status pro Kriterium (erfüllt, nicht erfüllt, unklar), mit Kriterien-ID und dem vollständigen Kriterientext als Tooltip — hier SEC-09, Subunternehmer-Dokumentation.",
+      "img.avv.alt": "AVV-Verwaltung mit Statusmaschine, Datenkategorien, Betroffenengruppen und Sub-Processor-Klausel",
+      "img.avv.t": "AVV von der Bedarfsprüfung bis zur Unterschrift",
+      "img.avv.d": "Statusmaschine, erfasste Datenkategorien und Betroffenengruppen, bestätigte Sub-Processor-Klausel (Art. 28 DSGVO) und Verweis auf das Verarbeitungsverzeichnis (Art. 30 DSGVO).",
+      "img.cve.alt": "CVE-Datenbestand aus der ENISA EUVD, gefiltert je Hersteller, Produkt und CVSS-Score",
+      "img.cve.t": "CVE-Intelligence aus der EU-Schwachstellendatenbank",
+      "img.cve.d": "Bekannte Schwachstellen je Anbieter und Produkt aus der ENISA EUVD, filterbar nach CVSS-Score und Meldezeitraum.",
       "tech.eyebrow": "Technisch",
       "arch.eyebrow": "Architektur",
       "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
@@ -1191,7 +1221,7 @@
       "baseline.4.t": "GDPR-13 · Data residency and processing location — Art. 44 GDPR / Schrems II",
       "baseline.4.d": "Processing outside the EU/EEA requires a demonstrated valid transfer mechanism.",
       "baseline.5.t": "SEC-09 · Subcontractor documentation — IT security baseline",
-      "baseline.5.d": "Subcontractors and their data access must be captured and documented in a traceable way.",
+      "baseline.5.d": "Subcontractors with access to the client’s systems or data must be notified and approved in writing in advance; a current list must be provided on request.",
       "baseline.note": "The status per criterion (met, not met, or unclear) is derived from the stored fields by rule-based logic, with no AI call. The full criterion text is available as a tooltip in the application.",
       "privileges.eyebrow": "Recorded per vendor, software and service",
       "privileges.h3": "Access privileges and data handling",
@@ -1254,6 +1284,15 @@
       "img.assetgraph.alt": "Asset relationship graph linking licenses, contracts, and systems",
       "img.assetgraph.t": "Asset relationship graph",
       "img.assetgraph.d": "One SAP system hangs off both a support contract and an Oracle license at once — a dependency that separate lists would never surface.",
+      "img.compliance.alt": "Compliance tab: status per criterion with ID, traffic-light and full-text tooltip for SEC-09",
+      "img.compliance.t": "Compliance status, derived from the data",
+      "img.compliance.d": "One status per criterion per baseline (met, not met, unclear), with the criterion ID and the full criterion text as a tooltip — here SEC-09, subcontractor documentation.",
+      "img.avv.alt": "DPA management with status machine, data categories, affected groups and sub-processor clause",
+      "img.avv.t": "DPA from need assessment to signature",
+      "img.avv.d": "Status machine, recorded data categories and affected groups, confirmed sub-processor clause (GDPR Art. 28) and a link to the record of processing activities (GDPR Art. 30).",
+      "img.cve.alt": "CVE inventory from the ENISA EUVD, filtered by vendor, product and CVSS score",
+      "img.cve.t": "CVE intelligence from the EU Vulnerability Database",
+      "img.cve.d": "Known vulnerabilities per vendor and product from the ENISA EUVD, filterable by CVSS score and reporting window.",
       "tech.eyebrow": "Technical",
       "arch.eyebrow": "Architecture",
       "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
