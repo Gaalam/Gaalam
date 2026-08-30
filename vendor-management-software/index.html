@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor-Management-Software für KMU: on-premise statt SaaS | Vendor Data Management</title>
+<meta name="description" content="Was Vendor-Management-Software für KMU leisten sollte und warum sich eine on-premise-Lösung ohne Cloud lohnt: Datenhoheit, revidiertes Schweizer Datenschutzgesetz, keine Abhängigkeit von einem einzelnen Hosting-Anbieter.">
+<link rel="canonical" href="https://aalam.ch/vendor-management-software/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aalam.ch/vendor-management-software/">
+<meta property="og:site_name" content="Vendor Data Management">
+<meta property="og:title" content="Vendor-Management-Software für KMU: on-premise statt SaaS">
+<meta property="og:description" content="Was eine Vendor-Management-Software abdecken sollte, warum on-premise für KMU sinnvoll ist, und wie Vendor Data Management das umsetzt.">
+<meta property="og:image" content="https://aalam.ch/screenshot-dashboard.png">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Läuft die Software in der Cloud?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Vendor Data Management ist eine Desktop-Anwendung; die Datenbank läuft auf der eigenen Infrastruktur des Kunden, in-house oder bei einem Hosting-Provider der eigenen Wahl." } },
+    { "@type": "Question", "name": "Ist die Software für die Schweiz geeignet?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Die Compliance-Prüfung läuft wahlweise gegen das revidierte Schweizer Datenschutzgesetz statt der DSGVO, mit eigener Drittstaaten-Angemessenheitsliste und CHF als Basiswährung." } },
+    { "@type": "Question", "name": "Was kostet die Software?", "acceptedAnswer": { "@type": "Answer", "text": "Der Preis wird individuell vereinbart, der Einstieg erfolgt in der Regel über ein Pilotprojekt. Es gibt keinen öffentlichen Listenpreis." } },
+    { "@type": "Question", "name": "Ist der Quellcode offen?", "acceptedAnswer": { "@type": "Answer", "text": "Nein, der Quellcode ist privat. Die Daten liegen jedoch in einer offenen relationalen Datenbank und lassen sich jederzeit strukturiert exportieren." } }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#fafaf8; --paper-raised:#f2f2ee; --ink:#14151a; --ink-soft:#4a4f5c; --ink-faint:#868c96; --rule:#d7d9d2; --verified:#1b7a4b; --signal:#c8371c; --signal-ink:#fafaf8; --max:760px; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:17px; line-height:1.65; }
+  a{ color:var(--signal); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; font-weight:600; letter-spacing:-.01em; margin:1.8em 0 .4em; color:var(--ink); }
+  h1{ margin-top:0; font-size:clamp(1.9rem, 4vw, 2.4rem); line-height:1.15; }
+  h2{ font-size:1.3rem; }
+  h3{ font-size:1.05rem; margin:1.4em 0 .3em; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); }
+  ul{ margin:0 0 1.2em; padding-left:1.2em; }
+  li{ color:var(--ink-soft); margin-bottom:7px; }
+  .lead{ font-size:1.15rem; color:var(--ink); }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .eyebrow::before{ content:"■"; color:var(--signal); font-size:.6rem; margin-right:8px; }
+
+  header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:1000px; }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:18px; text-decoration:none; }
+  nav.site a:hover{ color:var(--ink); }
+  .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:18px; text-decoration:none; display:inline-block; }
+  .nav-cta:hover{ background:var(--ink); }
+  @media (max-width:620px){ nav.site a:not(.nav-cta){ display:none; } }
+
+  main{ padding:48px 0 20px; }
+  .box{ background:var(--paper-raised); border:1px solid var(--rule); padding:22px 24px 8px; margin:1.6em 0; }
+  .box .lt{ font-family:'Space Grotesk', sans-serif; font-weight:600; }
+  .faq dt{ font-family:'Space Grotesk', sans-serif; font-weight:600; color:var(--ink); margin-top:1.1em; }
+  .faq dd{ margin:.3em 0 0; color:var(--ink-soft); }
+  .cta{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 22px; margin:2.4em 0 0; }
+  .btn-primary{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:12px 20px; text-decoration:none; display:inline-block; border:1.5px solid var(--signal); }
+  .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
+
+  footer{ padding:28px 0 50px; border-top:1px solid var(--rule); margin-top:40px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
+  footer a, footer .fbrand{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); text-decoration:none; }
+  footer .fbrand{ font-family:'Space Grotesk', sans-serif; font-weight:700; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">Vendor Data Management</a>
+    <nav class="site">
+      <a href="/">Produkt</a>
+      <a href="/leistungen/">Leistungen</a>
+      <a href="/profil/">Berufliches Profil</a>
+      <a class="nav-cta" href="/#kontakt">Erstgespräch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Ratgeber</p>
+    <h1>Vendor-Management-Software für KMU — on-premise statt SaaS</h1>
+    <p class="lead">Vendor-Management-Software bündelt Verträge, Lizenzen und Lieferanten an einem Ort, überwacht Fristen und macht Verantwortlichkeiten und Compliance-Lücken sichtbar. Die meisten Angebote sind Cloud-Dienste. Für KMU, die ihre Vertrags- und Lieferantendaten nicht bei einem weiteren Anbieter ablegen wollen, gibt es eine Alternative.</p>
+
+    <h2>Was eine Vendor-Management-Software abdecken sollte</h2>
+    <p>Über eine reine Fristenliste hinaus geht es darum, den Zusammenhang zwischen Anbietern, Verträgen und Leistungen sichtbar zu machen:</p>
+    <ul>
+      <li><strong>Verträge und Fristen:</strong> Laufzeiten, Verlängerungs- und Kündigungsfristen, Formvorschriften</li>
+      <li><strong>Lizenzen und Services je Anbieter:</strong> was konkret geliefert wird, nicht nur das Vertragsdokument</li>
+      <li><strong>Verantwortlichkeiten:</strong> Contract Owner, Legal Counsel, Vendor Manager, Datenschutzbeauftragte je Vertrag</li>
+      <li><strong>Compliance:</strong> revidiertes Schweizer Datenschutzgesetz beziehungsweise DSGVO, EU AI Act, ISO/IEC 42001, abgeleitet aus den tatsächlich erfassten Daten</li>
+      <li><strong>Vollständigkeit:</strong> wo Informationen oder Zuständigkeiten fehlen, bevor daraus ein Problem wird</li>
+      <li><strong>Risiko bei auslaufenden Verträgen:</strong> rechtzeitig Analyse und Handlungsempfehlung</li>
+    </ul>
+
+    <h2>Warum on-premise, ohne Cloud</h2>
+    <p>Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams. Sie müssen nicht in einer Multi-Tenant-Cloud liegen. Eine on-premise-Lösung hat für diesen Fall drei Vorteile:</p>
+    <ul>
+      <li>Die Datenhaltung bleibt unter Kontrolle des Kunden: in-house oder bei einem Hosting-Provider der eigenen Wahl, nie auf einem Server des Software-Anbieters.</li>
+      <li>Keine zusätzliche Auftragsbearbeiter-Beziehung, die man selbst wieder dokumentieren und prüfen muss.</li>
+      <li>Strukturierte Exporte aus einer offenen relationalen Datenbank verhindern eine Abhängigkeit von einem einzelnen Anbieter oder Hosting-Dienst.</li>
+    </ul>
+
+    <h2>Für wen sich das eignet</h2>
+    <p>Eine schlanke, on-premise betriebene Vendor-Management-Software passt, wenn:</p>
+    <ul>
+      <li>ein KMU oder ein kleines Team die IT-Verträge verantwortet, keine hundert gleichzeitigen Nutzer,</li>
+      <li>der Fokus auf IT-Verträgen, -Lizenzen und -Dienstleistern liegt, nicht auf dem gesamten Einkauf,</li>
+      <li>Datenschutz, Nachvollziehbarkeit und Datenhoheit einen hohen Stellenwert haben.</li>
+    </ul>
+
+    <div class="box">
+      <p class="lt">Vendor Data Management</p>
+      <p>Vendor Data Management ist eine solche Lösung: eine Desktop-Anwendung für IT-Vendor-, Vertrags- und Lizenzmanagement, mit einem Datenmodell Anbieter → Vertrag → Lizenz/Service, einem Vollständigkeits-Score und einer regelbasiert geprüften KI-Analyse für auslaufende Verträge. Die Daten bleiben in der eigenen Datenbank.</p>
+      <p style="margin-bottom:6px;"><a href="/">Zur Produktseite mit Screenshots und Fallstudie →</a></p>
+    </div>
+
+    <h2>Häufige Fragen</h2>
+    <dl class="faq">
+      <dt>Läuft die Software in der Cloud?</dt>
+      <dd>Nein. Es ist eine Desktop-Anwendung; die Datenbank läuft auf der eigenen Infrastruktur, in-house oder bei einem Hosting-Provider der eigenen Wahl.</dd>
+      <dt>Ist die Software für die Schweiz geeignet?</dt>
+      <dd>Ja. Die Compliance-Prüfung läuft wahlweise gegen das revidierte Schweizer Datenschutzgesetz statt der DSGVO, mit eigener Drittstaaten-Angemessenheitsliste und CHF als Basiswährung.</dd>
+      <dt>Was kostet die Software?</dt>
+      <dd>Der Preis wird individuell vereinbart, der Einstieg erfolgt in der Regel über ein Pilotprojekt. Es gibt keinen öffentlichen Listenpreis.</dd>
+      <dt>Ist der Quellcode offen?</dt>
+      <dd>Nein, der Quellcode ist privat. Die Daten liegen jedoch in einer offenen relationalen Datenbank und lassen sich jederzeit strukturiert exportieren.</dd>
+    </dl>
+
+    <div class="cta">
+      <p class="lt" style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">Passt das zu Ihrer Situation?</p>
+      <p style="margin-bottom:16px;">Ein kurzes Erstgespräch klärt, ob Vendor Data Management für Sie sinnvoll ist.</p>
+      <a class="btn-primary" href="/#kontakt">Erstgespräch vereinbaren →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>
+      <a href="/">Produkt</a> ·
+      <a href="/leistungen/">Leistungen</a> ·
+      <a href="/profil/">Berufliches Profil</a> ·
+      <a href="/rechtliches/">Impressum &amp; Datenschutz</a>
+    </span>
+    <span class="fbrand">Giw Aalam</span>
+  </div>
+</footer>
+
+</body>
+</html>
