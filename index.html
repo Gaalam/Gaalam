@@ -21,7 +21,7 @@
   "@graph": [
     { "@type": "WebSite", "@id": "https://aalam.ch/#website", "url": "https://aalam.ch/", "name": "Vendor Data Management", "inLanguage": "de-CH", "publisher": { "@id": "https://aalam.ch/#giw" } },
     { "@type": "Person", "@id": "https://aalam.ch/#giw", "name": "Giw Aalam", "url": "https://aalam.ch/profil/", "email": "gaalam@googlemail.com", "jobTitle": "Berater für Prozessautomatisierung und Vertragsmanagement", "address": { "@type": "PostalAddress", "addressLocality": "Belp", "addressRegion": "BE", "addressCountry": "CH" }, "sameAs": ["https://github.com/Gaalam"] },
-    { "@type": "SoftwareApplication", "name": "Vendor Data Management", "applicationCategory": "BusinessApplication", "operatingSystem": "Java (Windows, macOS, Linux)", "url": "https://aalam.ch/", "description": "Vendor-Management-Software für KMU: IT-Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG- und DSGVO-Prüfung. On-premise (Desktop, ohne Cloud), mit regelbasiert geprüfter KI-Analyse auslaufender Verträge.", "author": { "@id": "https://aalam.ch/#giw" } }
+    { "@type": "SoftwareApplication", "name": "Vendor Data Management", "applicationCategory": "BusinessApplication", "operatingSystem": "Java (Windows, macOS, Linux)", "url": "https://aalam.ch/", "description": "Vendor-Management-Software für KMU: IT-Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG- und DSGVO-Prüfung, terminierte Berichte. On-premise (Desktop, ohne Cloud), mit regelbasiert geprüfter KI-Analyse auslaufender Verträge.", "author": { "@id": "https://aalam.ch/#giw" } }
   ]
 }
 </script>
@@ -534,6 +534,7 @@
           <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
           <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
           <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
+          <li data-i18n="cap3.li6">Terminierte Berichte zu Vendoren, Verträgen, Lizenzen, Assets und Datenlücken (PDF, HTML oder Excel), im Hintergrund von einem headless-Dienst erzeugt und per E-Mail zugestellt</li>
         </ul>
       </div>
     </div>
@@ -1007,6 +1008,7 @@
       "cap3.li3": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
       "cap3.li4": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
       "cap3.li5": "Vendor-/Software-/CVE-Intelligence, Legal Briefing",
+      "cap3.li6": "Terminierte Berichte zu Vendoren, Verträgen, Lizenzen, Assets und Datenlücken (PDF, HTML oder Excel), im Hintergrund von einem headless-Dienst erzeugt und per E-Mail zugestellt",
       "img.dashboard.alt": "TPRM- und Compliance-Dashboard mit KPI-Kacheln",
       "img.exec.alt": "Executive Summary eines KI-Analyseberichts mit Ampel-Status und Kernfakten",
       "img.exec.t": "Executive Summary auf einen Blick",
@@ -1217,6 +1219,7 @@
       "cap3.li3": "RfX process manager — request directly from an existing license/service",
       "cap3.li4": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
       "cap3.li5": "Vendor/software/CVE intelligence, legal briefing",
+      "cap3.li6": "Scheduled reports on vendors, contracts, licenses, assets and data gaps (PDF, HTML or Excel), generated in the background by a headless service and emailed to the configured recipients",
       "img.dashboard.alt": "TPRM and compliance dashboard with KPI tiles",
       "img.exec.alt": "Executive summary of an AI analysis report with traffic-light status and key facts",
       "img.exec.t": "Executive summary at a glance",
