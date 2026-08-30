@@ -685,6 +685,10 @@
           </div>
         </div>
       </div>
+      <figure style="margin:26px 0 0;">
+        <img src="thesis-auto-vs-melden.png" alt="Entscheidungsdiagramm: eine erkannte Regelverletzung wird automatisch korrigiert, wenn der Zielwert eindeutig aus den Daten ableitbar ist, sonst nur an den Vendor Manager gemeldet" loading="lazy" data-i18n-alt="img.thesis.alt">
+        <figcaption data-i18n="img.thesis.caption">Aus der Transferarbeit: Wann die Prüfschicht automatisch korrigiert und wann sie nur meldet.</figcaption>
+      </figure>
     </div>
 
     <div class="pipeline reveal">
@@ -876,6 +880,8 @@
       "thesis.p2.d": "Die KI übernimmt, was Kontextverständnis braucht. Formal eindeutig entscheidbare Anforderungen — Chronologie, Prozessreihenfolge, Vollständigkeit — prüft klassische Softwarelogik. Was beides nicht ist, bleibt beim Menschen.",
       "thesis.p3.t": "Automatisch korrigieren nur bei genau einem richtigen Wert",
       "thesis.p3.d": "Ein Massnahmenstart am Wochenende hat genau eine Korrektur, also wird er verschoben. Ein Fälligkeitsdatum vor dem eigenen Start hat mehrere mögliche, also wird nur gemeldet, nie geraten.",
+      "img.thesis.alt": "Entscheidungsdiagramm: eine erkannte Regelverletzung wird automatisch korrigiert, wenn der Zielwert eindeutig aus den Daten ableitbar ist, sonst nur an den Vendor Manager gemeldet",
+      "img.thesis.caption": "Aus der Transferarbeit: Wann die Prüfschicht automatisch korrigiert und wann sie nur meldet.",
       "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.",
       "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.",
       "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
@@ -1067,6 +1073,8 @@
       "thesis.p2.d": "The AI handles what needs context. Formally decidable requirements — chronology, process order, completeness — are checked by plain software logic. What is neither stays with a human.",
       "thesis.p3.t": "Auto-correct only when exactly one value is right",
       "thesis.p3.d": "A measure starting on a weekend has exactly one fix, so it gets moved. A due date before its own start has several possible fixes, so it is only flagged, never guessed.",
+      "img.thesis.alt": "Decision diagram: a detected rule violation is auto-corrected when the target value is unambiguously derivable from the data, otherwise only flagged to the vendor manager",
+      "img.thesis.caption": "From the thesis: when the check layer corrects automatically and when it only flags.",
       "stage1.k": "Foundation", "stage1.t": "Reality Snapshot", "stage1.d": "Structured JSON from contract, licenses, clauses, privileges — no free text.",
       "stage2.k": "Pass 1", "stage2.t": "Analysis", "stage2.d": "LLM drafts the report, risk classification, and action plan.",
       "stage3.k": "Pass 2", "stage3.t": "Data QA", "stage3.d": "A second, independent model call cross-checks figures &amp; status against the snapshot.",
