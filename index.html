@@ -659,6 +659,34 @@
       <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
     </div>
 
+    <div class="report-intro reveal" style="margin-top:0;">
+      <h3 data-i18n="thesis.h3">Drei Prinzipien aus der CAS-Transferarbeit</h3>
+      <p data-i18n="thesis.intro">Ablauf und Prüflogik sind in einer Transferarbeit an der Berner Fachhochschule dokumentiert, begründet und mit 25 gezielten Tests abgesichert (2026).</p>
+      <div class="report-parts">
+        <div class="part">
+          <div class="part-n">1</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p1.t">Ein weiterer KI-Durchlauf ist keine unabhängige Prüfung</div>
+            <p class="part-d" data-i18n="thesis.p1.d">Pass 2 und Pass 3 stammen aus derselben Modellklasse wie Pass 1 und tragen dieselbe Unsicherheit. Die Forschung zeigt: Ein Modell verifiziert eine Lösung nicht zuverlässiger, als es sie erzeugt.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">2</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p2.t">Generierung und Verifikation trennen</div>
+            <p class="part-d" data-i18n="thesis.p2.d">Die KI übernimmt, was Kontextverständnis braucht. Formal eindeutig entscheidbare Anforderungen — Chronologie, Prozessreihenfolge, Vollständigkeit — prüft klassische Softwarelogik. Was beides nicht ist, bleibt beim Menschen.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">3</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p3.t">Automatisch korrigieren nur bei genau einem richtigen Wert</div>
+            <p class="part-d" data-i18n="thesis.p3.d">Ein Massnahmenstart am Wochenende hat genau eine Korrektur, also wird er verschoben. Ein Fälligkeitsdatum vor dem eigenen Start hat mehrere mögliche, also wird nur gemeldet, nie geraten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="pipeline reveal">
       <div class="stage">
         <div class="k" data-i18n="stage1.k">Grundlage</div>
@@ -762,7 +790,7 @@
 
 <footer>
   <div class="wrap">
-    <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).</p>
+    <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.</p>
     <span style="display:flex; align-items:center; gap:18px;">
       <a href="profil/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.profile">Berufliches Profil →</a>
       <span class="fbrand">Giw Aalam</span>
@@ -840,6 +868,14 @@
       "case.eyebrow": "Hintergrund · Case Study",
       "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
       "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.",
+      "thesis.h3": "Drei Prinzipien aus der CAS-Transferarbeit",
+      "thesis.intro": "Ablauf und Prüflogik sind in einer Transferarbeit an der Berner Fachhochschule dokumentiert, begründet und mit 25 gezielten Tests abgesichert (2026).",
+      "thesis.p1.t": "Ein weiterer KI-Durchlauf ist keine unabhängige Prüfung",
+      "thesis.p1.d": "Pass 2 und Pass 3 stammen aus derselben Modellklasse wie Pass 1 und tragen dieselbe Unsicherheit. Die Forschung zeigt: Ein Modell verifiziert eine Lösung nicht zuverlässiger, als es sie erzeugt.",
+      "thesis.p2.t": "Generierung und Verifikation trennen",
+      "thesis.p2.d": "Die KI übernimmt, was Kontextverständnis braucht. Formal eindeutig entscheidbare Anforderungen — Chronologie, Prozessreihenfolge, Vollständigkeit — prüft klassische Softwarelogik. Was beides nicht ist, bleibt beim Menschen.",
+      "thesis.p3.t": "Automatisch korrigieren nur bei genau einem richtigen Wert",
+      "thesis.p3.d": "Ein Massnahmenstart am Wochenende hat genau eine Korrektur, also wird er verschoben. Ein Fälligkeitsdatum vor dem eigenen Start hat mehrere mögliche, also wird nur gemeldet, nie geraten.",
       "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.",
       "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.",
       "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
@@ -970,7 +1006,7 @@
       "kontakt.form.message": "Nachricht",
       "kontakt.form.submit": "Nachricht senden →",
       "kontakt.form.note": "Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.",
-      "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten).",
+      "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.",
       "footer.profile": "Berufliches Profil →"
     },
     en: {
@@ -1023,6 +1059,14 @@
       "case.eyebrow": "Background · Case Study",
       "case.h2": "What happens when you don't just trust an AI analysis",
       "case.lead": "Vendor Data Management triggers a pipeline as soon as a contract is 60 days from expiry: it reads the documented data state, has an LLM (Gemini) draft an analysis report and action plan from it — then checks that result back against the same data, using pure program logic.",
+      "thesis.h3": "Three principles from the CAS thesis",
+      "thesis.intro": "The pipeline and its checks are documented, reasoned through, and backed by 25 targeted tests in a thesis at Bern University of Applied Sciences (2026).",
+      "thesis.p1.t": "Another AI pass is not independent verification",
+      "thesis.p1.d": "Pass 2 and Pass 3 come from the same model class as Pass 1 and carry the same uncertainty. Research shows a model does not verify a solution more reliably than it produces one.",
+      "thesis.p2.t": "Separate generation from verification",
+      "thesis.p2.d": "The AI handles what needs context. Formally decidable requirements — chronology, process order, completeness — are checked by plain software logic. What is neither stays with a human.",
+      "thesis.p3.t": "Auto-correct only when exactly one value is right",
+      "thesis.p3.d": "A measure starting on a weekend has exactly one fix, so it gets moved. A due date before its own start has several possible fixes, so it is only flagged, never guessed.",
       "stage1.k": "Foundation", "stage1.t": "Reality Snapshot", "stage1.d": "Structured JSON from contract, licenses, clauses, privileges — no free text.",
       "stage2.k": "Pass 1", "stage2.t": "Analysis", "stage2.d": "LLM drafts the report, risk classification, and action plan.",
       "stage3.k": "Pass 2", "stage3.t": "Data QA", "stage3.d": "A second, independent model call cross-checks figures &amp; status against the snapshot.",
@@ -1153,7 +1197,7 @@
       "kontakt.form.message": "Message",
       "kontakt.form.submit": "Send message →",
       "kontakt.form.note": "Opens your email app with a pre-filled message.",
-      "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data).",
+      "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data). No error or correction rate is stated, on purpose: without an independent reference dataset such a figure would not be meaningful.",
       "footer.profile": "Professional Profile →"
     }
   };
