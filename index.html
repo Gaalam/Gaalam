@@ -450,6 +450,20 @@
       <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
     </div>
 
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="baseline.eyebrow">Baseline-Kriterien</p>
+      <h3 data-i18n="baseline.h3">Auszug aus den geprüften Kriterien</h3>
+      <p data-i18n="baseline.intro">Neben der Vertragsklausel-Baseline führt die Software fünf Compliance-Kataloge: DSGVO (13 Kriterien), revidiertes Schweizer DSG (11), IT-Sicherheit (14), ISO/IEC 42001 (10) und EU-KI-Verordnung (8). Jedes Kriterium hat eine ID, eine Rechtsgrundlage, ein wörtliches Gesetzeszitat und eine daraus abgeleitete Anforderung.</p>
+      <div class="layers" style="max-width:640px;">
+        <div class="layer"><div class="lt" data-i18n="baseline.1.t">DSGVO-04 · Auftragsverarbeitungsvertrag — Art. 28 DSGVO</div><div class="ld" data-i18n="baseline.1.d">Vor Verarbeitungsbeginn muss ein schriftlicher AVV vorliegen; fehlt er, ist die Verarbeitung unzulässig.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.2.t">DSGVO-06 · Technisch-organisatorische Massnahmen — Art. 32 DSGVO</div><div class="ld" data-i18n="baseline.2.d">Dem Risiko angemessene Massnahmen (Verschlüsselung, Pseudonymisierung, Verfügbarkeit) sind umzusetzen und zu dokumentieren.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.3.t">DSGVO-10 · Löschkonzept und Aufbewahrungsfristen — Art. 5 &amp; Art. 17 DSGVO</div><div class="ld" data-i18n="baseline.3.d">Daten sind zu löschen, sobald der Zweck entfällt; ein dokumentiertes Löschkonzept muss vorliegen.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.4.t">DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II</div><div class="ld" data-i18n="baseline.4.d">Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.5.t">SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline</div><div class="ld" data-i18n="baseline.5.d">Eingesetzte Subunternehmer und deren Datenzugriffe sind zu erfassen und nachvollziehbar zu dokumentieren.</div></div>
+      </div>
+      <p data-i18n="baseline.note" style="margin-top:14px;">Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.</p>
+    </div>
+
     <div class="compare reveal">
       <p class="eyebrow" style="margin-bottom:8px;" data-i18n="compare.eyebrow">Der Unterschied</p>
       <h3 data-i18n="compare.h3">Was klassisches Vertragsmanagement nicht abbildet</h3>
@@ -940,6 +954,20 @@
       "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
       "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
       "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
+      "baseline.eyebrow": "Baseline-Kriterien",
+      "baseline.h3": "Auszug aus den geprüften Kriterien",
+      "baseline.intro": "Neben der Vertragsklausel-Baseline führt die Software fünf Compliance-Kataloge: DSGVO (13 Kriterien), revidiertes Schweizer DSG (11), IT-Sicherheit (14), ISO/IEC 42001 (10) und EU-KI-Verordnung (8). Jedes Kriterium hat eine ID, eine Rechtsgrundlage, ein wörtliches Gesetzeszitat und eine daraus abgeleitete Anforderung.",
+      "baseline.1.t": "DSGVO-04 · Auftragsverarbeitungsvertrag — Art. 28 DSGVO",
+      "baseline.1.d": "Vor Verarbeitungsbeginn muss ein schriftlicher AVV vorliegen; fehlt er, ist die Verarbeitung unzulässig.",
+      "baseline.2.t": "DSGVO-06 · Technisch-organisatorische Massnahmen — Art. 32 DSGVO",
+      "baseline.2.d": "Dem Risiko angemessene Massnahmen (Verschlüsselung, Pseudonymisierung, Verfügbarkeit) sind umzusetzen und zu dokumentieren.",
+      "baseline.3.t": "DSGVO-10 · Löschkonzept und Aufbewahrungsfristen — Art. 5 &amp; Art. 17 DSGVO",
+      "baseline.3.d": "Daten sind zu löschen, sobald der Zweck entfällt; ein dokumentiertes Löschkonzept muss vorliegen.",
+      "baseline.4.t": "DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II",
+      "baseline.4.d": "Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.",
+      "baseline.5.t": "SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline",
+      "baseline.5.d": "Eingesetzte Subunternehmer und deren Datenzugriffe sind zu erfassen und nachvollziehbar zu dokumentieren.",
+      "baseline.note": "Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.",
       "compare.eyebrow": "Der Unterschied",
       "compare.h3": "Was klassisches Vertragsmanagement nicht abbildet",
       "compare.lead": "Vertragliche Lücken bei IT-Lieferungen und -Leistungen werden erst im Kontext von Compliance- und Security-Baselines sichtbar. Genau dabei helfen ein geeignetes Datenmodell und KI — die meisten Vertragsmanagement-Tools bieten aber nur das Vertragsdokument, ohne Verknüpfung zu Liefergegenständen, Zugriffsrechten und internen Zuständigkeiten.",
@@ -1136,6 +1164,20 @@
       "produkt.lead": "A desktop application that pulls vendor, contract, and license management out of exactly those spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
       "produkt.compliance": "Compliance here isn't a checkbox list — it's derived from exactly those stored fields. GDPR, EU AI Act, and ISO 42001 checks run through a tri-state aggregation (PASS / FAIL / UNCLEAR) instead of simple yes/no logic — a well-documented item must never mask an undocumented one. Every contract is also checked for whether anyone is actually named internally: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Data Protection Officer. Built for SMEs. Source code is currently private.",
       "produkt.swiss": "<b>For Swiss customers:</b> the same compliance logic can run against the (revised) Swiss Federal Act on Data Protection (FADP/DSG) instead of the GDPR — its own baseline criteria with the matching DSG articles, its own third-country adequacy list per Federal Council criteria (Art.&nbsp;16&ndash;17 DSG) instead of the EU/EEA check, and CHF as the base currency. Switchable per tenant, not two separate product versions.",
+      "baseline.eyebrow": "Baseline criteria",
+      "baseline.h3": "A sample of the checked criteria",
+      "baseline.intro": "Alongside the contract-clause baseline, the software maintains five compliance catalogs: GDPR (13 criteria), the revised Swiss FADP (11), IT security (14), ISO/IEC 42001 (10) and the EU AI Act (8). Each criterion has an ID, a legal basis, a verbatim legal citation and a derived requirement.",
+      "baseline.1.t": "GDPR-04 · Data processing agreement — Art. 28 GDPR",
+      "baseline.1.d": "A written DPA must be in place before processing starts; without it, processing is not permitted.",
+      "baseline.2.t": "GDPR-06 · Technical and organisational measures — Art. 32 GDPR",
+      "baseline.2.d": "Measures appropriate to the risk (encryption, pseudonymisation, availability) must be implemented and documented.",
+      "baseline.3.t": "GDPR-10 · Deletion concept and retention periods — Art. 5 &amp; Art. 17 GDPR",
+      "baseline.3.d": "Data must be deleted once its purpose ends; a documented deletion concept must exist.",
+      "baseline.4.t": "GDPR-13 · Data residency and processing location — Art. 44 GDPR / Schrems II",
+      "baseline.4.d": "Processing outside the EU/EEA requires a demonstrated valid transfer mechanism.",
+      "baseline.5.t": "SEC-09 · Subcontractor documentation — IT security baseline",
+      "baseline.5.d": "Subcontractors and their data access must be captured and documented in a traceable way.",
+      "baseline.note": "The status per criterion (met, not met, or unclear) is derived from the stored fields by rule-based logic, with no AI call. The full criterion text is available as a tooltip in the application.",
       "compare.eyebrow": "The Difference",
       "compare.h3": "What classic contract management doesn't cover",
       "compare.lead": "Contractual gaps in IT deliveries and services only become visible in the context of compliance and security baselines. That's exactly where the right data model and AI help — but most contract management tools only offer the contract document, with no link to the actual delivery items, access rights, and internal responsibilities.",
