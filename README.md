@@ -4,6 +4,8 @@ I build practical software at the intersection of **contracts, compliance, and A
 
 My focus: turning scattered vendor, contract, and license documents into a workflow teams can actually use **before deadlines and risks escalate**.
 
+**Website:** [aalam.ch](https://aalam.ch) — product page · [professional profile](https://aalam.ch/profil/)
+
 **Flagship project:** [**Vendor Data Management**](https://github.com/Gaalam/Vendor-Data-Management)
 
 ---
@@ -56,6 +58,8 @@ I’m open to:
 - pilot projects,
 - consulting/advisory conversations around contract/compliance tooling,
 - professional opportunities in software engineering where product ownership and applied AI matter.
+
+🌐 Website: [aalam.ch](https://aalam.ch)
 
 📫 Email: [gaalam@gmail.com](mailto:gaalam@gmail.com)
 
