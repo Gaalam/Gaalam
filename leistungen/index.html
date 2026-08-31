@@ -45,10 +45,15 @@
   header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:1000px; }
   .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site{ display:flex; align-items:center; }
   nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:18px; text-decoration:none; }
   nav.site a:hover, nav.site a[aria-current]{ color:var(--ink); }
   .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:18px; text-decoration:none; display:inline-block; }
   .nav-cta:hover{ background:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:18px; }
+  .lang-btn{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint); background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
   @media (max-width:620px){ nav.site a:not(.nav-cta){ display:none; } }
 
   .hero{ padding:52px 0 8px; }
@@ -84,10 +89,13 @@
   <div class="wrap">
     <a class="brand" href="/">Giw Aalam</a>
     <nav class="site">
-      <a href="/">Produkt</a>
-      <a href="/leistungen/" aria-current="page">Leistungen</a>
-      <a href="/profil/">Berufliches Profil</a>
-      <a class="nav-cta" href="mailto:gaalam@googlemail.com">Kontakt</a>
+      <a href="/" data-i18n="nav.produkt">Produkt</a>
+      <a href="/leistungen/" aria-current="page" data-i18n="nav.leistungen">Leistungen</a>
+      <a href="/profil/" data-i18n="nav.profil">Berufliches Profil</a>
+      <a class="nav-cta" href="mailto:gaalam@googlemail.com" data-i18n="nav.kontakt">Kontakt</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
     </nav>
   </div>
 </header>
@@ -96,81 +104,81 @@
   <div class="wrap">
 
     <div class="hero">
-      <p class="eyebrow">Leistungen für Unternehmen</p>
-      <h1>Vertragsmanagement, Prozessautomatisierung und KI-Governance — für KMU in der Schweiz</h1>
-      <p class="lead">Als Projektmandat, Interim-Einsatz oder in Festanstellung. Ich strukturiere IT-Verträge und Lieferanten, unterstütze bei Ausschreibungen, automatisiere Prozesse und begleite die verantwortungsvolle Einführung von KI.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Leistungen für Unternehmen</p>
+      <h1 data-i18n="hero.h1">Vertragsmanagement, Prozessautomatisierung und KI-Governance — für KMU in der Schweiz</h1>
+      <p class="lead" data-i18n="hero.lead">Als Projektmandat, Interim-Einsatz oder in Festanstellung. Ich strukturiere IT-Verträge und Lieferanten, unterstütze bei Ausschreibungen, automatisiere Prozesse und begleite die verantwortungsvolle Einführung von KI.</p>
       <div class="role">
-        <span class="pill">Wohnhaft in Belp BE</span>
-        <span class="pill">schweizweit reise- und umzugsbereit</span>
-        <span class="pill">kurzfristig verfügbar</span>
+        <span class="pill" data-i18n="hero.pill1">Wohnhaft in Belp BE</span>
+        <span class="pill" data-i18n="hero.pill2">schweizweit reise- und umzugsbereit</span>
+        <span class="pill" data-i18n="hero.pill3">kurzfristig verfügbar</span>
       </div>
     </div>
 
     <section class="svc">
-      <span class="eyebrow">Kundenseite</span>
-      <h2>IT-Lieferanten- und Vertragsmanagement — Beratung und Interim</h2>
-      <p>IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern: Kündigungs- und Verlängerungsfristen im Blick behalten, Verantwortlichkeiten klären, Vertragsverhandlungen führen und Transparenz über die gesamte Vertragslandschaft schaffen. Auch als <strong>Interim IT Vendor Manager</strong>, wenn eine Position kurzfristig zu überbrücken ist.</p>
+      <span class="eyebrow" data-i18n="s1.eyebrow">Kundenseite</span>
+      <h2 data-i18n="s1.h2">IT-Lieferanten- und Vertragsmanagement — Beratung und Interim</h2>
+      <p data-i18n="s1.p">IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern: Kündigungs- und Verlängerungsfristen im Blick behalten, Verantwortlichkeiten klären, Vertragsverhandlungen führen und Transparenz über die gesamte Vertragslandschaft schaffen. Auch als <strong>Interim IT Vendor Manager</strong>, wenn eine Position kurzfristig zu überbrücken ist.</p>
       <ul>
-        <li>Aufbau einer strukturierten Vertrags-, Lizenz- und Lieferantenübersicht</li>
-        <li>Fristen- und Kündigungsmanagement, damit keine automatische Verlängerung übersehen wird</li>
-        <li>Rollen und Zuständigkeiten je Vertrag: Contract Owner, Legal, Datenschutz, Vendor Manager</li>
-        <li>Vorbereitung von Verhandlungen und Lieferantenbewertungen</li>
+        <li data-i18n="s1.li1">Aufbau einer strukturierten Vertrags-, Lizenz- und Lieferantenübersicht</li>
+        <li data-i18n="s1.li2">Fristen- und Kündigungsmanagement, damit keine automatische Verlängerung übersehen wird</li>
+        <li data-i18n="s1.li3">Rollen und Zuständigkeiten je Vertrag: Contract Owner, Legal, Datenschutz, Vendor Manager</li>
+        <li data-i18n="s1.li4">Vorbereitung von Verhandlungen und Lieferantenbewertungen</li>
       </ul>
-      <p class="proof">Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region (Lowell); Aufbau der Vertrags- und Lieferantentransparenz, Optimierung des Vendor-Split.</p>
+      <p class="proof" data-i18n="s1.proof">Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region (Lowell); Aufbau der Vertrags- und Lieferantentransparenz, Optimierung des Vendor-Split.</p>
     </section>
 
     <section class="svc">
-      <span class="eyebrow">Anbieterseite</span>
-      <h2>Bid Management und Angebotsunterstützung</h2>
-      <p>Ausschreibungen beantworten: kundenspezifische IT-Lösungen entwickeln, kalkulieren und verständlich beschreiben, im Zusammenspiel von Fachbereich, Vertrieb, Legal und Controlling. Aufsetzen und Steuern des Angebotsprozesses, damit Termine und Qualität stimmen.</p>
+      <span class="eyebrow" data-i18n="s2.eyebrow">Anbieterseite</span>
+      <h2 data-i18n="s2.h2">Bid Management und Angebotsunterstützung</h2>
+      <p data-i18n="s2.p">Ausschreibungen beantworten: kundenspezifische IT-Lösungen entwickeln, kalkulieren und verständlich beschreiben, im Zusammenspiel von Fachbereich, Vertrieb, Legal und Controlling. Aufsetzen und Steuern des Angebotsprozesses, damit Termine und Qualität stimmen.</p>
       <ul>
-        <li>Analyse der Ausschreibung, Angebotsstrategie, Klärung offener Punkte mit dem Kunden</li>
-        <li>Lösungsdesign und Kalkulation gemeinsam mit den Fachbereichen</li>
-        <li>Verständliche, prüfbare Angebotstexte; Koordination von Legal- und Controlling-Freigaben</li>
-        <li>Auch in regulierten Branchen und für öffentlich-rechtliche Ausschreibungen</li>
+        <li data-i18n="s2.li1">Analyse der Ausschreibung, Angebotsstrategie, Klärung offener Punkte mit dem Kunden</li>
+        <li data-i18n="s2.li2">Lösungsdesign und Kalkulation gemeinsam mit den Fachbereichen</li>
+        <li data-i18n="s2.li3">Verständliche, prüfbare Angebotstexte; Koordination von Legal- und Controlling-Freigaben</li>
+        <li data-i18n="s2.li4">Auch in regulierten Branchen und für öffentlich-rechtliche Ausschreibungen</li>
       </ul>
-      <p class="proof">Belegt durch: rund vier Jahre Bid Management (RUAG Defence, Avitech), APMP-zertifiziert (Association of Proposal Management Professionals), Erfahrung in Aviation, Defence und Cybersecurity.</p>
+      <p class="proof" data-i18n="s2.proof">Belegt durch: rund vier Jahre Bid Management (RUAG Defence, Avitech), APMP-zertifiziert (Association of Proposal Management Professionals), Erfahrung in Aviation, Defence und Cybersecurity.</p>
     </section>
 
     <section class="svc">
-      <span class="eyebrow">KMU</span>
-      <h2>Prozessautomatisierung und Digitalisierung für KMU</h2>
-      <p>Arbeitsabläufe und Systeme analysieren, eine pragmatische Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten. Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Auswertungen und Reports auf verlässliche Grundlagen stellen.</p>
+      <span class="eyebrow" data-i18n="s3.eyebrow">KMU</span>
+      <h2 data-i18n="s3.h2">Prozessautomatisierung und Digitalisierung für KMU</h2>
+      <p data-i18n="s3.p">Arbeitsabläufe und Systeme analysieren, eine pragmatische Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten. Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Auswertungen und Reports auf verlässliche Grundlagen stellen.</p>
       <ul>
-        <li>Analyse bestehender Abläufe und Systeme, Priorisierung nach Nutzen und Aufwand</li>
-        <li>Automatisierung wiederkehrender administrativer Aufgaben und Auswertungen</li>
-        <li>Ablösung von Insellösungen und Altsystemen</li>
-        <li>Einführung neuer Werkzeuge inklusive Schulung der Anwenderinnen und Anwender</li>
+        <li data-i18n="s3.li1">Analyse bestehender Abläufe und Systeme, Priorisierung nach Nutzen und Aufwand</li>
+        <li data-i18n="s3.li2">Automatisierung wiederkehrender administrativer Aufgaben und Auswertungen</li>
+        <li data-i18n="s3.li3">Ablösung von Insellösungen und Altsystemen</li>
+        <li data-i18n="s3.li4">Einführung neuer Werkzeuge inklusive Schulung der Anwenderinnen und Anwender</li>
       </ul>
-      <p class="proof">Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen, freigegeben von Geschäftsleitung und CEO; Automatisierung im BI-Reporting als Business Data Analyst (SQL, Oracle PL/SQL).</p>
+      <p class="proof" data-i18n="s3.proof">Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen, freigegeben von Geschäftsleitung und CEO; Automatisierung im BI-Reporting als Business Data Analyst (SQL, Oracle PL/SQL).</p>
     </section>
 
     <section class="svc">
-      <span class="eyebrow">ISO/IEC 42001 · EU AI Act</span>
-      <h2>KI-Governance und kontrollierte KI-Einführung</h2>
-      <p>KI-Anwendungsfälle mit den Fachbereichen finden und verantwortungsvoll einführen: Nutzen, Wirtschaftlichkeit und Regelkonformität zusammendenken. ISO/IEC 42001 und die Anforderungen des EU AI Act für ein KMU auf ein praktikables Mass bringen. Kontrollierter KI-Einsatz heisst: nachvollziehbar und mit deterministischer Absicherung dort, wo Anforderungen eindeutig prüfbar sind.</p>
+      <span class="eyebrow" data-i18n="s4.eyebrow">ISO/IEC 42001 · EU AI Act</span>
+      <h2 data-i18n="s4.h2">KI-Governance und kontrollierte KI-Einführung</h2>
+      <p data-i18n="s4.p">KI-Anwendungsfälle mit den Fachbereichen finden und verantwortungsvoll einführen: Nutzen, Wirtschaftlichkeit und Regelkonformität zusammendenken. ISO/IEC 42001 und die Anforderungen des EU AI Act für ein KMU auf ein praktikables Mass bringen. Kontrollierter KI-Einsatz heisst: nachvollziehbar und mit deterministischer Absicherung dort, wo Anforderungen eindeutig prüfbar sind.</p>
       <ul>
-        <li>Identifikation und Bewertung von KI- und Automationspotenzialen</li>
-        <li>Leichtgewichtiges KI-Governance-Framework in Anlehnung an ISO/IEC 42001</li>
-        <li>Einordnung nach EU AI Act, Zusammenspiel mit revidiertem Datenschutzgesetz und DSGVO</li>
-        <li>Prüf- und Kontrollmechanismen, damit KI-Ergebnisse überprüfbar bleiben</li>
+        <li data-i18n="s4.li1">Identifikation und Bewertung von KI- und Automationspotenzialen</li>
+        <li data-i18n="s4.li2">Leichtgewichtiges KI-Governance-Framework in Anlehnung an ISO/IEC 42001</li>
+        <li data-i18n="s4.li3">Einordnung nach EU AI Act, Zusammenspiel mit revidiertem Datenschutzgesetz und DSGVO</li>
+        <li data-i18n="s4.li4">Prüf- und Kontrollmechanismen, damit KI-Ergebnisse überprüfbar bleiben</li>
       </ul>
-      <p class="proof">Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt Künstliche Intelligenz).</p>
+      <p class="proof" data-i18n="s4.proof">Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt Künstliche Intelligenz).</p>
     </section>
 
     <section class="svc">
-      <span class="eyebrow">Zusammenarbeit</span>
-      <h2>Mandat, Interim oder Festanstellung</h2>
-      <p>Je nachdem, was zur Aufgabe passt: ein abgegrenztes Projektmandat, ein Interim-Einsatz zur Überbrückung, oder eine Festanstellung. Wohnhaft in Belp BE, schweizweit reise- und umzugsbereit, kurzfristig verfügbar.</p>
+      <span class="eyebrow" data-i18n="s5.eyebrow">Zusammenarbeit</span>
+      <h2 data-i18n="s5.h2">Mandat, Interim oder Festanstellung</h2>
+      <p data-i18n="s5.p">Je nachdem, was zur Aufgabe passt: ein abgegrenztes Projektmandat, ein Interim-Einsatz zur Überbrückung, oder eine Festanstellung. Wohnhaft in Belp BE, schweizweit reise- und umzugsbereit, kurzfristig verfügbar.</p>
     </section>
 
     <div class="cta">
-      <h2>Kontakt aufnehmen</h2>
-      <p style="margin-bottom:16px;">Eine kurze Beschreibung der Ausgangslage genügt für ein erstes Gespräch.</p>
+      <h2 data-i18n="cta.h2">Kontakt aufnehmen</h2>
+      <p style="margin-bottom:16px;" data-i18n="cta.p">Eine kurze Beschreibung der Ausgangslage genügt für ein erstes Gespräch.</p>
       <a class="btn-primary" href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a>
       <div class="cta-links">
-        <a href="/profil/">Ausführliches berufliches Profil →</a>
-        <a href="/">Zur Software Vendor Data Management →</a>
+        <a href="/profil/" data-i18n="cta.link1">Ausführliches berufliches Profil →</a>
+        <a href="/" data-i18n="cta.link2">Zur Software Vendor Data Management →</a>
       </div>
     </div>
 
@@ -180,13 +188,153 @@
 <footer>
   <div class="wrap">
     <span>
-      <a href="/">Produkt</a> ·
-      <a href="/profil/">Berufliches Profil</a> ·
-      <a href="/rechtliches/">Impressum &amp; Datenschutz</a>
+      <a href="/" data-i18n="footer.produkt">Produkt</a> ·
+      <a href="/profil/" data-i18n="footer.profil">Berufliches Profil</a> ·
+      <a href="/rechtliches/" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
     </span>
     <span class="fbrand">Giw Aalam</span>
   </div>
 </footer>
+
+<script>
+  const I18N = {
+    de: {
+      title: "Leistungen: Vertragsmanagement, Prozessautomatisierung & KI-Governance | Giw Aalam",
+      description: "Unterstützung für KMU in der Schweiz: IT-Lieferanten- und Vertragsmanagement (auch Interim), Bid Management und Angebotsunterstützung, Prozessautomatisierung, kontrollierte KI-Einführung nach ISO/IEC 42001.",
+      "nav.produkt": "Produkt",
+      "nav.leistungen": "Leistungen",
+      "nav.profil": "Berufliches Profil",
+      "nav.kontakt": "Kontakt",
+      "hero.eyebrow": "Leistungen für Unternehmen",
+      "hero.h1": "Vertragsmanagement, Prozessautomatisierung und KI-Governance — für KMU in der Schweiz",
+      "hero.lead": "Als Projektmandat, Interim-Einsatz oder in Festanstellung. Ich strukturiere IT-Verträge und Lieferanten, unterstütze bei Ausschreibungen, automatisiere Prozesse und begleite die verantwortungsvolle Einführung von KI.",
+      "hero.pill1": "Wohnhaft in Belp BE",
+      "hero.pill2": "schweizweit reise- und umzugsbereit",
+      "hero.pill3": "kurzfristig verfügbar",
+      "s1.eyebrow": "Kundenseite",
+      "s1.h2": "IT-Lieferanten- und Vertragsmanagement — Beratung und Interim",
+      "s1.p": "IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern: Kündigungs- und Verlängerungsfristen im Blick behalten, Verantwortlichkeiten klären, Vertragsverhandlungen führen und Transparenz über die gesamte Vertragslandschaft schaffen. Auch als <strong>Interim IT Vendor Manager</strong>, wenn eine Position kurzfristig zu überbrücken ist.",
+      "s1.li1": "Aufbau einer strukturierten Vertrags-, Lizenz- und Lieferantenübersicht",
+      "s1.li2": "Fristen- und Kündigungsmanagement, damit keine automatische Verlängerung übersehen wird",
+      "s1.li3": "Rollen und Zuständigkeiten je Vertrag: Contract Owner, Legal, Datenschutz, Vendor Manager",
+      "s1.li4": "Vorbereitung von Verhandlungen und Lieferantenbewertungen",
+      "s1.proof": "Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region (Lowell); Aufbau der Vertrags- und Lieferantentransparenz, Optimierung des Vendor-Split.",
+      "s2.eyebrow": "Anbieterseite",
+      "s2.h2": "Bid Management und Angebotsunterstützung",
+      "s2.p": "Ausschreibungen beantworten: kundenspezifische IT-Lösungen entwickeln, kalkulieren und verständlich beschreiben, im Zusammenspiel von Fachbereich, Vertrieb, Legal und Controlling. Aufsetzen und Steuern des Angebotsprozesses, damit Termine und Qualität stimmen.",
+      "s2.li1": "Analyse der Ausschreibung, Angebotsstrategie, Klärung offener Punkte mit dem Kunden",
+      "s2.li2": "Lösungsdesign und Kalkulation gemeinsam mit den Fachbereichen",
+      "s2.li3": "Verständliche, prüfbare Angebotstexte; Koordination von Legal- und Controlling-Freigaben",
+      "s2.li4": "Auch in regulierten Branchen und für öffentlich-rechtliche Ausschreibungen",
+      "s2.proof": "Belegt durch: rund vier Jahre Bid Management (RUAG Defence, Avitech), APMP-zertifiziert (Association of Proposal Management Professionals), Erfahrung in Aviation, Defence und Cybersecurity.",
+      "s3.eyebrow": "KMU",
+      "s3.h2": "Prozessautomatisierung und Digitalisierung für KMU",
+      "s3.p": "Arbeitsabläufe und Systeme analysieren, eine pragmatische Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten. Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Auswertungen und Reports auf verlässliche Grundlagen stellen.",
+      "s3.li1": "Analyse bestehender Abläufe und Systeme, Priorisierung nach Nutzen und Aufwand",
+      "s3.li2": "Automatisierung wiederkehrender administrativer Aufgaben und Auswertungen",
+      "s3.li3": "Ablösung von Insellösungen und Altsystemen",
+      "s3.li4": "Einführung neuer Werkzeuge inklusive Schulung der Anwenderinnen und Anwender",
+      "s3.proof": "Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen, freigegeben von Geschäftsleitung und CEO; Automatisierung im BI-Reporting als Business Data Analyst (SQL, Oracle PL/SQL).",
+      "s4.eyebrow": "ISO/IEC 42001 · EU AI Act",
+      "s4.h2": "KI-Governance und kontrollierte KI-Einführung",
+      "s4.p": "KI-Anwendungsfälle mit den Fachbereichen finden und verantwortungsvoll einführen: Nutzen, Wirtschaftlichkeit und Regelkonformität zusammendenken. ISO/IEC 42001 und die Anforderungen des EU AI Act für ein KMU auf ein praktikables Mass bringen. Kontrollierter KI-Einsatz heisst: nachvollziehbar und mit deterministischer Absicherung dort, wo Anforderungen eindeutig prüfbar sind.",
+      "s4.li1": "Identifikation und Bewertung von KI- und Automationspotenzialen",
+      "s4.li2": "Leichtgewichtiges KI-Governance-Framework in Anlehnung an ISO/IEC 42001",
+      "s4.li3": "Einordnung nach EU AI Act, Zusammenspiel mit revidiertem Datenschutzgesetz und DSGVO",
+      "s4.li4": "Prüf- und Kontrollmechanismen, damit KI-Ergebnisse überprüfbar bleiben",
+      "s4.proof": "Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt Künstliche Intelligenz).",
+      "s5.eyebrow": "Zusammenarbeit",
+      "s5.h2": "Mandat, Interim oder Festanstellung",
+      "s5.p": "Je nachdem, was zur Aufgabe passt: ein abgegrenztes Projektmandat, ein Interim-Einsatz zur Überbrückung, oder eine Festanstellung. Wohnhaft in Belp BE, schweizweit reise- und umzugsbereit, kurzfristig verfügbar.",
+      "cta.h2": "Kontakt aufnehmen",
+      "cta.p": "Eine kurze Beschreibung der Ausgangslage genügt für ein erstes Gespräch.",
+      "cta.link1": "Ausführliches berufliches Profil →",
+      "cta.link2": "Zur Software Vendor Data Management →",
+      "footer.produkt": "Produkt",
+      "footer.profil": "Berufliches Profil",
+      "footer.legal": "Impressum & Datenschutz"
+    },
+    en: {
+      title: "Services: contract management, process automation & AI governance | Giw Aalam",
+      description: "Support for SMEs in Switzerland: IT supplier and contract management (interim too), bid management and proposal support, process automation, controlled AI adoption in line with ISO/IEC 42001.",
+      "nav.produkt": "Product",
+      "nav.leistungen": "Services",
+      "nav.profil": "Professional profile",
+      "nav.kontakt": "Contact",
+      "hero.eyebrow": "Services for companies",
+      "hero.h1": "Contract management, process automation and AI governance — for SMEs in Switzerland",
+      "hero.lead": "As a project engagement, interim role or permanent position. I structure IT contracts and suppliers, support you through tenders, automate processes and guide the responsible adoption of AI.",
+      "hero.pill1": "Based in Belp BE",
+      "hero.pill2": "willing to travel and relocate within Switzerland",
+      "hero.pill3": "available at short notice",
+      "s1.eyebrow": "Client side",
+      "s1.h2": "IT supplier and contract management — advisory and interim",
+      "s1.p": "Structure and steer IT contracts, licenses and suppliers: keep notice and renewal deadlines in view, clarify responsibilities, run contract negotiations and create transparency across the whole contract landscape. Also as an <strong>interim IT vendor manager</strong> when a role needs to be bridged at short notice.",
+      "s1.li1": "Build a structured overview of contracts, licenses and suppliers",
+      "s1.li2": "Deadline and termination management so no auto-renewal is missed",
+      "s1.li3": "Roles and responsibilities per contract: contract owner, legal, data protection, vendor manager",
+      "s1.li4": "Preparation of negotiations and supplier assessments",
+      "s1.proof": "Track record: IT vendor manager for 16 companies across the DACH region (Lowell); built contract and supplier transparency, optimised the vendor split.",
+      "s2.eyebrow": "Provider side",
+      "s2.h2": "Bid management and proposal support",
+      "s2.p": "Respond to tenders: design, cost and clearly describe customer-specific IT solutions, working across delivery, sales, legal and controlling. Set up and run the proposal process so deadlines and quality hold.",
+      "s2.li1": "Analyse the tender, set the bid strategy, clarify open points with the customer",
+      "s2.li2": "Solution design and costing together with the delivery teams",
+      "s2.li3": "Clear, verifiable proposal text; coordination of legal and controlling sign-offs",
+      "s2.li4": "Including regulated industries and public-sector tenders",
+      "s2.proof": "Track record: around four years of bid management (RUAG Defence, Avitech), APMP-certified (Association of Proposal Management Professionals), experience in aviation, defence and cybersecurity.",
+      "s3.eyebrow": "SME",
+      "s3.h2": "Process automation and digitalisation for SMEs",
+      "s3.p": "Analyse workflows and systems, develop a pragmatic digitalisation strategy and see it through to delivery. Automate recurring tasks, retire legacy systems, put analysis and reports on a reliable footing.",
+      "s3.li1": "Analyse existing workflows and systems, prioritise by value and effort",
+      "s3.li2": "Automate recurring administrative tasks and analysis",
+      "s3.li3": "Replace point solutions and legacy systems",
+      "s3.li4": "Introduce new tools, including training the people using them",
+      "s3.proof": "Track record: IT and digitalisation strategy for Messe Essen, approved by management and CEO; BI reporting automation as a business data analyst (SQL, Oracle PL/SQL).",
+      "s4.eyebrow": "ISO/IEC 42001 · EU AI Act",
+      "s4.h2": "AI governance and controlled AI adoption",
+      "s4.p": "Find AI use cases with the business units and adopt them responsibly: weigh value, economics and compliance together. Bring ISO/IEC 42001 and the EU AI Act requirements down to a workable level for an SME. Controlled use of AI means: traceable, with deterministic safeguards wherever requirements are unambiguously checkable.",
+      "s4.li1": "Identify and assess AI and automation potential",
+      "s4.li2": "A lightweight AI governance framework aligned with ISO/IEC 42001",
+      "s4.li3": "Classification under the EU AI Act, interplay with the revised Swiss FADP and the GDPR",
+      "s4.li4": "Checks and controls that keep AI output verifiable",
+      "s4.proof": "Track record: own software project with an LLM pipeline and a deterministic validation layer; ISO/IEC 42001 Foundation, Certified Risk Manager (TÜV), CAS Frontier Technologies in Finance (AI focus).",
+      "s5.eyebrow": "Working together",
+      "s5.h2": "Engagement, interim or permanent",
+      "s5.p": "Whatever fits the task: a scoped project engagement, an interim role to bridge a gap, or a permanent position. Based in Belp BE, willing to travel and relocate within Switzerland, available at short notice.",
+      "cta.h2": "Get in touch",
+      "cta.p": "A short description of the situation is enough for a first conversation.",
+      "cta.link1": "Full professional profile →",
+      "cta.link2": "The Vendor Data Management software →",
+      "footer.produkt": "Product",
+      "footer.profil": "Professional profile",
+      "footer.legal": "Imprint & privacy"
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
+</script>
 
 </body>
 </html>

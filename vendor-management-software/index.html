@@ -52,10 +52,15 @@
   header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:1000px; }
   .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site{ display:flex; align-items:center; }
   nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:18px; text-decoration:none; }
   nav.site a:hover{ color:var(--ink); }
   .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:18px; text-decoration:none; display:inline-block; }
   .nav-cta:hover{ background:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:18px; }
+  .lang-btn{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint); background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
   @media (max-width:620px){ nav.site a:not(.nav-cta){ display:none; } }
 
   main{ padding:48px 0 20px; }
@@ -79,69 +84,72 @@
   <div class="wrap">
     <a class="brand" href="/">Vendor Data Management</a>
     <nav class="site">
-      <a href="/">Produkt</a>
-      <a href="/leistungen/">Leistungen</a>
-      <a href="/profil/">Berufliches Profil</a>
-      <a class="nav-cta" href="/#kontakt">Erstgespräch</a>
+      <a href="/" data-i18n="nav.produkt">Produkt</a>
+      <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a>
+      <a href="/profil/" data-i18n="nav.profil">Berufliches Profil</a>
+      <a class="nav-cta" href="/#kontakt" data-i18n="nav.cta">Erstgespräch</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
     </nav>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <p class="eyebrow">Ratgeber</p>
-    <h1>Vendor-Management-Software für KMU — on-premise statt SaaS</h1>
-    <p class="lead">Vendor-Management-Software bündelt Verträge, Lizenzen und Lieferanten an einem Ort, überwacht Fristen und macht Verantwortlichkeiten und Compliance-Lücken sichtbar. Die meisten Angebote sind Cloud-Dienste. Für KMU, die ihre Vertrags- und Lieferantendaten nicht bei einem weiteren Anbieter ablegen wollen, gibt es eine Alternative.</p>
+    <p class="eyebrow" data-i18n="eyebrow">Ratgeber</p>
+    <h1 data-i18n="h1">Vendor-Management-Software für KMU — on-premise statt SaaS</h1>
+    <p class="lead" data-i18n="lead">Vendor-Management-Software bündelt Verträge, Lizenzen und Lieferanten an einem Ort, überwacht Fristen und macht Verantwortlichkeiten und Compliance-Lücken sichtbar. Die meisten Angebote sind Cloud-Dienste. Für KMU, die ihre Vertrags- und Lieferantendaten nicht bei einem weiteren Anbieter ablegen wollen, gibt es eine Alternative.</p>
 
-    <h2>Was eine Vendor-Management-Software abdecken sollte</h2>
-    <p>Über eine reine Fristenliste hinaus geht es darum, den Zusammenhang zwischen Anbietern, Verträgen und Leistungen sichtbar zu machen:</p>
+    <h2 data-i18n="h2a">Was eine Vendor-Management-Software abdecken sollte</h2>
+    <p data-i18n="p.a">Über eine reine Fristenliste hinaus geht es darum, den Zusammenhang zwischen Anbietern, Verträgen und Leistungen sichtbar zu machen:</p>
     <ul>
-      <li><strong>Verträge und Fristen:</strong> Laufzeiten, Verlängerungs- und Kündigungsfristen, Formvorschriften</li>
-      <li><strong>Lizenzen und Services je Anbieter:</strong> was konkret geliefert wird, nicht nur das Vertragsdokument</li>
-      <li><strong>Verantwortlichkeiten:</strong> Contract Owner, Legal Counsel, Vendor Manager, Datenschutzbeauftragte je Vertrag</li>
-      <li><strong>Compliance:</strong> revidiertes Schweizer Datenschutzgesetz beziehungsweise DSGVO, EU AI Act, ISO/IEC 42001, abgeleitet aus den tatsächlich erfassten Daten</li>
-      <li><strong>Vollständigkeit:</strong> wo Informationen oder Zuständigkeiten fehlen, bevor daraus ein Problem wird</li>
-      <li><strong>Risiko bei auslaufenden Verträgen:</strong> rechtzeitig Analyse und Handlungsempfehlung</li>
+      <li data-i18n="a.li1"><strong>Verträge und Fristen:</strong> Laufzeiten, Verlängerungs- und Kündigungsfristen, Formvorschriften</li>
+      <li data-i18n="a.li2"><strong>Lizenzen und Services je Anbieter:</strong> was konkret geliefert wird, nicht nur das Vertragsdokument</li>
+      <li data-i18n="a.li3"><strong>Verantwortlichkeiten:</strong> Contract Owner, Legal Counsel, Vendor Manager, Datenschutzbeauftragte je Vertrag</li>
+      <li data-i18n="a.li4"><strong>Compliance:</strong> revidiertes Schweizer Datenschutzgesetz beziehungsweise DSGVO, EU AI Act, ISO/IEC 42001, abgeleitet aus den tatsächlich erfassten Daten</li>
+      <li data-i18n="a.li5"><strong>Vollständigkeit:</strong> wo Informationen oder Zuständigkeiten fehlen, bevor daraus ein Problem wird</li>
+      <li data-i18n="a.li6"><strong>Risiko bei auslaufenden Verträgen:</strong> rechtzeitig Analyse und Handlungsempfehlung</li>
     </ul>
 
-    <h2>Warum on-premise, ohne Cloud</h2>
-    <p>Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams. Sie müssen nicht in einer Multi-Tenant-Cloud liegen. Eine on-premise-Lösung hat für diesen Fall drei Vorteile:</p>
+    <h2 data-i18n="h2b">Warum on-premise, ohne Cloud</h2>
+    <p data-i18n="p.b">Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams. Sie müssen nicht in einer Multi-Tenant-Cloud liegen. Eine on-premise-Lösung hat für diesen Fall drei Vorteile:</p>
     <ul>
-      <li>Die Datenhaltung bleibt unter Kontrolle des Kunden: in-house oder bei einem Hosting-Provider der eigenen Wahl, nie auf einem Server des Software-Anbieters.</li>
-      <li>Keine zusätzliche Auftragsbearbeiter-Beziehung, die man selbst wieder dokumentieren und prüfen muss.</li>
-      <li>Strukturierte Exporte aus einer offenen relationalen Datenbank verhindern eine Abhängigkeit von einem einzelnen Anbieter oder Hosting-Dienst.</li>
+      <li data-i18n="b.li1">Die Datenhaltung bleibt unter Kontrolle des Kunden: in-house oder bei einem Hosting-Provider der eigenen Wahl, nie auf einem Server des Software-Anbieters.</li>
+      <li data-i18n="b.li2">Keine zusätzliche Auftragsbearbeiter-Beziehung, die man selbst wieder dokumentieren und prüfen muss.</li>
+      <li data-i18n="b.li3">Strukturierte Exporte aus einer offenen relationalen Datenbank verhindern eine Abhängigkeit von einem einzelnen Anbieter oder Hosting-Dienst.</li>
     </ul>
 
-    <h2>Für wen sich das eignet</h2>
-    <p>Eine schlanke, on-premise betriebene Vendor-Management-Software passt, wenn:</p>
+    <h2 data-i18n="h2c">Für wen sich das eignet</h2>
+    <p data-i18n="p.c">Eine schlanke, on-premise betriebene Vendor-Management-Software passt, wenn:</p>
     <ul>
-      <li>ein KMU oder ein kleines Team die IT-Verträge verantwortet, keine hundert gleichzeitigen Nutzer,</li>
-      <li>der Fokus auf IT-Verträgen, -Lizenzen und -Dienstleistern liegt, nicht auf dem gesamten Einkauf,</li>
-      <li>Datenschutz, Nachvollziehbarkeit und Datenhoheit einen hohen Stellenwert haben.</li>
+      <li data-i18n="c.li1">ein KMU oder ein kleines Team die IT-Verträge verantwortet, keine hundert gleichzeitigen Nutzer,</li>
+      <li data-i18n="c.li2">der Fokus auf IT-Verträgen, -Lizenzen und -Dienstleistern liegt, nicht auf dem gesamten Einkauf,</li>
+      <li data-i18n="c.li3">Datenschutz, Nachvollziehbarkeit und Datenhoheit einen hohen Stellenwert haben.</li>
     </ul>
 
     <div class="box">
-      <p class="lt">Vendor Data Management</p>
-      <p>Vendor Data Management ist eine solche Lösung: eine Desktop-Anwendung für IT-Vendor-, Vertrags- und Lizenzmanagement, mit einem Datenmodell Anbieter → Vertrag → Lizenz/Service, einem Vollständigkeits-Score und einer regelbasiert geprüften KI-Analyse für auslaufende Verträge. Die Daten bleiben in der eigenen Datenbank.</p>
-      <p style="margin-bottom:6px;"><a href="/">Zur Produktseite mit Screenshots und Fallstudie →</a></p>
+      <p class="lt" data-i18n="box.lt">Vendor Data Management</p>
+      <p data-i18n="box.p">Vendor Data Management ist eine solche Lösung: eine Desktop-Anwendung für IT-Vendor-, Vertrags- und Lizenzmanagement, mit einem Datenmodell Anbieter → Vertrag → Lizenz/Service, einem Vollständigkeits-Score und einer regelbasiert geprüften KI-Analyse für auslaufende Verträge. Die Daten bleiben in der eigenen Datenbank.</p>
+      <p style="margin-bottom:6px;"><a href="/" data-i18n="box.link">Zur Produktseite mit Screenshots und Fallstudie →</a></p>
     </div>
 
-    <h2>Häufige Fragen</h2>
+    <h2 data-i18n="h2d">Häufige Fragen</h2>
     <dl class="faq">
-      <dt>Läuft die Software in der Cloud?</dt>
-      <dd>Nein. Es ist eine Desktop-Anwendung; die Datenbank läuft auf der eigenen Infrastruktur, in-house oder bei einem Hosting-Provider der eigenen Wahl.</dd>
-      <dt>Ist die Software für die Schweiz geeignet?</dt>
-      <dd>Ja. Die Compliance-Prüfung läuft wahlweise gegen das revidierte Schweizer Datenschutzgesetz statt der DSGVO, mit eigener Drittstaaten-Angemessenheitsliste und CHF als Basiswährung.</dd>
-      <dt>Was kostet die Software?</dt>
-      <dd>Der Preis wird individuell vereinbart, der Einstieg erfolgt in der Regel über ein Pilotprojekt. Es gibt keinen öffentlichen Listenpreis.</dd>
-      <dt>Ist der Quellcode offen?</dt>
-      <dd>Nein, der Quellcode ist privat. Die Daten liegen jedoch in einer offenen relationalen Datenbank und lassen sich jederzeit strukturiert exportieren.</dd>
+      <dt data-i18n="faq.q1">Läuft die Software in der Cloud?</dt>
+      <dd data-i18n="faq.a1">Nein. Es ist eine Desktop-Anwendung; die Datenbank läuft auf der eigenen Infrastruktur, in-house oder bei einem Hosting-Provider der eigenen Wahl.</dd>
+      <dt data-i18n="faq.q2">Ist die Software für die Schweiz geeignet?</dt>
+      <dd data-i18n="faq.a2">Ja. Die Compliance-Prüfung läuft wahlweise gegen das revidierte Schweizer Datenschutzgesetz statt der DSGVO, mit eigener Drittstaaten-Angemessenheitsliste und CHF als Basiswährung.</dd>
+      <dt data-i18n="faq.q3">Was kostet die Software?</dt>
+      <dd data-i18n="faq.a3">Der Preis wird individuell vereinbart, der Einstieg erfolgt in der Regel über ein Pilotprojekt. Es gibt keinen öffentlichen Listenpreis.</dd>
+      <dt data-i18n="faq.q4">Ist der Quellcode offen?</dt>
+      <dd data-i18n="faq.a4">Nein, der Quellcode ist privat. Die Daten liegen jedoch in einer offenen relationalen Datenbank und lassen sich jederzeit strukturiert exportieren.</dd>
     </dl>
 
     <div class="cta">
-      <p class="lt" style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">Passt das zu Ihrer Situation?</p>
-      <p style="margin-bottom:16px;">Ein kurzes Erstgespräch klärt, ob Vendor Data Management für Sie sinnvoll ist.</p>
-      <a class="btn-primary" href="/#kontakt">Erstgespräch vereinbaren →</a>
+      <p class="lt" style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;" data-i18n="cta.lt">Passt das zu Ihrer Situation?</p>
+      <p style="margin-bottom:16px;" data-i18n="cta.p">Ein kurzes Erstgespräch klärt, ob Vendor Data Management für Sie sinnvoll ist.</p>
+      <a class="btn-primary" href="/#kontakt" data-i18n="cta.btn">Erstgespräch vereinbaren →</a>
     </div>
   </div>
 </main>
@@ -149,14 +157,138 @@
 <footer>
   <div class="wrap">
     <span>
-      <a href="/">Produkt</a> ·
-      <a href="/leistungen/">Leistungen</a> ·
-      <a href="/profil/">Berufliches Profil</a> ·
-      <a href="/rechtliches/">Impressum &amp; Datenschutz</a>
+      <a href="/" data-i18n="footer.produkt">Produkt</a> ·
+      <a href="/leistungen/" data-i18n="footer.leistungen">Leistungen</a> ·
+      <a href="/profil/" data-i18n="footer.profil">Berufliches Profil</a> ·
+      <a href="/rechtliches/" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
     </span>
     <span class="fbrand">Giw Aalam</span>
   </div>
 </footer>
+
+<script>
+  const I18N = {
+    de: {
+      title: "Vendor-Management-Software für KMU: on-premise statt SaaS | Vendor Data Management",
+      description: "Was Vendor-Management-Software für KMU leisten sollte und warum sich eine on-premise-Lösung ohne Cloud lohnt: Datenhoheit, revidiertes Schweizer Datenschutzgesetz, keine Abhängigkeit von einem einzelnen Hosting-Anbieter.",
+      "nav.produkt": "Produkt",
+      "nav.leistungen": "Leistungen",
+      "nav.profil": "Berufliches Profil",
+      "nav.cta": "Erstgespräch",
+      "eyebrow": "Ratgeber",
+      "h1": "Vendor-Management-Software für KMU — on-premise statt SaaS",
+      "lead": "Vendor-Management-Software bündelt Verträge, Lizenzen und Lieferanten an einem Ort, überwacht Fristen und macht Verantwortlichkeiten und Compliance-Lücken sichtbar. Die meisten Angebote sind Cloud-Dienste. Für KMU, die ihre Vertrags- und Lieferantendaten nicht bei einem weiteren Anbieter ablegen wollen, gibt es eine Alternative.",
+      "h2a": "Was eine Vendor-Management-Software abdecken sollte",
+      "p.a": "Über eine reine Fristenliste hinaus geht es darum, den Zusammenhang zwischen Anbietern, Verträgen und Leistungen sichtbar zu machen:",
+      "a.li1": "<strong>Verträge und Fristen:</strong> Laufzeiten, Verlängerungs- und Kündigungsfristen, Formvorschriften",
+      "a.li2": "<strong>Lizenzen und Services je Anbieter:</strong> was konkret geliefert wird, nicht nur das Vertragsdokument",
+      "a.li3": "<strong>Verantwortlichkeiten:</strong> Contract Owner, Legal Counsel, Vendor Manager, Datenschutzbeauftragte je Vertrag",
+      "a.li4": "<strong>Compliance:</strong> revidiertes Schweizer Datenschutzgesetz beziehungsweise DSGVO, EU AI Act, ISO/IEC 42001, abgeleitet aus den tatsächlich erfassten Daten",
+      "a.li5": "<strong>Vollständigkeit:</strong> wo Informationen oder Zuständigkeiten fehlen, bevor daraus ein Problem wird",
+      "a.li6": "<strong>Risiko bei auslaufenden Verträgen:</strong> rechtzeitig Analyse und Handlungsempfehlung",
+      "h2b": "Warum on-premise, ohne Cloud",
+      "p.b": "Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams. Sie müssen nicht in einer Multi-Tenant-Cloud liegen. Eine on-premise-Lösung hat für diesen Fall drei Vorteile:",
+      "b.li1": "Die Datenhaltung bleibt unter Kontrolle des Kunden: in-house oder bei einem Hosting-Provider der eigenen Wahl, nie auf einem Server des Software-Anbieters.",
+      "b.li2": "Keine zusätzliche Auftragsbearbeiter-Beziehung, die man selbst wieder dokumentieren und prüfen muss.",
+      "b.li3": "Strukturierte Exporte aus einer offenen relationalen Datenbank verhindern eine Abhängigkeit von einem einzelnen Anbieter oder Hosting-Dienst.",
+      "h2c": "Für wen sich das eignet",
+      "p.c": "Eine schlanke, on-premise betriebene Vendor-Management-Software passt, wenn:",
+      "c.li1": "ein KMU oder ein kleines Team die IT-Verträge verantwortet, keine hundert gleichzeitigen Nutzer,",
+      "c.li2": "der Fokus auf IT-Verträgen, -Lizenzen und -Dienstleistern liegt, nicht auf dem gesamten Einkauf,",
+      "c.li3": "Datenschutz, Nachvollziehbarkeit und Datenhoheit einen hohen Stellenwert haben.",
+      "box.lt": "Vendor Data Management",
+      "box.p": "Vendor Data Management ist eine solche Lösung: eine Desktop-Anwendung für IT-Vendor-, Vertrags- und Lizenzmanagement, mit einem Datenmodell Anbieter → Vertrag → Lizenz/Service, einem Vollständigkeits-Score und einer regelbasiert geprüften KI-Analyse für auslaufende Verträge. Die Daten bleiben in der eigenen Datenbank.",
+      "box.link": "Zur Produktseite mit Screenshots und Fallstudie →",
+      "h2d": "Häufige Fragen",
+      "faq.q1": "Läuft die Software in der Cloud?",
+      "faq.a1": "Nein. Es ist eine Desktop-Anwendung; die Datenbank läuft auf der eigenen Infrastruktur, in-house oder bei einem Hosting-Provider der eigenen Wahl.",
+      "faq.q2": "Ist die Software für die Schweiz geeignet?",
+      "faq.a2": "Ja. Die Compliance-Prüfung läuft wahlweise gegen das revidierte Schweizer Datenschutzgesetz statt der DSGVO, mit eigener Drittstaaten-Angemessenheitsliste und CHF als Basiswährung.",
+      "faq.q3": "Was kostet die Software?",
+      "faq.a3": "Der Preis wird individuell vereinbart, der Einstieg erfolgt in der Regel über ein Pilotprojekt. Es gibt keinen öffentlichen Listenpreis.",
+      "faq.q4": "Ist der Quellcode offen?",
+      "faq.a4": "Nein, der Quellcode ist privat. Die Daten liegen jedoch in einer offenen relationalen Datenbank und lassen sich jederzeit strukturiert exportieren.",
+      "cta.lt": "Passt das zu Ihrer Situation?",
+      "cta.p": "Ein kurzes Erstgespräch klärt, ob Vendor Data Management für Sie sinnvoll ist.",
+      "cta.btn": "Erstgespräch vereinbaren →",
+      "footer.produkt": "Produkt",
+      "footer.leistungen": "Leistungen",
+      "footer.profil": "Berufliches Profil",
+      "footer.legal": "Impressum & Datenschutz"
+    },
+    en: {
+      title: "Vendor management software for SMEs: on-premise instead of SaaS | Vendor Data Management",
+      description: "What vendor management software should do for an SME and why an on-premise solution without the cloud is worth it: data sovereignty, the revised Swiss data protection act, no dependence on a single hosting provider.",
+      "nav.produkt": "Product",
+      "nav.leistungen": "Services",
+      "nav.profil": "Professional profile",
+      "nav.cta": "Intro call",
+      "eyebrow": "Guide",
+      "h1": "Vendor management software for SMEs — on-premise instead of SaaS",
+      "lead": "Vendor management software brings contracts, licenses and suppliers together in one place, tracks deadlines and makes responsibilities and compliance gaps visible. Most offerings are cloud services. For SMEs that don't want to hand their contract and supplier data to yet another provider, there is an alternative.",
+      "h2a": "What vendor management software should cover",
+      "p.a": "Beyond a plain deadline list, the point is to make the link between suppliers, contracts and deliverables visible:",
+      "a.li1": "<strong>Contracts and deadlines:</strong> terms, renewal and notice periods, formal requirements",
+      "a.li2": "<strong>Licenses and services per supplier:</strong> what is actually delivered, not just the contract document",
+      "a.li3": "<strong>Responsibilities:</strong> contract owner, legal counsel, vendor manager, data protection officer per contract",
+      "a.li4": "<strong>Compliance:</strong> the revised Swiss data protection act or the GDPR, the EU AI Act, ISO/IEC 42001, derived from the data actually recorded",
+      "a.li5": "<strong>Completeness:</strong> where information or ownership is missing, before it becomes a problem",
+      "a.li6": "<strong>Risk on expiring contracts:</strong> timely analysis and a recommended course of action",
+      "h2b": "Why on-premise, without the cloud",
+      "p.b": "At an SME, vendor and contract data is usually the responsibility of one person or a small team. It does not need to sit in a multi-tenant cloud. For that case, an on-premise solution has three advantages:",
+      "b.li1": "The data stays under the customer's control: in-house or with a hosting provider of their choice, never on the software vendor's server.",
+      "b.li2": "No additional data-processor relationship that you then have to document and review yourself.",
+      "b.li3": "Structured exports from an open relational database prevent dependence on a single vendor or hosting service.",
+      "h2c": "Who this suits",
+      "p.c": "A lean, on-premise vendor management software fits when:",
+      "c.li1": "an SME or a small team owns the IT contracts, not a hundred concurrent users,",
+      "c.li2": "the focus is on IT contracts, licenses and IT service providers, not the whole of procurement,",
+      "c.li3": "data protection, traceability and data sovereignty matter.",
+      "box.lt": "Vendor Data Management",
+      "box.p": "Vendor Data Management is one such solution: a desktop application for IT vendor, contract and license management, with a supplier → contract → license/service data model, a completeness score and a rule-checked AI analysis for expiring contracts. The data stays in your own database.",
+      "box.link": "To the product page with screenshots and case study →",
+      "h2d": "Frequently asked questions",
+      "faq.q1": "Does the software run in the cloud?",
+      "faq.a1": "No. It is a desktop application; the database runs on your own infrastructure, in-house or with a hosting provider of your choice.",
+      "faq.q2": "Is the software suitable for Switzerland?",
+      "faq.a2": "Yes. The compliance check can run against the revised Swiss data protection act instead of the GDPR, with its own third-country adequacy list and CHF as the base currency.",
+      "faq.q3": "What does the software cost?",
+      "faq.a3": "The price is agreed individually; you usually start with a pilot project. There is no public list price.",
+      "faq.q4": "Is the source code open?",
+      "faq.a4": "No, the source code is private. The data, however, sits in an open relational database and can be exported in a structured form at any time.",
+      "cta.lt": "Does this fit your situation?",
+      "cta.p": "A short intro call clarifies whether Vendor Data Management makes sense for you.",
+      "cta.btn": "Book an intro call →",
+      "footer.produkt": "Product",
+      "footer.leistungen": "Services",
+      "footer.profil": "Professional profile",
+      "footer.legal": "Imprint & privacy"
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
+</script>
 
 </body>
 </html>
