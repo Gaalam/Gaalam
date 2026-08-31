@@ -67,10 +67,16 @@
   header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
   .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site{ display:flex; align-items:center; }
   nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:20px; text-decoration:none; }
   nav.site a:hover{ color:var(--ink); }
   .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:20px; text-decoration:none; display:inline-block; }
   .nav-cta:hover{ background:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:20px; }
+  .lang-btn{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint); background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
+  @media (max-width:640px){ nav.site a:not(.nav-cta){ display:none; } }
 
   .hero{ padding:52px 0 40px; }
   .hero-grid{ display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start; }
@@ -137,9 +143,12 @@
   <div class="wrap">
     <a class="brand" href="#top">Giw Aalam</a>
     <nav class="site">
-      <a href="/">Produkt</a>
-      <a href="/leistungen/">Leistungen</a>
-      <a class="nav-cta" href="mailto:gaalam@googlemail.com">Kontakt</a>
+      <a href="/" data-i18n="nav.produkt">Produkt</a>
+      <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a>
+      <a class="nav-cta" href="mailto:gaalam@googlemail.com" data-i18n="nav.kontakt">Kontakt</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
     </nav>
   </div>
 </header>
@@ -148,24 +157,24 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Berufliches Profil</p>
-        <h1>Prozesse analysieren und automatisieren — Spezialgebiet Vertragsmanagement</h1>
-        <p class="lead">Über 15 Jahre an der Schnittstelle von Fachbereichen, IT und Regulatorik. Ich analysiere und automatisiere Prozesse, strukturiere Verträge und Lieferanten auf Kunden- wie Anbieterseite und übersetze regulatorische Anforderungen in umsetzbare IT-Lösungen.</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Berufliches Profil</p>
+        <h1 data-i18n="hero.h1">Prozesse analysieren und automatisieren — Spezialgebiet Vertragsmanagement</h1>
+        <p class="lead" data-i18n="hero.lead">Über 15 Jahre an der Schnittstelle von Fachbereichen, IT und Regulatorik. Ich analysiere und automatisiere Prozesse, strukturiere Verträge und Lieferanten auf Kunden- wie Anbieterseite und übersetze regulatorische Anforderungen in umsetzbare IT-Lösungen.</p>
         <div class="role">
-          <span class="pill">Wohnhaft in Belp BE</span>
-          <span class="pill">deutscher / EU-Bürger</span>
-          <span class="pill">schweizweit reise- und umzugsbereit</span>
-          <span class="pill">kurzfristig verfügbar</span>
-          <span class="pill">Festanstellung · Interim · Projektmandate</span>
+          <span class="pill" data-i18n="hero.pill1">Wohnhaft in Belp BE</span>
+          <span class="pill" data-i18n="hero.pill2">deutscher / EU-Bürger</span>
+          <span class="pill" data-i18n="hero.pill3">schweizweit reise- und umzugsbereit</span>
+          <span class="pill" data-i18n="hero.pill4">kurzfristig verfügbar</span>
+          <span class="pill" data-i18n="hero.pill5">Festanstellung · Interim · Projektmandate</span>
         </div>
         <div class="hero-cta">
-          <a class="btn-primary" href="mailto:gaalam@googlemail.com">Kontakt aufnehmen →</a>
-          <a class="cta-secondary" href="#kontakt">Termin buchen →</a>
+          <a class="btn-primary" href="mailto:gaalam@googlemail.com" data-i18n="hero.cta1">Kontakt aufnehmen →</a>
+          <a class="cta-secondary" href="#kontakt" data-i18n="hero.cta2">Termin buchen →</a>
         </div>
         <p style="font-family:'IBM Plex Mono', monospace; font-size:.8rem; color:var(--ink-soft); margin:14px 0 0;">gaalam@googlemail.com</p>
       </div>
       <div class="hero-photo">
-        <img src="giw-aalam.jpg" alt="Portrait von Giw Aalam" width="220" height="290">
+        <img src="giw-aalam.jpg" alt="Portrait von Giw Aalam" width="220" height="290" data-i18n-alt="img.portrait.alt">
       </div>
     </div>
   </div>
@@ -174,35 +183,35 @@
 <section id="kompetenzen">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Leistungen für Unternehmen</p>
-      <h2>Drei Schwerpunkte, von der Analyse bis zur Umsetzung</h2>
-      <p class="lead">Als Projektmandat, Interim oder in Festanstellung. Prozesse, Verträge und Daten greifen ineinander, deshalb kommen sie aus einer Hand.</p>
+      <p class="eyebrow" data-i18n="komp.eyebrow">Leistungen für Unternehmen</p>
+      <h2 data-i18n="komp.h2">Drei Schwerpunkte, von der Analyse bis zur Umsetzung</h2>
+      <p class="lead" data-i18n="komp.lead">Als Projektmandat, Interim oder in Festanstellung. Prozesse, Verträge und Daten greifen ineinander, deshalb kommen sie aus einer Hand.</p>
     </div>
     <div class="skills">
       <div class="skill">
-        <div class="skill-t">Prozessanalyse &amp; -automatisierung</div>
+        <div class="skill-t" data-i18n="s1.t">Prozessanalyse &amp; -automatisierung</div>
         <ul>
-          <li>Arbeitsabläufe und Systeme analysieren, eine Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten</li>
-          <li>Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Daten in belastbare Auswertungen überführen</li>
-          <li>Neue Werkzeuge einführen und Mitarbeitende schulen</li>
+          <li data-i18n="s1.li1">Arbeitsabläufe und Systeme analysieren, eine Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten</li>
+          <li data-i18n="s1.li2">Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Daten in belastbare Auswertungen überführen</li>
+          <li data-i18n="s1.li3">Neue Werkzeuge einführen und Mitarbeitende schulen</li>
         </ul>
-        <p class="proof">Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen (freigegeben von Geschäftsleitung und CEO); Reporting-Automatisierung als Business Data Analyst (SQL, Oracle PL/SQL)</p>
+        <p class="proof" data-i18n="s1.proof">Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen (freigegeben von Geschäftsleitung und CEO); Reporting-Automatisierung als Business Data Analyst (SQL, Oracle PL/SQL)</p>
       </div>
       <div class="skill">
-        <div class="skill-t">Vertragsmanagement — Kunden- und Anbieterseite</div>
+        <div class="skill-t" data-i18n="s2.t">Vertragsmanagement — Kunden- und Anbieterseite</div>
         <ul>
-          <li>IT-Lieferantenmanagement (Kundenseite): IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern, Vertragsverhandlungen führen, Transparenz über die Vertragslandschaft schaffen</li>
-          <li>Bid Management (Anbieterseite): Ausschreibungen beantworten, kundenspezifische IT-Lösungen entwickeln, kalkulieren und beschreiben, mit Fachbereich, Sales, Legal und Controlling</li>
+          <li data-i18n="s2.li1">IT-Lieferantenmanagement (Kundenseite): IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern, Vertragsverhandlungen führen, Transparenz über die Vertragslandschaft schaffen</li>
+          <li data-i18n="s2.li2">Bid Management (Anbieterseite): Ausschreibungen beantworten, kundenspezifische IT-Lösungen entwickeln, kalkulieren und beschreiben, mit Fachbereich, Sales, Legal und Controlling</li>
         </ul>
-        <p class="proof">Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region; rund vier Jahre Bid Management, APMP-zertifiziert (Aviation, Defence / Cybersecurity)</p>
+        <p class="proof" data-i18n="s2.proof">Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region; rund vier Jahre Bid Management, APMP-zertifiziert (Aviation, Defence / Cybersecurity)</p>
       </div>
       <div class="skill">
-        <div class="skill-t">AI-Governance &amp; kontrollierte KI-Einführung</div>
+        <div class="skill-t" data-i18n="s3.t">AI-Governance &amp; kontrollierte KI-Einführung</div>
         <ul>
-          <li>KI-Potenziale mit den Fachbereichen finden und verantwortungsvoll einführen; ISO/IEC 42001 und EU AI Act für KMU praktikabel umsetzen</li>
-          <li>Kontrollierter KI-Einsatz: nachvollziehbar, mit deterministischer Absicherung, wo Anforderungen eindeutig prüfbar sind</li>
+          <li data-i18n="s3.li1">KI-Potenziale mit den Fachbereichen finden und verantwortungsvoll einführen; ISO/IEC 42001 und EU AI Act für KMU praktikabel umsetzen</li>
+          <li data-i18n="s3.li2">Kontrollierter KI-Einsatz: nachvollziehbar, mit deterministischer Absicherung, wo Anforderungen eindeutig prüfbar sind</li>
         </ul>
-        <p class="proof">Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt KI)</p>
+        <p class="proof" data-i18n="s3.proof">Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt KI)</p>
       </div>
     </div>
   </div>
@@ -211,23 +220,23 @@
 <section id="zertifikate">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Zertifikate &amp; Ausbildung</p>
-      <h2>Formale Qualifikationen</h2>
+      <p class="eyebrow" data-i18n="zert.eyebrow">Zertifikate &amp; Ausbildung</p>
+      <h2 data-i18n="zert.h2">Formale Qualifikationen</h2>
     </div>
     <div class="credlist">
-      <div class="cred"><span class="t">M.Eng. Information Science &amp; Engineering — Hochschule Darmstadt (Erasmus Granada)</span><span class="y">2010</span></div>
-      <div class="cred"><span class="t">B.Sc. Informatik — Universität des Saarlandes</span><span class="y">2007</span></div>
-      <div class="cred"><span class="t">Risikomanager — TÜV NORD</span><span class="y">2025</span></div>
-      <div class="cred"><span class="t">Aviation Manager — Steinbeis-Hochschule Berlin / Center for Aviation Competence, Universität St. Gallen</span><span class="y">2015</span></div>
-      <div class="cred"><span class="t">APMP Certificate of Foundation — Association of Proposal Management Professionals (APMP)</span><span class="y">2016</span></div>
-      <div class="cred"><span class="t">ISO/IEC 42001 Foundation (KI-Managementsysteme) — Professional Evaluation and Certification Board (PECB)</span><span class="y">2026</span></div>
-      <div class="cred"><span class="t">CAS Frontier Technologies in Finance — Berner Fachhochschule</span><span class="y">laufend</span></div>
+      <div class="cred"><span class="t" data-i18n="cred1.t">M.Eng. Information Science &amp; Engineering — Hochschule Darmstadt (Erasmus Granada)</span><span class="y">2010</span></div>
+      <div class="cred"><span class="t" data-i18n="cred2.t">B.Sc. Informatik — Universität des Saarlandes</span><span class="y">2007</span></div>
+      <div class="cred"><span class="t" data-i18n="cred3.t">Risikomanager — TÜV NORD</span><span class="y">2025</span></div>
+      <div class="cred"><span class="t" data-i18n="cred4.t">Aviation Manager — Steinbeis-Hochschule Berlin / Center for Aviation Competence, Universität St. Gallen</span><span class="y">2015</span></div>
+      <div class="cred"><span class="t" data-i18n="cred5.t">APMP Certificate of Foundation — Association of Proposal Management Professionals (APMP)</span><span class="y">2016</span></div>
+      <div class="cred"><span class="t" data-i18n="cred6.t">ISO/IEC 42001 Foundation (KI-Managementsysteme) — Professional Evaluation and Certification Board (PECB)</span><span class="y">2026</span></div>
+      <div class="cred"><span class="t" data-i18n="cred7.t">CAS Frontier Technologies in Finance — Berner Fachhochschule</span><span class="y" data-i18n="cred7.y">laufend</span></div>
     </div>
-    <p style="margin-top:20px;" class="eyebrow">Auszeichnung</p>
-    <p style="font-size:.9rem; margin-top:2px;">Nominierung für den TransNetAero Knowledge Transfer Award (2015) — Paper zu Air Traffic Management im einheitlichen europäischen Luftraum.</p>
-    <p style="margin-top:20px;" class="eyebrow">Branchenerfahrung</p>
+    <p style="margin-top:20px;" class="eyebrow" data-i18n="award.label">Auszeichnung</p>
+    <p style="font-size:.9rem; margin-top:2px;" data-i18n="award.text">Nominierung für den TransNetAero Knowledge Transfer Award (2015) — Paper zu Air Traffic Management im einheitlichen europäischen Luftraum.</p>
+    <p style="margin-top:20px;" class="eyebrow" data-i18n="branchen.label">Branchenerfahrung</p>
     <div class="stack-list">
-      <span>Financial Services</span><span>Defence / KRITIS</span><span>Aviation</span>
+      <span data-i18n="branche1">Financial Services</span><span data-i18n="branche2">Defence / KRITIS</span><span data-i18n="branche3">Aviation</span>
     </div>
   </div>
 </section>
@@ -235,13 +244,13 @@
 <section id="flagship">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Eigenständiges Projekt</p>
+      <p class="eyebrow" data-i18n="flag.eyebrow">Eigenständiges Projekt</p>
       <h2>Vendor Data Management</h2>
     </div>
     <div class="flagship">
-      <h3>Selbst entwickeltes Softwareprojekt</h3>
-      <p style="margin-bottom:10px;">Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.</p>
-      <p style="margin-bottom:0;"><a href="../">Produkt und Case Study ansehen →</a></p>
+      <h3 data-i18n="flag.h3">Selbst entwickeltes Softwareprojekt</h3>
+      <p style="margin-bottom:10px;" data-i18n="flag.p">Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.</p>
+      <p style="margin-bottom:0;"><a href="../" data-i18n="flag.link">Produkt und Case Study ansehen →</a></p>
     </div>
   </div>
 </section>
@@ -249,37 +258,37 @@
 <section id="kontakt">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Kontakt</p>
-      <h2>Direkt Kontakt aufnehmen</h2>
-      <p class="lead">E-Mail: <a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a> · Web: <a href="../">aalam.ch</a></p>
+      <p class="eyebrow" data-i18n="kontakt.eyebrow">Kontakt</p>
+      <h2 data-i18n="kontakt.h2">Direkt Kontakt aufnehmen</h2>
+      <p class="lead" data-i18n="kontakt.lead">E-Mail: <a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a> · Web: <a href="../">aalam.ch</a></p>
     </div>
 
     <div class="contactform">
-      <p class="eyebrow" style="margin-bottom:8px;">Nachricht schreiben</p>
-      <h3>Kurze Anfrage genügt</h3>
-      <p>Kein Termin nötig. Name, E-Mail und ein paar Zeilen reichen.</p>
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="form.eyebrow">Nachricht schreiben</p>
+      <h3 data-i18n="form.h3">Kurze Anfrage genügt</h3>
+      <p data-i18n="form.p">Kein Termin nötig. Name, E-Mail und ein paar Zeilen reichen.</p>
       <form id="contact-form" onsubmit="return sendContactMail(event)">
         <div class="form-row">
-          <label for="cf-name">Name</label>
+          <label for="cf-name" data-i18n="form.name">Name</label>
           <input type="text" id="cf-name" name="name" required>
         </div>
         <div class="form-row">
-          <label for="cf-email">E-Mail</label>
+          <label for="cf-email" data-i18n="form.email">E-Mail</label>
           <input type="email" id="cf-email" name="email" required>
         </div>
         <div class="form-row">
-          <label for="cf-message">Nachricht</label>
+          <label for="cf-message" data-i18n="form.message">Nachricht</label>
           <textarea id="cf-message" name="message" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn-primary">Nachricht senden →</button>
-        <p class="form-note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
+        <button type="submit" class="btn-primary" data-i18n="form.submit">Nachricht senden →</button>
+        <p class="form-note" data-i18n="form.note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
       </form>
     </div>
 
     <div class="scheduler" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;">Terminbuchung</p>
-      <h3>Lieber gleich ein Gespräch?</h3>
-      <p>30 Minuten, unverbindlich.</p>
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="sched.eyebrow">Terminbuchung</p>
+      <h3 data-i18n="sched.h3">Lieber gleich ein Gespräch?</h3>
+      <p data-i18n="sched.p">30 Minuten, unverbindlich.</p>
       <div class="calendly-inline-widget" data-url="https://calendly.com/gaalam/30min" style="min-width:280px;height:700px;"></div>
     </div>
   </div>
@@ -287,10 +296,10 @@
 
 <footer>
   <div class="wrap">
-    <p class="note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="../">die Produktseite</a>.</p>
+    <p class="note" data-i18n="footer.note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="../">die Produktseite</a>.</p>
     <span style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-      <a href="/leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;">Leistungen</a>
-      <a href="/rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;">Impressum &amp; Datenschutz</a>
+      <a href="/leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.leistungen">Leistungen</a>
+      <a href="/rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
       <span class="fbrand">Giw Aalam</span>
     </span>
   </div>
@@ -302,11 +311,184 @@
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
     const message = document.getElementById('cf-message').value.trim();
-    const subject = 'Kontaktanfrage von ' + name;
+    const isEn = document.documentElement.lang === 'en';
+    const subject = (isEn ? 'Website inquiry from ' : 'Kontaktanfrage von ') + name;
     const body = message + '\n\n---\n' + name + ' <' + email + '>';
     window.location.href = 'mailto:gaalam@googlemail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     return false;
   }
+
+  const I18N = {
+    de: {
+      title: "Giw Aalam – Vertragsmanagement, Prozessautomatisierung & AI-Governance",
+      description: "Giw Aalam: Prozesse analysieren und automatisieren, Vertragsmanagement auf Kunden- und Anbieterseite, kontrollierte KI-Einführung. Über 15 Jahre Erfahrung, wohnhaft in Belp BE, kurzfristig verfügbar.",
+      "nav.produkt": "Produkt",
+      "nav.leistungen": "Leistungen",
+      "nav.kontakt": "Kontakt",
+      "hero.eyebrow": "Berufliches Profil",
+      "hero.h1": "Prozesse analysieren und automatisieren — Spezialgebiet Vertragsmanagement",
+      "hero.lead": "Über 15 Jahre an der Schnittstelle von Fachbereichen, IT und Regulatorik. Ich analysiere und automatisiere Prozesse, strukturiere Verträge und Lieferanten auf Kunden- wie Anbieterseite und übersetze regulatorische Anforderungen in umsetzbare IT-Lösungen.",
+      "hero.pill1": "Wohnhaft in Belp BE",
+      "hero.pill2": "deutscher / EU-Bürger",
+      "hero.pill3": "schweizweit reise- und umzugsbereit",
+      "hero.pill4": "kurzfristig verfügbar",
+      "hero.pill5": "Festanstellung · Interim · Projektmandate",
+      "hero.cta1": "Kontakt aufnehmen →",
+      "hero.cta2": "Termin buchen →",
+      "img.portrait.alt": "Portrait von Giw Aalam",
+      "komp.eyebrow": "Leistungen für Unternehmen",
+      "komp.h2": "Drei Schwerpunkte, von der Analyse bis zur Umsetzung",
+      "komp.lead": "Als Projektmandat, Interim oder in Festanstellung. Prozesse, Verträge und Daten greifen ineinander, deshalb kommen sie aus einer Hand.",
+      "s1.t": "Prozessanalyse &amp; -automatisierung",
+      "s1.li1": "Arbeitsabläufe und Systeme analysieren, eine Digitalisierungsstrategie erarbeiten und bis zur Umsetzung begleiten",
+      "s1.li2": "Wiederkehrende Aufgaben automatisieren, Altsysteme ablösen, Daten in belastbare Auswertungen überführen",
+      "s1.li3": "Neue Werkzeuge einführen und Mitarbeitende schulen",
+      "s1.proof": "Belegt durch: IT- und Digitalisierungsstrategie der Messe Essen (freigegeben von Geschäftsleitung und CEO); Reporting-Automatisierung als Business Data Analyst (SQL, Oracle PL/SQL)",
+      "s2.t": "Vertragsmanagement — Kunden- und Anbieterseite",
+      "s2.li1": "IT-Lieferantenmanagement (Kundenseite): IT-Verträge, Lizenzen und Lieferanten strukturieren und steuern, Vertragsverhandlungen führen, Transparenz über die Vertragslandschaft schaffen",
+      "s2.li2": "Bid Management (Anbieterseite): Ausschreibungen beantworten, kundenspezifische IT-Lösungen entwickeln, kalkulieren und beschreiben, mit Fachbereich, Sales, Legal und Controlling",
+      "s2.proof": "Belegt durch: IT Vendor Manager für 16 Gesellschaften der DACH-Region; rund vier Jahre Bid Management, APMP-zertifiziert (Aviation, Defence / Cybersecurity)",
+      "s3.t": "AI-Governance &amp; kontrollierte KI-Einführung",
+      "s3.li1": "KI-Potenziale mit den Fachbereichen finden und verantwortungsvoll einführen; ISO/IEC 42001 und EU AI Act für KMU praktikabel umsetzen",
+      "s3.li2": "Kontrollierter KI-Einsatz: nachvollziehbar, mit deterministischer Absicherung, wo Anforderungen eindeutig prüfbar sind",
+      "s3.proof": "Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt KI)",
+      "zert.eyebrow": "Zertifikate &amp; Ausbildung",
+      "zert.h2": "Formale Qualifikationen",
+      "cred1.t": "M.Eng. Information Science &amp; Engineering — Hochschule Darmstadt (Erasmus Granada)",
+      "cred2.t": "B.Sc. Informatik — Universität des Saarlandes",
+      "cred3.t": "Risikomanager — TÜV NORD",
+      "cred4.t": "Aviation Manager — Steinbeis-Hochschule Berlin / Center for Aviation Competence, Universität St. Gallen",
+      "cred5.t": "APMP Certificate of Foundation — Association of Proposal Management Professionals (APMP)",
+      "cred6.t": "ISO/IEC 42001 Foundation (KI-Managementsysteme) — Professional Evaluation and Certification Board (PECB)",
+      "cred7.t": "CAS Frontier Technologies in Finance — Berner Fachhochschule",
+      "cred7.y": "laufend",
+      "award.label": "Auszeichnung",
+      "award.text": "Nominierung für den TransNetAero Knowledge Transfer Award (2015) — Paper zu Air Traffic Management im einheitlichen europäischen Luftraum.",
+      "branchen.label": "Branchenerfahrung",
+      "branche1": "Financial Services",
+      "branche2": "Defence / KRITIS",
+      "branche3": "Aviation",
+      "flag.eyebrow": "Eigenständiges Projekt",
+      "flag.h3": "Selbst entwickeltes Softwareprojekt",
+      "flag.p": "Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.",
+      "flag.link": "Produkt und Case Study ansehen →",
+      "kontakt.eyebrow": "Kontakt",
+      "kontakt.h2": "Direkt Kontakt aufnehmen",
+      "kontakt.lead": "E-Mail: <a href=\"mailto:gaalam@googlemail.com\">gaalam@googlemail.com</a> · Web: <a href=\"../\">aalam.ch</a>",
+      "form.eyebrow": "Nachricht schreiben",
+      "form.h3": "Kurze Anfrage genügt",
+      "form.p": "Kein Termin nötig. Name, E-Mail und ein paar Zeilen reichen.",
+      "form.name": "Name",
+      "form.email": "E-Mail",
+      "form.message": "Nachricht",
+      "form.submit": "Nachricht senden →",
+      "form.note": "Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.",
+      "sched.eyebrow": "Terminbuchung",
+      "sched.h3": "Lieber gleich ein Gespräch?",
+      "sched.p": "30 Minuten, unverbindlich.",
+      "footer.note": "Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href=\"../\">die Produktseite</a>.",
+      "footer.leistungen": "Leistungen",
+      "footer.legal": "Impressum & Datenschutz"
+    },
+    en: {
+      title: "Giw Aalam – contract management, process automation & AI governance",
+      description: "Giw Aalam: analysing and automating processes, contract management on the client and provider side, controlled AI adoption. 15+ years of experience, based in Belp BE, available at short notice.",
+      "nav.produkt": "Product",
+      "nav.leistungen": "Services",
+      "nav.kontakt": "Contact",
+      "hero.eyebrow": "Professional profile",
+      "hero.h1": "Analysing and automating processes — with a focus on contract management",
+      "hero.lead": "15+ years at the intersection of business, IT and regulation. I analyse and automate processes, structure contracts and suppliers on the client and the provider side, and translate regulatory requirements into workable IT solutions.",
+      "hero.pill1": "Based in Belp BE",
+      "hero.pill2": "German / EU citizen",
+      "hero.pill3": "willing to travel and relocate within Switzerland",
+      "hero.pill4": "available at short notice",
+      "hero.pill5": "permanent · interim · project",
+      "hero.cta1": "Get in touch →",
+      "hero.cta2": "Book a call →",
+      "img.portrait.alt": "Portrait of Giw Aalam",
+      "komp.eyebrow": "Services for companies",
+      "komp.h2": "Three focus areas, from analysis to delivery",
+      "komp.lead": "As a project engagement, interim role or permanent position. Processes, contracts and data interlock, which is why they come from one person.",
+      "s1.t": "Process analysis &amp; automation",
+      "s1.li1": "Analyse workflows and systems, develop a digitalisation strategy and see it through to delivery",
+      "s1.li2": "Automate recurring tasks, retire legacy systems, turn data into reliable analysis",
+      "s1.li3": "Introduce new tools and train the people using them",
+      "s1.proof": "Track record: IT and digitalisation strategy for Messe Essen (approved by management and CEO); reporting automation as a business data analyst (SQL, Oracle PL/SQL)",
+      "s2.t": "Contract management — client and provider side",
+      "s2.li1": "IT supplier management (client side): structure and steer IT contracts, licenses and suppliers, run contract negotiations, create transparency across the contract landscape",
+      "s2.li2": "Bid management (provider side): respond to tenders, design, cost and describe customer-specific IT solutions, with delivery, sales, legal and controlling",
+      "s2.proof": "Track record: IT vendor manager for 16 companies across the DACH region; around four years of bid management, APMP-certified (aviation, defence / cybersecurity)",
+      "s3.t": "AI governance &amp; controlled AI adoption",
+      "s3.li1": "Find AI opportunities with the business units and adopt them responsibly; make ISO/IEC 42001 and the EU AI Act workable for an SME",
+      "s3.li2": "Controlled use of AI: traceable, with deterministic safeguards wherever requirements are unambiguously checkable",
+      "s3.proof": "Track record: own software project with an LLM pipeline and a deterministic validation layer; ISO/IEC 42001 Foundation, Certified Risk Manager (TÜV), CAS Frontier Technologies in Finance (AI focus)",
+      "zert.eyebrow": "Certificates &amp; education",
+      "zert.h2": "Formal qualifications",
+      "cred1.t": "M.Eng. Information Science &amp; Engineering — Darmstadt University of Applied Sciences (Erasmus Granada)",
+      "cred2.t": "B.Sc. Computer Science — Saarland University",
+      "cred3.t": "Certified Risk Manager — TÜV NORD",
+      "cred4.t": "Aviation Manager — Steinbeis University Berlin / Center for Aviation Competence, University of St. Gallen",
+      "cred5.t": "APMP Certificate of Foundation — Association of Proposal Management Professionals (APMP)",
+      "cred6.t": "ISO/IEC 42001 Foundation (AI management systems) — Professional Evaluation and Certification Board (PECB)",
+      "cred7.t": "CAS Frontier Technologies in Finance — Bern University of Applied Sciences",
+      "cred7.y": "ongoing",
+      "award.label": "Recognition",
+      "award.text": "Nominee for the TransNetAero Knowledge Transfer Award (2015) — paper on air traffic management in a uniform European airspace.",
+      "branchen.label": "Industry experience",
+      "branche1": "Financial services",
+      "branche2": "Defence / critical infrastructure",
+      "branche3": "Aviation",
+      "flag.eyebrow": "Independent project",
+      "flag.h3": "A software project I built myself",
+      "flag.p": "A complete desktop application for IT vendor, contract and risk data: with its own data model, rule-based compliance checks and an LLM pipeline plus a deterministic validation layer. Alongside it, a CAS thesis on the limits of automated AI checking. It also shows how I turn requirements, data modelling and AI integration into practice.",
+      "flag.link": "See the product and case study →",
+      "kontakt.eyebrow": "Contact",
+      "kontakt.h2": "Get in touch directly",
+      "kontakt.lead": "Email: <a href=\"mailto:gaalam@googlemail.com\">gaalam@googlemail.com</a> · Web: <a href=\"../\">aalam.ch</a>",
+      "form.eyebrow": "Write a message",
+      "form.h3": "A short note is enough",
+      "form.p": "No appointment needed. Name, email and a few lines will do.",
+      "form.name": "Name",
+      "form.email": "Email",
+      "form.message": "Message",
+      "form.submit": "Send message →",
+      "form.note": "Opens your email app with a pre-filled message.",
+      "sched.eyebrow": "Book a call",
+      "sched.h3": "Rather talk it through?",
+      "sched.p": "30 minutes, no obligation.",
+      "footer.note": "This page is my professional profile for enquiries about permanent, interim and project roles. For information on the Vendor Data Management product, see <a href=\"../\">the product page</a>.",
+      "footer.leistungen": "Services",
+      "footer.legal": "Imprint & privacy"
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-alt');
+      if(dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
 </script>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
