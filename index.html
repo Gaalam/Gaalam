@@ -293,6 +293,30 @@
   footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
   footer .note{ font-size:.82rem; color:var(--ink-faint); max-width:60ch; margin:0; }
   footer .fbrand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:.95rem; color:var(--ink-soft); }
+
+  /* ---- lightbox ---- */
+  .zoomable{ cursor:zoom-in; }
+  .zoomable:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,21,26,.94); z-index:100;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:8vh 5vw 6vh; animation:lbfade .15s ease;
+  }
+  .lightbox[hidden]{ display:none; }
+  @keyframes lbfade{ from{opacity:0} to{opacity:1} }
+  .lightbox img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block; border:1.5px solid var(--paper); cursor:zoom-out; }
+  .lightbox figcaption{
+    font-family:'IBM Plex Mono', monospace; font-size:.76rem; color:var(--paper); opacity:.85;
+    text-align:center; max-width:78vw; margin-top:16px;
+  }
+  .lightbox-close{
+    position:absolute; top:18px; right:20px; width:38px; height:38px;
+    border:1.5px solid var(--paper); background:none; color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:1.3rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{ background:var(--paper); color:var(--ink); }
+  .lightbox-close:focus-visible{ outline:2.5px solid var(--paper); outline-offset:3px; }
 </style>
 </head>
 <body>
@@ -1442,6 +1466,58 @@
   let initialLang = 'de';
   try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
   setLang(initialLang);
+
+  // ---- screenshot lightbox ----
+  (function(){
+    const targets = document.querySelectorAll('.hero-shot img, .showcase img, .case figure img');
+    const lb = document.getElementById('lightbox');
+    if(!targets.length || !lb) return;
+    const lbImg   = document.getElementById('lightbox-img');
+    const lbCap   = document.getElementById('lightbox-caption');
+    const lbClose = lb.querySelector('.lightbox-close');
+    const STR = { de:{close:'Schliessen', label:'Bildvorschau'}, en:{close:'Close', label:'Image preview'} };
+    let lastFocused = null;
+
+    function open(img){
+      lastFocused = document.activeElement;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.alt;
+      const s = STR[document.documentElement.lang === 'en' ? 'en' : 'de'];
+      lb.setAttribute('aria-label', s.label);
+      lbClose.setAttribute('aria-label', s.close);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if(lastFocused) lastFocused.focus();
+    }
+    function onKey(e){ if(e.key === 'Escape') close(); }
+
+    targets.forEach(img=>{
+      img.classList.add('zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', ()=>open(img));
+      img.addEventListener('keydown', e=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+      });
+    });
+    lbClose.addEventListener('click', close);
+    lbImg.addEventListener('click', close);
+    lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
+  })();
 </script>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="lightbox-close" type="button">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <figcaption id="lightbox-caption"></figcaption>
+</div>
 </body>
 </html>
