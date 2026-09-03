@@ -560,7 +560,7 @@
     <div class="reveal" style="margin-top:34px;">
       <p class="eyebrow" style="margin-bottom:8px;" data-i18n="einblicke.eyebrow">Einblicke</p>
       <h3 data-i18n="einblicke.h3">Wie das in der Anwendung aussieht</h3>
-      <p data-i18n="einblicke.intro">Neun Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph und Timeline.</p>
+      <p data-i18n="einblicke.intro">Elf Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph, Timeline, Vendor Intelligence und begründete Warnungen.</p>
     </div>
 
     <div class="showcase reveal">
@@ -627,13 +627,27 @@
           <p class="cap-d" data-i18n="img.timeline.d">Verträge als Hauptbalken, die enthaltenen Lizenzen und Services als Unterzeilen, dazu Kündigungs- und Verlängerungsfenster sowie identifizierte Massnahmen mit Kritikalität — die Today-Linie zeigt sofort, was fällig wird.</p>
         </figcaption>
       </figure>
+      <figure>
+        <img src="screenshot-data-warnings.png" alt="Zwei automatisch generierte Warnungen zu Datenkonsistenz und Verantwortlichkeiten bei einem Lieferanten, jeweils mit konkretem Korrekturhinweis" loading="lazy" data-i18n-alt="img.warnings.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.warnings.t">Warnungen mit Begründung statt Blackbox</div>
+          <p class="cap-d" data-i18n="img.warnings.d">Jede automatische Warnung nennt die verletzte Regel und einen konkreten Korrekturvorschlag — hier eine fehlende &bdquo;Data Processing&ldquo;-Kennzeichnung trotz Cloud-Betrieb und ein fehlendes Compliance-Zertifikat.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-vendor-intelligence.png" alt="Vendor-Intelligence-Tab mit News-Heat-Bewertung nach Security, Business und Compliance, jede Einstufung mit zitierten Quellen und Datum" loading="lazy" data-i18n-alt="img.intel.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.intel.t">Vendor Intelligence: Nachrichtenlage mit Quellenbeleg</div>
+          <p class="cap-d" data-i18n="img.intel.d">Negativ- und Positiv-Heat je Kategorie (Security, Business, Compliance), jede Einstufung mit den zugrunde liegenden Meldungen samt Quelle und Datum — inklusive Zeitstempel der KI-Analyse.</p>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="reveal" style="margin-top:34px;">
       <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
       <div class="stack-list">
         <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
-        <span>Google Gemini</span><span>JUnit 5 — 604 Tests</span><span>Maven</span>
+        <span>Google Gemini</span><span>JUnit 5 — 583 Tests</span><span>Maven</span>
         <span>PostgreSQL / MariaDB / MySQL / Derby</span>
       </div>
     </div>
@@ -670,7 +684,7 @@
     <details class="techdetails reveal">
       <summary data-i18n="arch.techdetails">Technische Details</summary>
       <div class="arch-facts">
-        <span data-i18n="fact1">604 Tests</span>
+        <span data-i18n="fact1">583 Tests</span>
         <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
         <span data-i18n="fact3">3 Datenbank-Optionen</span>
         <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
@@ -1026,7 +1040,7 @@
       "funktionsumfang.intro": "Die drei Bereiche im Überblick — von der Fristenüberwachung über die Compliance-Tiefe bis zu Reporting und Intelligence.",
       "einblicke.eyebrow": "Einblicke",
       "einblicke.h3": "Wie das in der Anwendung aussieht",
-      "einblicke.intro": "Neun Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph und Timeline.",
+      "einblicke.intro": "Elf Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph, Timeline, Vendor Intelligence und begründete Warnungen.",
       "privileges.h3": "Zugriffsprivilegien und Daten-Handling",
       "privileges.p1": "<b>Vendor-Privilegien</b> je Lieferant (jeweils Ja/Nein): Datenverarbeitung, Zugriff auf sensible Daten, privilegierte oder administrative Zugriffe, Fernzugriff auf Systeme, Zutritt zu Standorten, Einsatz von Subunternehmern.",
       "privileges.p2": "<b>Daten-Handling je Software und Service:</b> Speicherort (on-premise, Cloud oder hybrid), Datenresidenz, DSGVO-Relevanz, Unterauftragsverarbeiter, Aufbewahrungs- und Löschregel, rollenbasierte Zugriffskontrolle (RBAC), Verschlüsselung bei Übertragung und Speicherung, Mehr-Faktor-Authentifizierung (MFA), KI-Einsatz und KI-Risikoklasse.",
@@ -1104,6 +1118,12 @@
       "img.timeline.alt": "Timeline-Ansicht: Verträge als Hauptbalken, Lizenzen und Services als Unterzeilen, Kündigungsfristen orange gestrichelt, senkrechte Today-Linie",
       "img.timeline.t": "Timeline — alle Laufzeiten auf einer Achse",
       "img.timeline.d": "Verträge als Hauptbalken, die enthaltenen Lizenzen und Services als Unterzeilen, dazu Kündigungs- und Verlängerungsfenster sowie identifizierte Massnahmen mit Kritikalität — die Today-Linie zeigt sofort, was fällig wird.",
+      "img.warnings.alt": "Zwei automatisch generierte Warnungen zu Datenkonsistenz und Verantwortlichkeiten bei einem Lieferanten, jeweils mit konkretem Korrekturhinweis",
+      "img.warnings.t": "Warnungen mit Begründung statt Blackbox",
+      "img.warnings.d": "Jede automatische Warnung nennt die verletzte Regel und einen konkreten Korrekturvorschlag — hier eine fehlende „Data Processing“-Kennzeichnung trotz Cloud-Betrieb und ein fehlendes Compliance-Zertifikat.",
+      "img.intel.alt": "Vendor-Intelligence-Tab mit News-Heat-Bewertung nach Security, Business und Compliance, jede Einstufung mit zitierten Quellen und Datum",
+      "img.intel.t": "Vendor Intelligence: Nachrichtenlage mit Quellenbeleg",
+      "img.intel.d": "Negativ- und Positiv-Heat je Kategorie (Security, Business, Compliance), jede Einstufung mit den zugrunde liegenden Meldungen samt Quelle und Datum — inklusive Zeitstempel der KI-Analyse.",
       "tech.eyebrow": "Technisch",
       "arch.eyebrow": "Architektur",
       "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
@@ -1118,7 +1138,7 @@
       "layer4.t": "Daten",
       "layer4.d": "Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben",
       "arch.techdetails": "Technische Details",
-      "fact1": "604 Tests",
+      "fact1": "583 Tests",
       "fact2": "25 von 26 Testklassen ganz ohne Datenbank",
       "fact3": "3 Datenbank-Optionen",
       "fact4": "0 Swing-Importe in den Compliance-Checkern",
@@ -1264,7 +1284,7 @@
       "funktionsumfang.intro": "The three areas at a glance — from deadline monitoring through compliance depth to reporting and intelligence.",
       "einblicke.eyebrow": "A look inside",
       "einblicke.h3": "What it looks like in the application",
-      "einblicke.intro": "Nine screenshots from live use — analysis reports, compliance status, DPA management, the asset graph and the timeline.",
+      "einblicke.intro": "Eleven screenshots from live use — analysis reports, compliance status, DPA management, the asset graph, the timeline, vendor intelligence and reasoned warnings.",
       "privileges.h3": "Access privileges and data handling",
       "privileges.p1": "<b>Vendor privileges</b> per supplier (yes/no each): data processing, access to sensitive data, privileged or administrative access, remote access to systems, physical site access, use of subcontractors.",
       "privileges.p2": "<b>Data handling per software and service:</b> storage location (on-premise, cloud or hybrid), data residency, GDPR relevance, sub-processors, retention and deletion policy, role-based access control (RBAC), encryption in transit and at rest, multi-factor authentication (MFA), AI usage and AI risk class.",
@@ -1342,6 +1362,12 @@
       "img.timeline.alt": "Timeline view: contracts as main bars, licenses and services as sub-rows, notice periods as orange dashed segments, a vertical Today line",
       "img.timeline.t": "Timeline — every term on one axis",
       "img.timeline.d": "Contracts as main bars, their nested licenses and services as sub-rows, plus notice and renewal windows and identified action items with criticality — the Today line shows at a glance what is coming due.",
+      "img.warnings.alt": "Two automatically generated warnings about data consistency and responsibilities for a vendor, each with a concrete fix suggestion",
+      "img.warnings.t": "Warnings with reasoning, not a black box",
+      "img.warnings.d": "Every automatic warning names the violated rule and a concrete fix — here a missing \"Data Processing\" flag despite cloud operation, and a missing compliance certificate.",
+      "img.intel.alt": "Vendor intelligence tab with news-heat scoring across security, business and compliance, each rating backed by cited sources and dates",
+      "img.intel.t": "Vendor intelligence: news signal with cited sources",
+      "img.intel.d": "Negative and positive heat per category (security, business, compliance), each rating backed by the underlying news items with source and date — including a timestamp for the AI analysis itself.",
       "tech.eyebrow": "Technical",
       "arch.eyebrow": "Architecture",
       "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
@@ -1356,7 +1382,7 @@
       "layer4.t": "Data",
       "layer4.d": "Relational database (Derby / PostgreSQL / MariaDB) — always on the customer's side, never run as the vendor's backend",
       "arch.techdetails": "Technical Details",
-      "fact1": "604 tests",
+      "fact1": "583 tests",
       "fact2": "25 of 26 test classes run without a database",
       "fact3": "3 database options",
       "fact4": "0 Swing imports in the compliance checkers",
