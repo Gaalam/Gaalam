@@ -930,6 +930,12 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="lightbox-close" type="button">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <figcaption id="lightbox-caption"></figcaption>
+</div>
+
 <script>
   function sendContactMail(e){
     e.preventDefault();
@@ -1513,11 +1519,5 @@
     lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
   })();
 </script>
-
-<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
-  <button class="lightbox-close" type="button">&times;</button>
-  <img id="lightbox-img" src="" alt="">
-  <figcaption id="lightbox-caption"></figcaption>
-</div>
 </body>
 </html>
