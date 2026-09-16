@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Giw Aalam – Endpoint-SOC-Agent (Fallstudie)</title>
+<meta name="description" content="Fallstudie: ein zweistufiges, KI-gestütztes Sicherheitsmonitoring für ein einzelnes Reisegerät mit Human-in-the-loop-Freigabe statt automatischer Ausführung.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aalam.ch/profil/endpoint-soc-agent/">
+<meta property="og:site_name" content="Giw Aalam">
+<meta property="og:title" content="Endpoint-SOC-Agent — Fallstudie">
+<meta property="og:description" content="Ein zweistufiges KI-Agenten-System, deterministische Guardrails und klassische Unix-Sensorik überwachen ein Reisegerät — ohne dass die KI je selbst etwas ausführt.">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://aalam.ch/profil/endpoint-soc-agent/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F1F3F4;
+  --surface:#FFFFFF;
+  --surface-2:#E7EBEC;
+  --ink:#171B24;
+  --ink-muted:#545C68;
+  --line:#D3D8DA;
+  --accent:#2F4F8F;
+  --accent-soft:#E3E9F5;
+  --ok:#2E7D4F;      --ok-soft:#E4F2E9;
+  --warn:#A6740A;    --warn-soft:#F6ECD6;
+  --crit:#B23B3B;    --crit-soft:#F7E3E1;
+  --font-display:'IBM Plex Sans',system-ui,sans-serif;
+  --font-body:'IBM Plex Serif',Georgia,serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12151B; --surface:#1A1F27; --surface-2:#222834;
+    --ink:#E7E9EC; --ink-muted:#9BA3AE; --line:#2E3440;
+    --accent:#8AACEA; --accent-soft:#233152;
+    --ok:#6FBF8F; --ok-soft:#1C3327;
+    --warn:#DDB24A; --warn-soft:#3A2F16;
+    --crit:#E28787; --crit-soft:#3A1F1F;
+  }
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.65;
+  padding-inline:20px;
+  padding-block:0 96px;
+}
+img{max-width:100%;}
+.page{max-width:760px;margin-inline:auto;}
+.wide{max-width:920px;}
+
+h1,h2,h3{font-family:var(--font-display);color:var(--ink);text-wrap:balance;font-weight:600;}
+h1{font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.15;margin:0 0 14px;}
+h2{font-size:1.4rem;margin:0 0 6px;letter-spacing:-0.01em;}
+h3{font-size:1.05rem;margin:0 0 4px;}
+p{margin:0 0 1em;}
+a{color:var(--accent);}
+.mono{font-family:var(--font-mono);}
+
+/* ── Back link ────────────────────────────────────────── */
+.backlink{
+  max-width:760px;margin:0 auto;padding-block:20px 0;
+}
+.backlink a{
+  font-family:var(--font-mono);font-size:.82rem;color:var(--ink-muted);
+  text-decoration:none;
+}
+.backlink a:hover{color:var(--accent);}
+
+/* ── Masthead ─────────────────────────────────────────── */
+.masthead{max-width:760px;margin:28px auto 40px;}
+.eyebrow{
+  font-family:var(--font-display);font-size:0.78rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 14px;
+}
+.dek{font-size:1.15rem;color:var(--ink-muted);max-width:58ch;margin:14px 0 22px;}
+.meta{
+  display:flex;flex-wrap:wrap;gap:10px 28px;
+  font-family:var(--font-mono);font-size:.82rem;color:var(--ink-muted);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding-block:14px;margin-top:24px;
+}
+.meta dt{font-weight:600;color:var(--ink);display:inline;}
+.meta div{white-space:nowrap;}
+
+section{max-width:760px;margin:0 auto;padding-block:34px;}
+section.wide{max-width:920px;}
+section + section{border-top:1px solid var(--line);}
+.section-num{
+  font-family:var(--font-mono);font-size:.78rem;color:var(--ink-muted);
+  display:block;margin-bottom:6px;
+}
+
+/* ── Principle callout ────────────────────────────────── */
+.principle{
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:20px 24px;border-radius:2px;margin:20px 0;
+}
+.principle p{margin:0;font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink);}
+.principle span{display:block;font-family:var(--font-mono);font-size:.78rem;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-weight:600;}
+
+/* ── Pipeline diagram ─────────────────────────────────── */
+.pipeline{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin:28px 0 8px;overflow-x:auto;padding-bottom:4px;
+}
+.stage{
+  flex:1 1 220px;min-width:150px;
+  background:var(--surface);border:1px solid var(--line);
+  padding:14px 16px;position:relative;
+}
+.stage + .stage{border-left:none;}
+.stage-n{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);font-weight:600;}
+.stage h3{font-family:var(--font-display);font-size:.92rem;margin:4px 0 5px;}
+.stage p{font-family:var(--font-body);font-size:.86rem;color:var(--ink-muted);margin:0;line-height:1.45;}
+.stage-arrow{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  width:22px;color:var(--ink-muted);font-family:var(--font-mono);font-size:1rem;
+  background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+@media (max-width:720px){
+  .pipeline{flex-direction:column;}
+  .stage{border-left:1px solid var(--line) !important;}
+  .stage-arrow{width:auto;height:20px;transform:rotate(90deg);}
+}
+
+/* ── Tool table ────────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:640px;}
+thead th{
+  font-family:var(--font-display);font-weight:600;font-size:.76rem;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--ink-muted);
+  text-align:left;padding:10px 14px;background:var(--surface-2);
+  border-bottom:1px solid var(--line);
+}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:var(--surface-2);}
+td.tool{font-family:var(--font-mono);font-size:.83rem;color:var(--ink);white-space:nowrap;}
+td.agent{white-space:nowrap;}
+
+/* ── Severity badges ──────────────────────────────────── */
+.badge{
+  display:inline-block;font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  padding:2px 8px;border-radius:2px;letter-spacing:.02em;
+}
+.badge.ok{background:var(--ok-soft);color:var(--ok);}
+.badge.warn{background:var(--warn-soft);color:var(--warn);}
+.badge.crit{background:var(--crit-soft);color:var(--crit);}
+
+/* ── Agent comparison ─────────────────────────────────── */
+.agents{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);margin:20px 0;}
+.agent-col{background:var(--surface);padding:20px 22px;}
+.agent-col h3{font-family:var(--font-display);font-size:1rem;margin-bottom:2px;}
+.agent-col .role{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-muted);
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;display:block;}
+.agent-col dl{margin:0;font-size:.88rem;}
+.agent-col dt{font-family:var(--font-display);font-weight:600;font-size:.78rem;
+  color:var(--ink-muted);margin-top:12px;}
+.agent-col dt:first-child{margin-top:0;}
+.agent-col dd{margin:2px 0 0;color:var(--ink);}
+@media (max-width:600px){.agents{grid-template-columns:1fr;}}
+
+/* ── Code / log sample ────────────────────────────────── */
+.log{
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:14px 16px;font-family:var(--font-mono);font-size:.78rem;
+  line-height:1.65;overflow-x:auto;white-space:pre;color:var(--ink);
+  margin:14px 0;
+}
+.log .lvl-hinweis{color:var(--ink-muted);}
+.log .lvl-warnung{color:var(--warn);}
+.log .lvl-ok{color:var(--ok);}
+.caption{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-muted);margin-top:6px;}
+
+/* ── Guardrail list ────────────────────────────────────── */
+.rules{list-style:none;margin:18px 0;padding:0;display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);}
+.rules li{background:var(--surface);padding:12px 16px;font-size:.92rem;
+  display:flex;gap:12px;align-items:baseline;}
+.rules li::before{content:"—";color:var(--accent);font-family:var(--font-mono);flex:0 0 auto;}
+
+/* ── Negative example callout ─────────────────────────── */
+.negex{
+  border:1px solid var(--crit);background:var(--crit-soft);
+  padding:20px 24px;margin:22px 0;
+}
+.negex .tag{font-family:var(--font-mono);font-size:.74rem;font-weight:600;color:var(--crit);
+  text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:8px;}
+.negex p{margin:0 0 .6em;font-size:.94rem;}
+.negex p:last-child{margin-bottom:0;}
+
+/* ── hardening list ───────────────────────────────────── */
+.hard{display:grid;gap:14px;margin:20px 0;}
+.hard-item{display:grid;grid-template-columns:120px 1fr;gap:16px;font-size:.92rem;
+  padding-bottom:14px;border-bottom:1px solid var(--line);}
+.hard-item:last-child{border-bottom:none;padding-bottom:0;}
+.hard-item .k{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);font-weight:600;}
+@media (max-width:560px){.hard-item{grid-template-columns:1fr;gap:4px;}}
+
+/* ── Dashboard-Mockup (Farben/Layout 1:1 aus dem echten Tool, Daten synthetisch) ── */
+.dash-frame{
+  max-width:920px;margin:24px auto 8px;border:1px solid var(--line);
+  border-radius:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);
+}
+.dash-titlebar{
+  background:var(--surface-2);border-bottom:1px solid var(--line);
+  padding:8px 14px;display:flex;align-items:center;gap:7px;
+}
+.dash-titlebar span{width:9px;height:9px;border-radius:50%;background:var(--line);display:inline-block;}
+.dash-titlebar em{
+  font-style:normal;font-family:var(--font-mono);font-size:.72rem;color:var(--ink-muted);
+  margin-left:8px;
+}
+.dash-mock{
+  --db-bg:#0d1117; --db-panel:#161b22; --db-border:#30363d;
+  --db-text:#c9d1d9; --db-dim:#8b949e;
+  --db-ok:#3fb950; --db-hinweis:#d29922; --db-warnung:#f85149; --db-accent:#58a6ff;
+  background:var(--db-bg);color:var(--db-text);
+  font-family:"SF Mono",Consolas,Monaco,monospace;font-size:12.5px;
+  padding:16px;
+}
+.dm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.dm-head h4{margin:0;font-size:14px;font-weight:600;color:var(--db-text);}
+.dm-head h4 b{color:var(--db-accent);font-weight:600;}
+.dm-head .load{color:var(--db-dim);font-size:11px;}
+.dm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;}
+.dm-card{background:var(--db-panel);border:1px solid var(--db-border);border-radius:6px;padding:10px 12px;}
+.dm-card .lbl{color:var(--db-dim);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+.dm-line{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;margin-top:5px;}
+.dm-line .k{color:var(--db-dim);}
+.dm-bar{width:52px;height:5px;background:var(--db-border);border-radius:3px;overflow:hidden;display:inline-block;margin-right:5px;}
+.dm-bar i{display:block;height:100%;background:var(--db-ok);}
+.dm-panel{background:var(--db-panel);border:1px solid var(--db-border);border-radius:6px;overflow:hidden;}
+.dm-panel h5{margin:0;padding:9px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--db-dim);border-bottom:1px solid var(--db-border);font-weight:600;}
+.dm-row{display:grid;grid-template-columns:82px 92px 1fr;gap:10px;padding:7px 12px;
+  border-bottom:1px solid var(--db-border);font-size:11.5px;}
+.dm-row:last-child{border-bottom:none;}
+.dm-row .ts{color:var(--db-dim);white-space:nowrap;}
+.dm-row .cat{color:var(--db-accent);}
+.dm-row.ok .msg{color:var(--db-ok);}
+.dm-row.hinweis .msg{color:var(--db-hinweis);}
+.dm-row.warnung .msg{color:var(--db-warnung);}
+.dm-grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin-top:10px;}
+.dm-topo{padding:10px;}
+.dm-topo svg text{fill:var(--db-text);font-size:8px;text-anchor:middle;}
+.dm-topo svg .lbl2{fill:var(--db-dim);font-size:7px;}
+.dm-summary{padding:11px 13px;font-size:11.5px;line-height:1.55;white-space:pre-wrap;
+  border-bottom:1px solid var(--db-border);}
+.dm-summary:last-child{border-bottom:none;}
+.dm-summary .hd{color:var(--db-dim);display:block;margin-bottom:4px;}
+.dm-summary .krit{font-weight:600;}
+.dm-summary .krit.niedrig{color:var(--db-ok);}
+.dm-summary .krit.hoch{color:var(--db-warnung);}
+@media (max-width:680px){.dm-cards{grid-template-columns:1fr;} .dm-grid2{grid-template-columns:1fr;}}
+
+.closing{max-width:760px;margin:0 auto;padding-block:34px 0;border-top:1px solid var(--line);}
+.closing p{color:var(--ink-muted);}
+footer{max-width:760px;margin:40px auto 0;font-family:var(--font-mono);font-size:.76rem;
+  color:var(--ink-muted);}
+</style>
+</head>
+<body>
+
+<div class="backlink"><a href="../">← Zurück zum Profil</a></div>
+
+<div class="masthead">
+  <p class="eyebrow">Fallstudie · Sicherheits-Engineering</p>
+  <h1>Ein Endpoint-SOC für ein einzelnes Gerät</h1>
+  <p class="dek">Wie ein zweistufiges KI-Agenten-System, deterministische Guardrails und
+  klassische Unix-Sensorik zusammen ein Reisegerät überwachen — ohne dass die KI je selbst
+  etwas ausführt.</p>
+  <div class="meta">
+    <div><dt>Rolle</dt> Konzept, Architektur, Umsetzung</div>
+    <div><dt>Stack</dt> Bash · systemd · Python · Claude-Agenten</div>
+    <div><dt>Scope</dt> ein Endgerät, kein Server-Fleet</div>
+  </div>
+</div>
+
+<section>
+  <span class="section-num">Ausgangslage</span>
+  <h2>Ein Gerät, viele fremde Netze</h2>
+  <p>Ein Laptop, der zwischen Hotel-WLANs, Cafés und dem Heimnetz wechselt, hat kein
+  Unternehmens-SOC im Rücken, das Traffic korreliert, Anomalien einordnet und im Ernstfall
+  reagiert. Klassische Endpoint-Antivirensoftware deckt Signaturen ab, aber nicht
+  Netzwerk-Manipulation, Rogue-Access-Points oder stille Persistenz-Versuche. Die Frage war:
+  wie viel echte SOC-Praxis lässt sich auf ein einzelnes Gerät herunterskalieren — mit
+  Werkzeugen, die es auf jedem Linux-System schon gibt, plus einer KI-Schicht für die
+  Einordnung?</p>
+  <p>Die Antwort sollte kein Prototyp bleiben, der beim ersten Fehlalarm ignoriert wird —
+  sondern etwas, das man tatsächlich tagelang mitlaufen lässt.</p>
+</section>
+
+<section>
+  <span class="section-num">Leitprinzip</span>
+  <h2>Empfehlung ja, Ausführung nein</h2>
+  <p>Jede LLM-gestützte Sicherheitsautomatisierung hat ein strukturelles Risiko: ein Modell,
+  das Logs fehlinterpretiert — oder durch präparierte Log-Inhalte manipuliert wird — und dabei
+  Werkzeuggewalt besitzt, kann selbst zum Sicherheitsproblem werden. Deshalb gilt für dieses
+  System eine einzige, nicht verhandelbare Regel:</p>
+  <div class="principle">
+    <span>Architekturprinzip</span>
+    <p>Die KI bewertet und empfiehlt. Ausgeführt wird ausschliesslich nach expliziter,
+    manueller Bestätigung durch einen Menschen — und erst nach einer zweiten,
+    rein deterministischen Prüfung derselben Empfehlung.</p>
+  </div>
+  <p>Das reduziert die KI-Komponente auf das, was sie gut kann — Muster in unstrukturierten
+  Daten erkennen und einordnen — und hält sie von dem fern, was bei einer Fehleinschätzung
+  teuer wird: tatsächlich etwas am System zu verändern.</p>
+</section>
+
+<section class="wide">
+  <span class="section-num">Architektur</span>
+  <h2>Vom Sensor bis zur Freigabe</h2>
+  <p>Sieben Stationen, jede mit einer klaren Zuständigkeit. Nichts überspringt eine Stufe.</p>
+  <div class="pipeline">
+    <div class="stage"><span class="stage-n">01</span><h3>Sensoren</h3>
+      <p>Passive Netzwerk-Beobachtung, Datei-/Log-Überwachung, USB-Ereignisse — nichts sendet
+      aktiv Pakete an fremde Geräte.</p></div>
+    <div class="stage-arrow">→</div>
+    <div class="stage"><span class="stage-n">02</span><h3>Event-Log</h3>
+      <p>Ein gemeinsames JSON-Schema für alle Quellen: Zeitstempel, Stufe, Kategorie,
+      Nachricht.</p></div>
+    <div class="stage-arrow">→</div>
+    <div class="stage"><span class="stage-n">03</span><h3>Triage-Agent</h3>
+      <p>Günstig, häufig getaktet. Stuft Kritikalität ein, nur bei echtem Signal.</p></div>
+    <div class="stage-arrow">→</div>
+    <div class="stage"><span class="stage-n">04</span><h3>Eskalations-Agent</h3>
+      <p>Nur bei Bedarf. Tieferer Kontext, genau eine strukturierte Empfehlung.</p></div>
+  </div>
+  <div class="pipeline" style="margin-top:2px;">
+    <div class="stage"><span class="stage-n">05</span><h3>Guardrails</h3>
+      <p>Deterministische Regeln prüfen jede Empfehlung — vor Anzeige und erneut vor
+      Ausführung.</p></div>
+    <div class="stage-arrow">→</div>
+    <div class="stage"><span class="stage-n">06</span><h3>Mensch bestätigt</h3>
+      <p>Dialog oder Terminal, mit Klartext-Vorschau des exakten Befehls.</p></div>
+    <div class="stage-arrow">→</div>
+    <div class="stage"><span class="stage-n">07</span><h3>Ausführung</h3>
+      <p>Genau der geprüfte Befehl — nie ein vom Modell frei generierter String.</p></div>
+  </div>
+</section>
+
+<section class="wide">
+  <span class="section-num">Ansicht</span>
+  <h2>Das Ergebnis im Dashboard</h2>
+  <p>Alle Sensoren, beide Agenten und der Freigabe-Status laufen in einer lokalen,
+  ausschliesslich auf <span class="mono" style="font-size:.85em;">127.0.0.1</span>
+  gebundenen Weboberfläche zusammen. Nachbau des tatsächlichen Layouts — Adressen,
+  MAC-Adressen und Netzwerknamen sind frei erfunden (RFC-5737-Dokumentationsbereiche).</p>
+
+  <div class="dash-frame">
+    <div class="dash-titlebar"><span></span><span></span><span></span>
+      <em>127.0.0.1:8787 — anonymisierte Beispieldaten</em></div>
+    <div class="dash-mock">
+      <div class="dm-head">
+        <h4>🛡 <b>Mini-SIEM</b> Dashboard</h4>
+        <div class="load">CPU <b style="color:#3fb950">18%</b>&nbsp;&nbsp;RAM <b style="color:#d29922">61%</b></div>
+      </div>
+      <div class="dm-cards">
+        <div class="dm-card">
+          <div class="lbl">Netzwerkstatus</div>
+          <div class="dm-line"><span class="k">netwatch</span><span>🟢 läuft</span></div>
+          <div class="dm-line"><span class="k">WLAN</span><span>Café-Gast-WLAN · 192.0.2.24</span></div>
+          <div class="dm-line"><span class="k">Signal</span><span><span class="dm-bar"><i style="width:72%"></i></span>72% · Kanal 44</span></div>
+          <div class="dm-line"><span class="k">Router-MAC</span><span>02:00:00:aa:bb:01</span></div>
+          <div class="dm-line"><span class="k">VPN</span><span>🟢 CH (203.0.113.9)</span></div>
+          <div class="dm-line"><span class="k">Firewall</span><span>🟢 aktiv · Kill-Switch an</span></div>
+        </div>
+        <div class="dm-card">
+          <div class="lbl">Auto-Blocks / Events</div>
+          <div class="dm-line"><span class="k">Aktive Blocks</span><span>1</span></div>
+          <div class="dm-line"><span class="k">🔴 Warnung</span><span>2</span></div>
+          <div class="dm-line"><span class="k">🟡 Hinweis</span><span>14</span></div>
+          <div class="dm-line"><span class="k">🟢 OK</span><span>31</span></div>
+        </div>
+        <div class="dm-card">
+          <div class="lbl">Signatur-Datenbanken</div>
+          <div class="dm-line"><span class="k">ClamAV</span><span>Sig. #27184 (15.09.)</span></div>
+          <div class="dm-line"><span class="k">rkhunter</span><span>Baseline 14.09.</span></div>
+          <div class="dm-line"><span class="k">Integrität</span><span>🟢 Baseline ok</span></div>
+        </div>
+      </div>
+
+      <div class="dm-grid2">
+        <div class="dm-panel">
+          <h5>Live-Events</h5>
+          <div class="dm-row ok"><span class="ts">14:12:03</span><span class="cat">integrity</span><span class="msg">Integritäts-Check: keine Abweichung von der Baseline</span></div>
+          <div class="dm-row warnung"><span class="ts">14:09:41</span><span class="cat">wifi_security</span><span class="msg">Möglicher Rogue-AP: "Café-Gast-WLAN" über unbekannte BSSID</span></div>
+          <div class="dm-row hinweis"><span class="ts">14:06:15</span><span class="cat">mdns</span><span class="msg">mDNS: 198.51.100.44 → Drucker [_ipp._tcp]</span></div>
+          <div class="dm-row hinweis"><span class="ts">14:02:58</span><span class="cat">allgemein</span><span class="msg">Neues Gerät: 198.51.100.17 [MAC 02:1a:2b:3c:4d:5e] Typ: Mobile-Gerät</span></div>
+          <div class="dm-row warnung"><span class="ts">13:58:30</span><span class="cat">portscan</span><span class="msg">psad: möglicher Scan von 203.0.113.201 (extern)</span></div>
+          <div class="dm-row ok"><span class="ts">13:41:07</span><span class="cat">auto_block</span><span class="msg">Auto-Block für 203.0.113.55 nach TTL aufgehoben</span></div>
+        </div>
+        <div class="dm-panel dm-topo">
+          <h5 style="margin:-10px -10px 8px;">Netzwerk-Topologie</h5>
+          <svg viewBox="0 0 260 190" style="width:100%;height:150px;">
+            <line x1="130" y1="95" x2="130" y2="35" stroke="#30363d" stroke-width="1.5"/>
+            <line x1="130" y1="95" x2="55" y2="140" stroke="#30363d" stroke-width="1.5"/>
+            <line x1="130" y1="95" x2="130" y2="155" stroke="#30363d" stroke-width="1.5"/>
+            <line x1="130" y1="95" x2="205" y2="140" stroke="#30363d" stroke-width="1.5"/>
+            <line x1="130" y1="95" x2="205" y2="55" stroke="#f85149" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <g><circle cx="130" cy="35" r="13" fill="#161b22" stroke="#3fb950"/><text x="130" y="39">💻</text><text class="lbl2" x="130" y="55">Dieses Gerät</text></g>
+            <g><circle cx="130" cy="95" r="15" fill="#161b22" stroke="#58a6ff"/><text x="130" y="100">🌐</text><text class="lbl2" x="130" y="118">192.0.2.1</text></g>
+            <g><circle cx="55" cy="140" r="11" fill="#161b22" stroke="#8b949e"/><text x="55" y="144">🖨️</text><text class="lbl2" x="55" y="158">Drucker</text></g>
+            <g><circle cx="130" cy="155" r="11" fill="#161b22" stroke="#8b949e"/><text x="130" y="159">📱</text><text class="lbl2" x="130" y="173">Mobile-Gerät</text></g>
+            <g><circle cx="205" cy="140" r="11" fill="#161b22" stroke="#8b949e"/><text x="205" y="144">❓</text><text class="lbl2" x="205" y="158">+3 unbek.</text></g>
+            <g><circle cx="205" cy="55" r="10" fill="#161b22" stroke="#f85149"/><text x="205" y="59">🌍</text><text class="lbl2" x="205" y="72">203.0.113.201</text></g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="dm-panel" style="margin-top:10px;">
+        <h5>SOC-Analysen — Triage-Agent</h5>
+        <div class="dm-summary"><span class="hd">── SOC-Triage · 14:09:41 ──</span><span class="krit niedrig">KRITIKALITÄT: niedrig</span>
+ZUSAMMENFASSUNG: Die gemeldete Scan-Aktivität stammt von einer der eigenen
+Interface-Adressen dieses Geräts (192.0.2.24) und ist damit kein externer Angriff,
+sondern die passive Netzwerk-Sondierung von netwatch selbst — psad wertet dieses
+Muster im Grenzfall fälschlich als Scan. Das aktuell verbundene WLAN
+"Café-Gast-WLAN" ist ein offenes Gastnetz ohne erkennbare Vertrauensbeziehung zu
+diesem Gerät; die parallel aufgetretene Rogue-AP-Meldung verdient dennoch weitere
+Beobachtung, da BSSID-Wechsel in Gastnetzen häufiger vorkommen als in Heimnetzen.
+Keine Gegenmassnahme empfohlen.</div>
+        <div class="dm-summary"><span class="hd">── SOC-Triage · 13:52:08 ──</span><span class="krit hoch">KRITIKALITÄT: hoch</span>
+ZUSAMMENFASSUNG: Fünf fehlgeschlagene Login-Versuche von 203.0.113.201 innerhalb
+von zwei Minuten, gefolgt von einem erfolgreichen sudo-Befehl des regulären
+Nutzers fünf Minuten später — die zeitliche Nähe ist auffällig, auch wenn der
+sudo-Befehl selbst unauffällig ist. Die Quelladresse gehört nicht zu diesem Gerät
+und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
+(Prozess- und Verbindungsliste, vollständiges Auth-Log) auslösen.</div>
+      </div>
+    </div>
+  </div>
+  <p class="caption">Nachgebaute Ansicht mit synthetischen Werten — Layout, Farblogik und
+  Datenfelder entsprechen dem produktiven Dashboard. Die beiden Analyse-Texte zeigen das
+  reale Format der Triage-Ausgabe; Inhalte anonymisiert.</p>
+</section>
+
+<section class="wide">
+  <span class="section-num">Werkzeuge im Hintergrund</span>
+  <h2>Was tatsächlich gemessen wird</h2>
+  <p>Alles rein passiv oder auf lokale, bereits vorhandene Standard-Anfragen beschränkt —
+  dazu mehr im Abschnitt zur ethischen Leitplanke weiter unten. Jede Zeile in der Tabelle
+  mündet über das gemeinsame Event-Schema in dieselbe Agenten-Pipeline.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Quelle</th><th>Liefert</th><th>Fliesst ein in</th></tr></thead>
+      <tbody>
+        <tr><td class="tool">net.recon (passiv)</td><td>Geräte- und ARP-Tabelle, Netzwerk-Topologie</td><td class="agent">Event-Log → Triage</td></tr>
+        <tr><td class="tool">ip neigh</td><td>Neue Hosts, ARP-Konflikte (Spoofing-Verdacht)</td><td class="agent">Event-Log → Triage</td></tr>
+        <tr><td class="tool">avahi-browse (mDNS)</td><td>Geräteklasse: Drucker, Kamera, IoT, Lautsprecher …</td><td class="agent">Event-Log → Triage</td></tr>
+        <tr><td class="tool">nmcli (WLAN)</td><td>SSID/BSSID-Historie, Verschlüsselungsstärke</td><td class="agent">Evil-Twin-Erkennung</td></tr>
+        <tr><td class="tool">p0f</td><td>Passives OS-Fingerprinting pro IP</td><td class="agent">Eskalations-Kontext</td></tr>
+        <tr><td class="tool">psad</td><td>Portscan-Muster aus Firewall-/Kernel-Log</td><td class="agent">Event-Log (eigener Traffic vorgefiltert)</td></tr>
+        <tr><td class="tool">ClamAV / rkhunter</td><td>Signatur- und Heuristik-Funde</td><td class="agent">Direkt an Eskalations-Agent</td></tr>
+        <tr><td class="tool">auth.log / journalctl</td><td>Login-Fehlversuche, sudo, neue Nutzer, USB/VPN/WLAN-Warnungen</td><td class="agent">Event-Log → Triage</td></tr>
+        <tr><td class="tool">SHA256-Baseline</td><td>Abweichung an den eigenen Sicherheits-Skripten</td><td class="agent">Direkt an Eskalations-Agent</td></tr>
+        <tr><td class="tool">ufw / VPN-Status</td><td>Firewall- und Kill-Switch-Zustand</td><td class="agent">Kontext für beide Agenten</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">Gekürzt — die vollständige Pipeline verarbeitet zusätzliche Quellen wie
+  Verbindungs- und Prozesslisten.</p>
+</section>
+
+<section class="wide">
+  <span class="section-num">Zwei Agenten, zwei Aufgaben</span>
+  <h2>Günstige Triage, teure Tiefenanalyse</h2>
+  <p>Ein einzelner, immer gleich teurer Agent wäre entweder zu langsam für ständige
+  Beobachtung oder zu teuer für seltene Tiefenanalyse. Die Lösung: zwei Stufen mit
+  unterschiedlichem Budget.</p>
+  <div class="agents">
+    <div class="agent-col">
+      <h3>Triage-Agent</h3>
+      <span class="role">Stufe 1 · häufig</span>
+      <dl>
+        <dt>Takt</dt><dd>Alle 5 Minuten, aber nur bei tatsächlich neuen Ereignissen ausgelöst</dd>
+        <dt>Kontext</dt><dd>Neue Events seit letztem Lauf, aktive Sitzungen, offene
+        Verbindungen, WLAN-Name, eigene IP-Adressen, VPN-Status</dd>
+        <dt>Output</dt><dd><span class="badge ok">niedrig</span>
+        <span class="badge warn">mittel</span> <span class="badge crit">hoch/kritisch</span>
+        + 3–5 Sätze Einordnung</dd>
+        <dt>Bei hoch/kritisch</dt><dd>Desktop-Meldung, E-Mail, Übergabe an Stufe 2</dd>
+      </dl>
+    </div>
+    <div class="agent-col">
+      <h3>Eskalations-Agent</h3>
+      <span class="role">Stufe 2 · nur bei Bedarf</span>
+      <dl>
+        <dt>Takt</dt><dd>Nur getriggert — von Stufe 1 oder direkt von AV-/Rootkit-/
+        Integritäts-Funden</dd>
+        <dt>Kontext</dt><dd>Prozessliste, alle Verbindungen, Login-Historie, 200 Zeilen
+        Auth-Log, aktive Auto-Blocks, autorisierte SSH-Schlüssel, Firewall-Status</dd>
+        <dt>Output</dt><dd>Genau eine strukturierte Empfehlung: Ziel, Begründung, Konfidenz —
+        oder «keine»</dd>
+        <dt>Führt aus</dt><dd>Nichts. Schreibt eine Freigabe-Anfrage, sonst nichts.</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="log"><span class="lvl-hinweis">2026-·· ··:··:·· [HINWEIS]</span> Neues Gerät im Netzwerk: 198.51.100.24 [MAC: 3c:xx:xx:xx:xx:12] Typ: Router/Gateway
+<span class="lvl-warnung">2026-·· ··:··:·· [WARNUNG]</span> Möglicher Rogue-AP: WLAN "Beispiel-Netz" läuft über unbekannte BSSID
+<span class="lvl-ok">2026-·· ··:··:·· [OK]</span> Auto-Block für 203.0.113.5 nach Ablauf der TTL aufgehoben</div>
+  <p class="caption">Anonymisiertes Beispiel aus dem strukturierten Event-Schema — Adressen
+  durch RFC-5737-Dokumentationsbereiche ersetzt.</p>
+</section>
+
+<section>
+  <span class="section-num">Kontrollschicht</span>
+  <h2>Guardrails, nicht Vertrauen</h2>
+  <p>Jede Empfehlung des Eskalations-Agenten durchläuft dieselben deterministischen Regeln
+  zweimal — einmal direkt nach der Analyse, ein zweites Mal unmittelbar vor der Ausführung,
+  falls in der Zwischenzeit etwas am Zielsystem verändert wurde:</p>
+  <ul class="rules">
+    <li>Ziel darf nie der eigene Nutzer-Account oder root sein</li>
+    <li>Ein «Netz trennen» darf nur das tatsächlich überwachte Interface betreffen</li>
+    <li>Datei-Quarantäne nur unterhalb definierter, unkritischer Pfade — Skripte selbst
+    sind ausgeschlossen</li>
+    <li>SSH-Key-Entfernung nur bei exakter Zeilenübereinstimmung, mit automatischem
+    Backup vorher</li>
+    <li>Eine abgelehnte Empfehlung wird protokolliert, aber nie einer Freigabe
+    vorgelegt</li>
+  </ul>
+  <p>Ausserdem: Log-Inhalte sind teils von aussen beeinflussbar — ein SSH-Benutzername in
+  einem Login-Fehlversuch etwa. Jeder Prompt trennt deshalb explizit zwischen «zu
+  bewertenden Daten» und «Anweisungen an das Modell» und wurde gegen wörtlich eingebettete
+  Injection-Versuche getestet.</p>
+</section>
+
+<section>
+  <span class="section-num">Design-Entscheidung, kein Zufall</span>
+  <h2>Was bewusst nicht gebaut wurde</h2>
+  <div class="negex">
+    <span class="tag">Verworfen — nicht aus technischen Gründen</span>
+    <p>Eine frühe Version enthielt ein Modul, das aktiv unbekannte Geräte im Netz
+    anspricht, um die Topologie schneller und vollständiger zu kartieren.</p>
+    <p>Das wurde wieder entfernt. Aktives Anstupsen fremder Geräte in einem Netz, das man
+    nicht selbst betreibt — etwa in einem Hotel-WLAN — ist eine Grenze, die ein
+    Einzelgerät-Werkzeug nicht überschreiten sollte, unabhängig davon, wie harmlos die
+    Absicht ist. Seither gilt: ausschliesslich Mithören von Broadcast-/Multicast-Verkehr
+    und höchstens eine einzelne, für jedes Gerät ohnehin übliche Standardanfrage (etwa
+    ein mDNS-Browse, wie ihn jeder Druck-Dialog selbst auslöst).</p>
+  </div>
+</section>
+
+<section>
+  <span class="section-num">Betriebsreife</span>
+  <h2>Wer überwacht die Wächter?</h2>
+  <p>Ein Sicherheitssystem, das selbst unbemerkt ausfallen oder manipuliert werden kann, ist
+  keine Verbesserung. Drei Massnahmen adressieren genau das:</p>
+  <div class="hard">
+    <div class="hard-item"><span class="k">Watchdog</span>
+      <span>Der Sensor-Dienst meldet sich periodisch bei systemd; bleibt das Lebenszeichen
+      aus, wird er automatisch neu gestartet — kein manuelles Eingreifen nötig.</span></div>
+    <div class="hard-item"><span class="k">Integrität</span>
+      <span>Eine SHA256-Baseline der eigenen Skripte liegt root-geschützt ausserhalb des
+      normalen Nutzer-Zugriffs. Weicht ein Skript davon ab, löst das selbst einen
+      Sicherheits-Alarm aus — und lässt sich nur per expliziter, manueller Freigabe neu
+      setzen.</span></div>
+    <div class="hard-item"><span class="k">Log-Rotation</span>
+      <span>Alle Protokolle sind grössen- und zeitbegrenzt. Unbegrenztes Wachstum, das am
+      Ende die Platte füllt und die Überwachung selbst lahmlegt, ist damit ausgeschlossen.</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="section-num">Einordnung</span>
+  <h2>Kein Enterprise-SIEM — und das ist Absicht</h2>
+  <p>Dieses System ersetzt kein Team, keine Korrelation über hunderte Hosts, keine
+  forensische Tiefe eines echten SOC. Es ist bewusst für genau einen Anwendungsfall
+  gebaut: ein Gerät, ein Nutzer, wechselnde, nicht vertrauenswürdige Netze.</p>
+  <p>Übertragbar ist dagegen das Grundmuster dahinter — eine KI-Komponente, die bewertet
+  statt zu handeln, deren Vorschläge doppelt deterministisch geprüft werden, und deren
+  Entscheidungswege nachvollziehbar bleiben. Genau diese drei Eigenschaften —
+  menschliche Aufsicht, Nachvollziehbarkeit, Eingriffsmöglichkeit — sind auch der Kern
+  dessen, was regulierte KI-Systeme unter EU AI Act und ISO 42001 verlangen. In diesem
+  Projekt ging es zuerst um ein privates Sicherheitsproblem; das Architekturmuster
+  dahinter ist dasselbe, das auch in professionellem Kontext für vertrauenswürdige
+  KI-Automatisierung trägt.</p>
+</section>
+
+<footer>Privates Infrastrukturprojekt · Details zu Hostnamen, Netzwerken und Adressbereichen
+anonymisiert. · <a href="../" style="color:var(--ink-muted);">← Zurück zum Profil</a></footer>
+
+</body>
+</html>
