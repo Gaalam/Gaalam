@@ -69,7 +69,7 @@
   .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
   nav.site{ display:flex; align-items:center; flex-wrap:wrap; justify-content:flex-end; row-gap:8px; }
   nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:20px; text-decoration:none; }
-  nav.site a:hover{ color:var(--ink); }
+  nav.site a:hover, nav.site a[aria-current]{ color:var(--ink); }
   .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:20px; text-decoration:none; display:inline-block; }
   .nav-cta:hover{ background:var(--ink); }
   .lang-switch{ display:flex; gap:2px; margin-left:20px; }
@@ -123,20 +123,10 @@
   .flagship{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 22px; }
   .flagship h3{ font-size:1.1rem; margin-top:2px; }
 
-  .scheduler{ max-width:640px; }
-  .scheduler h3{ font-size:1.1rem; }
-
-  .contactform{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 24px; max-width:480px; }
-  .contactform h3{ font-size:1.1rem; margin-top:2px; }
-  .form-row{ margin-bottom:16px; }
-  .form-row label{ display:block; font-family:'IBM Plex Mono', monospace; font-size:.76rem; letter-spacing:.03em; color:var(--ink-soft); margin-bottom:6px; }
-  .form-row input, .form-row textarea{
-    width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:.92rem; color:var(--ink);
-    background:var(--paper); border:1px solid var(--rule); padding:9px 12px; resize:vertical;
-  }
-  .form-row input:focus, .form-row textarea:focus{ outline:none; border-color:var(--signal); }
-  .form-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin:14px 0 0; }
-  button.btn-primary{ cursor:pointer; appearance:none; }
+  .cta{ background:var(--paper-raised); border:1px solid var(--rule); padding:28px 28px 24px; }
+  .cta h2{ font-size:1.2rem; }
+  .cta-links{ margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:.82rem; }
+  .cta-links a{ margin-right:18px; }
 
   footer{ padding:28px 0 50px; border-top:1px solid var(--rule); }
   footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
@@ -152,7 +142,8 @@
     <nav class="site">
       <a href="/" data-i18n="nav.produkt">Produkt</a>
       <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a>
-      <a class="nav-cta" href="mailto:gaalam@googlemail.com" data-i18n="nav.kontakt">Kontakt</a>
+      <a href="/profil/" aria-current="page" data-i18n="nav.profil">Berufliches Profil</a>
+      <a class="nav-cta" href="/kontakt/" data-i18n="nav.kontakt">Kontakt</a>
       <span class="lang-switch">
         <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
       </span>
@@ -176,7 +167,7 @@
         </div>
         <div class="hero-cta">
           <a class="btn-primary" href="mailto:gaalam@googlemail.com" data-i18n="hero.cta1">Kontakt aufnehmen →</a>
-          <a class="cta-secondary" href="#kontakt" data-i18n="hero.cta2">Termin buchen →</a>
+          <a class="cta-secondary" href="/kontakt/" data-i18n="hero.cta2">Termin buchen →</a>
         </div>
         <p style="font-family:'IBM Plex Mono', monospace; font-size:.8rem; color:var(--ink-soft); margin:14px 0 0;">gaalam@googlemail.com</p>
       </div>
@@ -302,39 +293,14 @@
 
 <section id="kontakt">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow" data-i18n="kontakt.eyebrow">Kontakt</p>
-      <h2 data-i18n="kontakt.h2">Direkt Kontakt aufnehmen</h2>
-      <p class="lead" data-i18n="kontakt.lead">E-Mail: <a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a> · Web: <a href="../">aalam.ch</a></p>
-    </div>
-
-    <div class="contactform">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="form.eyebrow">Nachricht schreiben</p>
-      <h3 data-i18n="form.h3">Kurze Anfrage genügt</h3>
-      <p data-i18n="form.p">Kein Termin nötig. Name, E-Mail und ein paar Zeilen reichen.</p>
-      <form id="contact-form" onsubmit="return sendContactMail(event)">
-        <div class="form-row">
-          <label for="cf-name" data-i18n="form.name">Name</label>
-          <input type="text" id="cf-name" name="name" required>
-        </div>
-        <div class="form-row">
-          <label for="cf-email" data-i18n="form.email">E-Mail</label>
-          <input type="email" id="cf-email" name="email" required>
-        </div>
-        <div class="form-row">
-          <label for="cf-message" data-i18n="form.message">Nachricht</label>
-          <textarea id="cf-message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" data-i18n="form.submit">Nachricht senden →</button>
-        <p class="form-note" data-i18n="form.note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
-      </form>
-    </div>
-
-    <div class="scheduler" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="sched.eyebrow">Terminbuchung</p>
-      <h3 data-i18n="sched.h3">Lieber gleich ein Gespräch?</h3>
-      <p data-i18n="sched.p">30 Minuten, unverbindlich.</p>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/gaalam/30min" style="min-width:280px;height:700px;"></div>
+    <div class="cta">
+      <h2 data-i18n="cta.h2">Kontakt aufnehmen</h2>
+      <p style="margin-bottom:16px;" data-i18n="cta.p">Erstgespräch buchen, oder direkt schreiben — beides läuft über eine gemeinsame Seite.</p>
+      <a class="btn-primary" href="/kontakt/" data-i18n="cta.btn">Erstgespräch buchen oder schreiben →</a>
+      <div class="cta-links">
+        <a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a>
+        <a href="/leistungen/" data-i18n="cta.link1">Leistungen im Überblick →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -344,6 +310,7 @@
     <p class="note" data-i18n="footer.note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="../">die Produktseite</a>.</p>
     <span style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
       <a href="/leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.leistungen">Leistungen</a>
+      <a href="/kontakt/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.kontakt">Kontakt</a>
       <a href="/rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
       <span class="fbrand">Giw Aalam</span>
     </span>
@@ -351,24 +318,13 @@
 </footer>
 
 <script>
-  function sendContactMail(e){
-    e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
-    const isEn = document.documentElement.lang === 'en';
-    const subject = (isEn ? 'Website inquiry from ' : 'Kontaktanfrage von ') + name;
-    const body = message + '\n\n---\n' + name + ' <' + email + '>';
-    window.location.href = 'mailto:gaalam@googlemail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    return false;
-  }
-
   const I18N = {
     de: {
       title: "Giw Aalam – Vertragsmanagement, Prozessautomatisierung & AI-Governance",
       description: "Giw Aalam: Prozesse analysieren und automatisieren, Vertragsmanagement auf Kunden- und Anbieterseite, kontrollierte KI-Einführung. Über 15 Jahre Erfahrung, wohnhaft in Belp BE, kurzfristig verfügbar.",
       "nav.produkt": "Produkt",
       "nav.leistungen": "Leistungen",
+      "nav.profil": "Berufliches Profil",
       "nav.kontakt": "Kontakt",
       "hero.eyebrow": "Berufliches Profil",
       "hero.h1": "Prozesse analysieren und automatisieren — Spezialgebiet Vertragsmanagement",
@@ -435,22 +391,13 @@
       "flag2.h3": "Endpoint-SOC-Agent",
       "flag2.p": "Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.",
       "flag2.link": "Fallstudie ansehen →",
-      "kontakt.eyebrow": "Kontakt",
-      "kontakt.h2": "Direkt Kontakt aufnehmen",
-      "kontakt.lead": "E-Mail: <a href=\"mailto:gaalam@googlemail.com\">gaalam@googlemail.com</a> · Web: <a href=\"../\">aalam.ch</a>",
-      "form.eyebrow": "Nachricht schreiben",
-      "form.h3": "Kurze Anfrage genügt",
-      "form.p": "Kein Termin nötig. Name, E-Mail und ein paar Zeilen reichen.",
-      "form.name": "Name",
-      "form.email": "E-Mail",
-      "form.message": "Nachricht",
-      "form.submit": "Nachricht senden →",
-      "form.note": "Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.",
-      "sched.eyebrow": "Terminbuchung",
-      "sched.h3": "Lieber gleich ein Gespräch?",
-      "sched.p": "30 Minuten, unverbindlich.",
+      "cta.h2": "Kontakt aufnehmen",
+      "cta.p": "Erstgespräch buchen, oder direkt schreiben — beides läuft über eine gemeinsame Seite.",
+      "cta.btn": "Erstgespräch buchen oder schreiben →",
+      "cta.link1": "Leistungen im Überblick →",
       "footer.note": "Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href=\"../\">die Produktseite</a>.",
       "footer.leistungen": "Leistungen",
+      "footer.kontakt": "Kontakt",
       "footer.legal": "Impressum & Datenschutz"
     },
     en: {
@@ -458,6 +405,7 @@
       description: "Giw Aalam: analysing and automating processes, contract management on the client and provider side, controlled AI adoption. 15+ years of experience, based in Belp BE, available at short notice.",
       "nav.produkt": "Product",
       "nav.leistungen": "Services",
+      "nav.profil": "Professional Profile",
       "nav.kontakt": "Contact",
       "hero.eyebrow": "Professional profile",
       "hero.h1": "Analysing and automating processes — with a focus on contract management",
@@ -524,22 +472,13 @@
       "flag2.h3": "Endpoint SOC Agent",
       "flag2.p": "A two-stage AI-agent system for security monitoring on a single device: passive network and log sensing, deterministic guardrails that check every recommendation twice, execution only after manual approval. Same principle as Vendor Data Management — AI recommends, a human decides — applied here to endpoint security instead of contract review.",
       "flag2.link": "See the case study →",
-      "kontakt.eyebrow": "Contact",
-      "kontakt.h2": "Get in touch directly",
-      "kontakt.lead": "Email: <a href=\"mailto:gaalam@googlemail.com\">gaalam@googlemail.com</a> · Web: <a href=\"../\">aalam.ch</a>",
-      "form.eyebrow": "Write a message",
-      "form.h3": "A short note is enough",
-      "form.p": "No appointment needed. Name, email and a few lines will do.",
-      "form.name": "Name",
-      "form.email": "Email",
-      "form.message": "Message",
-      "form.submit": "Send message →",
-      "form.note": "Opens your email app with a pre-filled message.",
-      "sched.eyebrow": "Book a call",
-      "sched.h3": "Rather talk it through?",
-      "sched.p": "30 minutes, no obligation.",
+      "cta.h2": "Get in touch",
+      "cta.p": "Book an intro call, or write directly — both go through one shared page.",
+      "cta.btn": "Book an intro call or write →",
+      "cta.link1": "Services overview →",
       "footer.note": "This page is my professional profile for enquiries about permanent, interim and project roles. For information on the Vendor Data Management product, see <a href=\"../\">the product page</a>.",
       "footer.leistungen": "Services",
+      "footer.kontakt": "Contact",
       "footer.legal": "Imprint & privacy"
     }
   };
@@ -571,6 +510,5 @@
   try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
   setLang(initialLang);
 </script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>

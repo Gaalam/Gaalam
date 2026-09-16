@@ -323,9 +323,9 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top">Vendor Data Management</a>
+    <a class="brand" href="#top">Giw Aalam</a>
     <nav class="site">
-      <a href="#produkt" data-i18n="nav.produkt">Lösung</a><a href="#architektur" data-i18n="nav.architektur">Architektur</a><a href="#case" data-i18n="nav.case">Hintergrund</a><a href="leistungen/" class="nav-keep" data-i18n="nav.leistungen">Leistungen</a><a href="profil/" class="nav-keep" data-i18n="nav.profile">Berufliches Profil</a><a class="nav-cta" href="#kontakt" data-i18n="nav.cta">Erstgespräch buchen</a>
+      <a href="#produkt" data-i18n="nav.produkt">Lösung</a><a href="#architektur" data-i18n="nav.architektur">Architektur</a><a href="#case" data-i18n="nav.case">Hintergrund</a><a href="leistungen/" class="nav-keep" data-i18n="nav.leistungen">Leistungen</a><a href="profil/" class="nav-keep" data-i18n="nav.profile">Berufliches Profil</a><a class="nav-cta" href="kontakt/" data-i18n="nav.cta">Erstgespräch buchen</a>
       <span class="lang-switch">
         <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
       </span>
@@ -345,7 +345,7 @@
           <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
         </div>
         <div class="hero-cta">
-          <a class="btn-primary" href="#kontakt" data-i18n="hero.cta1">Erstgespräch vereinbaren →</a>
+          <a class="btn-primary" href="kontakt/" data-i18n="hero.cta1">Erstgespräch vereinbaren →</a>
           <a class="cta-secondary" href="#ki-liefert" data-i18n="hero.cta2">Beispiel-Analyse ansehen →</a>
         </div>
       </div>
@@ -864,75 +864,13 @@
   </div>
 </section>
 
-<section id="weiteres-projekt" style="padding:36px 0;">
-  <div class="wrap">
-    <div class="pullquote reveal" style="border-left-color:var(--ink-faint); margin:0;">
-      <p data-i18n="soccase.p">Ein zweites, unabhängiges Projekt trägt dasselbe Prinzip — KI erzeugt, eine unabhängige deterministische Schicht prüft nach, ein Mensch entscheidet —, angewendet auf ein anderes Themenfeld: ein Endpoint-Sicherheitssystem mit zweistufigen KI-Agenten und Guardrails.</p>
-      <a href="profil/endpoint-soc-agent/" data-i18n="soccase.link">Fallstudie Endpoint-SOC-Agent lesen →</a>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="kontakt.eyebrow">Kontakt &amp; Einstieg</p>
-      <h2 data-i18n="kontakt.h2">Erstgespräch buchen oder direkt schreiben</h2>
-      <p class="lead" data-i18n="kontakt.lead">Ob Erstgespräch, konkrete Frage zum Produkt oder individuelle Anforderung: der Kontakt läuft direkt über mich, nicht über ein Ticketsystem.</p>
-      <p data-i18n="kontakt.custom">Fehlt eine Funktion, die Sie brauchen? Als Entwickler des Tools setze ich individuelle Anforderungen direkt um, statt sie auf eine allgemeine Produkt-Roadmap zu vertrösten.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:8px;max-width:640px;">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="onboard.eyebrow">Onboarding</p>
-      <p data-i18n="kontakt.onboarding">Der Einstieg erfolgt vor Ort beim Kunden: bestehende Daten aus Excel-Listen, Vertragsablagen oder vorhandenen Systemen werden eingespielt, vorhandene Systeme angeschlossen. Sie beginnen mit Ihrem tatsächlichen Datenstand, nicht mit einer leeren Datenbank.</p>
-      <div class="stack-list">
-        <span data-i18n="onboard1">Termin vor Ort beim Kunden</span><span data-i18n="onboard2">Import bestehender Daten (Excel, Vertragsablagen, Altsysteme)</span><span data-i18n="onboard3">Anbindung vorhandener Systeme</span>
-      </div>
-    </div>
-
-    <div class="scheduler reveal" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="kontakt.schedule.eyebrow">Termin</p>
-      <h3 data-i18n="kontakt.schedule.h3">Kostenloses Erstgespräch buchen</h3>
-      <p data-i18n="kontakt.schedule.p">30 Minuten, unverbindlich: Wir klären Ihren Bedarf und ob Vendor Data Management passt.</p>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/gaalam/30min" style="min-width:280px;height:700px;"></div>
-    </div>
-
-    <div class="contactform reveal" style="margin-top:34px;">
-      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="kontakt.form.eyebrow">Kontakt</p>
-      <h3 data-i18n="kontakt.form.h3">Oder schreiben Sie direkt</h3>
-      <p data-i18n="kontakt.form.p">Für alles, was keinen Termin braucht: Fragen zum Produkt oder zu individuellen Anforderungen.</p>
-      <form id="contact-form" onsubmit="return sendContactMail(event)">
-        <div class="form-row">
-          <label for="cf-name" data-i18n="kontakt.form.name">Name</label>
-          <input type="text" id="cf-name" name="name" required>
-        </div>
-        <div class="form-row">
-          <label for="cf-email" data-i18n="kontakt.form.email">E-Mail</label>
-          <input type="email" id="cf-email" name="email" required>
-        </div>
-        <div class="form-row">
-          <label for="cf-message" data-i18n="kontakt.form.message">Nachricht</label>
-          <textarea id="cf-message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" data-i18n="kontakt.form.submit">Nachricht senden →</button>
-        <p class="form-note" data-i18n="kontakt.form.note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
-      </form>
-    </div>
-
-    <div class="links reveal">
-      <a href="https://github.com/Gaalam">GitHub</a>
-    </div>
-  </div>
-</section>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-
 <footer>
   <div class="wrap">
     <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.</p>
     <span style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
       <a href="leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.leistungen">Leistungen →</a>
       <a href="profil/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.profile">Berufliches Profil →</a>
+      <a href="kontakt/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.kontakt">Kontakt →</a>
       <a href="rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
       <span class="fbrand">Giw Aalam</span>
     </span>
@@ -946,18 +884,6 @@
 </div>
 
 <script>
-  function sendContactMail(e){
-    e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
-    const isEn = document.documentElement.lang === 'en';
-    const subject = (isEn ? 'Website inquiry from ' : 'Kontaktanfrage von ') + name;
-    const body = message + '\n\n---\n' + name + ' <' + email + '>';
-    window.location.href = 'mailto:gaalam@googlemail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    return false;
-  }
-
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
@@ -1056,8 +982,6 @@
       "img.pipeline.caption": "Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.",
       "img.audit.alt": "Auditbegründung und Vendor-Fragebogen mit Baseline-Referenz je Frage",
       "img.audit.caption": "Die Auditbegründung zitiert die zwei konkreten Risikoflags, die den Fragebogen ausgelöst haben (rotes Zeit- und Informationssicherheitsrisiko) — jede Frage trägt ihre Baseline-Referenz, hier Schweizer DSG- statt DSGVO-Kriterien.",
-      "soccase.p": "Ein zweites, unabhängiges Projekt trägt dasselbe Prinzip — KI erzeugt, eine unabhängige deterministische Schicht prüft nach, ein Mensch entscheidet —, angewendet auf ein anderes Themenfeld: ein Endpoint-Sicherheitssystem mit zweistufigen KI-Agenten und Guardrails.",
-      "soccase.link": "Fallstudie Endpoint-SOC-Agent lesen →",
       "produkt.eyebrow": "Das Produkt",
       "produkt.hook": "Kennen Sie das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schliesst Vendor Data Management.",
       "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
@@ -1186,29 +1110,10 @@
       "fact4": "0 Swing-Importe in den Compliance-Checkern",
       "fact5": "Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB",
       "arch.roadmap": "Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.",
-      "kontakt.eyebrow": "Kontakt &amp; Einstieg",
-      "kontakt.h2": "Erstgespräch buchen oder direkt schreiben",
-      "kontakt.lead": "Ob Erstgespräch, konkrete Frage zum Produkt oder individuelle Anforderung: der Kontakt läuft direkt über mich, nicht über ein Ticketsystem.",
-      "kontakt.custom": "Fehlt eine Funktion, die Sie brauchen? Als Entwickler des Tools setze ich individuelle Anforderungen direkt um, statt sie auf eine allgemeine Produkt-Roadmap zu vertrösten.",
-      "onboard.eyebrow": "Onboarding",
-      "kontakt.onboarding": "Der Einstieg erfolgt vor Ort beim Kunden: bestehende Daten aus Excel-Listen, Vertragsablagen oder vorhandenen Systemen werden eingespielt, vorhandene Systeme angeschlossen. Sie beginnen mit Ihrem tatsächlichen Datenstand, nicht mit einer leeren Datenbank.",
-      "onboard1": "Termin vor Ort beim Kunden",
-      "onboard2": "Import bestehender Daten (Excel, Vertragsablagen, Altsysteme)",
-      "onboard3": "Anbindung vorhandener Systeme",
-      "kontakt.schedule.eyebrow": "Termin",
-      "kontakt.schedule.h3": "Kostenloses Erstgespräch buchen",
-      "kontakt.schedule.p": "30 Minuten, unverbindlich: Wir klären Ihren Bedarf und ob Vendor Data Management passt.",
-      "kontakt.form.eyebrow": "Kontakt",
-      "kontakt.form.h3": "Oder schreiben Sie direkt",
-      "kontakt.form.p": "Für alles, was keinen Termin braucht: Fragen zum Produkt oder zu individuellen Anforderungen.",
-      "kontakt.form.name": "Name",
-      "kontakt.form.email": "E-Mail",
-      "kontakt.form.message": "Nachricht",
-      "kontakt.form.submit": "Nachricht senden →",
-      "kontakt.form.note": "Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.",
       "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.",
       "footer.profile": "Berufliches Profil →",
       "footer.leistungen": "Leistungen →",
+      "footer.kontakt": "Kontakt →",
       "footer.legal": "Impressum & Datenschutz"
     },
     en: {
@@ -1302,8 +1207,6 @@
       "img.pipeline.caption": "Pass 1 running — the log shows live which failure modes (hallucination, silent omission) the prompt design specifically guards against, and why.",
       "img.audit.alt": "Audit rationale and vendor questionnaire with baseline reference per question",
       "img.audit.caption": "The audit rationale cites the two concrete risk flags that triggered the questionnaire (red time risk and red information-security risk) — every question carries its baseline reference, here Swiss DSG rather than GDPR criteria.",
-      "soccase.p": "A second, independent project of mine carries the same principle — AI generates, an independent deterministic layer verifies, a human decides — applied to a different field: an endpoint security system with two-stage AI agents and guardrails.",
-      "soccase.link": "Read the Endpoint SOC Agent case study →",
       "produkt.eyebrow": "The Product",
       "produkt.hook": "Sound familiar: the auto-renewing contract expires in three weeks — but the notice period to cancel it ran out two months ago. The only place that was ever written down was a spreadsheet nobody's maintained since the colleague who owned it left. That gap — between &ldquo;documented somewhere&rdquo; and &ldquo;actually tracked&rdquo; — is exactly what Vendor Data Management closes.",
       "produkt.lead": "A desktop application that pulls vendor, contract, and license management out of exactly those spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
@@ -1432,29 +1335,10 @@
       "fact4": "0 Swing imports in the compliance checkers",
       "fact5": "No vendor lock-in — data stays in your own relational database",
       "arch.roadmap": "The database is swappable — embedded Derby for a quick trial, PostgreSQL or MariaDB for production on your own infrastructure, switchable via configuration. A Spring Boot REST API and a React frontend are on the roadmap (currently: planned, not built) — as an additional layer on top, not a rewrite: the service layer was built exactly for that.",
-      "kontakt.eyebrow": "Contact &amp; Getting Started",
-      "kontakt.h2": "Book an intro call or write directly",
-      "kontakt.lead": "An intro call, a specific product question, or a custom requirement: you deal directly with me, not a ticketing system.",
-      "kontakt.custom": "Missing a feature you need? As the developer of the tool, I implement individual requirements directly instead of parking them on a generic product roadmap.",
-      "onboard.eyebrow": "Onboarding",
-      "kontakt.onboarding": "Onboarding happens on-site at the customer: existing data from spreadsheets, contract archives, or existing systems gets imported, and existing systems get connected. You start from your actual data, not an empty database.",
-      "onboard1": "On-site kickoff at the customer",
-      "onboard2": "Import of existing data (spreadsheets, contract archives, legacy systems)",
-      "onboard3": "Connecting existing systems",
-      "kontakt.schedule.eyebrow": "Schedule",
-      "kontakt.schedule.h3": "Book a free intro call",
-      "kontakt.schedule.p": "30 minutes, no obligation: we clarify what you need and whether Vendor Data Management is the right fit.",
-      "kontakt.form.eyebrow": "Contact",
-      "kontakt.form.h3": "Or write directly",
-      "kontakt.form.p": "For anything that does not need a call: questions about the product or custom requirements.",
-      "kontakt.form.name": "Name",
-      "kontakt.form.email": "Email",
-      "kontakt.form.message": "Message",
-      "kontakt.form.submit": "Send message →",
-      "kontakt.form.note": "Opens your email app with a pre-filled message.",
       "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data). No error or correction rate is stated, on purpose: without an independent reference dataset such a figure would not be meaningful.",
       "footer.profile": "Professional Profile →",
       "footer.leistungen": "Services →",
+      "footer.kontakt": "Contact →",
       "footer.legal": "Imprint & Privacy"
     }
   };
