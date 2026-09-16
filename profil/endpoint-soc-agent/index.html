@@ -521,22 +521,59 @@ und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
   durch RFC-5737-Dokumentationsbereiche ersetzt.</p>
 </section>
 
+<section class="wide">
+  <span class="section-num">Konkret</span>
+  <h2>Wie eine Empfehlung tatsächlich aussieht</h2>
+  <p>Der Eskalations-Agent schreibt bei einer echten Empfehlung eine einzelne Datei —
+  keinen ausführbaren Befehl, nur strukturierte Felder:</p>
+  <div class="log">{
+  "id": "a1b2c3d4-…",
+  "action": "prozess_killen",
+  "target": "48213",
+  "reasoning": "Prozess 'xmrig' auf PID 48213 wurde nicht durch dpkg installiert,
+    verbindet ausgehend auf Port 4444 zu einer unbekannten IP und war zum
+    Zeitpunkt des Auth-Log-Funds noch nicht aktiv.",
+  "confidence": "hoch",
+  "human_preview": "kill -TERM 48213  (Prozess: xmrig)",
+  "expires": "… (30 Min. nach Erstellung)"
+}</div>
+  <p>Das erreicht mich über vier parallele Kanäle: Desktop-Benachrichtigung, E-Mail, ein
+  Ja/Nein-Dialog (läuft als eigenständige systemd-Einheit, unabhängig vom Timer-Dienst,
+  der ihn ausgelöst hat) und als Terminal-Fallback jederzeit per Befehl, der Ziel,
+  Begründung, Konfidenz und die exakte Befehlsvorschau nochmal anzeigt, bevor ich
+  bestätige. Reagiere ich nicht, verfällt die Empfehlung nach 30 Minuten automatisch —
+  ohne Aktion.</p>
+
+  <h3 style="margin-top:26px;">Fünf mögliche Aktionstypen, sonst keine</h3>
+  <p>Das Modell liefert ausschliesslich <code class="mono" style="font-size:.85em;">action</code>
+  und <code class="mono" style="font-size:.85em;">target</code> als kurze Strings — nie einen
+  fertigen Befehl. Der ausführende Teil baut die echte Aktion selbst aus einem festen
+  Template pro Typ:</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Empfehlung</th><th>Tatsächlich ausgeführter Befehl</th><th>Harte Grenze</th></tr></thead>
+      <tbody>
+        <tr><td class="tool">prozess_killen</td><td><code class="mono" style="font-size:.83em;">kill -TERM &lt;PID&gt;</code></td><td>Denylist (systemd, sshd, NetworkManager, eigene Toolchain, Terminal …), PID 1 nie</td></tr>
+        <tr><td class="tool">netz_trennen</td><td><code class="mono" style="font-size:.83em;">nmcli device disconnect &lt;Interface&gt;</code></td><td>Nur das überwachte Interface, kein anderes</td></tr>
+        <tr><td class="tool">user_sperren</td><td><code class="mono" style="font-size:.83em;">usermod -L &lt;User&gt;</code></td><td>Nie eigener Account oder root, nur reguläre UID≥1000</td></tr>
+        <tr><td class="tool">key_entfernen</td><td>Exakte Zeile aus <code class="mono" style="font-size:.83em;">authorized_keys</code> löschen (Backup vorher)</td><td>Zeile muss wortwörtlich vorhanden sein</td></tr>
+        <tr><td class="tool">datei_quarantänieren</td><td>Datei nach <code class="mono" style="font-size:.83em;">/var/quarantine/</code>, <code class="mono" style="font-size:.83em;">chmod 000</code> (kein Löschen)</td><td>Nur unter definierten, unkritischen Pfaden — Skripte/SSH-Verzeichnis ausgeschlossen</td></tr>
+        <tr><td class="tool">keine</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">Alles ausserhalb dieser fünf Zeilen fällt im ausführenden Skript in
+  einen Default-Zweig, der nichts tut. Es gibt keinen sechsten Weg.</p>
+</section>
+
 <section>
   <span class="section-num">Kontrollschicht</span>
   <h2>Guardrails, nicht Vertrauen</h2>
-  <p>Jede Empfehlung des Eskalations-Agenten durchläuft dieselben deterministischen Regeln
-  zweimal — einmal direkt nach der Analyse, ein zweites Mal unmittelbar vor der Ausführung,
-  falls in der Zwischenzeit etwas am Zielsystem verändert wurde:</p>
-  <ul class="rules">
-    <li>Ziel darf nie der eigene Nutzer-Account oder root sein</li>
-    <li>Ein «Netz trennen» darf nur das tatsächlich überwachte Interface betreffen</li>
-    <li>Datei-Quarantäne nur unterhalb definierter, unkritischer Pfade — Skripte selbst
-    sind ausgeschlossen</li>
-    <li>SSH-Key-Entfernung nur bei exakter Zeilenübereinstimmung, mit automatischem
-    Backup vorher</li>
-    <li>Eine abgelehnte Empfehlung wird protokolliert, aber nie einer Freigabe
-    vorgelegt</li>
-  </ul>
+  <p>Jede Empfehlung durchläuft dieselbe Guardrail-Prüfung aus der Tabelle oben
+  zweimal — einmal direkt nach der Analyse, ein zweites Mal unmittelbar vor der
+  Ausführung, falls sich der Zustand in der Zwischenzeit geändert hat (der Prozess
+  etwa schon von selbst beendet wurde). Eine abgelehnte Empfehlung wird protokolliert,
+  aber nie zu einer Freigabe-Anfrage.</p>
   <p>Ausserdem: Log-Inhalte sind teils von aussen beeinflussbar — ein SSH-Benutzername in
   einem Login-Fehlversuch etwa. Jeder Prompt trennt deshalb explizit zwischen «zu
   bewertenden Daten» und «Anweisungen an das Modell» und wurde gegen wörtlich eingebettete
