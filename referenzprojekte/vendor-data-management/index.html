@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor Data Management – Vendor-Management-Software für KMU, on-premise | Giw Aalam</title>
+<meta name="description" content="Vendor-Management-Software für KMU: IT-Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG- und DSGVO-Prüfung. On-premise, ohne Cloud, regelbasiert geprüfte KI-Analyse.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aalam.ch/referenzprojekte/vendor-data-management/">
+<meta property="og:site_name" content="Giw Aalam">
+<meta property="og:title" content="Vendor Data Management – Vendor-Management-Software für KMU (on-premise)">
+<meta property="og:description" content="IT-Vertragsmanagement-Software für KMU: Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG-/DSGVO-Prüfung. On-premise, ohne Cloud.">
+<meta property="og:image" content="https://aalam.ch/referenzprojekte/vendor-data-management/screenshot-dashboard.png">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aalam.ch/referenzprojekte/vendor-data-management/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Vendor Data Management",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Java (Windows, macOS, Linux)",
+  "url": "https://aalam.ch/referenzprojekte/vendor-data-management/",
+  "description": "Vendor-Management-Software für KMU: IT-Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG- und DSGVO-Prüfung, terminierte Berichte. On-premise (Desktop, ohne Cloud), mit regelbasiert geprüfter KI-Analyse auslaufender Verträge.",
+  "author": { "@id": "https://aalam.ch/#giw" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fafaf8;
+    --paper-raised:#f2f2ee;
+    --ink:#14151a;
+    --ink-soft:#4a4f5c;
+    --ink-faint:#868c96;
+    --rule:#d7d9d2;
+    --verified:#1b7a4b;
+    --verified-bg:#e2f0e8;
+    --flagged:#b8321f;
+    --flagged-bg:#f7e6e2;
+    --signal:#155fd1;
+    --signal-ink:#fafaf8;
+    --max:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation-duration:.001ms !important; transition-duration:.001ms !important} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:17px; line-height:1.6;
+  }
+  ::selection{ background:var(--signal); color:var(--signal-ink); }
+  a{ color:var(--signal); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+
+  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; font-weight:600; letter-spacing:-.01em; margin:0 0 .4em; color:var(--ink); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .eyebrow::before{ content:"■"; color:var(--signal); font-size:.6rem; margin-right:8px; position:relative; top:-1px; }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch; }
+  .lead{ font-size:1.18rem; color:var(--ink); }
+
+  /* ---- header / nav ---- */
+  header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; letter-spacing:-.01em; }
+  nav.site{ display:flex; align-items:center; }
+  nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:22px; text-decoration:none; border-bottom:1px solid transparent; }
+  nav.site a:hover{ border-color:var(--ink-soft); color:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:22px; }
+  .lang-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint);
+    background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer;
+  }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500;
+    background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:22px;
+    text-decoration:none; display:inline-block; white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--ink); }
+  nav.site a.nav-cta, nav.site a.nav-cta:hover{ color:var(--signal-ink); }
+  @media (max-width:700px){ nav.site a:not(.nav-cta){ display:none; } }
+  .backlink{ padding-top:14px; }
+  .backlink a{ font-family:'IBM Plex Mono', monospace; font-size:.82rem; color:var(--ink-soft); text-decoration:none; }
+  .backlink a:hover{ color:var(--ink); }
+
+  /* ---- hero ---- */
+  .hero{ padding:56px 0 48px; }
+  .hero h1{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:clamp(2.2rem, 4.6vw, 3.3rem); line-height:1.08; max-width:15ch; letter-spacing:-.02em; }
+  .hero .lead{ max-width:52ch; margin-top:16px; }
+  .hero .role{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:center; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero-shot{ margin:0; position:relative; }
+  .hero-shot img{ width:100%; display:block; border:1.5px solid var(--ink); }
+  .hero-shot::before{
+    content:"LIVE SCREENSHOT"; position:absolute; top:-11px; left:16px;
+    font-family:'IBM Plex Mono', monospace; font-size:.65rem; letter-spacing:.1em;
+    background:var(--paper); color:var(--ink); padding:2px 8px; border:1.5px solid var(--ink);
+  }
+  .hero-cta{ margin-top:28px; display:flex; gap:22px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500;
+    background:var(--signal); color:var(--signal-ink); padding:13px 22px;
+    text-decoration:none; display:inline-block; border:1.5px solid var(--signal);
+  }
+  .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
+  .cta-secondary{ font-family:'IBM Plex Mono', monospace; font-size:.82rem; font-weight:500; border-bottom:1.5px solid var(--rule); }
+  .cta-secondary:hover{ border-color:var(--signal); }
+
+  /* ---- differentiator band ---- */
+  .diffband{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .diff{ padding:22px 20px 24px; border-left:1px solid var(--rule); }
+  .diff:first-child{ border-left:none; }
+  .diff-n{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--signal); margin-bottom:8px; }
+  .diff-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:6px; }
+  .diff-d{ font-size:.83rem; color:var(--ink-soft); line-height:1.5; margin:0; }
+  @media (max-width:860px){ .diffband{ grid-template-columns:repeat(2,1fr); } .diff:nth-child(3){ border-left:none; } }
+  @media (max-width:520px){ .diffband{ grid-template-columns:1fr; } .diff{ border-left:none; border-top:1px solid var(--rule); } .diff:first-child{ border-top:none; } }
+
+  /* ---- value pillars ---- */
+  .pillars{ display:flex; flex-wrap:wrap; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px; }
+  .pillar{ background:var(--paper-raised); padding:24px 22px 26px; flex:1 1 240px; }
+  .pillar-icon{ color:var(--signal); margin-bottom:14px; display:block; }
+  .pillar-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.05rem; margin-bottom:6px; }
+  .pillar-d{ font-size:.87rem; color:var(--ink-soft); line-height:1.5; margin:0; }
+
+  /* ---- services grid ---- */
+  .services{ display:flex; flex-wrap:wrap; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0 8px; }
+  .service{ background:var(--paper-raised); padding:20px 20px 22px; flex:1 1 250px; }
+  .service-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:6px; }
+  .service-d{ font-size:.85rem; color:var(--ink-soft); line-height:1.5; margin:0; }
+  .service-unify{
+    flex:1 1 100%; background:var(--signal);
+    display:flex; align-items:center; gap:20px; padding:22px 24px;
+  }
+  .service-unify .pillar-icon{ color:var(--signal-ink); margin-bottom:0; flex:0 0 auto; }
+  .service-unify .service-t{ color:var(--signal-ink); }
+  .service-unify .service-d{ color:var(--signal-ink); opacity:.92; max-width:640px; }
+  @media (max-width:600px){ .service-unify{ flex-direction:column; align-items:flex-start; gap:12px; } }
+
+  /* ---- AI output examples ---- */
+  .examples{ display:flex; flex-wrap:wrap; gap:1.5px; background:var(--rule); border:1px solid var(--rule); margin-top:22px; }
+  .example{ background:var(--paper-raised); padding:20px 22px 22px; flex:1 1 260px; }
+  .example .tag{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--signal); margin-bottom:10px; display:block; }
+  .example p{ font-size:.9rem; margin:0; color:var(--ink-soft); }
+  .examples-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin-top:12px; }
+
+  /* ---- case-study pullquote teaser ---- */
+  .pullquote{ border-left:3px solid var(--signal); padding:6px 0 6px 22px; margin:32px 0 6px; max-width:600px; }
+  .pullquote p{ font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:1.1rem; color:var(--ink); margin:0 0 8px; line-height:1.35; }
+  .pullquote a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; }
+
+  /* ---- collapsible technical facts ---- */
+  details.techdetails{ margin-top:22px; }
+  details.techdetails summary{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); cursor:pointer; }
+  details.techdetails summary:hover{ color:var(--ink); }
+  details.techdetails .arch-facts{ margin-top:14px; }
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.03em;
+    border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--paper-raised);
+  }
+
+  /* ---- sections ---- */
+  section{ padding:60px 0; border-top:1px solid var(--rule); }
+  section:first-of-type{ border-top:none; }
+  .section-head{ max-width:640px; margin-bottom:30px; }
+  .section-head h2{ font-size:clamp(1.5rem, 2.6vw, 2.1rem); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---- pipeline diagram ---- */
+  .pipeline{ display:flex; flex-wrap:wrap; gap:0; align-items:stretch; margin:8px 0 6px; }
+  .stage{
+    flex:1 1 140px; border:1px solid var(--rule); background:var(--paper-raised);
+    padding:14px 14px 12px; position:relative;
+  }
+  .stage + .stage{ border-left:none; }
+  .stage .k{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.08em; color:var(--ink-faint); text-transform:uppercase; }
+  .stage .t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.02rem; margin-top:4px; }
+  .stage .d{ font-size:.82rem; color:var(--ink-soft); margin-top:6px; line-height:1.45; }
+  .stage.det{ background:var(--verified-bg); }
+  .stage.det .t{ color:var(--verified); }
+  @media (max-width:760px){ .stage{ flex:1 1 100%; } .stage + .stage{ border-left:1px solid var(--rule); border-top:none; margin-top:-1px; } }
+
+  /* ---- report anatomy ---- */
+  .report-intro{ margin-top:26px; }
+  .report-intro h3{ font-size:1.15rem; }
+  .report-parts{ border-top:1px solid var(--rule); margin-top:10px; }
+  .part{ display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--rule); }
+  .part-n{
+    flex:0 0 auto; width:28px; height:28px; margin-top:1px;
+    border:1px solid var(--rule); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-faint);
+  }
+  .part-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1rem; margin-bottom:3px; }
+  .part-d{ font-size:.88rem; color:var(--ink-soft); line-height:1.55; max-width:58ch; margin:0; }
+
+  /* ---- case study ---- */
+  .case{ background:var(--paper-raised); border:1px solid var(--rule); padding:30px 30px 8px; }
+  .case .eyebrow{ margin-bottom:8px; }
+  .findings{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0; }
+  .finding{ background:var(--paper-raised); padding:16px 18px; }
+  .finding .num{ font-family:'IBM Plex Mono', monospace; font-size:1.6rem; font-weight:600; color:var(--ink); }
+  .finding .lbl{ font-size:.8rem; color:var(--ink-soft); margin-top:2px; }
+  figure{ margin:26px 0 6px; }
+  figure img{ width:100%; display:block; border:1px solid var(--rule); }
+  figcaption{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-faint); margin-top:8px; }
+
+  /* ---- comparison table ---- */
+  .compare{ margin:8px 0 34px; max-width:820px; }
+  .compare h3{ font-size:1.15rem; }
+  .comparetable{ border:1px solid var(--rule); margin-top:20px; }
+  .ct-row{ display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--rule); }
+  .ct-row:first-child{ border-top:none; }
+  .ct-cell{ padding:14px 16px; font-size:.85rem; line-height:1.5; }
+  .ct-label{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.86rem; color:var(--ink); background:var(--paper-raised); }
+  .ct-them{ color:var(--ink-faint); }
+  .ct-them::before{ content:"✗  "; }
+  .ct-us{ color:var(--ink); }
+  .ct-us::before{ content:"✓  "; color:var(--verified); font-weight:600; }
+  .ct-head .ct-label{ background:transparent; }
+  .ct-head .ct-them, .ct-head .ct-us{ font-family:'IBM Plex Mono', monospace; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+  .ct-head .ct-them::before, .ct-head .ct-us::before{ content:""; }
+  @media (max-width:700px){
+    .ct-row{ grid-template-columns:1fr; }
+    .ct-head{ display:none; }
+    .ct-label{ border-bottom:1px dashed var(--rule); }
+  }
+
+  /* ---- capability grid ---- */
+  .capgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:8px 0 34px; }
+  .cap{ background:var(--paper-raised); padding:18px 20px 20px; }
+  .cap-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1rem; margin-bottom:10px; }
+  .cap ul{ margin:0; padding-left:1.1em; }
+  .cap li{ font-size:.86rem; color:var(--ink-soft); margin-bottom:8px; line-height:1.5; }
+  @media (max-width:760px){ .capgrid{ grid-template-columns:1fr; } }
+
+  /* ---- product showcase ---- */
+  .showcase{ display:flex; flex-direction:column; gap:40px; max-width:820px; }
+  .showcase figure{ margin:0; }
+  .showcase img{ width:100%; display:block; border:1.5px solid var(--ink); }
+  .showcase figcaption{ margin-top:12px; }
+  .showcase .cap-t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1rem; color:var(--ink); margin-bottom:4px; }
+  .showcase .cap-d{ font-family:'IBM Plex Sans', sans-serif; font-size:.86rem; color:var(--ink-soft); line-height:1.5; margin:0; max-width:68ch; }
+
+  /* ---- stack ---- */
+  .stack-list{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
+  .stack-list span{
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft);
+    border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
+  }
+
+  /* ---- architecture layers ---- */
+  .layers{ display:flex; flex-direction:column; margin:22px 0 4px; max-width:540px; }
+  .layer{ border:1px solid var(--rule); background:var(--paper-raised); padding:12px 16px; }
+  .layer + .layer{ border-top:none; }
+  .layer .lt{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.96rem; }
+  .layer .ld{ font-size:.82rem; color:var(--ink-soft); margin-top:2px; line-height:1.45; }
+  .layer.core{ background:var(--verified-bg); }
+  .layer.core .lt{ color:var(--verified); }
+  .arch-facts{ display:flex; flex-wrap:wrap; gap:9px; margin:22px 0 6px; }
+  .arch-facts span{
+    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft);
+    border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px;
+  }
+
+  .scheduler{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 6px; max-width:640px; }
+  .scheduler h3{ font-size:1.1rem; margin-top:2px; }
+
+  /* ---- contact form ---- */
+  .contactform{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 24px; max-width:480px; }
+  .contactform h3{ font-size:1.1rem; margin-top:2px; }
+  .form-row{ margin-bottom:16px; }
+  .form-row label{ display:block; font-family:'IBM Plex Mono', monospace; font-size:.76rem; letter-spacing:.03em; color:var(--ink-soft); margin-bottom:6px; }
+  .form-row input, .form-row textarea{
+    width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:.92rem; color:var(--ink);
+    background:var(--paper); border:1px solid var(--rule); padding:9px 12px; resize:vertical;
+  }
+  .form-row input:focus, .form-row textarea:focus{ outline:none; border-color:var(--signal); }
+  .form-note{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink-faint); margin:14px 0 0; }
+  button.btn-primary{ cursor:pointer; appearance:none; }
+  .links{ margin-top:20px; }
+  .links a{ margin-right:18px; font-family:'IBM Plex Mono', monospace; font-size:.85rem; }
+  footer{ padding:28px 0 50px; border-top:1px solid var(--rule); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
+  footer .note{ font-size:.82rem; color:var(--ink-faint); max-width:60ch; margin:0; }
+  footer .fbrand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:.95rem; color:var(--ink-soft); }
+
+  /* ---- lightbox ---- */
+  .zoomable{ cursor:zoom-in; }
+  .zoomable:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,21,26,.94); z-index:100;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:8vh 5vw 6vh; animation:lbfade .15s ease;
+  }
+  .lightbox[hidden]{ display:none; }
+  @keyframes lbfade{ from{opacity:0} to{opacity:1} }
+  .lightbox img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block; border:1.5px solid var(--paper); cursor:zoom-out; }
+  .lightbox figcaption{
+    font-family:'IBM Plex Mono', monospace; font-size:.76rem; color:var(--paper); opacity:.85;
+    text-align:center; max-width:78vw; margin-top:16px;
+  }
+  .lightbox-close{
+    position:absolute; top:18px; right:20px; width:38px; height:38px;
+    border:1.5px solid var(--paper); background:none; color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:1.3rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{ background:var(--paper); color:var(--ink); }
+  .lightbox-close:focus-visible{ outline:2.5px solid var(--paper); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">Giw Aalam</a>
+    <nav class="site">
+      <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a><a href="/referenzprojekte/" data-i18n="nav.referenzprojekte">Referenzprojekte</a><a href="/profil/" data-i18n="nav.profil">Berufliches Profil</a><a class="nav-cta" href="/kontakt/" data-i18n="nav.cta">Erstgespräch buchen</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap backlink"><a href="/referenzprojekte/" data-i18n="backlink">← Referenzprojekte</a></div>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Vendor-Management-Software · on-premise</p>
+        <h1 data-i18n="hero.h1">Schluss mit verstreuten Excel-Listen für Ihre IT-Verträge</h1>
+        <p class="lead" data-i18n="hero.lead">Vendor Data Management ist eine Vendor-Management-Software für KMU, spezialisiert auf IT-Vendoren. Die Anwendung zeigt auf einen Blick, welche Verträge, Lizenzen und Verantwortlichkeiten zu jedem Anbieter gehören, wo Informationen fehlen und wo Handlungsbedarf besteht.</p>
+        <div class="role">
+          <span class="pill">Giw Aalam, M.Eng.</span>
+          <span class="pill">Vendor Data Management — TPRM &amp; Compliance</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-primary" href="/kontakt/" data-i18n="hero.cta1">Erstgespräch vereinbaren →</a>
+          <a class="cta-secondary" href="#ki-liefert" data-i18n="hero.cta2">Beispiel-Analyse ansehen →</a>
+        </div>
+      </div>
+      <figure class="hero-shot">
+        <img src="screenshot-dashboard.png" alt="TPRM- und Compliance-Dashboard mit KPI-Kacheln" loading="lazy" data-i18n-alt="img.dashboard.alt">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="unterschied" style="padding:40px 0;">
+  <div class="wrap">
+    <div class="diffband reveal">
+      <div class="diff">
+        <div class="diff-n" data-i18n="diff1.n">Fokus</div>
+        <div class="diff-t" data-i18n="diff1.t">Spezialisiert auf IT</div>
+        <p class="diff-d" data-i18n="diff1.d">Kein Generalisten-Tool für alle Einkaufskategorien: gebaut für IT-Verträge, -Lizenzen und -Vendoren.</p>
+      </div>
+      <div class="diff">
+        <div class="diff-n" data-i18n="diff2.n">Methode</div>
+        <div class="diff-t" data-i18n="diff2.t">Regelbasiert geprüft</div>
+        <p class="diff-d" data-i18n="diff2.d">Nicht jede KI-Aussage lässt sich deterministisch prüfen. Die Pipeline prüft, was geht — und sagt offen, was nicht.</p>
+      </div>
+      <div class="diff">
+        <div class="diff-n" data-i18n="diff3.n">Zusammenarbeit</div>
+        <div class="diff-t" data-i18n="diff3.t">Persönlich begleitet</div>
+        <p class="diff-d" data-i18n="diff3.d">Sie arbeiten direkt mit mir, von der Anforderungsanalyse bis zur Einführung.</p>
+      </div>
+      <div class="diff">
+        <div class="diff-n" data-i18n="diff4.n">Entwicklung</div>
+        <div class="diff-t" data-i18n="diff4.t">Individuell erweiterbar</div>
+        <p class="diff-d" data-i18n="diff4.d">Erweiterungen werden gemeinsam priorisiert und transparent umgesetzt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nutzen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="nutzen.eyebrow">Der Nutzen</p>
+      <h2 data-i18n="nutzen.h2">Mehr als eine Fristenüberwachung</h2>
+      <p class="lead" data-i18n="nutzen.lead">Weniger verpasste Kündigungsfristen ist nur der Anfang. Der eigentliche Nutzen ist eine strukturierte Übersicht über Ihre gesamte Vertragslandschaft — inklusive Verantwortlichkeiten, offener Punkte und KI-gestützter Analyse.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="7" y="4" width="16" height="22" rx="1.5"/>
+          <path d="M11 4V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+          <path d="M11 13l2.5 2.5L19 10"/>
+          <path d="M11 20h8"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar1.t">Überblick &amp; Verantwortlichkeiten</div>
+        <p class="pillar-d" data-i18n="pillar1.d">Vollständigkeits-Score und Compliance-Status pro Vendor zeigen sofort, wo Informationen oder Zuständigkeiten fehlen.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 3h10l4 4v18a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+          <path d="M18 3v4h4"/>
+          <path d="M10 15h6"/>
+          <path d="M10.5 19.5l2 2 4-4.5"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar2.t">KI-Vertragsanalyse</div>
+        <p class="pillar-d" data-i18n="pillar2.d">Bei auslaufenden Verträgen liefert die KI einen Risikobericht mit konkreten Massnahmen — automatisch gegen Ihre Daten geprüft.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 15l22-10-8 22-4-9-9-3z"/>
+          <path d="M18 7l-8 10"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar3.t">KI-gestützte Ausschreibung</div>
+        <p class="pillar-d" data-i18n="pillar3.d">Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 30 30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3h10l4 4v10"/>
+          <path d="M17 3v4h4"/>
+          <path d="M9 12h6M9 16h4"/>
+          <circle cx="20" cy="21" r="4.5"/>
+          <path d="M23.2 24.2L26 27"/>
+        </svg>
+        <div class="pillar-t" data-i18n="pillar4.t">KI-gestützte Audit-Fragebögen</div>
+        <p class="pillar-d" data-i18n="pillar4.d">Bei kritischen Befunden erstellt die KI gezielt Audit-Fragebögen — strikt getrennt in externe Vendor-Fragen und internen Prüfauftrag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ki-liefert">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="kiliefert.eyebrow">Was die KI konkret liefert</p>
+      <h2 data-i18n="kiliefert.h2">Klar begrenzte Aufgaben, keine Blackbox</h2>
+      <p class="lead" data-i18n="kiliefert.lead">Die KI übernimmt begrenzte Aufgaben: sie prüft auslaufende Verträge, sie erstellt bei kritischen Befunden gezielte Audit-Fragebögen, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Der Ausschreibungsentwurf ist Zuarbeit, keine fertige Ausschreibung — Ihre fachliche Prüfung bleibt nötig.</p>
+    </div>
+    <div class="examples reveal">
+      <div class="example">
+        <span class="tag" data-i18n="example1.tag">Beispiel · Vertragsanalyse</span>
+        <p data-i18n="example1.text">Für einen Cloud-Service mit Zugriff auf sensible Daten stellte die KI in der Privilegien-Analyse fest, dass weder rollenbasierte Zugriffskontrollen (RBAC) noch Multi-Faktor-Authentifizierung dokumentiert waren, und ordnete das im Risikobericht als kritischen Sicherheitsmangel ein.</p>
+      </div>
+      <div class="example">
+        <span class="tag" data-i18n="example2.tag">Beispiel · KI-Ausschreibung</span>
+        <p data-i18n="example2.text">Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.</p>
+      </div>
+      <div class="example">
+        <span class="tag" data-i18n="example3.tag">Beispiel · Audit-Fragebogen</span>
+        <p data-i18n="example3.text">Weil ein Vertrag ein rotes Zeit- und ein rotes Informationssicherheitsrisiko aufwies, erstellte die KI automatisch einen Audit-Fragebogen — strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag, der nie an den Vendor geht.</p>
+      </div>
+    </div>
+    <p class="examples-note" data-i18n="examples.note">Beispiele anonymisiert bzw. exemplarisch dargestellt.</p>
+
+    <div class="pullquote reveal">
+      <p data-i18n="livetest.h3">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</p>
+      <a href="#case" data-i18n="pullquote.link">Ausführliche Fallstudie lesen →</a>
+    </div>
+  </div>
+</section>
+
+<section id="produkt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="produkt.eyebrow">Das Produkt</p>
+      <h2>Vendor Data Management</h2>
+      <p class="lead" data-i18n="produkt.hook">Kennen Sie das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schliesst Vendor Data Management.</p>
+      <p data-i18n="produkt.lead">Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.</p>
+      <p data-i18n="produkt.compliance">Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.</p>
+      <p data-i18n="produkt.swiss"><b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.</p>
+    </div>
+
+    <div class="compare reveal">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="compare.eyebrow">Der Unterschied</p>
+      <h3 data-i18n="compare.h3">Was klassisches Vertragsmanagement nicht abbildet</h3>
+      <p data-i18n="compare.lead">Vertragliche Lücken bei IT-Lieferungen und -Leistungen werden erst im Kontext von Compliance- und Security-Baselines sichtbar. Genau dabei helfen ein geeignetes Datenmodell und KI — die meisten Vertragsmanagement-Tools bieten aber nur das Vertragsdokument, ohne Verknüpfung zu Liefergegenständen, Zugriffsrechten und internen Zuständigkeiten.</p>
+      <div class="comparetable">
+        <div class="ct-row ct-head">
+          <div class="ct-cell ct-label"></div>
+          <div class="ct-cell ct-them" data-i18n="compare.them">Klassisches Vertragsmanagement</div>
+          <div class="ct-cell ct-us" data-i18n="compare.us">Vendor Data Management</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r1.label">Liefergegenstände</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r1.them">Verwaltet nur das Vertragsdokument</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r1.us">Datenmodell Vendor → Vertrag → Lizenz/Service — jede Lizenz und jeder Service einzeln erfasst und verknüpft</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r2.label">Zugriffsprivilegien</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r2.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r2.us">Privilegien-Fussabdruck je Lieferant: Datenverarbeitung, Fernzugriff, Subunternehmer</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r3.label">AVV-Status</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r3.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r3.us">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r4.label">Verfahrensverzeichnis</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r4.them">Nicht erfasst</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r4.us">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r5.label">Zuständigkeiten</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r5.them">Nur der Vertragsunterzeichner</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r5.us">Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r6.label">Datenhoheit</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r6.them">Daten liegen beim SaaS-Anbieter — Vendor-Lock-in</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r6.us">Daten bleiben beim Kunden: in-house oder bei einem Hosting-Provider der Wahl, nie physisch auf einem Server des Anbieters — kein Vendor-Lock-in</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-label" data-i18n="compare.r7.label">Jurisdiktion</div>
+          <div class="ct-cell ct-them" data-i18n="compare.r7.them">Eine feste Prüflogik</div>
+          <div class="ct-cell ct-us" data-i18n="compare.r7.us">DSGVO oder revidiertes Schweizer DSG, pro Mandant umschaltbar — je eigene Baseline-Kriterien und Drittstaaten-Angemessenheitsliste</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="erfasst.eyebrow">Was erfasst und geprüft wird</p>
+      <h3 data-i18n="baseline.h3">Auszug aus den geprüften Kriterien</h3>
+      <p data-i18n="baseline.intro">Neben der Vertragsklausel-Baseline führt die Software fünf Compliance-Kataloge: DSGVO (13 Kriterien), revidiertes Schweizer DSG (11), IT-Sicherheit (14), ISO/IEC 42001 (10) und EU-KI-Verordnung (8). Jedes Kriterium hat eine ID, eine Rechtsgrundlage, ein wörtliches Gesetzeszitat und eine daraus abgeleitete Anforderung.</p>
+      <div class="layers" style="max-width:640px;">
+        <div class="layer"><div class="lt" data-i18n="baseline.1.t">DSGVO-04 · Auftragsverarbeitungsvertrag — Art. 28 DSGVO</div><div class="ld" data-i18n="baseline.1.d">Vor Verarbeitungsbeginn muss ein schriftlicher AVV vorliegen; fehlt er, ist die Verarbeitung unzulässig.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.2.t">DSGVO-06 · Technisch-organisatorische Massnahmen — Art. 32 DSGVO</div><div class="ld" data-i18n="baseline.2.d">Dem Risiko angemessene Massnahmen (Verschlüsselung, Pseudonymisierung, Verfügbarkeit) sind umzusetzen und zu dokumentieren.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.3.t">DSGVO-10 · Löschkonzept und Aufbewahrungsfristen — Art. 5 &amp; Art. 17 DSGVO</div><div class="ld" data-i18n="baseline.3.d">Daten sind zu löschen, sobald der Zweck entfällt; ein dokumentiertes Löschkonzept muss vorliegen.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.4.t">DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II</div><div class="ld" data-i18n="baseline.4.d">Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.</div></div>
+        <div class="layer"><div class="lt" data-i18n="baseline.5.t">SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline</div><div class="ld" data-i18n="baseline.5.d">Der Einsatz von Subunternehmern mit Zugriff auf Systeme oder Daten des Auftraggebers ist vorab schriftlich anzuzeigen und zu genehmigen; eine aktuelle Liste ist auf Anfrage vorzulegen.</div></div>
+      </div>
+      <p data-i18n="baseline.note" style="margin-top:14px;">Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.</p>
+
+      <h3 data-i18n="privileges.h3" style="margin-top:30px;">Zugriffsprivilegien und Daten-Handling</h3>
+      <p data-i18n="privileges.p1"><b>Vendor-Privilegien</b> je Lieferant (jeweils Ja/Nein): Datenverarbeitung, Zugriff auf sensible Daten, privilegierte oder administrative Zugriffe, Fernzugriff auf Systeme, Zutritt zu Standorten, Einsatz von Subunternehmern.</p>
+      <p data-i18n="privileges.p2"><b>Daten-Handling je Software und Service:</b> Speicherort (on-premise, Cloud oder hybrid), Datenresidenz, DSGVO-Relevanz, Unterauftragsverarbeiter, Aufbewahrungs- und Löschregel, rollenbasierte Zugriffskontrolle (RBAC), Verschlüsselung bei Übertragung und Speicherung, Mehr-Faktor-Authentifizierung (MFA), KI-Einsatz und KI-Risikoklasse.</p>
+      <p data-i18n="privileges.note" style="margin-top:2px;">Diese Angaben speisen den Vollständigkeits-Score, die Compliance-Prüfung und die Privilegien-Analyse bei auslaufenden Verträgen.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="funktionsumfang.eyebrow">Funktionsumfang</p>
+      <h3 data-i18n="funktionsumfang.h3">Was die Anwendung abdeckt</h3>
+      <p data-i18n="funktionsumfang.intro">Die drei Bereiche im Überblick — von der Fristenüberwachung über die Compliance-Tiefe bis zu Reporting und Intelligence.</p>
+    </div>
+
+    <div class="capgrid reveal">
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap1.t">Verträge, Lizenzen &amp; Fristen</div>
+        <ul>
+          <li data-i18n="cap1.li1">Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst</li>
+          <li data-i18n="cap1.li2">Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht</li>
+          <li data-i18n="cap1.li3">GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant</li>
+          <li data-i18n="cap1.li4">IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph</li>
+          <li data-i18n="cap1.li5">KPI-Dashboards (Portfolio, Vendoren, Lizenzen) und filterbare Listen für Vendoren, Verträge, Lizenzen und Services</li>
+          <li data-i18n="cap1.li6">Timeline — Vertragslaufzeiten mit den enthaltenen Lizenzen und Services, Kündigungs- und Verlängerungsfenstern sowie identifizierten Massnahmen auf einer gemeinsamen Zeitachse</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap2.t">Compliance-Tiefe</div>
+        <ul>
+          <li data-i18n="cap2.li1">Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)</li>
+          <li data-i18n="cap2.li2">DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste</li>
+          <li data-i18n="cap2.li3">EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten</li>
+          <li data-i18n="cap2.li4">AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <div class="cap-t" data-i18n="cap3.t">Darüber hinaus</div>
+        <ul>
+          <li data-i18n="cap3.li1">E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt</li>
+          <li data-i18n="cap3.li2">Privilegien-Fussabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)</li>
+          <li data-i18n="cap3.li3">RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service</li>
+          <li data-i18n="cap3.li4">KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)</li>
+          <li data-i18n="cap3.li5">Vendor-/Software-/CVE-Intelligence, Legal Briefing</li>
+          <li data-i18n="cap3.li6">Terminierte Berichte zu Vendoren, Verträgen, Lizenzen, Assets und Datenlücken (PDF, HTML oder Excel), im Hintergrund von einem headless-Dienst erzeugt und per E-Mail zugestellt</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="einblicke.eyebrow">Einblicke</p>
+      <h3 data-i18n="einblicke.h3">Wie das in der Anwendung aussieht</h3>
+      <p data-i18n="einblicke.intro">Elf Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph, Timeline, Vendor Intelligence und begründete Warnungen.</p>
+    </div>
+
+    <div class="showcase reveal">
+      <figure>
+        <img src="screenshot-executive-summary.png" alt="Executive Summary eines KI-Analyseberichts mit Ampel-Status und Kernfakten" loading="lazy" data-i18n-alt="img.exec.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.exec.t">Executive Summary auf einen Blick</div>
+          <p class="cap-d" data-i18n="img.exec.d">Ampel-Status, Kernrisiken und finanzielles Exposure in einem Absatz — für alle, die nur die erste Seite lesen.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-action-plan.png" alt="Risiko-Heatmap und Massnahmenplan mit Verantwortlichen, Terminen und Baseline-Referenzen" loading="lazy" data-i18n-alt="img.action.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.action.t">Risiko-Heatmap &amp; Massnahmenplan</div>
+          <p class="cap-d" data-i18n="img.action.d">Bis zu 12 Schritte mit Verantwortlichem, Termin und Baseline-Referenz — hier zehn Massnahmen für einen einzelnen Vertrag.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-clause-analysis.png" alt="Klauselweise Risikobewertung eines Vertrags mit KI-Befund je Klausel" loading="lazy" data-i18n-alt="img.clauseanalysis.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.clauseanalysis.t">Klausel-für-Klausel-Risikobewertung</div>
+          <p class="cap-d" data-i18n="img.clauseanalysis.d">Jede Klausel mit KI-Befund, Vertragszitat und Risikoeinstufung — nachvollziehbar statt nur eine Zahl.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-baseline-gaps.png" alt="Tabelle mit Datenlücken und Regelverletzungen, priorisiert nach Kritisch, Hoch und Mittel" loading="lazy" data-i18n-alt="img.gaps.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.gaps.t">Datenlücken &amp; Regelverletzungen</div>
+          <p class="cap-d" data-i18n="img.gaps.d">Regelbasiert ermittelte Fehlstellen je Kriterium, priorisiert nach Kritisch, Hoch und Mittel.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-asset-graph.png" alt="Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft" loading="lazy" data-i18n-alt="img.assetgraph.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.assetgraph.t">Asset-Beziehungsgraph</div>
+          <p class="cap-d" data-i18n="img.assetgraph.d">Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-compliance-status.png" alt="Compliance-Tab: Status je Kriterium mit ID, Ampel und Volltext-Tooltip zu SEC-09" loading="lazy" data-i18n-alt="img.compliance.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.compliance.t">Compliance-Status, abgeleitet aus den Daten</div>
+          <p class="cap-d" data-i18n="img.compliance.d">Je Baseline ein eigener Status pro Kriterium (erfüllt, nicht erfüllt, unklar), mit Kriterien-ID und dem vollständigen Kriterientext als Tooltip — hier SEC-09, Subunternehmer-Dokumentation.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-avv.png" alt="AVV-Verwaltung mit Statusmaschine, Datenkategorien, Betroffenengruppen und Sub-Processor-Klausel" loading="lazy" data-i18n-alt="img.avv.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.avv.t">AVV von der Bedarfsprüfung bis zur Unterschrift</div>
+          <p class="cap-d" data-i18n="img.avv.d">Statusmaschine, erfasste Datenkategorien und Betroffenengruppen, bestätigte Sub-Processor-Klausel (Art. 28 DSGVO) und Verweis auf das Verarbeitungsverzeichnis (Art. 30 DSGVO).</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-cve-euvd.png" alt="CVE-Datenbestand aus der ENISA EUVD, gefiltert je Hersteller, Produkt und CVSS-Score" loading="lazy" data-i18n-alt="img.cve.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.cve.t">CVE-Intelligence aus der EU-Schwachstellendatenbank</div>
+          <p class="cap-d" data-i18n="img.cve.d">Bekannte Schwachstellen je Anbieter und Produkt aus der ENISA EUVD, filterbar nach CVSS-Score und Meldezeitraum.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-timeline.png" alt="Timeline-Ansicht: Verträge als Hauptbalken, Lizenzen und Services als Unterzeilen, Kündigungsfristen orange gestrichelt, senkrechte Today-Linie" loading="lazy" data-i18n-alt="img.timeline.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.timeline.t">Timeline — alle Laufzeiten auf einer Achse</div>
+          <p class="cap-d" data-i18n="img.timeline.d">Verträge als Hauptbalken, die enthaltenen Lizenzen und Services als Unterzeilen, dazu Kündigungs- und Verlängerungsfenster sowie identifizierte Massnahmen mit Kritikalität — die Today-Linie zeigt sofort, was fällig wird.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-data-warnings.png" alt="Zwei automatisch generierte Warnungen zu Datenkonsistenz und Verantwortlichkeiten bei einem Lieferanten, jeweils mit konkretem Korrekturhinweis" loading="lazy" data-i18n-alt="img.warnings.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.warnings.t">Warnungen mit Begründung statt Blackbox</div>
+          <p class="cap-d" data-i18n="img.warnings.d">Jede automatische Warnung nennt die verletzte Regel und einen konkreten Korrekturvorschlag — hier eine fehlende &bdquo;Data Processing&ldquo;-Kennzeichnung trotz Cloud-Betrieb und ein fehlendes Compliance-Zertifikat.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-vendor-intelligence.png" alt="Vendor-Intelligence-Tab mit News-Heat-Bewertung nach Security, Business und Compliance, jede Einstufung mit zitierten Quellen und Datum" loading="lazy" data-i18n-alt="img.intel.alt">
+        <figcaption>
+          <div class="cap-t" data-i18n="img.intel.t">Vendor Intelligence: Nachrichtenlage mit Quellenbeleg</div>
+          <p class="cap-d" data-i18n="img.intel.d">Negativ- und Positiv-Heat je Kategorie (Security, Business, Compliance), jede Einstufung mit den zugrunde liegenden Meldungen samt Quelle und Datum — inklusive Zeitstempel der KI-Analyse.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="reveal" style="margin-top:34px;">
+      <p class="eyebrow" style="margin-bottom:8px;" data-i18n="tech.eyebrow">Technisch</p>
+      <div class="stack-list">
+        <span>Java 21</span><span>Swing / FlatLaf</span><span>JPA / EclipseLink</span>
+        <span>Google Gemini</span><span>JUnit 5 — 583 Tests</span><span>Maven</span>
+        <span>PostgreSQL / MariaDB / MySQL / Derby</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="architektur">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="arch.eyebrow">Architektur</p>
+      <h2 data-i18n="arch.h2">Desktop statt SaaS — eine Entscheidung, kein Rückstand</h2>
+      <p class="lead" data-i18n="arch.lead">Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.</p>
+      <p data-i18n="arch.layered">Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein grosser Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.</p>
+    </div>
+
+    <div class="layers reveal">
+      <div class="layer">
+        <div class="lt" data-i18n="layer1.t">Oberfläche</div>
+        <div class="ld" data-i18n="layer1.d">Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer2.t">Service-Schicht</div>
+        <div class="ld" data-i18n="layer2.d">ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten</div>
+      </div>
+      <div class="layer core">
+        <div class="lt" data-i18n="layer3.t">Fachlogik</div>
+        <div class="ld" data-i18n="layer3.d">Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar</div>
+      </div>
+      <div class="layer">
+        <div class="lt" data-i18n="layer4.t">Daten</div>
+        <div class="ld" data-i18n="layer4.d">Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben</div>
+      </div>
+    </div>
+
+    <details class="techdetails reveal">
+      <summary data-i18n="arch.techdetails">Technische Details</summary>
+      <div class="arch-facts">
+        <span data-i18n="fact1">583 Tests</span>
+        <span data-i18n="fact2">25 von 26 Testklassen ganz ohne Datenbank</span>
+        <span data-i18n="fact3">3 Datenbank-Optionen</span>
+        <span data-i18n="fact4">0 Swing-Importe in den Compliance-Checkern</span>
+        <span data-i18n="fact5">Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB</span>
+      </div>
+    </details>
+
+    <div class="reveal" style="margin-top:22px;">
+      <p data-i18n="arch.roadmap">Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.</p>
+    </div>
+  </div>
+</section>
+
+<section id="case">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="case.eyebrow">Hintergrund · Case Study</p>
+      <h2 data-i18n="case.h2">Was passiert, wenn man einer KI-Analyse nicht einfach glaubt</h2>
+      <p class="lead" data-i18n="case.lead">Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.</p>
+    </div>
+
+    <div class="report-intro reveal" style="margin-top:0;">
+      <h3 data-i18n="thesis.h3">Drei Prinzipien aus der CAS-Transferarbeit</h3>
+      <p data-i18n="thesis.intro">Ablauf und Prüflogik sind in einer Transferarbeit an der Berner Fachhochschule dokumentiert, begründet und mit 25 gezielten Tests abgesichert (2026).</p>
+      <div class="report-parts">
+        <div class="part">
+          <div class="part-n">1</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p1.t">Ein weiterer KI-Durchlauf ist keine unabhängige Prüfung</div>
+            <p class="part-d" data-i18n="thesis.p1.d">Pass 2 und Pass 3 stammen aus derselben Modellklasse wie Pass 1 und tragen dieselbe Unsicherheit. Die Forschung zeigt: Ein Modell verifiziert eine Lösung nicht zuverlässiger, als es sie erzeugt.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">2</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p2.t">Generierung und Verifikation trennen</div>
+            <p class="part-d" data-i18n="thesis.p2.d">Die KI übernimmt, was Kontextverständnis braucht. Formal eindeutig entscheidbare Anforderungen — Chronologie, Prozessreihenfolge, Vollständigkeit — prüft klassische Softwarelogik. Was beides nicht ist, bleibt beim Menschen.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">3</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="thesis.p3.t">Automatisch korrigieren nur bei genau einem richtigen Wert</div>
+            <p class="part-d" data-i18n="thesis.p3.d">Ein Massnahmenstart am Wochenende hat genau eine Korrektur, also wird er verschoben. Ein Fälligkeitsdatum vor dem eigenen Start hat mehrere mögliche, also wird nur gemeldet, nie geraten.</p>
+          </div>
+        </div>
+      </div>
+      <figure style="margin:26px 0 0;">
+        <img src="thesis-auto-vs-melden.png" alt="Entscheidungsdiagramm: eine erkannte Regelverletzung wird automatisch korrigiert, wenn der Zielwert eindeutig aus den Daten ableitbar ist, sonst nur an den Vendor Manager gemeldet" loading="lazy" data-i18n-alt="img.thesis.alt">
+        <figcaption data-i18n="img.thesis.caption">Aus der Transferarbeit: Wann die Prüfschicht automatisch korrigiert und wann sie nur meldet.</figcaption>
+      </figure>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="stage">
+        <div class="k" data-i18n="stage1.k">Grundlage</div>
+        <div class="t" data-i18n="stage1.t">Reality-Snapshot</div>
+        <div class="d" data-i18n="stage1.d">Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage2.k">Pass 1</div>
+        <div class="t" data-i18n="stage2.t">Analyse</div>
+        <div class="d" data-i18n="stage2.d">LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage3.k">Pass 2</div>
+        <div class="t" data-i18n="stage3.t">Daten-QA</div>
+        <div class="d" data-i18n="stage3.d">Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.</div>
+      </div>
+      <div class="stage">
+        <div class="k" data-i18n="stage4.k">Pass 3</div>
+        <div class="t" data-i18n="stage4.t">Konsistenz-QA</div>
+        <div class="d" data-i18n="stage4.d">Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.</div>
+      </div>
+      <div class="stage det">
+        <div class="k" data-i18n="stage5.k">Danach</div>
+        <div class="t" data-i18n="stage5.t">Validierung</div>
+        <div class="d" data-i18n="stage5.d">Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.</div>
+      </div>
+    </div>
+
+    <div class="report-intro reveal">
+      <h3 data-i18n="report.h3">Das Ergebnis: ein Bericht mit fester Struktur, kein Fliesstext-Blob</h3>
+      <p data-i18n="report.intro">Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschliessend die Verhandlung führt.</p>
+      <div class="report-parts">
+        <div class="part">
+          <div class="part-n">0</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p0.t">Executive Summary</div>
+            <p class="part-d" data-i18n="report.p0.d">Ampel-Status, finanzielles Risiko, 3–5 Kernfakten. Für alle, die nur die erste Seite haben.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">1</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p1.t">Narrative Analyse</div>
+            <p class="part-d" data-i18n="report.p1.d">Sechs feste Betrachtungsebenen statt freier Prosa: Geschäftsbereich &amp; strategische Relevanz, Laufzeiten &amp; Fristen, Vendor-Performance, Privilege-Analyse, Informationssicherheit &amp; Datenschutz, Verhandlungsstrategie.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">2</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p2.t">Risiko-Heatmap</div>
+            <p class="part-d" data-i18n="report.p2.d">Nicht von der KI erfunden: Die App rendert die Heatmap deterministisch aus den gespeicherten Signalen — die KI liefert nur die Überschrift.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">3</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p3.t">Massnahmenplan</div>
+            <p class="part-d" data-i18n="report.p3.d">Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.</p>
+          </div>
+        </div>
+        <div class="part">
+          <div class="part-n">4</div>
+          <div class="part-body">
+            <div class="part-t" data-i18n="report.p4.t">Audit-Fragebögen</div>
+            <p class="part-d" data-i18n="report.p4.d">Nur ausgelöst, wenn eine echte Risikoschwelle überschritten ist — sonst ein Satz: &bdquo;Kein Audit empfohlen.&ldquo; Wenn ja: strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag (Klauselprüfung, BCM-Planung — geht nie an den Vendor raus), exportierbar als ausfüllbares Excel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <p class="eyebrow" data-i18n="livetest.eyebrow">Live-Test, 31.07.2026</p>
+      <h3 style="margin-top:2px;" data-i18n="livetest.h3">Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn</h3>
+      <p data-i18n="livetest.p1">Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Massnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschliessende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.</p>
+
+      <div class="findings">
+        <div class="finding"><div class="num">3</div><div class="lbl" data-i18n="finding1">Wochenend-Termine automatisch auf Werktage verschoben</div></div>
+        <div class="finding"><div class="num">1</div><div class="lbl" data-i18n="finding2">Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat</div></div>
+        <div class="finding"><div class="num">0</div><div class="lbl" data-i18n="finding3">Zitierfehler beim anschliessenden manuellen Faktenabgleich</div></div>
+      </div>
+
+      <p data-i18n="livetest.p2">Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht "die KI lag falsch", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b></p>
+
+      <figure>
+        <img src="screenshot-clause-risk-score.png" alt="Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung" loading="lazy" data-i18n-alt="img.clause.alt">
+        <figcaption data-i18n="img.clause.caption">Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="screenshot-pipeline.png" alt="Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen" loading="lazy" data-i18n-alt="img.pipeline.alt">
+        <figcaption data-i18n="img.pipeline.caption">Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="screenshot-audit-questionnaire.png" alt="Auditbegründung und Vendor-Fragebogen mit Baseline-Referenz je Frage" loading="lazy" data-i18n-alt="img.audit.alt">
+        <figcaption data-i18n="img.audit.caption">Die Auditbegründung zitiert die zwei konkreten Risikoflags, die den Fragebogen ausgelöst haben (rotes Zeit- und Informationssicherheitsrisiko) — jede Frage trägt ihre Baseline-Referenz, hier Schweizer DSG- statt DSGVO-Kriterien.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="note" data-i18n="footer.note">Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.</p>
+    <span style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <a href="/leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.leistungen">Leistungen →</a>
+      <a href="/referenzprojekte/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.referenzprojekte">Referenzprojekte →</a>
+      <a href="/profil/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.profile">Berufliches Profil →</a>
+      <a href="/kontakt/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.kontakt">Kontakt →</a>
+      <a href="/rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
+      <span class="fbrand">Giw Aalam</span>
+    </span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="lightbox-close" type="button">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <figcaption id="lightbox-caption"></figcaption>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- DE/EN language toggle ----
+  const I18N = {
+    de: {
+      title: "Vendor Data Management – Vendor-Management-Software für KMU, on-premise",
+      description: "Vendor-Management-Software für KMU: IT-Verträge, Lizenzen und Lieferanten strukturieren, Kündigungsfristen überwachen, revDSG- und DSGVO-Prüfung. On-premise, ohne Cloud, regelbasiert geprüfte KI-Analyse.",
+      "nav.leistungen": "Leistungen",
+      "nav.referenzprojekte": "Referenzprojekte",
+      "nav.profil": "Berufliches Profil",
+      "nav.cta": "Erstgespräch buchen",
+      "backlink": "← Referenzprojekte",
+      "footer.referenzprojekte": "Referenzprojekte →",
+      "hero.eyebrow": "Vendor-Management-Software · on-premise",
+      "hero.h1": "Schluss mit verstreuten Excel-Listen für Ihre IT-Verträge",
+      "hero.lead": "Vendor Data Management ist eine Vendor-Management-Software für KMU, spezialisiert auf IT-Vendoren. Die Anwendung zeigt auf einen Blick, welche Verträge, Lizenzen und Verantwortlichkeiten zu jedem Anbieter gehören, wo Informationen fehlen und wo Handlungsbedarf besteht.",
+      "hero.cta1": "Erstgespräch vereinbaren →",
+      "hero.cta2": "Beispiel-Analyse ansehen →",
+      "diff1.n": "Fokus",
+      "diff1.t": "Spezialisiert auf IT",
+      "diff1.d": "Kein Generalisten-Tool für alle Einkaufskategorien: gebaut für IT-Verträge, -Lizenzen und -Vendoren.",
+      "diff2.n": "Methode",
+      "diff2.t": "Regelbasiert geprüft",
+      "diff2.d": "Nicht jede KI-Aussage lässt sich deterministisch prüfen. Die Pipeline prüft, was geht — und sagt offen, was nicht.",
+      "diff3.n": "Zusammenarbeit",
+      "diff3.t": "Persönlich begleitet",
+      "diff3.d": "Sie arbeiten direkt mit mir, von der Anforderungsanalyse bis zur Einführung.",
+      "diff4.n": "Entwicklung",
+      "diff4.t": "Individuell erweiterbar",
+      "diff4.d": "Erweiterungen werden gemeinsam priorisiert und transparent umgesetzt.",
+      "nutzen.eyebrow": "Der Nutzen",
+      "nutzen.h2": "Mehr als eine Fristenüberwachung",
+      "nutzen.lead": "Weniger verpasste Kündigungsfristen ist nur der Anfang. Der eigentliche Nutzen ist eine strukturierte Übersicht über Ihre gesamte Vertragslandschaft — inklusive Verantwortlichkeiten, offener Punkte und KI-gestützter Analyse.",
+      "pillar1.t": "Überblick &amp; Verantwortlichkeiten",
+      "pillar1.d": "Vollständigkeits-Score und Compliance-Status pro Vendor zeigen sofort, wo Informationen oder Zuständigkeiten fehlen.",
+      "pillar2.t": "KI-Vertragsanalyse",
+      "pillar2.d": "Bei auslaufenden Verträgen liefert die KI einen Risikobericht mit konkreten Massnahmen — automatisch gegen Ihre Daten geprüft.",
+      "pillar3.t": "KI-gestützte Ausschreibung",
+      "pillar3.d": "Ausschreibungsanfragen für IT-Leistungen entstehen KI-unterstützt direkt aus Ihren bestehenden Lizenz- und Servicedaten.",
+      "pillar4.t": "KI-gestützte Audit-Fragebögen",
+      "pillar4.d": "Bei kritischen Befunden erstellt die KI gezielt Audit-Fragebögen — strikt getrennt in externe Vendor-Fragen und internen Prüfauftrag.",
+      "kiliefert.eyebrow": "Was die KI konkret liefert",
+      "kiliefert.h2": "Klar begrenzte Aufgaben, keine Blackbox",
+      "kiliefert.lead": "Die KI übernimmt begrenzte Aufgaben: sie prüft auslaufende Verträge, sie erstellt bei kritischen Befunden gezielte Audit-Fragebögen, und sie hilft bei der Erstellung von Ausschreibungsanfragen. Bei der Vertragsanalyse wird das Ergebnis automatisch gegen Ihre hinterlegten Daten geprüft, bevor Sie es sehen. Der Ausschreibungsentwurf ist Zuarbeit, keine fertige Ausschreibung — Ihre fachliche Prüfung bleibt nötig.",
+      "example1.tag": "Beispiel · Vertragsanalyse",
+      "example1.text": "Für einen Cloud-Service mit Zugriff auf sensible Daten stellte die KI in der Privilegien-Analyse fest, dass weder rollenbasierte Zugriffskontrollen (RBAC) noch Multi-Faktor-Authentifizierung dokumentiert waren, und ordnete das im Risikobericht als kritischen Sicherheitsmangel ein.",
+      "example2.tag": "Beispiel · KI-Ausschreibung",
+      "example2.text": "Für die Ablösung eines auslaufenden CRM-Lizenzvertrags erstellte die KI aus den hinterlegten Lizenz- und Nutzungsdaten einen RfX-Entwurf mit Anforderungs- und Fragenkatalog für alternative Anbieter. Der Einkäufer musste den Entwurf nur noch anpassen und freigeben.",
+      "example3.tag": "Beispiel · Audit-Fragebogen",
+      "example3.text": "Weil ein Vertrag ein rotes Zeit- und ein rotes Informationssicherheitsrisiko aufwies, erstellte die KI automatisch einen Audit-Fragebogen — strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag, der nie an den Vendor geht.",
+      "examples.note": "Beispiele anonymisiert bzw. exemplarisch dargestellt.",
+      "pullquote.link": "Ausführliche Fallstudie lesen →",
+      "case.eyebrow": "Hintergrund · Case Study",
+      "case.h2": "Was passiert, wenn man einer KI-Analyse nicht einfach glaubt",
+      "case.lead": "Vendor Data Management löst eine Pipeline aus, sobald ein Vertrag in 60 Tagen ausläuft: Sie liest den dokumentierten Datenstand, lässt ein LLM (Gemini) daraus einen Analysebericht samt Massnahmenplan erstellen — und prüft das Ergebnis anschliessend gegen dieselben Daten zurück, mit reiner Programmlogik.",
+      "thesis.h3": "Drei Prinzipien aus der CAS-Transferarbeit",
+      "thesis.intro": "Ablauf und Prüflogik sind in einer Transferarbeit an der Berner Fachhochschule dokumentiert, begründet und mit 25 gezielten Tests abgesichert (2026).",
+      "thesis.p1.t": "Ein weiterer KI-Durchlauf ist keine unabhängige Prüfung",
+      "thesis.p1.d": "Pass 2 und Pass 3 stammen aus derselben Modellklasse wie Pass 1 und tragen dieselbe Unsicherheit. Die Forschung zeigt: Ein Modell verifiziert eine Lösung nicht zuverlässiger, als es sie erzeugt.",
+      "thesis.p2.t": "Generierung und Verifikation trennen",
+      "thesis.p2.d": "Die KI übernimmt, was Kontextverständnis braucht. Formal eindeutig entscheidbare Anforderungen — Chronologie, Prozessreihenfolge, Vollständigkeit — prüft klassische Softwarelogik. Was beides nicht ist, bleibt beim Menschen.",
+      "thesis.p3.t": "Automatisch korrigieren nur bei genau einem richtigen Wert",
+      "thesis.p3.d": "Ein Massnahmenstart am Wochenende hat genau eine Korrektur, also wird er verschoben. Ein Fälligkeitsdatum vor dem eigenen Start hat mehrere mögliche, also wird nur gemeldet, nie geraten.",
+      "img.thesis.alt": "Entscheidungsdiagramm: eine erkannte Regelverletzung wird automatisch korrigiert, wenn der Zielwert eindeutig aus den Daten ableitbar ist, sonst nur an den Vendor Manager gemeldet",
+      "img.thesis.caption": "Aus der Transferarbeit: Wann die Prüfschicht automatisch korrigiert und wann sie nur meldet.",
+      "stage1.k": "Grundlage", "stage1.t": "Reality-Snapshot", "stage1.d": "Strukturiertes JSON aus Vertrag, Lizenzen, Klauseln, Privilegien — kein Fliesstext.",
+      "stage2.k": "Pass 1", "stage2.t": "Analyse", "stage2.d": "LLM erstellt Bericht, Risiko-Einordnung, Massnahmenplan.",
+      "stage3.k": "Pass 2", "stage3.t": "Daten-QA", "stage3.d": "Zweiter, unabhängiger Modellaufruf gleicht Zahlen &amp; Status gegen den Snapshot ab.",
+      "stage4.k": "Pass 3", "stage4.t": "Konsistenz-QA", "stage4.d": "Nur falls Pass 2 etwas geändert hat — gleicht Summary &amp; Text an.",
+      "stage5.k": "Danach", "stage5.t": "Validierung", "stage5.d": "Kein Modellaufruf mehr. Reine Arithmetik prüft Termine, Kollisionen, Abdeckung.",
+      "report.h3": "Das Ergebnis: ein Bericht mit fester Struktur, kein Fliesstext-Blob",
+      "report.intro": "Jeder Teil ist für einen anderen Leser gedacht — den, der nur die erste Seite liest, und den, der anschliessend die Verhandlung führt.",
+      "report.p0.t": "Executive Summary",
+      "report.p0.d": "Ampel-Status, finanzielles Risiko, 3–5 Kernfakten. Für alle, die nur die erste Seite haben.",
+      "report.p1.t": "Narrative Analyse",
+      "report.p1.d": "Sechs feste Betrachtungsebenen statt freier Prosa: Geschäftsbereich &amp; strategische Relevanz, Laufzeiten &amp; Fristen, Vendor-Performance, Privilege-Analyse, Informationssicherheit &amp; Datenschutz, Verhandlungsstrategie.",
+      "report.p2.t": "Risiko-Heatmap",
+      "report.p2.d": "Nicht von der KI erfunden: Die App rendert die Heatmap deterministisch aus den gespeicherten Signalen — die KI liefert nur die Überschrift.",
+      "report.p3.t": "Massnahmenplan",
+      "report.p3.d": "Bis zu 12 Schritte, jeder mit Phase, benanntem Verantwortlichen (Legal Counsel, CISO, Procurement Manager …), Start- und Fälligkeitsdatum sowie zitierter Baseline-Referenz. Die Verhandlungsphase bekommt zusätzlich einen Plan B.",
+      "report.p4.t": "Audit-Fragebögen",
+      "report.p4.d": "Nur ausgelöst, wenn eine echte Risikoschwelle überschritten ist — sonst ein Satz: &bdquo;Kein Audit empfohlen.&ldquo; Wenn ja: strikt getrennt in einen externen Vendor-Fragebogen (nur was der Vendor selbst belegen kann) und einen internen Prüfauftrag (Klauselprüfung, BCM-Planung — geht nie an den Vendor raus), exportierbar als ausfüllbares Excel.",
+      "livetest.eyebrow": "Live-Test, 31.07.2026",
+      "livetest.h3": "Drei Modellaufrufe später hat der Plan trotzdem einen Fehler — die vierte, deterministische Schicht findet ihn",
+      "livetest.p1": "Für einen synthetischen Testvertrag (fiktiver Anbieter, absichtlich mehrere offene Lücken) durchlief ein kompletter Pipeline-Lauf alle drei KI-Durchgänge. Das Ergebnis: ein Massnahmenplan mit neun Schritten, plausibel klingend, gut referenziert. Die anschliessende regelbasierte Prüfung fand trotzdem etwas, das drei Modellaufrufe übersehen hatten — die Unterschrift war später terminiert als das Vertragsende selbst.",
+      "finding1": "Wochenend-Termine automatisch auf Werktage verschoben",
+      "finding2": "Vertragsende-Kollision erkannt, inkl. automatischem Plan-B-Zitat",
+      "finding3": "Zitierfehler beim anschliessenden manuellen Faktenabgleich",
+      "livetest.p2": "Der zweite Teil war ein manueller Gegencheck: jede im Bericht zitierte Zahl — Vendor-Scores, Kosten, Vertragsdaten, Klausel-Status — von Hand gegen die tatsächlichen Ausgangsdaten geprüft. Keine einzige Abweichung. Das eigentliche Ergebnis ist nicht \"die KI lag falsch\", sondern: <b>eine KI-Pipeline ist erst dann vertrauenswürdig, wenn eine unabhängige, nicht-KI-basierte Instanz nachrechnet — und wenn man das auch tatsächlich testet, nicht nur annimmt.</b>",
+      "img.clause.alt": "Klausel-Risiko-Score-Dialog mit KI-Befund-Begründung",
+      "img.clause.caption": "Klausel-für-Klausel-Risikobewertung mit ausgeschriebener KI-Begründung — jede Einstufung ist nachvollziehbar, nicht nur eine Zahl.",
+      "img.pipeline.alt": "Live-Log eines Pipeline-Laufs mit Pass-1-Analyserisiken und Schutzmechanismen",
+      "img.pipeline.caption": "Pass 1 läuft — der Log zeigt live, welche Fehlerquellen (Halluzination, Silent Omission) das Prompt-Design gezielt abfängt, und warum.",
+      "img.audit.alt": "Auditbegründung und Vendor-Fragebogen mit Baseline-Referenz je Frage",
+      "img.audit.caption": "Die Auditbegründung zitiert die zwei konkreten Risikoflags, die den Fragebogen ausgelöst haben (rotes Zeit- und Informationssicherheitsrisiko) — jede Frage trägt ihre Baseline-Referenz, hier Schweizer DSG- statt DSGVO-Kriterien.",
+      "produkt.eyebrow": "Das Produkt",
+      "produkt.hook": "Kennen Sie das: Der Vertrag mit automatischer Verlängerung läuft in drei Wochen aus — die Kündigungsfrist war aber schon vor zwei Monaten. Die einzige Stelle, an der das stand, war ein Excel-Sheet, das seit dem Ausscheiden des zuständigen Kollegen niemand mehr pflegt. Genau diese Lücke zwischen &bdquo;irgendwo dokumentiert&ldquo; und &bdquo;tatsächlich nachverfolgt&ldquo; schliesst Vendor Data Management.",
+      "produkt.lead": "Eine Desktop-Anwendung, die Vendor-, Vertrags- und Lizenzverwaltung aus genau solchen Tabellen herausholt. Kern ist ein Datenmodell Vendor → Vertrag → Lizenz/Service mit einer 14-Punkte-Vertragsklausel-Baseline (AVV, Haftungsbegrenzung, Audit-Recht, Kündigung, NDA, Subunternehmer, Datenlöschung, Exit-Strategie, Preisanpassung u.&nbsp;a.) und einem 0–100&nbsp;%-Vollständigkeits-Score mit Gap-Tooltips pro Vendor, Vertrag, Lizenz und Service — damit eine Lücke auffällt, bevor sie zum Problem wird, nicht erst danach.",
+      "produkt.compliance": "Compliance ist dabei keine Checkbox-Liste, sondern wird aus genau diesen gespeicherten Feldern abgeleitet. DSGVO-, EU-AI-Act- und ISO-42001-Prüfungen laufen über eine Tri-State-Aggregation (PASS / FAIL / UNCLEAR) statt einer einfachen Ja/Nein-Logik — ein gut dokumentierter Posten darf einen undokumentierten nie überdecken. Für jeden Vertrag wird zudem geprüft, ob intern überhaupt jemand benannt ist: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Datenschutzbeauftragter. Gebaut für KMU. Der Quellcode ist derzeit nicht öffentlich.",
+      "produkt.swiss": "<b>Für Schweizer Kunden:</b> dieselbe Compliance-Logik läuft wahlweise gegen das (revidierte) Schweizer Datenschutzgesetz (DSG) statt der DSGVO — eigene Baseline-Kriterien mit den passenden DSG-Artikeln, eine eigene Drittstaaten-Angemessenheitsliste nach Bundesrat-Kriterien (Art.&nbsp;16&ndash;17 DSG) statt der EU/EWR-Prüfung, und CHF als Basiswährung. Umschaltbar pro Mandant, keine zwei getrennten Produktversionen.",
+      "erfasst.eyebrow": "Was erfasst und geprüft wird",
+      "baseline.h3": "Auszug aus den geprüften Kriterien",
+      "baseline.intro": "Neben der Vertragsklausel-Baseline führt die Software fünf Compliance-Kataloge: DSGVO (13 Kriterien), revidiertes Schweizer DSG (11), IT-Sicherheit (14), ISO/IEC 42001 (10) und EU-KI-Verordnung (8). Jedes Kriterium hat eine ID, eine Rechtsgrundlage, ein wörtliches Gesetzeszitat und eine daraus abgeleitete Anforderung.",
+      "baseline.1.t": "DSGVO-04 · Auftragsverarbeitungsvertrag — Art. 28 DSGVO",
+      "baseline.1.d": "Vor Verarbeitungsbeginn muss ein schriftlicher AVV vorliegen; fehlt er, ist die Verarbeitung unzulässig.",
+      "baseline.2.t": "DSGVO-06 · Technisch-organisatorische Massnahmen — Art. 32 DSGVO",
+      "baseline.2.d": "Dem Risiko angemessene Massnahmen (Verschlüsselung, Pseudonymisierung, Verfügbarkeit) sind umzusetzen und zu dokumentieren.",
+      "baseline.3.t": "DSGVO-10 · Löschkonzept und Aufbewahrungsfristen — Art. 5 &amp; Art. 17 DSGVO",
+      "baseline.3.d": "Daten sind zu löschen, sobald der Zweck entfällt; ein dokumentiertes Löschkonzept muss vorliegen.",
+      "baseline.4.t": "DSGVO-13 · Datenresidenz und Verarbeitungsort — Art. 44 DSGVO / Schrems II",
+      "baseline.4.d": "Verarbeitung ausserhalb der EU/des EWR erfordert eine nachgewiesene gültige Übertragungsgrundlage.",
+      "baseline.5.t": "SEC-09 · Subunternehmer-Dokumentation — IT-Sicherheitsbaseline",
+      "baseline.5.d": "Der Einsatz von Subunternehmern mit Zugriff auf Systeme oder Daten des Auftraggebers ist vorab schriftlich anzuzeigen und zu genehmigen; eine aktuelle Liste ist auf Anfrage vorzulegen.",
+      "baseline.note": "Der Status je Kriterium (erfüllt, nicht erfüllt oder unklar) wird regelbasiert aus den erfassten Feldern abgeleitet, ohne KI-Aufruf. Der vollständige Kriterientext ist in der Anwendung als Tooltip einsehbar.",
+      "funktionsumfang.eyebrow": "Funktionsumfang",
+      "funktionsumfang.h3": "Was die Anwendung abdeckt",
+      "funktionsumfang.intro": "Die drei Bereiche im Überblick — von der Fristenüberwachung über die Compliance-Tiefe bis zu Reporting und Intelligence.",
+      "einblicke.eyebrow": "Einblicke",
+      "einblicke.h3": "Wie das in der Anwendung aussieht",
+      "einblicke.intro": "Elf Screenshots aus dem laufenden Betrieb — Analyseberichte, Compliance-Status, AVV-Verwaltung, Asset-Graph, Timeline, Vendor Intelligence und begründete Warnungen.",
+      "privileges.h3": "Zugriffsprivilegien und Daten-Handling",
+      "privileges.p1": "<b>Vendor-Privilegien</b> je Lieferant (jeweils Ja/Nein): Datenverarbeitung, Zugriff auf sensible Daten, privilegierte oder administrative Zugriffe, Fernzugriff auf Systeme, Zutritt zu Standorten, Einsatz von Subunternehmern.",
+      "privileges.p2": "<b>Daten-Handling je Software und Service:</b> Speicherort (on-premise, Cloud oder hybrid), Datenresidenz, DSGVO-Relevanz, Unterauftragsverarbeiter, Aufbewahrungs- und Löschregel, rollenbasierte Zugriffskontrolle (RBAC), Verschlüsselung bei Übertragung und Speicherung, Mehr-Faktor-Authentifizierung (MFA), KI-Einsatz und KI-Risikoklasse.",
+      "privileges.note": "Diese Angaben speisen den Vollständigkeits-Score, die Compliance-Prüfung und die Privilegien-Analyse bei auslaufenden Verträgen.",
+      "compare.eyebrow": "Der Unterschied",
+      "compare.h3": "Was klassisches Vertragsmanagement nicht abbildet",
+      "compare.lead": "Vertragliche Lücken bei IT-Lieferungen und -Leistungen werden erst im Kontext von Compliance- und Security-Baselines sichtbar. Genau dabei helfen ein geeignetes Datenmodell und KI — die meisten Vertragsmanagement-Tools bieten aber nur das Vertragsdokument, ohne Verknüpfung zu Liefergegenständen, Zugriffsrechten und internen Zuständigkeiten.",
+      "compare.them": "Klassisches Vertragsmanagement",
+      "compare.us": "Vendor Data Management",
+      "compare.r1.label": "Liefergegenstände",
+      "compare.r1.them": "Verwaltet nur das Vertragsdokument",
+      "compare.r1.us": "Datenmodell Vendor → Vertrag → Lizenz/Service — jede Lizenz und jeder Service einzeln erfasst und verknüpft",
+      "compare.r2.label": "Zugriffsprivilegien",
+      "compare.r2.them": "Nicht erfasst",
+      "compare.r2.us": "Privilegien-Fussabdruck je Lieferant: Datenverarbeitung, Fernzugriff, Subunternehmer",
+      "compare.r3.label": "AVV-Status",
+      "compare.r3.them": "Nicht erfasst",
+      "compare.r3.us": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
+      "compare.r4.label": "Verfahrensverzeichnis",
+      "compare.r4.them": "Nicht erfasst",
+      "compare.r4.us": "Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)",
+      "compare.r5.label": "Zuständigkeiten",
+      "compare.r5.them": "Nur der Vertragsunterzeichner",
+      "compare.r5.us": "Rollenprüfung je Vertrag: Contract Owner, Legal Counsel, Vendor-/License-Manager, Datenschutzbeauftragte:r",
+      "compare.r6.label": "Datenhoheit",
+      "compare.r6.them": "Daten liegen beim SaaS-Anbieter — Vendor-Lock-in",
+      "compare.r6.us": "Daten bleiben beim Kunden: in-house oder bei einem Hosting-Provider der Wahl, nie physisch auf einem Server des Anbieters — kein Vendor-Lock-in",
+      "compare.r7.label": "Jurisdiktion",
+      "compare.r7.them": "Eine feste Prüflogik",
+      "compare.r7.us": "DSGVO oder revidiertes Schweizer DSG, pro Mandant umschaltbar — je eigene Baseline-Kriterien und Drittstaaten-Angemessenheitsliste",
+      "cap1.t": "Verträge, Lizenzen &amp; Fristen",
+      "cap1.li1": "Automatische Fristenüberwachung — 60 Tage vor Ablauf startet die Pipeline von selbst",
+      "cap1.li2": "Kündigungsassistent — Fristen und Formvorschriften im Blick, bevor der Termin verstreicht",
+      "cap1.li3": "GLEIF/LEI-Abgleich, Tier-Klassifizierung pro Lieferant",
+      "cap1.li4": "IT-Asset-Management mit CIA-Klassifizierung, Asset-Beziehungsgraph",
+      "cap1.li5": "KPI-Dashboards (Portfolio, Vendoren, Lizenzen) und filterbare Listen für Vendoren, Verträge, Lizenzen und Services",
+      "cap1.li6": "Timeline — Vertragslaufzeiten mit den enthaltenen Lizenzen und Services, Kündigungs- und Verlängerungsfenstern sowie identifizierten Massnahmen auf einer gemeinsamen Zeitachse",
+      "cap2.t": "Compliance-Tiefe",
+      "cap2.li1": "Verarbeitungsverzeichnis nach Art.&nbsp;30 DSGVO, inkl. Art.&nbsp;9(2)",
+      "cap2.li2": "DSG (Schweiz) als eigenständige Baseline, nicht nur umbenannt — inkl. eigener Angemessenheitsliste",
+      "cap2.li3": "EU-AI-Act-Risikoklassen (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26-Pflichten",
+      "cap2.li4": "AVV-Statusmaschine mit 7 Zuständen, Auto-Ablauf, Konsistenzcheck",
+      "cap3.t": "Darüber hinaus",
+      "cap3.li1": "E-Mail-Entwürfe an den Vendor (Kündigung, Anfrage) werden vorbereitet, nie automatisch verschickt",
+      "cap3.li2": "Privilegien-Fussabdruck je Lieferant (Datenverarbeitung, Fernzugriff, Subunternehmer …)",
+      "cap3.li3": "RfX Process Manager — Anfrage direkt aus bestehender Lizenz/Service",
+      "cap3.li4": "KPI-Trend-Snapshots (täglich, aggregiert erst beim Lesen — kein Cache, der veraltet)",
+      "cap3.li5": "Vendor-/Software-/CVE-Intelligence, Legal Briefing",
+      "cap3.li6": "Terminierte Berichte zu Vendoren, Verträgen, Lizenzen, Assets und Datenlücken (PDF, HTML oder Excel), im Hintergrund von einem headless-Dienst erzeugt und per E-Mail zugestellt",
+      "img.dashboard.alt": "TPRM- und Compliance-Dashboard mit KPI-Kacheln",
+      "img.exec.alt": "Executive Summary eines KI-Analyseberichts mit Ampel-Status und Kernfakten",
+      "img.exec.t": "Executive Summary auf einen Blick",
+      "img.exec.d": "Ampel-Status, Kernrisiken und finanzielles Exposure in einem Absatz — für alle, die nur die erste Seite lesen.",
+      "img.action.alt": "Risiko-Heatmap und Massnahmenplan mit Verantwortlichen, Terminen und Baseline-Referenzen",
+      "img.action.t": "Risiko-Heatmap &amp; Massnahmenplan",
+      "img.action.d": "Bis zu 12 Schritte mit Verantwortlichem, Termin und Baseline-Referenz — hier zehn Massnahmen für einen einzelnen Vertrag.",
+      "img.clauseanalysis.alt": "Klauselweise Risikobewertung eines Vertrags mit KI-Befund je Klausel",
+      "img.clauseanalysis.t": "Klausel-für-Klausel-Risikobewertung",
+      "img.clauseanalysis.d": "Jede Klausel mit KI-Befund, Vertragszitat und Risikoeinstufung — nachvollziehbar statt nur eine Zahl.",
+      "img.gaps.alt": "Tabelle mit Datenlücken und Regelverletzungen, priorisiert nach Kritisch, Hoch und Mittel",
+      "img.gaps.t": "Datenlücken &amp; Regelverletzungen",
+      "img.gaps.d": "Regelbasiert ermittelte Fehlstellen je Kriterium, priorisiert nach Kritisch, Hoch und Mittel.",
+      "img.assetgraph.alt": "Asset-Beziehungsgraph: Lizenzen, Verträge und Systeme grafisch verknüpft",
+      "img.assetgraph.t": "Asset-Beziehungsgraph",
+      "img.assetgraph.d": "Ein SAP-System hängt gleichzeitig an einem Support-Vertrag und einer Oracle-Lizenz — eine Abhängigkeit, die in getrennten Listen unsichtbar bliebe.",
+      "img.compliance.alt": "Compliance-Tab: Status je Kriterium mit ID, Ampel und Volltext-Tooltip zu SEC-09",
+      "img.compliance.t": "Compliance-Status, abgeleitet aus den Daten",
+      "img.compliance.d": "Je Baseline ein eigener Status pro Kriterium (erfüllt, nicht erfüllt, unklar), mit Kriterien-ID und dem vollständigen Kriterientext als Tooltip — hier SEC-09, Subunternehmer-Dokumentation.",
+      "img.avv.alt": "AVV-Verwaltung mit Statusmaschine, Datenkategorien, Betroffenengruppen und Sub-Processor-Klausel",
+      "img.avv.t": "AVV von der Bedarfsprüfung bis zur Unterschrift",
+      "img.avv.d": "Statusmaschine, erfasste Datenkategorien und Betroffenengruppen, bestätigte Sub-Processor-Klausel (Art. 28 DSGVO) und Verweis auf das Verarbeitungsverzeichnis (Art. 30 DSGVO).",
+      "img.cve.alt": "CVE-Datenbestand aus der ENISA EUVD, gefiltert je Hersteller, Produkt und CVSS-Score",
+      "img.cve.t": "CVE-Intelligence aus der EU-Schwachstellendatenbank",
+      "img.cve.d": "Bekannte Schwachstellen je Anbieter und Produkt aus der ENISA EUVD, filterbar nach CVSS-Score und Meldezeitraum.",
+      "img.timeline.alt": "Timeline-Ansicht: Verträge als Hauptbalken, Lizenzen und Services als Unterzeilen, Kündigungsfristen orange gestrichelt, senkrechte Today-Linie",
+      "img.timeline.t": "Timeline — alle Laufzeiten auf einer Achse",
+      "img.timeline.d": "Verträge als Hauptbalken, die enthaltenen Lizenzen und Services als Unterzeilen, dazu Kündigungs- und Verlängerungsfenster sowie identifizierte Massnahmen mit Kritikalität — die Today-Linie zeigt sofort, was fällig wird.",
+      "img.warnings.alt": "Zwei automatisch generierte Warnungen zu Datenkonsistenz und Verantwortlichkeiten bei einem Lieferanten, jeweils mit konkretem Korrekturhinweis",
+      "img.warnings.t": "Warnungen mit Begründung statt Blackbox",
+      "img.warnings.d": "Jede automatische Warnung nennt die verletzte Regel und einen konkreten Korrekturvorschlag — hier eine fehlende „Data Processing“-Kennzeichnung trotz Cloud-Betrieb und ein fehlendes Compliance-Zertifikat.",
+      "img.intel.alt": "Vendor-Intelligence-Tab mit News-Heat-Bewertung nach Security, Business und Compliance, jede Einstufung mit zitierten Quellen und Datum",
+      "img.intel.t": "Vendor Intelligence: Nachrichtenlage mit Quellenbeleg",
+      "img.intel.d": "Negativ- und Positiv-Heat je Kategorie (Security, Business, Compliance), jede Einstufung mit den zugrunde liegenden Meldungen samt Quelle und Datum — inklusive Zeitstempel der KI-Analyse.",
+      "tech.eyebrow": "Technisch",
+      "arch.eyebrow": "Architektur",
+      "arch.h2": "Desktop statt SaaS — eine Entscheidung, kein Rückstand",
+      "arch.lead": "Wer &bdquo;Desktop-Anwendung&ldquo; hört, denkt oft an Software, die technisch stehengeblieben ist. Hier ist es eine bewusste Entscheidung: Vendor- und Vertragsdaten sind bei einem KMU meist die Verantwortung einer einzigen Person oder eines kleinen Teams — kein Fall für eine Multi-Tenant-Architektur mit hundert gleichzeitigen Nutzern. Und die Daten liegen immer beim Kunden — in-house oder bei einem Hosting-Provider der eigenen Wahl, nie physisch auf einem Server des Anbieters — nicht bei einem weiteren SaaS-Anbieter, für den man selbst wieder eine Auftragsbearbeiter-Beziehung dokumentieren müsste, und ohne das Vendor-Lock-in-Risiko eines geschlossenen Cloud-Backends.",
+      "arch.layered": "Technisch ist die Anwendung trotzdem in klaren Schichten gebaut, nicht als ein grosser Klumpen. Die Fachlogik — Compliance-Checks, Risikobewertung, Vollständigkeits-Score — kennt Swing gar nicht und läuft komplett über eine eigene Service-Schicht, unabhängig von der Oberfläche.",
+      "layer1.t": "Oberfläche",
+      "layer1.d": "Swing / FlatLaf — Desktop-MDI, mehrere Fenster parallel offen",
+      "layer2.t": "Service-Schicht",
+      "layer2.d": "ServiceFactory kapselt JPA — einziger erlaubter Zugriffsweg auf die Daten",
+      "layer3.t": "Fachlogik",
+      "layer3.d": "Compliance-Checks, Scoring, Validierung — kennt Swing nicht, komplett ohne UI testbar",
+      "layer4.t": "Daten",
+      "layer4.d": "Relationale Datenbank (Derby / PostgreSQL / MariaDB) — immer beim Kunden, nie als Backend des Anbieters betrieben",
+      "arch.techdetails": "Technische Details",
+      "fact1": "583 Tests",
+      "fact2": "25 von 26 Testklassen ganz ohne Datenbank",
+      "fact3": "3 Datenbank-Optionen",
+      "fact4": "0 Swing-Importe in den Compliance-Checkern",
+      "fact5": "Kein Vendor-Lock-in — Daten bleiben in Ihrer eigenen relationalen DB",
+      "arch.roadmap": "Die Datenbank ist austauschbar — Derby eingebettet für den schnellen Test, PostgreSQL oder MariaDB für den produktiven Einsatz auf eigener Infrastruktur, per Konfiguration umschaltbar. Eine Spring-Boot-REST-API und ein React-Frontend stehen auf der Roadmap (aktuell: geplant, nicht gebaut) — als zusätzliche Schicht oben drauf, nicht als Neuschrieb: Die Service-Schicht ist genau dafür vorbereitet.",
+      "footer.note": "Alle Zahlen und Log-Auszüge auf dieser Seite stammen aus einem realen Pipeline-Lauf gegen synthetische Testdaten (fiktiver Anbieter, keine echten Kundendaten). Bewusst wird keine Fehler- oder Korrekturquote ausgewiesen: Ohne unabhängigen Referenzdatensatz wäre eine solche Kennzahl nicht aussagekräftig.",
+      "footer.profile": "Berufliches Profil →",
+      "footer.leistungen": "Leistungen →",
+      "footer.kontakt": "Kontakt →",
+      "footer.legal": "Impressum & Datenschutz"
+    },
+    en: {
+      title: "Vendor Data Management – vendor management software for SMEs, on-premise",
+      description: "Vendor management software for SMEs: structure IT contracts, licenses and suppliers, track notice periods, GDPR / Swiss FADP checks. On-premise, no cloud, rule-checked AI analysis.",
+      "nav.leistungen": "Services",
+      "nav.referenzprojekte": "Reference Projects",
+      "nav.profil": "Professional Profile",
+      "nav.cta": "Book intro call",
+      "backlink": "← Reference Projects",
+      "footer.referenzprojekte": "Reference Projects →",
+      "hero.eyebrow": "Vendor management software · on-premise",
+      "hero.h1": "No more scattered spreadsheets for your IT contracts",
+      "hero.lead": "Vendor Data Management is vendor management software for SMEs, specialised in IT vendors. The application shows at a glance which contracts, licenses, and responsibilities belong to each supplier, where information is missing, and where action is needed.",
+      "hero.cta1": "Book an intro call →",
+      "hero.cta2": "See an example analysis →",
+      "diff1.n": "Focus",
+      "diff1.t": "Specialized in IT",
+      "diff1.d": "Not a generalist tool for every purchasing category: built for IT contracts, licenses, and vendors.",
+      "diff2.n": "Method",
+      "diff2.t": "Rule-based verification",
+      "diff2.d": "Not every AI output can be deterministically checked. The pipeline checks what it can — and says plainly what it can't.",
+      "diff3.n": "Collaboration",
+      "diff3.t": "Personally guided",
+      "diff3.d": "You work directly with me, from requirements analysis to rollout.",
+      "diff4.n": "Development",
+      "diff4.t": "Custom-extensible",
+      "diff4.d": "Extensions are prioritised together and implemented transparently.",
+      "nutzen.eyebrow": "The Value",
+      "nutzen.h2": "More than deadline monitoring",
+      "nutzen.lead": "Fewer missed cancellation deadlines is just the start. The real value is a structured view across your entire contract landscape — including responsibilities, open items, and AI-assisted analysis.",
+      "pillar1.t": "Overview &amp; Responsibilities",
+      "pillar1.d": "Completeness score and compliance status per vendor show immediately where information or ownership is missing.",
+      "pillar2.t": "AI Contract Analysis",
+      "pillar2.d": "For expiring contracts, the AI delivers a risk report with concrete actions — automatically checked against your data.",
+      "pillar3.t": "AI-Assisted Tendering",
+      "pillar3.d": "RfX requests for IT services are drafted with AI support, directly from your existing license and service data.",
+      "pillar4.t": "AI-Assisted Audit Questionnaires",
+      "pillar4.d": "For critical findings, the AI drafts targeted audit questionnaires — strictly split into external vendor questions and an internal review assignment.",
+      "kiliefert.eyebrow": "What the AI Actually Delivers",
+      "kiliefert.h2": "Narrowly scoped tasks, not a black box",
+      "kiliefert.lead": "The AI handles a few limited tasks: it reviews expiring contracts, it drafts targeted audit questionnaires for critical findings, and it helps draft tender requests. For contract analysis, the result is automatically checked against your stored data before you see it. The tender draft is groundwork, not a finished tender — your review is still required.",
+      "example1.tag": "Example · Contract Analysis",
+      "example1.text": "For a cloud service with access to sensitive data, the AI found in its privilege analysis that neither role-based access controls (RBAC) nor multi-factor authentication were documented, and flagged it in the risk report as a critical security gap.",
+      "example2.tag": "Example · AI-Assisted Tendering",
+      "example2.text": "To replace an expiring CRM license, the AI drafted an RfX with a requirements and question catalog for alternative vendors, based on the stored license and usage data. The buyer only had to adjust and approve the draft.",
+      "example3.tag": "Example · Audit Questionnaire",
+      "example3.text": "Because a contract showed a red time risk and a red information-security risk, the AI automatically drafted an audit questionnaire — strictly split into an external vendor questionnaire (only what the vendor can evidence itself) and an internal review assignment that never goes to the vendor.",
+      "examples.note": "Examples anonymized or illustrative.",
+      "pullquote.link": "Read the full case study →",
+      "case.eyebrow": "Background · Case Study",
+      "case.h2": "What happens when you don't just trust an AI analysis",
+      "case.lead": "Vendor Data Management triggers a pipeline as soon as a contract is 60 days from expiry: it reads the documented data state, has an LLM (Gemini) draft an analysis report and action plan from it — then checks that result back against the same data, using pure program logic.",
+      "thesis.h3": "Three principles from the CAS thesis",
+      "thesis.intro": "The pipeline and its checks are documented, reasoned through, and backed by 25 targeted tests in a thesis at Bern University of Applied Sciences (2026).",
+      "thesis.p1.t": "Another AI pass is not independent verification",
+      "thesis.p1.d": "Pass 2 and Pass 3 come from the same model class as Pass 1 and carry the same uncertainty. Research shows a model does not verify a solution more reliably than it produces one.",
+      "thesis.p2.t": "Separate generation from verification",
+      "thesis.p2.d": "The AI handles what needs context. Formally decidable requirements — chronology, process order, completeness — are checked by plain software logic. What is neither stays with a human.",
+      "thesis.p3.t": "Auto-correct only when exactly one value is right",
+      "thesis.p3.d": "A measure starting on a weekend has exactly one fix, so it gets moved. A due date before its own start has several possible fixes, so it is only flagged, never guessed.",
+      "img.thesis.alt": "Decision diagram: a detected rule violation is auto-corrected when the target value is unambiguously derivable from the data, otherwise only flagged to the vendor manager",
+      "img.thesis.caption": "From the thesis: when the check layer corrects automatically and when it only flags.",
+      "stage1.k": "Foundation", "stage1.t": "Reality Snapshot", "stage1.d": "Structured JSON from contract, licenses, clauses, privileges — no free text.",
+      "stage2.k": "Pass 1", "stage2.t": "Analysis", "stage2.d": "LLM drafts the report, risk classification, and action plan.",
+      "stage3.k": "Pass 2", "stage3.t": "Data QA", "stage3.d": "A second, independent model call cross-checks figures &amp; status against the snapshot.",
+      "stage4.k": "Pass 3", "stage4.t": "Consistency QA", "stage4.d": "Only runs if Pass 2 changed anything — aligns summary &amp; narrative text.",
+      "stage5.k": "After that", "stage5.t": "Validation", "stage5.d": "No more model calls. Pure arithmetic checks dates, collisions, coverage.",
+      "report.h3": "The result: a report with a fixed structure, not a wall of text",
+      "report.intro": "Each part is written for a different reader — the one who only reads the first page, and the one who runs the negotiation afterwards.",
+      "report.p0.t": "Executive Summary",
+      "report.p0.d": "Traffic-light status, financial exposure, 3–5 key facts. For anyone who only has the first page.",
+      "report.p1.t": "Narrative Analysis",
+      "report.p1.d": "Six fixed perspectives instead of free-form prose: business area &amp; strategic relevance, terms &amp; deadlines, vendor performance, privilege analysis, information security &amp; data protection, negotiation strategy.",
+      "report.p2.t": "Risk Heatmap",
+      "report.p2.d": "Not invented by the AI: the app renders the heatmap deterministically from stored signals — the AI only supplies the heading.",
+      "report.p3.t": "Action Plan",
+      "report.p3.d": "Up to 12 steps, each with a phase, a named owner (Legal Counsel, CISO, Procurement Manager …), start and due dates, and a cited baseline reference. The negotiation phase additionally gets a Plan B.",
+      "report.p4.t": "Audit Questionnaires",
+      "report.p4.d": "Only triggered once a real risk threshold is crossed — otherwise a single sentence: &ldquo;No audit recommended.&rdquo; If triggered: strictly split into an external vendor questionnaire (only what the vendor itself can evidence) and an internal review assignment (clause review, BCM planning — never sent to the vendor), exportable as a fillable spreadsheet.",
+      "livetest.eyebrow": "Live test, 2026-07-31",
+      "livetest.h3": "Three model calls later, the plan still has an error — the fourth, deterministic layer catches it",
+      "livetest.p1": "For a synthetic test contract (fictional vendor, deliberately seeded with several open gaps), a full pipeline run went through all three AI passes. The result: a nine-step action plan, plausible-sounding and well-referenced. The subsequent rule-based check still found something all three model calls had missed — the signature was scheduled later than the contract's own end date.",
+      "finding1": "Weekend dates automatically moved to business days",
+      "finding2": "Contract-end collision detected, incl. automatic Plan-B reference",
+      "finding3": "Citation errors found in the subsequent manual fact-check",
+      "livetest.p2": "The second part was a manual cross-check: every figure cited in the report — vendor scores, costs, contract dates, clause status — verified by hand against the actual source data. Not a single discrepancy. The real finding here isn't \"the AI was wrong\" — it's: <b>an AI pipeline only becomes trustworthy once an independent, non-AI instance checks its work — and only if you actually test that, instead of just assuming it.</b>",
+      "img.clause.alt": "Clause risk-score dialog with AI finding rationale",
+      "img.clause.caption": "Clause-by-clause risk scoring with the AI's reasoning spelled out — every rating is traceable, not just a number.",
+      "img.pipeline.alt": "Live log of a pipeline run showing Pass-1 analysis risks and safeguards",
+      "img.pipeline.caption": "Pass 1 running — the log shows live which failure modes (hallucination, silent omission) the prompt design specifically guards against, and why.",
+      "img.audit.alt": "Audit rationale and vendor questionnaire with baseline reference per question",
+      "img.audit.caption": "The audit rationale cites the two concrete risk flags that triggered the questionnaire (red time risk and red information-security risk) — every question carries its baseline reference, here Swiss DSG rather than GDPR criteria.",
+      "produkt.eyebrow": "The Product",
+      "produkt.hook": "Sound familiar: the auto-renewing contract expires in three weeks — but the notice period to cancel it ran out two months ago. The only place that was ever written down was a spreadsheet nobody's maintained since the colleague who owned it left. That gap — between &ldquo;documented somewhere&rdquo; and &ldquo;actually tracked&rdquo; — is exactly what Vendor Data Management closes.",
+      "produkt.lead": "A desktop application that pulls vendor, contract, and license management out of exactly those spreadsheets. At its core is a Vendor → Contract → License/Service data model with a 14-point contract-clause baseline (DPA, liability cap, audit rights, termination, NDA, subcontracting, data deletion, exit strategy, price adjustment, and more) and a 0–100% completeness score with gap tooltips per vendor, contract, license, and service — so a gap gets noticed before it becomes a problem, not after.",
+      "produkt.compliance": "Compliance here isn't a checkbox list — it's derived from exactly those stored fields. GDPR, EU AI Act, and ISO 42001 checks run through a tri-state aggregation (PASS / FAIL / UNCLEAR) instead of simple yes/no logic — a well-documented item must never mask an undocumented one. Every contract is also checked for whether anyone is actually named internally: Contract Owner, Legal Counsel, Vendor Manager, License Manager, Data Protection Officer. Built for SMEs. Source code is currently private.",
+      "produkt.swiss": "<b>For Swiss customers:</b> the same compliance logic can run against the (revised) Swiss Federal Act on Data Protection (FADP/DSG) instead of the GDPR — its own baseline criteria with the matching DSG articles, its own third-country adequacy list per Federal Council criteria (Art.&nbsp;16&ndash;17 DSG) instead of the EU/EEA check, and CHF as the base currency. Switchable per tenant, not two separate product versions.",
+      "erfasst.eyebrow": "What is recorded and checked",
+      "baseline.h3": "A sample of the checked criteria",
+      "baseline.intro": "Alongside the contract-clause baseline, the software maintains five compliance catalogs: GDPR (13 criteria), the revised Swiss FADP (11), IT security (14), ISO/IEC 42001 (10) and the EU AI Act (8). Each criterion has an ID, a legal basis, a verbatim legal citation and a derived requirement.",
+      "baseline.1.t": "GDPR-04 · Data processing agreement — Art. 28 GDPR",
+      "baseline.1.d": "A written DPA must be in place before processing starts; without it, processing is not permitted.",
+      "baseline.2.t": "GDPR-06 · Technical and organisational measures — Art. 32 GDPR",
+      "baseline.2.d": "Measures appropriate to the risk (encryption, pseudonymisation, availability) must be implemented and documented.",
+      "baseline.3.t": "GDPR-10 · Deletion concept and retention periods — Art. 5 &amp; Art. 17 GDPR",
+      "baseline.3.d": "Data must be deleted once its purpose ends; a documented deletion concept must exist.",
+      "baseline.4.t": "GDPR-13 · Data residency and processing location — Art. 44 GDPR / Schrems II",
+      "baseline.4.d": "Processing outside the EU/EEA requires a demonstrated valid transfer mechanism.",
+      "baseline.5.t": "SEC-09 · Subcontractor documentation — IT security baseline",
+      "baseline.5.d": "Subcontractors with access to the client’s systems or data must be notified and approved in writing in advance; a current list must be provided on request.",
+      "baseline.note": "The status per criterion (met, not met, or unclear) is derived from the stored fields by rule-based logic, with no AI call. The full criterion text is available as a tooltip in the application.",
+      "funktionsumfang.eyebrow": "Feature set",
+      "funktionsumfang.h3": "What the application covers",
+      "funktionsumfang.intro": "The three areas at a glance — from deadline monitoring through compliance depth to reporting and intelligence.",
+      "einblicke.eyebrow": "A look inside",
+      "einblicke.h3": "What it looks like in the application",
+      "einblicke.intro": "Eleven screenshots from live use — analysis reports, compliance status, DPA management, the asset graph, the timeline, vendor intelligence and reasoned warnings.",
+      "privileges.h3": "Access privileges and data handling",
+      "privileges.p1": "<b>Vendor privileges</b> per supplier (yes/no each): data processing, access to sensitive data, privileged or administrative access, remote access to systems, physical site access, use of subcontractors.",
+      "privileges.p2": "<b>Data handling per software and service:</b> storage location (on-premise, cloud or hybrid), data residency, GDPR relevance, sub-processors, retention and deletion policy, role-based access control (RBAC), encryption in transit and at rest, multi-factor authentication (MFA), AI usage and AI risk class.",
+      "privileges.note": "These attributes feed the completeness score, the compliance check and the privilege analysis for expiring contracts.",
+      "compare.eyebrow": "The Difference",
+      "compare.h3": "What classic contract management doesn't cover",
+      "compare.lead": "Contractual gaps in IT deliveries and services only become visible in the context of compliance and security baselines. That's exactly where the right data model and AI help — but most contract management tools only offer the contract document, with no link to the actual delivery items, access rights, and internal responsibilities.",
+      "compare.them": "Classic Contract Management",
+      "compare.us": "Vendor Data Management",
+      "compare.r1.label": "Delivery items",
+      "compare.r1.them": "Manages only the contract document",
+      "compare.r1.us": "Vendor → contract → license/service data model — every license and service captured and linked individually",
+      "compare.r2.label": "Access privileges",
+      "compare.r2.them": "Not captured",
+      "compare.r2.us": "Privilege footprint per supplier: data processing, remote access, subcontracting",
+      "compare.r3.label": "DPA status",
+      "compare.r3.them": "Not captured",
+      "compare.r3.us": "DPA status machine with 7 states, auto-expiry, consistency check",
+      "compare.r4.label": "Record of processing",
+      "compare.r4.them": "Not captured",
+      "compare.r4.us": "Record of processing activities per GDPR Art.&nbsp;30, incl. Art.&nbsp;9(2)",
+      "compare.r5.label": "Responsibilities",
+      "compare.r5.them": "Just the contract signatory",
+      "compare.r5.us": "Role check per contract: Contract Owner, Legal Counsel, Vendor/License Manager, Data Protection Officer",
+      "compare.r6.label": "Data sovereignty",
+      "compare.r6.them": "Data sits with the SaaS vendor — vendor lock-in",
+      "compare.r6.us": "Data stays with the customer: in-house or with a hosting provider of their choice, never physically on the vendor's own server — no vendor lock-in",
+      "compare.r7.label": "Jurisdiction",
+      "compare.r7.them": "One fixed set of check logic",
+      "compare.r7.us": "GDPR or the revised Swiss FADP, switchable per tenant — each with its own baseline criteria and third-country adequacy list",
+      "cap1.t": "Contracts, Licenses &amp; Deadlines",
+      "cap1.li1": "Automatic deadline monitoring — the pipeline kicks off on its own 60 days before expiry",
+      "cap1.li2": "Termination assistant — keeps notice periods and formal requirements in view before the deadline passes",
+      "cap1.li3": "GLEIF/LEI matching, tier classification per supplier",
+      "cap1.li4": "IT asset management with CIA classification, asset relationship graph",
+      "cap1.li5": "KPI dashboards (portfolio, vendors, licenses) and filterable lists for vendors, contracts, licenses and services",
+      "cap1.li6": "Timeline — contract terms with their nested licenses and services, notice and renewal windows, and identified action items on a single time axis",
+      "cap2.t": "Compliance Depth",
+      "cap2.li1": "Record of processing activities per GDPR Art.&nbsp;30, incl. Art.&nbsp;9(2)",
+      "cap2.li2": "Swiss DSG as its own baseline, not just relabeled — incl. its own adequacy list",
+      "cap2.li3": "EU AI Act risk classes (PROHIBITED → MINIMAL_RISK) + Art.&nbsp;26 deployer duties",
+      "cap2.li4": "DPA status machine with 7 states, auto-expiry, consistency check",
+      "cap3.t": "Beyond that",
+      "cap3.li1": "Draft emails to the vendor (termination notice, RfX) are prepared, never sent automatically",
+      "cap3.li2": "Privilege footprint per supplier (data processing, remote access, subcontracting …)",
+      "cap3.li3": "RfX process manager — request directly from an existing license/service",
+      "cap3.li4": "KPI trend snapshots (daily, aggregated only on read — no cache that goes stale)",
+      "cap3.li5": "Vendor/software/CVE intelligence, legal briefing",
+      "cap3.li6": "Scheduled reports on vendors, contracts, licenses, assets and data gaps (PDF, HTML or Excel), generated in the background by a headless service and emailed to the configured recipients",
+      "img.dashboard.alt": "TPRM and compliance dashboard with KPI tiles",
+      "img.exec.alt": "Executive summary of an AI analysis report with traffic-light status and key facts",
+      "img.exec.t": "Executive summary at a glance",
+      "img.exec.d": "Traffic-light status, key risks, and financial exposure in one paragraph — for anyone who only reads the first page.",
+      "img.action.alt": "Risk heatmap and action plan with owners, due dates, and baseline references",
+      "img.action.t": "Risk heatmap &amp; action plan",
+      "img.action.d": "Up to 12 steps with an owner, due date, and baseline reference — ten action items for a single contract, shown here.",
+      "img.clauseanalysis.alt": "Clause-by-clause risk assessment of a contract with an AI finding per clause",
+      "img.clauseanalysis.t": "Clause-by-clause risk scoring",
+      "img.clauseanalysis.d": "Every clause with an AI finding, contract quote, and risk rating — traceable, not just a number.",
+      "img.gaps.alt": "Table of data gaps and rule violations, prioritized as critical, high, and medium",
+      "img.gaps.t": "Data gaps &amp; rule violations",
+      "img.gaps.d": "Rule-based findings per criterion, prioritized as critical, high, and medium.",
+      "img.assetgraph.alt": "Asset relationship graph linking licenses, contracts, and systems",
+      "img.assetgraph.t": "Asset relationship graph",
+      "img.assetgraph.d": "One SAP system hangs off both a support contract and an Oracle license at once — a dependency that separate lists would never surface.",
+      "img.compliance.alt": "Compliance tab: status per criterion with ID, traffic-light and full-text tooltip for SEC-09",
+      "img.compliance.t": "Compliance status, derived from the data",
+      "img.compliance.d": "One status per criterion per baseline (met, not met, unclear), with the criterion ID and the full criterion text as a tooltip — here SEC-09, subcontractor documentation.",
+      "img.avv.alt": "DPA management with status machine, data categories, affected groups and sub-processor clause",
+      "img.avv.t": "DPA from need assessment to signature",
+      "img.avv.d": "Status machine, recorded data categories and affected groups, confirmed sub-processor clause (GDPR Art. 28) and a link to the record of processing activities (GDPR Art. 30).",
+      "img.cve.alt": "CVE inventory from the ENISA EUVD, filtered by vendor, product and CVSS score",
+      "img.cve.t": "CVE intelligence from the EU Vulnerability Database",
+      "img.cve.d": "Known vulnerabilities per vendor and product from the ENISA EUVD, filterable by CVSS score and reporting window.",
+      "img.timeline.alt": "Timeline view: contracts as main bars, licenses and services as sub-rows, notice periods as orange dashed segments, a vertical Today line",
+      "img.timeline.t": "Timeline — every term on one axis",
+      "img.timeline.d": "Contracts as main bars, their nested licenses and services as sub-rows, plus notice and renewal windows and identified action items with criticality — the Today line shows at a glance what is coming due.",
+      "img.warnings.alt": "Two automatically generated warnings about data consistency and responsibilities for a vendor, each with a concrete fix suggestion",
+      "img.warnings.t": "Warnings with reasoning, not a black box",
+      "img.warnings.d": "Every automatic warning names the violated rule and a concrete fix — here a missing \"Data Processing\" flag despite cloud operation, and a missing compliance certificate.",
+      "img.intel.alt": "Vendor intelligence tab with news-heat scoring across security, business and compliance, each rating backed by cited sources and dates",
+      "img.intel.t": "Vendor intelligence: news signal with cited sources",
+      "img.intel.d": "Negative and positive heat per category (security, business, compliance), each rating backed by the underlying news items with source and date — including a timestamp for the AI analysis itself.",
+      "tech.eyebrow": "Technical",
+      "arch.eyebrow": "Architecture",
+      "arch.h2": "Desktop, not SaaS — a decision, not a shortfall",
+      "arch.lead": "Hearing &ldquo;desktop application&rdquo; often makes people picture software that's technically stuck in the past. Here it's a deliberate choice: at an SME, vendor and contract data is usually the responsibility of one person or a small team — not a case for a multi-tenant architecture built for a hundred concurrent users. And the data always stays with the customer — in-house or with a hosting provider of their choice, never physically on the vendor's own server — not with yet another SaaS vendor you'd then need to document as your own data processor, and without the vendor lock-in risk of a closed cloud backend.",
+      "arch.layered": "Technically, the application is still built in clear layers, not as one big blob. The domain logic — compliance checks, risk scoring, the completeness score — doesn't know Swing exists at all, and runs entirely through its own service layer, independent of the UI.",
+      "layer1.t": "UI",
+      "layer1.d": "Swing / FlatLaf — desktop MDI, several windows open in parallel",
+      "layer2.t": "Service Layer",
+      "layer2.d": "ServiceFactory wraps JPA — the only permitted access path to the data",
+      "layer3.t": "Domain Logic",
+      "layer3.d": "Compliance checks, scoring, validation — doesn't know Swing exists, fully testable without any UI",
+      "layer4.t": "Data",
+      "layer4.d": "Relational database (Derby / PostgreSQL / MariaDB) — always on the customer's side, never run as the vendor's backend",
+      "arch.techdetails": "Technical Details",
+      "fact1": "583 tests",
+      "fact2": "25 of 26 test classes run without a database",
+      "fact3": "3 database options",
+      "fact4": "0 Swing imports in the compliance checkers",
+      "fact5": "No vendor lock-in — data stays in your own relational database",
+      "arch.roadmap": "The database is swappable — embedded Derby for a quick trial, PostgreSQL or MariaDB for production on your own infrastructure, switchable via configuration. A Spring Boot REST API and a React frontend are on the roadmap (currently: planned, not built) — as an additional layer on top, not a rewrite: the service layer was built exactly for that.",
+      "footer.note": "All figures and log excerpts on this page come from a real pipeline run against synthetic test data (fictional vendor, no real customer data). No error or correction rate is stated, on purpose: without an independent reference dataset such a figure would not be meaningful.",
+      "footer.profile": "Professional Profile →",
+      "footer.leistungen": "Services →",
+      "footer.kontakt": "Contact →",
+      "footer.legal": "Imprint & Privacy"
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-alt');
+      if(dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
+
+  // ---- screenshot lightbox ----
+  (function(){
+    const targets = document.querySelectorAll('.hero-shot img, .showcase img, .case figure img');
+    const lb = document.getElementById('lightbox');
+    if(!targets.length || !lb) return;
+    const lbImg   = document.getElementById('lightbox-img');
+    const lbCap   = document.getElementById('lightbox-caption');
+    const lbClose = lb.querySelector('.lightbox-close');
+    const STR = { de:{close:'Schliessen', label:'Bildvorschau'}, en:{close:'Close', label:'Image preview'} };
+    let lastFocused = null;
+
+    function open(img){
+      lastFocused = document.activeElement;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.alt;
+      const s = STR[document.documentElement.lang === 'en' ? 'en' : 'de'];
+      lb.setAttribute('aria-label', s.label);
+      lbClose.setAttribute('aria-label', s.close);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if(lastFocused) lastFocused.focus();
+    }
+    function onKey(e){ if(e.key === 'Escape') close(); }
+
+    targets.forEach(img=>{
+      img.classList.add('zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', ()=>open(img));
+      img.addEventListener('keydown', e=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+      });
+    });
+    lbClose.addEventListener('click', close);
+    lbImg.addEventListener('click', close);
+    lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
+  })();
+</script>
+</body>
+</html>

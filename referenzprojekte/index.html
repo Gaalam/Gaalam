@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referenzprojekte | Giw Aalam</title>
+<meta name="description" content="Zwei selbst entwickelte Softwareprojekte: Vendor Data Management (KI-gestütztes Vertrags- und Vendor-Management) und Endpoint-SOC-Agent (KI-gestütztes Sicherheitsmonitoring) — beide nach demselben Prinzip: KI empfiehlt, ein Mensch entscheidet.">
+<link rel="canonical" href="https://aalam.ch/referenzprojekte/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aalam.ch/referenzprojekte/">
+<meta property="og:site_name" content="Giw Aalam">
+<meta property="og:title" content="Referenzprojekte — Giw Aalam">
+<meta property="og:description" content="Zwei selbst entwickelte Softwareprojekte: Vendor Data Management und Endpoint-SOC-Agent — beide nach demselben Prinzip: KI empfiehlt, ein Mensch entscheidet.">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#fafaf8; --paper-raised:#f2f2ee; --ink:#14151a; --ink-soft:#4a4f5c; --ink-faint:#868c96; --rule:#d7d9d2; --signal:#155fd1; --signal-ink:#fafaf8; --max:820px; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:17px; line-height:1.6; }
+  a{ color:var(--signal); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:focus-visible{ outline:2.5px solid var(--signal); outline-offset:3px; }
+  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; font-weight:600; letter-spacing:-.01em; margin:0 0 .4em; color:var(--ink); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .eyebrow::before{ content:"■"; color:var(--signal); font-size:.6rem; margin-right:8px; position:relative; top:-1px; }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); max-width:64ch; }
+  .lead{ font-size:1.15rem; color:var(--ink); max-width:64ch; }
+
+  header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:1000px; }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  nav.site{ display:flex; align-items:center; flex-wrap:wrap; justify-content:flex-end; row-gap:8px; }
+  nav.site a{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:18px; text-decoration:none; }
+  nav.site a:hover, nav.site a[aria-current]{ color:var(--ink); }
+  .nav-cta{ font-family:'IBM Plex Mono', monospace; font-size:.76rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:8px 14px; margin-left:18px; text-decoration:none; display:inline-block; }
+  .nav-cta:hover{ background:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:18px; }
+  .lang-btn{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.04em; color:var(--ink-faint); background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--paper-raised); border-color:var(--ink-soft); }
+  @media (max-width:620px){ nav.site a:not(.nav-cta){ display:none; } }
+
+  .hero{ padding:52px 0 8px; }
+  .hero h1{ font-size:clamp(1.9rem, 4vw, 2.5rem); line-height:1.15; max-width:22ch; }
+  .hero .lead{ margin-top:16px; }
+
+  section{ padding:40px 0; border-top:1px solid var(--rule); margin-top:40px; }
+  section:first-of-type{ border-top:none; margin-top:8px; }
+
+  .flagship{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 22px; }
+  .flagship h3{ font-size:1.1rem; margin-top:2px; }
+
+  .cta{ background:var(--paper-raised); border:1px solid var(--rule); padding:28px 28px 24px; margin-top:44px; }
+  .cta h2{ font-size:1.2rem; }
+  .btn-primary{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; font-weight:500; background:var(--signal); color:var(--signal-ink); padding:13px 22px; text-decoration:none; display:inline-block; border:1.5px solid var(--signal); }
+  .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
+  .cta-links{ margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:.82rem; }
+  .cta-links a{ margin-right:18px; }
+
+  footer{ padding:28px 0 50px; border-top:1px solid var(--rule); margin-top:44px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
+  footer a, footer .fbrand{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); text-decoration:none; }
+  footer .fbrand{ font-family:'Space Grotesk', sans-serif; font-weight:700; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">Giw Aalam</a>
+    <nav class="site">
+      <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a>
+      <a href="/referenzprojekte/" aria-current="page" data-i18n="nav.referenzprojekte">Referenzprojekte</a>
+      <a href="/profil/" data-i18n="nav.profil">Berufliches Profil</a>
+      <a class="nav-cta" href="/kontakt/" data-i18n="nav.kontakt">Kontakt</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Referenzprojekte</p>
+      <h1 data-i18n="hero.h1">Zwei Softwareprojekte</h1>
+      <p class="lead" data-i18n="hero.lead">Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt in beiden Projekten unten — nur automatisiert statt manuell.</p>
+    </div>
+
+    <section>
+      <div class="flagship">
+        <h3 data-i18n="flag.h3">Vendor Data Management</h3>
+        <p style="margin-bottom:10px;" data-i18n="flag.p">Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.</p>
+        <p style="margin-bottom:0;"><a href="/referenzprojekte/vendor-data-management/" data-i18n="flag.link">Produkt und Case Study ansehen →</a></p>
+      </div>
+      <div class="flagship" style="margin-top:16px;">
+        <h3 data-i18n="flag2.h3">Endpoint-SOC-Agent</h3>
+        <p style="margin-bottom:10px;" data-i18n="flag2.p">Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.</p>
+        <p style="margin-bottom:0;"><a href="/referenzprojekte/endpoint-soc-agent/" data-i18n="flag2.link">Fallstudie ansehen →</a></p>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2 data-i18n="cta.h2">Interesse an einer ähnlichen Lösung?</h2>
+      <p style="margin-bottom:16px;" data-i18n="cta.p">Beide Projekte sind Belege, keine fertigen Produkte für jeden Fall — ein kurzes Gespräch klärt, was für Ihre Situation passt.</p>
+      <a class="btn-primary" href="/kontakt/" data-i18n="cta.btn">Erstgespräch buchen oder schreiben →</a>
+      <div class="cta-links">
+        <a href="/leistungen/" data-i18n="cta.link1">Leistungen im Überblick →</a>
+        <a href="/profil/" data-i18n="cta.link2">Berufliches Profil →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>
+      <a href="/leistungen/" data-i18n="footer.leistungen">Leistungen</a> ·
+      <a href="/profil/" data-i18n="footer.profil">Berufliches Profil</a> ·
+      <a href="/kontakt/" data-i18n="footer.kontakt">Kontakt</a> ·
+      <a href="/rechtliches/" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
+    </span>
+    <span class="fbrand">Giw Aalam</span>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    de: {
+      title: "Referenzprojekte | Giw Aalam",
+      description: "Zwei selbst entwickelte Softwareprojekte: Vendor Data Management (KI-gestütztes Vertrags- und Vendor-Management) und Endpoint-SOC-Agent (KI-gestütztes Sicherheitsmonitoring) — beide nach demselben Prinzip: KI empfiehlt, ein Mensch entscheidet.",
+      "nav.leistungen": "Leistungen",
+      "nav.referenzprojekte": "Referenzprojekte",
+      "nav.profil": "Berufliches Profil",
+      "nav.kontakt": "Kontakt",
+      "hero.eyebrow": "Referenzprojekte",
+      "hero.h1": "Zwei Softwareprojekte",
+      "hero.lead": "Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt in beiden Projekten unten — nur automatisiert statt manuell.",
+      "flag.h3": "Vendor Data Management",
+      "flag.p": "Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.",
+      "flag.link": "Produkt und Case Study ansehen →",
+      "flag2.h3": "Endpoint-SOC-Agent",
+      "flag2.p": "Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.",
+      "flag2.link": "Fallstudie ansehen →",
+      "cta.h2": "Interesse an einer ähnlichen Lösung?",
+      "cta.p": "Beide Projekte sind Belege, keine fertigen Produkte für jeden Fall — ein kurzes Gespräch klärt, was für Ihre Situation passt.",
+      "cta.btn": "Erstgespräch buchen oder schreiben →",
+      "cta.link1": "Leistungen im Überblick →",
+      "cta.link2": "Berufliches Profil →",
+      "footer.leistungen": "Leistungen",
+      "footer.profil": "Berufliches Profil",
+      "footer.kontakt": "Kontakt",
+      "footer.legal": "Impressum & Datenschutz"
+    },
+    en: {
+      title: "Reference Projects | Giw Aalam",
+      description: "Two software projects I built myself: Vendor Data Management (AI-assisted contract and vendor management) and Endpoint SOC Agent (AI-assisted security monitoring) — both following the same principle: AI recommends, a human decides.",
+      "nav.leistungen": "Services",
+      "nav.referenzprojekte": "Reference Projects",
+      "nav.profil": "Professional Profile",
+      "nav.kontakt": "Contact",
+      "hero.eyebrow": "Reference Projects",
+      "hero.h1": "Two software projects",
+      "hero.lead": "Vendor Data Management grew out of a concrete experience: for Messe Essen's digitalisation strategy in 2021, I had to make a defensible choice between several competing software options. Instead of a gut call, I worked with the business units to build a weighted requirements catalogue and scored each option against it in a structured way — traceable for management, not just an opinion. That same principle — making decisions measurable instead of just asserted — is behind both projects below, just automated instead of manual.",
+      "flag.h3": "Vendor Data Management",
+      "flag.p": "A complete desktop application for IT vendor, contract and risk data: with its own data model, rule-based compliance checks and an LLM pipeline plus a deterministic validation layer. Alongside it, a CAS thesis on the limits of automated AI checking. It also shows how I turn requirements, data modelling and AI integration into practice.",
+      "flag.link": "See the product and case study →",
+      "flag2.h3": "Endpoint SOC Agent",
+      "flag2.p": "A two-stage AI-agent system for security monitoring on a single device: passive network and log sensing, deterministic guardrails that check every recommendation twice, execution only after manual approval. Same principle as Vendor Data Management — AI recommends, a human decides — applied here to endpoint security instead of contract review.",
+      "flag2.link": "See the case study →",
+      "cta.h2": "Interested in something similar?",
+      "cta.p": "Both projects are evidence, not off-the-shelf products for every case — a short conversation clarifies what fits your situation.",
+      "cta.btn": "Book an intro call or write →",
+      "cta.link1": "Services overview →",
+      "cta.link2": "Professional profile →",
+      "footer.leistungen": "Services",
+      "footer.profil": "Professional Profile",
+      "footer.kontakt": "Contact",
+      "footer.legal": "Imprint & privacy"
+    }
+  };
+
+  function setLang(lang){
+    if(!I18N[lang]) return;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if(descMeta) descMeta.setAttribute('content', dict.description);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
+</script>
+
+</body>
+</html>

@@ -120,9 +120,6 @@
   .stack-list{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
   .stack-list span{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); border:1px solid var(--rule); background:var(--paper-raised); padding:5px 10px; }
 
-  .flagship{ background:var(--paper-raised); border:1px solid var(--rule); padding:26px 26px 22px; }
-  .flagship h3{ font-size:1.1rem; margin-top:2px; }
-
   .cta{ background:var(--paper-raised); border:1px solid var(--rule); padding:28px 28px 24px; }
   .cta h2{ font-size:1.2rem; }
   .cta-links{ margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:.82rem; }
@@ -138,10 +135,10 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top">Giw Aalam</a>
+    <a class="brand" href="/">Giw Aalam</a>
     <nav class="site">
-      <a href="/" data-i18n="nav.produkt">Produkt</a>
       <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a>
+      <a href="/referenzprojekte/" data-i18n="nav.referenzprojekte">Referenzprojekte</a>
       <a href="/profil/" aria-current="page" data-i18n="nav.profil">Berufliches Profil</a>
       <a class="nav-cta" href="/kontakt/" data-i18n="nav.kontakt">Kontakt</a>
       <span class="lang-switch">
@@ -271,26 +268,6 @@
   </div>
 </section>
 
-<section id="flagship">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow" data-i18n="flag.eyebrow">Eigenständige Projekte</p>
-      <h2 data-i18n="flag.h2">Zwei Softwareprojekte</h2>
-      <p class="lead" data-i18n="flag.lead">Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt heute im Kern von Vendor Data Management — nur automatisiert statt manuell in Excel.</p>
-    </div>
-    <div class="flagship">
-      <h3 data-i18n="flag.h3">Vendor Data Management</h3>
-      <p style="margin-bottom:10px;" data-i18n="flag.p">Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.</p>
-      <p style="margin-bottom:0;"><a href="../" data-i18n="flag.link">Produkt und Case Study ansehen →</a></p>
-    </div>
-    <div class="flagship" style="margin-top:16px;">
-      <h3 data-i18n="flag2.h3">Endpoint-SOC-Agent</h3>
-      <p style="margin-bottom:10px;" data-i18n="flag2.p">Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.</p>
-      <p style="margin-bottom:0;"><a href="endpoint-soc-agent/" data-i18n="flag2.link">Fallstudie ansehen →</a></p>
-    </div>
-  </div>
-</section>
-
 <section id="kontakt">
   <div class="wrap">
     <div class="cta">
@@ -307,9 +284,10 @@
 
 <footer>
   <div class="wrap">
-    <p class="note" data-i18n="footer.note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="../">die Produktseite</a>.</p>
+    <p class="note" data-i18n="footer.note">Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href="/referenzprojekte/vendor-data-management/">die Produktseite</a>.</p>
     <span style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
       <a href="/leistungen/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.leistungen">Leistungen</a>
+      <a href="/referenzprojekte/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.referenzprojekte">Referenzprojekte</a>
       <a href="/kontakt/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.kontakt">Kontakt</a>
       <a href="/rechtliches/" style="font-family:'IBM Plex Mono', monospace; font-size:.78rem;" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
       <span class="fbrand">Giw Aalam</span>
@@ -322,8 +300,8 @@
     de: {
       title: "Giw Aalam – Vertragsmanagement, Prozessautomatisierung & AI-Governance",
       description: "Giw Aalam: Prozesse analysieren und automatisieren, Vertragsmanagement auf Kunden- und Anbieterseite, kontrollierte KI-Einführung. Über 15 Jahre Erfahrung, wohnhaft in Belp BE, kurzfristig verfügbar.",
-      "nav.produkt": "Produkt",
       "nav.leistungen": "Leistungen",
+      "nav.referenzprojekte": "Referenzprojekte",
       "nav.profil": "Berufliches Profil",
       "nav.kontakt": "Kontakt",
       "hero.eyebrow": "Berufliches Profil",
@@ -382,29 +360,21 @@
       "branche1": "Financial Services",
       "branche2": "Defence / KRITIS",
       "branche3": "Aviation",
-      "flag.eyebrow": "Eigenständige Projekte",
-      "flag.h2": "Zwei Softwareprojekte",
-      "flag.lead": "Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt heute im Kern von Vendor Data Management — nur automatisiert statt manuell in Excel.",
-      "flag.h3": "Vendor Data Management",
-      "flag.p": "Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.",
-      "flag.link": "Produkt und Case Study ansehen →",
-      "flag2.h3": "Endpoint-SOC-Agent",
-      "flag2.p": "Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.",
-      "flag2.link": "Fallstudie ansehen →",
       "cta.h2": "Kontakt aufnehmen",
       "cta.p": "Erstgespräch buchen, oder direkt schreiben — beides läuft über eine gemeinsame Seite.",
       "cta.btn": "Erstgespräch buchen oder schreiben →",
       "cta.link1": "Leistungen im Überblick →",
-      "footer.note": "Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href=\"../\">die Produktseite</a>.",
+      "footer.note": "Diese Seite ist mein berufliches Profil für Anfragen zu Festanstellung, Interim- und Projektmandaten. Für Informationen zum Produkt Vendor Data Management siehe <a href=\"/referenzprojekte/vendor-data-management/\">die Produktseite</a>.",
       "footer.leistungen": "Leistungen",
+      "footer.referenzprojekte": "Referenzprojekte",
       "footer.kontakt": "Kontakt",
       "footer.legal": "Impressum & Datenschutz"
     },
     en: {
       title: "Giw Aalam – contract management, process automation & AI governance",
       description: "Giw Aalam: analysing and automating processes, contract management on the client and provider side, controlled AI adoption. 15+ years of experience, based in Belp BE, available at short notice.",
-      "nav.produkt": "Product",
       "nav.leistungen": "Services",
+      "nav.referenzprojekte": "Reference Projects",
       "nav.profil": "Professional Profile",
       "nav.kontakt": "Contact",
       "hero.eyebrow": "Professional profile",
@@ -463,21 +433,13 @@
       "branche1": "Financial services",
       "branche2": "Defence / critical infrastructure",
       "branche3": "Aviation",
-      "flag.eyebrow": "Independent projects",
-      "flag.h2": "Two software projects",
-      "flag.lead": "Vendor Data Management grew out of a concrete experience: for Messe Essen's digitalisation strategy in 2021, I had to make a defensible choice between several competing software options. Instead of a gut call, I worked with the business units to build a weighted requirements catalogue and scored each option against it in a structured way — traceable for management, not just an opinion. That same principle — making decisions measurable instead of just asserted — is at the core of Vendor Data Management today, just automated instead of manual in Excel.",
-      "flag.h3": "Vendor Data Management",
-      "flag.p": "A complete desktop application for IT vendor, contract and risk data: with its own data model, rule-based compliance checks and an LLM pipeline plus a deterministic validation layer. Alongside it, a CAS thesis on the limits of automated AI checking. It also shows how I turn requirements, data modelling and AI integration into practice.",
-      "flag.link": "See the product and case study →",
-      "flag2.h3": "Endpoint SOC Agent",
-      "flag2.p": "A two-stage AI-agent system for security monitoring on a single device: passive network and log sensing, deterministic guardrails that check every recommendation twice, execution only after manual approval. Same principle as Vendor Data Management — AI recommends, a human decides — applied here to endpoint security instead of contract review.",
-      "flag2.link": "See the case study →",
       "cta.h2": "Get in touch",
       "cta.p": "Book an intro call, or write directly — both go through one shared page.",
       "cta.btn": "Book an intro call or write →",
       "cta.link1": "Services overview →",
-      "footer.note": "This page is my professional profile for enquiries about permanent, interim and project roles. For information on the Vendor Data Management product, see <a href=\"../\">the product page</a>.",
+      "footer.note": "This page is my professional profile for enquiries about permanent, interim and project roles. For information on the Vendor Data Management product, see <a href=\"/referenzprojekte/vendor-data-management/\">the product page</a>.",
       "footer.leistungen": "Services",
+      "footer.referenzprojekte": "Reference Projects",
       "footer.kontakt": "Contact",
       "footer.legal": "Imprint & privacy"
     }
