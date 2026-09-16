@@ -69,16 +69,25 @@ h3{font-size:1.05rem;margin:0 0 4px;}
 p{margin:0 0 1em;}
 a{color:var(--accent);}
 .mono{font-family:var(--font-mono);}
+code{font-family:var(--font-mono);}
 
-/* ── Back link ────────────────────────────────────────── */
-.backlink{
+/* ── Top bar (back link + language switch) ─────────────── */
+.topbar{
   max-width:760px;margin:0 auto;padding-block:20px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
 }
-.backlink a{
+.topbar a.back{
   font-family:var(--font-mono);font-size:.82rem;color:var(--ink-muted);
   text-decoration:none;
 }
-.backlink a:hover{color:var(--accent);}
+.topbar a.back:hover{color:var(--accent);}
+.lang-switch{display:flex;gap:2px;}
+.lang-btn{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-muted);
+  background:none;border:1px solid var(--line);padding:4px 9px;cursor:pointer;
+}
+.lang-btn:hover{color:var(--ink);}
+.lang-btn.active{color:var(--ink);background:var(--surface-2);border-color:var(--ink-muted);}
 
 /* ── Masthead ─────────────────────────────────────────── */
 .masthead{max-width:760px;margin:28px auto 40px;}
@@ -189,13 +198,6 @@ td.agent{white-space:nowrap;}
 .log .lvl-ok{color:var(--ok);}
 .caption{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-muted);margin-top:6px;}
 
-/* ── Guardrail list ────────────────────────────────────── */
-.rules{list-style:none;margin:18px 0;padding:0;display:grid;gap:1px;background:var(--line);
-  border:1px solid var(--line);}
-.rules li{background:var(--surface);padding:12px 16px;font-size:.92rem;
-  display:flex;gap:12px;align-items:baseline;}
-.rules li::before{content:"—";color:var(--accent);font-family:var(--font-mono);flex:0 0 auto;}
-
 /* ── Negative example callout ─────────────────────────── */
 .negex{
   border:1px solid var(--crit);background:var(--crit-soft);
@@ -279,96 +281,101 @@ footer{max-width:760px;margin:40px auto 0;font-family:var(--font-mono);font-size
 </head>
 <body>
 
-<div class="backlink"><a href="../">← Zurück zum Profil</a></div>
+<div class="topbar">
+  <a class="back" href="../" data-i18n="nav.back">← Zurück zum Profil</a>
+  <span class="lang-switch">
+    <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+  </span>
+</div>
 
 <div class="masthead">
-  <p class="eyebrow">Fallstudie · Sicherheits-Engineering</p>
-  <h1>Ein Endpoint-SOC für ein einzelnes Gerät</h1>
-  <p class="dek">Wie ein zweistufiges KI-Agenten-System, deterministische Guardrails und
+  <p class="eyebrow" data-i18n="mast.eyebrow">Fallstudie · Sicherheits-Engineering</p>
+  <h1 data-i18n="mast.h1">Ein Endpoint-SOC für ein einzelnes Gerät</h1>
+  <p class="dek" data-i18n="mast.dek">Wie ein zweistufiges KI-Agenten-System, deterministische Guardrails und
   klassische Unix-Sensorik zusammen ein Reisegerät überwachen — ohne dass die KI je selbst
   etwas ausführt.</p>
   <div class="meta">
-    <div><dt>Rolle</dt> Konzept, Architektur, Umsetzung</div>
-    <div><dt>Stack</dt> Bash · systemd · Python · Claude-Agenten</div>
-    <div><dt>Scope</dt> ein Endgerät, kein Server-Fleet</div>
+    <div data-i18n="mast.meta1"><dt>Rolle</dt> Konzept, Architektur, Umsetzung</div>
+    <div data-i18n="mast.meta2"><dt>Stack</dt> Bash · systemd · Python · Claude-Agenten</div>
+    <div data-i18n="mast.meta3"><dt>Scope</dt> ein Endgerät, kein Server-Fleet</div>
   </div>
 </div>
 
 <section>
-  <span class="section-num">Ausgangslage</span>
-  <h2>Ein Gerät, viele fremde Netze</h2>
-  <p>Ein Laptop, der zwischen Hotel-WLANs, Cafés und dem Heimnetz wechselt, hat kein
+  <span class="section-num" data-i18n="s1.num">Ausgangslage</span>
+  <h2 data-i18n="s1.h2">Ein Gerät, viele fremde Netze</h2>
+  <p data-i18n="s1.p1">Ein Laptop, der zwischen Hotel-WLANs, Cafés und dem Heimnetz wechselt, hat kein
   Unternehmens-SOC im Rücken, das Traffic korreliert, Anomalien einordnet und im Ernstfall
   reagiert. Klassische Endpoint-Antivirensoftware deckt Signaturen ab, aber nicht
   Netzwerk-Manipulation, Rogue-Access-Points oder stille Persistenz-Versuche. Die Frage war:
   wie viel echte SOC-Praxis lässt sich auf ein einzelnes Gerät herunterskalieren — mit
   Werkzeugen, die es auf jedem Linux-System schon gibt, plus einer KI-Schicht für die
   Einordnung?</p>
-  <p>Die Antwort sollte kein Prototyp bleiben, der beim ersten Fehlalarm ignoriert wird —
+  <p data-i18n="s1.p2">Die Antwort sollte kein Prototyp bleiben, der beim ersten Fehlalarm ignoriert wird —
   sondern etwas, das man tatsächlich tagelang mitlaufen lässt.</p>
 </section>
 
 <section>
-  <span class="section-num">Leitprinzip</span>
-  <h2>Empfehlung ja, Ausführung nein</h2>
-  <p>Jede LLM-gestützte Sicherheitsautomatisierung hat ein strukturelles Risiko: ein Modell,
+  <span class="section-num" data-i18n="s2.num">Leitprinzip</span>
+  <h2 data-i18n="s2.h2">Empfehlung ja, Ausführung nein</h2>
+  <p data-i18n="s2.p1">Jede LLM-gestützte Sicherheitsautomatisierung hat ein strukturelles Risiko: ein Modell,
   das Logs fehlinterpretiert — oder durch präparierte Log-Inhalte manipuliert wird — und dabei
   Werkzeuggewalt besitzt, kann selbst zum Sicherheitsproblem werden. Deshalb gilt für dieses
   System eine einzige, nicht verhandelbare Regel:</p>
   <div class="principle">
-    <span>Architekturprinzip</span>
-    <p>Die KI bewertet und empfiehlt. Ausgeführt wird ausschliesslich nach expliziter,
+    <span data-i18n="s2.tag">Architekturprinzip</span>
+    <p data-i18n="s2.principle">Die KI bewertet und empfiehlt. Ausgeführt wird ausschliesslich nach expliziter,
     manueller Bestätigung durch einen Menschen — und erst nach einer zweiten,
     rein deterministischen Prüfung derselben Empfehlung.</p>
   </div>
-  <p>Das reduziert die KI-Komponente auf das, was sie gut kann — Muster in unstrukturierten
+  <p data-i18n="s2.p2">Das reduziert die KI-Komponente auf das, was sie gut kann — Muster in unstrukturierten
   Daten erkennen und einordnen — und hält sie von dem fern, was bei einer Fehleinschätzung
   teuer wird: tatsächlich etwas am System zu verändern.</p>
 </section>
 
 <section class="wide">
-  <span class="section-num">Architektur</span>
-  <h2>Vom Sensor bis zur Freigabe</h2>
-  <p>Sieben Stationen, jede mit einer klaren Zuständigkeit. Nichts überspringt eine Stufe.</p>
+  <span class="section-num" data-i18n="s3.num">Architektur</span>
+  <h2 data-i18n="s3.h2">Vom Sensor bis zur Freigabe</h2>
+  <p data-i18n="s3.p">Sieben Stationen, jede mit einer klaren Zuständigkeit. Nichts überspringt eine Stufe.</p>
   <div class="pipeline">
-    <div class="stage"><span class="stage-n">01</span><h3>Sensoren</h3>
-      <p>Passive Netzwerk-Beobachtung, Datei-/Log-Überwachung, USB-Ereignisse — nichts sendet
+    <div class="stage"><span class="stage-n">01</span><h3 data-i18n="s3.stage1.t">Sensoren</h3>
+      <p data-i18n="s3.stage1.d">Passive Netzwerk-Beobachtung, Datei-/Log-Überwachung, USB-Ereignisse — nichts sendet
       aktiv Pakete an fremde Geräte.</p></div>
     <div class="stage-arrow">→</div>
-    <div class="stage"><span class="stage-n">02</span><h3>Event-Log</h3>
-      <p>Ein gemeinsames JSON-Schema für alle Quellen: Zeitstempel, Stufe, Kategorie,
+    <div class="stage"><span class="stage-n">02</span><h3 data-i18n="s3.stage2.t">Event-Log</h3>
+      <p data-i18n="s3.stage2.d">Ein gemeinsames JSON-Schema für alle Quellen: Zeitstempel, Stufe, Kategorie,
       Nachricht.</p></div>
     <div class="stage-arrow">→</div>
-    <div class="stage"><span class="stage-n">03</span><h3>Triage-Agent</h3>
-      <p>Günstig, häufig getaktet. Stuft Kritikalität ein, nur bei echtem Signal.</p></div>
+    <div class="stage"><span class="stage-n">03</span><h3 data-i18n="s3.stage3.t">Triage-Agent</h3>
+      <p data-i18n="s3.stage3.d">Günstig, häufig getaktet. Stuft Kritikalität ein, nur bei echtem Signal.</p></div>
     <div class="stage-arrow">→</div>
-    <div class="stage"><span class="stage-n">04</span><h3>Eskalations-Agent</h3>
-      <p>Nur bei Bedarf. Tieferer Kontext, genau eine strukturierte Empfehlung.</p></div>
+    <div class="stage"><span class="stage-n">04</span><h3 data-i18n="s3.stage4.t">Eskalations-Agent</h3>
+      <p data-i18n="s3.stage4.d">Nur bei Bedarf. Tieferer Kontext, genau eine strukturierte Empfehlung.</p></div>
   </div>
   <div class="pipeline" style="margin-top:2px;">
-    <div class="stage"><span class="stage-n">05</span><h3>Guardrails</h3>
-      <p>Deterministische Regeln prüfen jede Empfehlung — vor Anzeige und erneut vor
+    <div class="stage"><span class="stage-n">05</span><h3 data-i18n="s3.stage5.t">Guardrails</h3>
+      <p data-i18n="s3.stage5.d">Deterministische Regeln prüfen jede Empfehlung — vor Anzeige und erneut vor
       Ausführung.</p></div>
     <div class="stage-arrow">→</div>
-    <div class="stage"><span class="stage-n">06</span><h3>Mensch bestätigt</h3>
-      <p>Dialog oder Terminal, mit Klartext-Vorschau des exakten Befehls.</p></div>
+    <div class="stage"><span class="stage-n">06</span><h3 data-i18n="s3.stage6.t">Mensch bestätigt</h3>
+      <p data-i18n="s3.stage6.d">Dialog oder Terminal, mit Klartext-Vorschau des exakten Befehls.</p></div>
     <div class="stage-arrow">→</div>
-    <div class="stage"><span class="stage-n">07</span><h3>Ausführung</h3>
-      <p>Genau der geprüfte Befehl — nie ein vom Modell frei generierter String.</p></div>
+    <div class="stage"><span class="stage-n">07</span><h3 data-i18n="s3.stage7.t">Ausführung</h3>
+      <p data-i18n="s3.stage7.d">Genau der geprüfte Befehl — nie ein vom Modell frei generierter String.</p></div>
   </div>
 </section>
 
 <section class="wide">
-  <span class="section-num">Ansicht</span>
-  <h2>Das Ergebnis im Dashboard</h2>
-  <p>Alle Sensoren, beide Agenten und der Freigabe-Status laufen in einer lokalen,
+  <span class="section-num" data-i18n="s4.num">Ansicht</span>
+  <h2 data-i18n="s4.h2">Das Ergebnis im Dashboard</h2>
+  <p data-i18n="s4.p">Alle Sensoren, beide Agenten und der Freigabe-Status laufen in einer lokalen,
   ausschliesslich auf <span class="mono" style="font-size:.85em;">127.0.0.1</span>
   gebundenen Weboberfläche zusammen. Nachbau des tatsächlichen Layouts — Adressen,
   MAC-Adressen und Netzwerknamen sind frei erfunden (RFC-5737-Dokumentationsbereiche).</p>
 
   <div class="dash-frame">
     <div class="dash-titlebar"><span></span><span></span><span></span>
-      <em>127.0.0.1:8787 — anonymisierte Beispieldaten</em></div>
+      <em data-i18n="s4.titlebar">127.0.0.1:8787 — anonymisierte Beispieldaten</em></div>
     <div class="dash-mock">
       <div class="dm-head">
         <h4>🛡 <b>Mini-SIEM</b> Dashboard</h4>
@@ -448,83 +455,83 @@ und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
       </div>
     </div>
   </div>
-  <p class="caption">Nachgebaute Ansicht mit synthetischen Werten — Layout, Farblogik und
+  <p class="caption" data-i18n="s4.caption">Nachgebaute Ansicht mit synthetischen Werten — Layout, Farblogik und
   Datenfelder entsprechen dem produktiven Dashboard. Die beiden Analyse-Texte zeigen das
   reale Format der Triage-Ausgabe; Inhalte anonymisiert.</p>
 </section>
 
 <section class="wide">
-  <span class="section-num">Werkzeuge im Hintergrund</span>
-  <h2>Was tatsächlich gemessen wird</h2>
-  <p>Alles rein passiv oder auf lokale, bereits vorhandene Standard-Anfragen beschränkt —
+  <span class="section-num" data-i18n="s5.num">Werkzeuge im Hintergrund</span>
+  <h2 data-i18n="s5.h2">Was tatsächlich gemessen wird</h2>
+  <p data-i18n="s5.p">Alles rein passiv oder auf lokale, bereits vorhandene Standard-Anfragen beschränkt —
   dazu mehr im Abschnitt zur ethischen Leitplanke weiter unten. Jede Zeile in der Tabelle
   mündet über das gemeinsame Event-Schema in dieselbe Agenten-Pipeline.</p>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Quelle</th><th>Liefert</th><th>Fliesst ein in</th></tr></thead>
+      <thead><tr><th data-i18n="s5.th1">Quelle</th><th data-i18n="s5.th2">Liefert</th><th data-i18n="s5.th3">Fliesst ein in</th></tr></thead>
       <tbody>
-        <tr><td class="tool">net.recon (passiv)</td><td>Geräte- und ARP-Tabelle, Netzwerk-Topologie</td><td class="agent">Event-Log → Triage</td></tr>
-        <tr><td class="tool">ip neigh</td><td>Neue Hosts, ARP-Konflikte (Spoofing-Verdacht)</td><td class="agent">Event-Log → Triage</td></tr>
-        <tr><td class="tool">avahi-browse (mDNS)</td><td>Geräteklasse: Drucker, Kamera, IoT, Lautsprecher …</td><td class="agent">Event-Log → Triage</td></tr>
-        <tr><td class="tool">nmcli (WLAN)</td><td>SSID/BSSID-Historie, Verschlüsselungsstärke</td><td class="agent">Evil-Twin-Erkennung</td></tr>
-        <tr><td class="tool">p0f</td><td>Passives OS-Fingerprinting pro IP</td><td class="agent">Eskalations-Kontext</td></tr>
-        <tr><td class="tool">psad</td><td>Portscan-Muster aus Firewall-/Kernel-Log</td><td class="agent">Event-Log (eigener Traffic vorgefiltert)</td></tr>
-        <tr><td class="tool">ClamAV / rkhunter</td><td>Signatur- und Heuristik-Funde</td><td class="agent">Direkt an Eskalations-Agent</td></tr>
-        <tr><td class="tool">auth.log / journalctl</td><td>Login-Fehlversuche, sudo, neue Nutzer, USB/VPN/WLAN-Warnungen</td><td class="agent">Event-Log → Triage</td></tr>
-        <tr><td class="tool">SHA256-Baseline</td><td>Abweichung an den eigenen Sicherheits-Skripten</td><td class="agent">Direkt an Eskalations-Agent</td></tr>
-        <tr><td class="tool">ufw / VPN-Status</td><td>Firewall- und Kill-Switch-Zustand</td><td class="agent">Kontext für beide Agenten</td></tr>
+        <tr><td class="tool">net.recon (passiv)</td><td data-i18n="s5.r1d">Geräte- und ARP-Tabelle, Netzwerk-Topologie</td><td class="agent" data-i18n="s5.r1f">Event-Log → Triage</td></tr>
+        <tr><td class="tool">ip neigh</td><td data-i18n="s5.r2d">Neue Hosts, ARP-Konflikte (Spoofing-Verdacht)</td><td class="agent" data-i18n="s5.r2f">Event-Log → Triage</td></tr>
+        <tr><td class="tool">avahi-browse (mDNS)</td><td data-i18n="s5.r3d">Geräteklasse: Drucker, Kamera, IoT, Lautsprecher …</td><td class="agent" data-i18n="s5.r3f">Event-Log → Triage</td></tr>
+        <tr><td class="tool">nmcli (WLAN)</td><td data-i18n="s5.r4d">SSID/BSSID-Historie, Verschlüsselungsstärke</td><td class="agent" data-i18n="s5.r4f">Evil-Twin-Erkennung</td></tr>
+        <tr><td class="tool">p0f</td><td data-i18n="s5.r5d">Passives OS-Fingerprinting pro IP</td><td class="agent" data-i18n="s5.r5f">Eskalations-Kontext</td></tr>
+        <tr><td class="tool">psad</td><td data-i18n="s5.r6d">Portscan-Muster aus Firewall-/Kernel-Log</td><td class="agent" data-i18n="s5.r6f">Event-Log (eigener Traffic vorgefiltert)</td></tr>
+        <tr><td class="tool">ClamAV / rkhunter</td><td data-i18n="s5.r7d">Signatur- und Heuristik-Funde</td><td class="agent" data-i18n="s5.r7f">Direkt an Eskalations-Agent</td></tr>
+        <tr><td class="tool">auth.log / journalctl</td><td data-i18n="s5.r8d">Login-Fehlversuche, sudo, neue Nutzer, USB/VPN/WLAN-Warnungen</td><td class="agent" data-i18n="s5.r8f">Event-Log → Triage</td></tr>
+        <tr><td class="tool">SHA256-Baseline</td><td data-i18n="s5.r9d">Abweichung an den eigenen Sicherheits-Skripten</td><td class="agent" data-i18n="s5.r9f">Direkt an Eskalations-Agent</td></tr>
+        <tr><td class="tool">ufw / VPN-Status</td><td data-i18n="s5.r10d">Firewall- und Kill-Switch-Zustand</td><td class="agent" data-i18n="s5.r10f">Kontext für beide Agenten</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="caption">Gekürzt — die vollständige Pipeline verarbeitet zusätzliche Quellen wie
+  <p class="caption" data-i18n="s5.caption">Gekürzt — die vollständige Pipeline verarbeitet zusätzliche Quellen wie
   Verbindungs- und Prozesslisten.</p>
 </section>
 
 <section class="wide">
-  <span class="section-num">Zwei Agenten, zwei Aufgaben</span>
-  <h2>Günstige Triage, teure Tiefenanalyse</h2>
-  <p>Ein einzelner, immer gleich teurer Agent wäre entweder zu langsam für ständige
+  <span class="section-num" data-i18n="s6.num">Zwei Agenten, zwei Aufgaben</span>
+  <h2 data-i18n="s6.h2">Günstige Triage, teure Tiefenanalyse</h2>
+  <p data-i18n="s6.p">Ein einzelner, immer gleich teurer Agent wäre entweder zu langsam für ständige
   Beobachtung oder zu teuer für seltene Tiefenanalyse. Die Lösung: zwei Stufen mit
   unterschiedlichem Budget.</p>
   <div class="agents">
     <div class="agent-col">
-      <h3>Triage-Agent</h3>
-      <span class="role">Stufe 1 · häufig</span>
+      <h3 data-i18n="s6.a1.h3">Triage-Agent</h3>
+      <span class="role" data-i18n="s6.a1.role">Stufe 1 · häufig</span>
       <dl>
-        <dt>Takt</dt><dd>Alle 5 Minuten, aber nur bei tatsächlich neuen Ereignissen ausgelöst</dd>
-        <dt>Kontext</dt><dd>Neue Events seit letztem Lauf, aktive Sitzungen, offene
+        <dt data-i18n="s6.a1.dt1">Takt</dt><dd data-i18n="s6.a1.dd1">Alle 5 Minuten, aber nur bei tatsächlich neuen Ereignissen ausgelöst</dd>
+        <dt data-i18n="s6.a1.dt2">Kontext</dt><dd data-i18n="s6.a1.dd2">Neue Events seit letztem Lauf, aktive Sitzungen, offene
         Verbindungen, WLAN-Name, eigene IP-Adressen, VPN-Status</dd>
-        <dt>Output</dt><dd><span class="badge ok">niedrig</span>
+        <dt data-i18n="s6.a1.dt3">Output</dt><dd data-i18n="s6.a1.dd3"><span class="badge ok">niedrig</span>
         <span class="badge warn">mittel</span> <span class="badge crit">hoch/kritisch</span>
         + 3–5 Sätze Einordnung</dd>
-        <dt>Bei hoch/kritisch</dt><dd>Desktop-Meldung, E-Mail, Übergabe an Stufe 2</dd>
+        <dt data-i18n="s6.a1.dt4">Bei hoch/kritisch</dt><dd data-i18n="s6.a1.dd4">Desktop-Meldung, E-Mail, Übergabe an Stufe 2</dd>
       </dl>
     </div>
     <div class="agent-col">
-      <h3>Eskalations-Agent</h3>
-      <span class="role">Stufe 2 · nur bei Bedarf</span>
+      <h3 data-i18n="s6.a2.h3">Eskalations-Agent</h3>
+      <span class="role" data-i18n="s6.a2.role">Stufe 2 · nur bei Bedarf</span>
       <dl>
-        <dt>Takt</dt><dd>Nur getriggert — von Stufe 1 oder direkt von AV-/Rootkit-/
+        <dt data-i18n="s6.a2.dt1">Takt</dt><dd data-i18n="s6.a2.dd1">Nur getriggert — von Stufe 1 oder direkt von AV-/Rootkit-/
         Integritäts-Funden</dd>
-        <dt>Kontext</dt><dd>Prozessliste, alle Verbindungen, Login-Historie, 200 Zeilen
+        <dt data-i18n="s6.a2.dt2">Kontext</dt><dd data-i18n="s6.a2.dd2">Prozessliste, alle Verbindungen, Login-Historie, 200 Zeilen
         Auth-Log, aktive Auto-Blocks, autorisierte SSH-Schlüssel, Firewall-Status</dd>
-        <dt>Output</dt><dd>Genau eine strukturierte Empfehlung: Ziel, Begründung, Konfidenz —
+        <dt data-i18n="s6.a2.dt3">Output</dt><dd data-i18n="s6.a2.dd3">Genau eine strukturierte Empfehlung: Ziel, Begründung, Konfidenz —
         oder «keine»</dd>
-        <dt>Führt aus</dt><dd>Nichts. Schreibt eine Freigabe-Anfrage, sonst nichts.</dd>
+        <dt data-i18n="s6.a2.dt4">Führt aus</dt><dd data-i18n="s6.a2.dd4">Nichts. Schreibt eine Freigabe-Anfrage, sonst nichts.</dd>
       </dl>
     </div>
   </div>
   <div class="log"><span class="lvl-hinweis">2026-·· ··:··:·· [HINWEIS]</span> Neues Gerät im Netzwerk: 198.51.100.24 [MAC: 3c:xx:xx:xx:xx:12] Typ: Router/Gateway
 <span class="lvl-warnung">2026-·· ··:··:·· [WARNUNG]</span> Möglicher Rogue-AP: WLAN "Beispiel-Netz" läuft über unbekannte BSSID
 <span class="lvl-ok">2026-·· ··:··:·· [OK]</span> Auto-Block für 203.0.113.5 nach Ablauf der TTL aufgehoben</div>
-  <p class="caption">Anonymisiertes Beispiel aus dem strukturierten Event-Schema — Adressen
-  durch RFC-5737-Dokumentationsbereiche ersetzt.</p>
+  <p class="caption" data-i18n="s6.caption">Anonymisiertes Beispiel aus dem strukturierten Event-Schema — Adressen
+  durch RFC-5737-Dokumentationsbereiche ersetzt. Log-Text bewusst im Original (Deutsch) belassen.</p>
 </section>
 
 <section class="wide">
-  <span class="section-num">Konkret</span>
-  <h2>Wie eine Empfehlung tatsächlich aussieht</h2>
-  <p>Der Eskalations-Agent schreibt bei einer echten Empfehlung eine einzelne Datei —
+  <span class="section-num" data-i18n="s7.num">Konkret</span>
+  <h2 data-i18n="s7.h2">Wie eine Empfehlung tatsächlich aussieht</h2>
+  <p data-i18n="s7.p1">Der Eskalations-Agent schreibt bei einer echten Empfehlung eine einzelne Datei —
   keinen ausführbaren Befehl, nur strukturierte Felder:</p>
   <div class="log">{
   "id": "a1b2c3d4-…",
@@ -537,57 +544,57 @@ und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
   "human_preview": "kill -TERM 48213  (Prozess: xmrig)",
   "expires": "… (30 Min. nach Erstellung)"
 }</div>
-  <p>Das erreicht mich über vier parallele Kanäle: Desktop-Benachrichtigung, E-Mail, ein
+  <p data-i18n="s7.p2">Das erreicht mich über vier parallele Kanäle: Desktop-Benachrichtigung, E-Mail, ein
   Ja/Nein-Dialog (läuft als eigenständige systemd-Einheit, unabhängig vom Timer-Dienst,
   der ihn ausgelöst hat) und als Terminal-Fallback jederzeit per Befehl, der Ziel,
   Begründung, Konfidenz und die exakte Befehlsvorschau nochmal anzeigt, bevor ich
   bestätige. Reagiere ich nicht, verfällt die Empfehlung nach 30 Minuten automatisch —
   ohne Aktion.</p>
 
-  <h3 style="margin-top:26px;">Fünf mögliche Aktionstypen, sonst keine</h3>
-  <p>Das Modell liefert ausschliesslich <code class="mono" style="font-size:.85em;">action</code>
+  <h3 style="margin-top:26px;" data-i18n="s7.h3">Fünf mögliche Aktionstypen, sonst keine</h3>
+  <p data-i18n="s7.p3">Das Modell liefert ausschliesslich <code class="mono" style="font-size:.85em;">action</code>
   und <code class="mono" style="font-size:.85em;">target</code> als kurze Strings — nie einen
   fertigen Befehl. Der ausführende Teil baut die echte Aktion selbst aus einem festen
   Template pro Typ:</p>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Empfehlung</th><th>Tatsächlich ausgeführter Befehl</th><th>Harte Grenze</th></tr></thead>
+      <thead><tr><th data-i18n="s7.th1">Empfehlung</th><th data-i18n="s7.th2">Tatsächlich ausgeführter Befehl</th><th data-i18n="s7.th3">Harte Grenze</th></tr></thead>
       <tbody>
-        <tr><td class="tool">prozess_killen</td><td><code class="mono" style="font-size:.83em;">kill -TERM &lt;PID&gt;</code></td><td>Denylist (systemd, sshd, NetworkManager, eigene Toolchain, Terminal …), PID 1 nie</td></tr>
-        <tr><td class="tool">netz_trennen</td><td><code class="mono" style="font-size:.83em;">nmcli device disconnect &lt;Interface&gt;</code></td><td>Nur das überwachte Interface, kein anderes</td></tr>
-        <tr><td class="tool">user_sperren</td><td><code class="mono" style="font-size:.83em;">usermod -L &lt;User&gt;</code></td><td>Nie eigener Account oder root, nur reguläre UID≥1000</td></tr>
-        <tr><td class="tool">key_entfernen</td><td>Exakte Zeile aus <code class="mono" style="font-size:.83em;">authorized_keys</code> löschen (Backup vorher)</td><td>Zeile muss wortwörtlich vorhanden sein</td></tr>
-        <tr><td class="tool">datei_quarantänieren</td><td>Datei nach <code class="mono" style="font-size:.83em;">/var/quarantine/</code>, <code class="mono" style="font-size:.83em;">chmod 000</code> (kein Löschen)</td><td>Nur unter definierten, unkritischen Pfaden — Skripte/SSH-Verzeichnis ausgeschlossen</td></tr>
+        <tr><td class="tool">prozess_killen</td><td><code class="mono" style="font-size:.83em;">kill -TERM &lt;PID&gt;</code></td><td data-i18n="s7.limit1">Denylist (systemd, sshd, NetworkManager, eigene Toolchain, Terminal …), PID 1 nie</td></tr>
+        <tr><td class="tool">netz_trennen</td><td><code class="mono" style="font-size:.83em;">nmcli device disconnect &lt;Interface&gt;</code></td><td data-i18n="s7.limit2">Nur das überwachte Interface, kein anderes</td></tr>
+        <tr><td class="tool">user_sperren</td><td><code class="mono" style="font-size:.83em;">usermod -L &lt;User&gt;</code></td><td data-i18n="s7.limit3">Nie eigener Account oder root, nur reguläre UID≥1000</td></tr>
+        <tr><td class="tool">key_entfernen</td><td data-i18n="s7.cmd4">Exakte Zeile aus <code class="mono" style="font-size:.83em;">authorized_keys</code> löschen (Backup vorher)</td><td data-i18n="s7.limit4">Zeile muss wortwörtlich vorhanden sein</td></tr>
+        <tr><td class="tool">datei_quarantänieren</td><td data-i18n="s7.cmd5">Datei nach <code class="mono" style="font-size:.83em;">/var/quarantine/</code>, <code class="mono" style="font-size:.83em;">chmod 000</code> (kein Löschen)</td><td data-i18n="s7.limit5">Nur unter definierten, unkritischen Pfaden — Skripte/SSH-Verzeichnis ausgeschlossen</td></tr>
         <tr><td class="tool">keine</td><td>—</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="caption">Alles ausserhalb dieser fünf Zeilen fällt im ausführenden Skript in
+  <p class="caption" data-i18n="s7.caption">Alles ausserhalb dieser fünf Zeilen fällt im ausführenden Skript in
   einen Default-Zweig, der nichts tut. Es gibt keinen sechsten Weg.</p>
 </section>
 
 <section>
-  <span class="section-num">Kontrollschicht</span>
-  <h2>Guardrails, nicht Vertrauen</h2>
-  <p>Jede Empfehlung durchläuft dieselbe Guardrail-Prüfung aus der Tabelle oben
+  <span class="section-num" data-i18n="s8.num">Kontrollschicht</span>
+  <h2 data-i18n="s8.h2">Guardrails, nicht Vertrauen</h2>
+  <p data-i18n="s8.p1">Jede Empfehlung durchläuft dieselbe Guardrail-Prüfung aus der Tabelle oben
   zweimal — einmal direkt nach der Analyse, ein zweites Mal unmittelbar vor der
   Ausführung, falls sich der Zustand in der Zwischenzeit geändert hat (der Prozess
   etwa schon von selbst beendet wurde). Eine abgelehnte Empfehlung wird protokolliert,
   aber nie zu einer Freigabe-Anfrage.</p>
-  <p>Ausserdem: Log-Inhalte sind teils von aussen beeinflussbar — ein SSH-Benutzername in
+  <p data-i18n="s8.p2">Ausserdem: Log-Inhalte sind teils von aussen beeinflussbar — ein SSH-Benutzername in
   einem Login-Fehlversuch etwa. Jeder Prompt trennt deshalb explizit zwischen «zu
   bewertenden Daten» und «Anweisungen an das Modell» und wurde gegen wörtlich eingebettete
   Injection-Versuche getestet.</p>
 </section>
 
 <section>
-  <span class="section-num">Design-Entscheidung, kein Zufall</span>
-  <h2>Was bewusst nicht gebaut wurde</h2>
+  <span class="section-num" data-i18n="s9.num">Design-Entscheidung, kein Zufall</span>
+  <h2 data-i18n="s9.h2">Was bewusst nicht gebaut wurde</h2>
   <div class="negex">
-    <span class="tag">Verworfen — nicht aus technischen Gründen</span>
-    <p>Eine frühe Version enthielt ein Modul, das aktiv unbekannte Geräte im Netz
+    <span class="tag" data-i18n="s9.tag">Verworfen — nicht aus technischen Gründen</span>
+    <p data-i18n="s9.p1">Eine frühe Version enthielt ein Modul, das aktiv unbekannte Geräte im Netz
     anspricht, um die Topologie schneller und vollständiger zu kartieren.</p>
-    <p>Das wurde wieder entfernt. Aktives Anstupsen fremder Geräte in einem Netz, das man
+    <p data-i18n="s9.p2">Das wurde wieder entfernt. Aktives Anstupsen fremder Geräte in einem Netz, das man
     nicht selbst betreibt — etwa in einem Hotel-WLAN — ist eine Grenze, die ein
     Einzelgerät-Werkzeug nicht überschreiten sollte, unabhängig davon, wie harmlos die
     Absicht ist. Seither gilt: ausschliesslich Mithören von Broadcast-/Multicast-Verkehr
@@ -597,32 +604,32 @@ und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
 </section>
 
 <section>
-  <span class="section-num">Betriebsreife</span>
-  <h2>Wer überwacht die Wächter?</h2>
-  <p>Ein Sicherheitssystem, das selbst unbemerkt ausfallen oder manipuliert werden kann, ist
+  <span class="section-num" data-i18n="s10.num">Betriebsreife</span>
+  <h2 data-i18n="s10.h2">Wer überwacht die Wächter?</h2>
+  <p data-i18n="s10.p">Ein Sicherheitssystem, das selbst unbemerkt ausfallen oder manipuliert werden kann, ist
   keine Verbesserung. Drei Massnahmen adressieren genau das:</p>
   <div class="hard">
-    <div class="hard-item"><span class="k">Watchdog</span>
-      <span>Der Sensor-Dienst meldet sich periodisch bei systemd; bleibt das Lebenszeichen
+    <div class="hard-item"><span class="k" data-i18n="s10.i1k">Watchdog</span>
+      <span data-i18n="s10.i1d">Der Sensor-Dienst meldet sich periodisch bei systemd; bleibt das Lebenszeichen
       aus, wird er automatisch neu gestartet — kein manuelles Eingreifen nötig.</span></div>
-    <div class="hard-item"><span class="k">Integrität</span>
-      <span>Eine SHA256-Baseline der eigenen Skripte liegt root-geschützt ausserhalb des
+    <div class="hard-item"><span class="k" data-i18n="s10.i2k">Integrität</span>
+      <span data-i18n="s10.i2d">Eine SHA256-Baseline der eigenen Skripte liegt root-geschützt ausserhalb des
       normalen Nutzer-Zugriffs. Weicht ein Skript davon ab, löst das selbst einen
       Sicherheits-Alarm aus — und lässt sich nur per expliziter, manueller Freigabe neu
       setzen.</span></div>
-    <div class="hard-item"><span class="k">Log-Rotation</span>
-      <span>Alle Protokolle sind grössen- und zeitbegrenzt. Unbegrenztes Wachstum, das am
+    <div class="hard-item"><span class="k" data-i18n="s10.i3k">Log-Rotation</span>
+      <span data-i18n="s10.i3d">Alle Protokolle sind grössen- und zeitbegrenzt. Unbegrenztes Wachstum, das am
       Ende die Platte füllt und die Überwachung selbst lahmlegt, ist damit ausgeschlossen.</span></div>
   </div>
 </section>
 
 <section>
-  <span class="section-num">Einordnung</span>
-  <h2>Kein Enterprise-SIEM — und das ist Absicht</h2>
-  <p>Dieses System ersetzt kein Team, keine Korrelation über hunderte Hosts, keine
+  <span class="section-num" data-i18n="s11.num">Einordnung</span>
+  <h2 data-i18n="s11.h2">Kein Enterprise-SIEM — und das ist Absicht</h2>
+  <p data-i18n="s11.p1">Dieses System ersetzt kein Team, keine Korrelation über hunderte Hosts, keine
   forensische Tiefe eines echten SOC. Es ist bewusst für genau einen Anwendungsfall
   gebaut: ein Gerät, ein Nutzer, wechselnde, nicht vertrauenswürdige Netze.</p>
-  <p>Übertragbar ist dagegen das Grundmuster dahinter — eine KI-Komponente, die bewertet
+  <p data-i18n="s11.p2">Übertragbar ist dagegen das Grundmuster dahinter — eine KI-Komponente, die bewertet
   statt zu handeln, deren Vorschläge doppelt deterministisch geprüft werden, und deren
   Entscheidungswege nachvollziehbar bleiben. Genau diese drei Eigenschaften —
   menschliche Aufsicht, Nachvollziehbarkeit, Eingriffsmöglichkeit — sind auch der Kern
@@ -632,8 +639,236 @@ und war zuvor nicht bekannt. Empfehlung: Eskalationsstufe zur Tiefenanalyse
   KI-Automatisierung trägt.</p>
 </section>
 
-<footer>Privates Infrastrukturprojekt · Details zu Hostnamen, Netzwerken und Adressbereichen
+<footer data-i18n="foot.note">Privates Infrastrukturprojekt · Details zu Hostnamen, Netzwerken und Adressbereichen
 anonymisiert. · <a href="../" style="color:var(--ink-muted);">← Zurück zum Profil</a></footer>
+
+<script>
+const I18N = {
+  de: {
+    title: "Giw Aalam – Endpoint-SOC-Agent (Fallstudie)",
+    description: "Fallstudie: ein zweistufiges, KI-gestütztes Sicherheitsmonitoring für ein einzelnes Reisegerät mit Human-in-the-loop-Freigabe statt automatischer Ausführung.",
+    "nav.back": "← Zurück zum Profil",
+    "mast.eyebrow": "Fallstudie · Sicherheits-Engineering",
+    "mast.h1": "Ein Endpoint-SOC für ein einzelnes Gerät",
+    "mast.dek": "Wie ein zweistufiges KI-Agenten-System, deterministische Guardrails und klassische Unix-Sensorik zusammen ein Reisegerät überwachen — ohne dass die KI je selbst etwas ausführt.",
+    "mast.meta1": "<dt>Rolle</dt> Konzept, Architektur, Umsetzung",
+    "mast.meta2": "<dt>Stack</dt> Bash · systemd · Python · Claude-Agenten",
+    "mast.meta3": "<dt>Scope</dt> ein Endgerät, kein Server-Fleet",
+    "s1.num": "Ausgangslage",
+    "s1.h2": "Ein Gerät, viele fremde Netze",
+    "s1.p1": "Ein Laptop, der zwischen Hotel-WLANs, Cafés und dem Heimnetz wechselt, hat kein Unternehmens-SOC im Rücken, das Traffic korreliert, Anomalien einordnet und im Ernstfall reagiert. Klassische Endpoint-Antivirensoftware deckt Signaturen ab, aber nicht Netzwerk-Manipulation, Rogue-Access-Points oder stille Persistenz-Versuche. Die Frage war: wie viel echte SOC-Praxis lässt sich auf ein einzelnes Gerät herunterskalieren — mit Werkzeugen, die es auf jedem Linux-System schon gibt, plus einer KI-Schicht für die Einordnung?",
+    "s1.p2": "Die Antwort sollte kein Prototyp bleiben, der beim ersten Fehlalarm ignoriert wird — sondern etwas, das man tatsächlich tagelang mitlaufen lässt.",
+    "s2.num": "Leitprinzip",
+    "s2.h2": "Empfehlung ja, Ausführung nein",
+    "s2.p1": "Jede LLM-gestützte Sicherheitsautomatisierung hat ein strukturelles Risiko: ein Modell, das Logs fehlinterpretiert — oder durch präparierte Log-Inhalte manipuliert wird — und dabei Werkzeuggewalt besitzt, kann selbst zum Sicherheitsproblem werden. Deshalb gilt für dieses System eine einzige, nicht verhandelbare Regel:",
+    "s2.tag": "Architekturprinzip",
+    "s2.principle": "Die KI bewertet und empfiehlt. Ausgeführt wird ausschliesslich nach expliziter, manueller Bestätigung durch einen Menschen — und erst nach einer zweiten, rein deterministischen Prüfung derselben Empfehlung.",
+    "s2.p2": "Das reduziert die KI-Komponente auf das, was sie gut kann — Muster in unstrukturierten Daten erkennen und einordnen — und hält sie von dem fern, was bei einer Fehleinschätzung teuer wird: tatsächlich etwas am System zu verändern.",
+    "s3.num": "Architektur",
+    "s3.h2": "Vom Sensor bis zur Freigabe",
+    "s3.p": "Sieben Stationen, jede mit einer klaren Zuständigkeit. Nichts überspringt eine Stufe.",
+    "s3.stage1.t": "Sensoren", "s3.stage1.d": "Passive Netzwerk-Beobachtung, Datei-/Log-Überwachung, USB-Ereignisse — nichts sendet aktiv Pakete an fremde Geräte.",
+    "s3.stage2.t": "Event-Log", "s3.stage2.d": "Ein gemeinsames JSON-Schema für alle Quellen: Zeitstempel, Stufe, Kategorie, Nachricht.",
+    "s3.stage3.t": "Triage-Agent", "s3.stage3.d": "Günstig, häufig getaktet. Stuft Kritikalität ein, nur bei echtem Signal.",
+    "s3.stage4.t": "Eskalations-Agent", "s3.stage4.d": "Nur bei Bedarf. Tieferer Kontext, genau eine strukturierte Empfehlung.",
+    "s3.stage5.t": "Guardrails", "s3.stage5.d": "Deterministische Regeln prüfen jede Empfehlung — vor Anzeige und erneut vor Ausführung.",
+    "s3.stage6.t": "Mensch bestätigt", "s3.stage6.d": "Dialog oder Terminal, mit Klartext-Vorschau des exakten Befehls.",
+    "s3.stage7.t": "Ausführung", "s3.stage7.d": "Genau der geprüfte Befehl — nie ein vom Modell frei generierter String.",
+    "s4.num": "Ansicht",
+    "s4.h2": "Das Ergebnis im Dashboard",
+    "s4.p": "Alle Sensoren, beide Agenten und der Freigabe-Status laufen in einer lokalen, ausschliesslich auf <span class=\"mono\" style=\"font-size:.85em;\">127.0.0.1</span> gebundenen Weboberfläche zusammen. Nachbau des tatsächlichen Layouts — Adressen, MAC-Adressen und Netzwerknamen sind frei erfunden (RFC-5737-Dokumentationsbereiche).",
+    "s4.titlebar": "127.0.0.1:8787 — anonymisierte Beispieldaten",
+    "s4.caption": "Nachgebaute Ansicht mit synthetischen Werten — Layout, Farblogik und Datenfelder entsprechen dem produktiven Dashboard. Die beiden Analyse-Texte zeigen das reale Format der Triage-Ausgabe; Inhalte anonymisiert.",
+    "s5.num": "Werkzeuge im Hintergrund",
+    "s5.h2": "Was tatsächlich gemessen wird",
+    "s5.p": "Alles rein passiv oder auf lokale, bereits vorhandene Standard-Anfragen beschränkt — dazu mehr im Abschnitt zur ethischen Leitplanke weiter unten. Jede Zeile in der Tabelle mündet über das gemeinsame Event-Schema in dieselbe Agenten-Pipeline.",
+    "s5.th1": "Quelle", "s5.th2": "Liefert", "s5.th3": "Fliesst ein in",
+    "s5.r1d": "Geräte- und ARP-Tabelle, Netzwerk-Topologie", "s5.r1f": "Event-Log → Triage",
+    "s5.r2d": "Neue Hosts, ARP-Konflikte (Spoofing-Verdacht)", "s5.r2f": "Event-Log → Triage",
+    "s5.r3d": "Geräteklasse: Drucker, Kamera, IoT, Lautsprecher …", "s5.r3f": "Event-Log → Triage",
+    "s5.r4d": "SSID/BSSID-Historie, Verschlüsselungsstärke", "s5.r4f": "Evil-Twin-Erkennung",
+    "s5.r5d": "Passives OS-Fingerprinting pro IP", "s5.r5f": "Eskalations-Kontext",
+    "s5.r6d": "Portscan-Muster aus Firewall-/Kernel-Log", "s5.r6f": "Event-Log (eigener Traffic vorgefiltert)",
+    "s5.r7d": "Signatur- und Heuristik-Funde", "s5.r7f": "Direkt an Eskalations-Agent",
+    "s5.r8d": "Login-Fehlversuche, sudo, neue Nutzer, USB/VPN/WLAN-Warnungen", "s5.r8f": "Event-Log → Triage",
+    "s5.r9d": "Abweichung an den eigenen Sicherheits-Skripten", "s5.r9f": "Direkt an Eskalations-Agent",
+    "s5.r10d": "Firewall- und Kill-Switch-Zustand", "s5.r10f": "Kontext für beide Agenten",
+    "s5.caption": "Gekürzt — die vollständige Pipeline verarbeitet zusätzliche Quellen wie Verbindungs- und Prozesslisten.",
+    "s6.num": "Zwei Agenten, zwei Aufgaben",
+    "s6.h2": "Günstige Triage, teure Tiefenanalyse",
+    "s6.p": "Ein einzelner, immer gleich teurer Agent wäre entweder zu langsam für ständige Beobachtung oder zu teuer für seltene Tiefenanalyse. Die Lösung: zwei Stufen mit unterschiedlichem Budget.",
+    "s6.a1.h3": "Triage-Agent", "s6.a1.role": "Stufe 1 · häufig",
+    "s6.a1.dt1": "Takt", "s6.a1.dd1": "Alle 5 Minuten, aber nur bei tatsächlich neuen Ereignissen ausgelöst",
+    "s6.a1.dt2": "Kontext", "s6.a1.dd2": "Neue Events seit letztem Lauf, aktive Sitzungen, offene Verbindungen, WLAN-Name, eigene IP-Adressen, VPN-Status",
+    "s6.a1.dt3": "Output", "s6.a1.dd3": "<span class=\"badge ok\">niedrig</span> <span class=\"badge warn\">mittel</span> <span class=\"badge crit\">hoch/kritisch</span> + 3–5 Sätze Einordnung",
+    "s6.a1.dt4": "Bei hoch/kritisch", "s6.a1.dd4": "Desktop-Meldung, E-Mail, Übergabe an Stufe 2",
+    "s6.a2.h3": "Eskalations-Agent", "s6.a2.role": "Stufe 2 · nur bei Bedarf",
+    "s6.a2.dt1": "Takt", "s6.a2.dd1": "Nur getriggert — von Stufe 1 oder direkt von AV-/Rootkit-/Integritäts-Funden",
+    "s6.a2.dt2": "Kontext", "s6.a2.dd2": "Prozessliste, alle Verbindungen, Login-Historie, 200 Zeilen Auth-Log, aktive Auto-Blocks, autorisierte SSH-Schlüssel, Firewall-Status",
+    "s6.a2.dt3": "Output", "s6.a2.dd3": "Genau eine strukturierte Empfehlung: Ziel, Begründung, Konfidenz — oder «keine»",
+    "s6.a2.dt4": "Führt aus", "s6.a2.dd4": "Nichts. Schreibt eine Freigabe-Anfrage, sonst nichts.",
+    "s6.caption": "Anonymisiertes Beispiel aus dem strukturierten Event-Schema — Adressen durch RFC-5737-Dokumentationsbereiche ersetzt. Log-Text bewusst im Original (Deutsch) belassen.",
+    "s7.num": "Konkret",
+    "s7.h2": "Wie eine Empfehlung tatsächlich aussieht",
+    "s7.p1": "Der Eskalations-Agent schreibt bei einer echten Empfehlung eine einzelne Datei — keinen ausführbaren Befehl, nur strukturierte Felder:",
+    "s7.p2": "Das erreicht mich über vier parallele Kanäle: Desktop-Benachrichtigung, E-Mail, ein Ja/Nein-Dialog (läuft als eigenständige systemd-Einheit, unabhängig vom Timer-Dienst, der ihn ausgelöst hat) und als Terminal-Fallback jederzeit per Befehl, der Ziel, Begründung, Konfidenz und die exakte Befehlsvorschau nochmal anzeigt, bevor ich bestätige. Reagiere ich nicht, verfällt die Empfehlung nach 30 Minuten automatisch — ohne Aktion.",
+    "s7.h3": "Fünf mögliche Aktionstypen, sonst keine",
+    "s7.p3": "Das Modell liefert ausschliesslich <code class=\"mono\" style=\"font-size:.85em;\">action</code> und <code class=\"mono\" style=\"font-size:.85em;\">target</code> als kurze Strings — nie einen fertigen Befehl. Der ausführende Teil baut die echte Aktion selbst aus einem festen Template pro Typ:",
+    "s7.th1": "Empfehlung", "s7.th2": "Tatsächlich ausgeführter Befehl", "s7.th3": "Harte Grenze",
+    "s7.limit1": "Denylist (systemd, sshd, NetworkManager, eigene Toolchain, Terminal …), PID 1 nie",
+    "s7.limit2": "Nur das überwachte Interface, kein anderes",
+    "s7.limit3": "Nie eigener Account oder root, nur reguläre UID≥1000",
+    "s7.cmd4": "Exakte Zeile aus <code class=\"mono\" style=\"font-size:.83em;\">authorized_keys</code> löschen (Backup vorher)",
+    "s7.limit4": "Zeile muss wortwörtlich vorhanden sein",
+    "s7.cmd5": "Datei nach <code class=\"mono\" style=\"font-size:.83em;\">/var/quarantine/</code>, <code class=\"mono\" style=\"font-size:.83em;\">chmod 000</code> (kein Löschen)",
+    "s7.limit5": "Nur unter definierten, unkritischen Pfaden — Skripte/SSH-Verzeichnis ausgeschlossen",
+    "s7.caption": "Alles ausserhalb dieser fünf Zeilen fällt im ausführenden Skript in einen Default-Zweig, der nichts tut. Es gibt keinen sechsten Weg.",
+    "s8.num": "Kontrollschicht",
+    "s8.h2": "Guardrails, nicht Vertrauen",
+    "s8.p1": "Jede Empfehlung durchläuft dieselbe Guardrail-Prüfung aus der Tabelle oben zweimal — einmal direkt nach der Analyse, ein zweites Mal unmittelbar vor der Ausführung, falls sich der Zustand in der Zwischenzeit geändert hat (der Prozess etwa schon von selbst beendet wurde). Eine abgelehnte Empfehlung wird protokolliert, aber nie zu einer Freigabe-Anfrage.",
+    "s8.p2": "Ausserdem: Log-Inhalte sind teils von aussen beeinflussbar — ein SSH-Benutzername in einem Login-Fehlversuch etwa. Jeder Prompt trennt deshalb explizit zwischen «zu bewertenden Daten» und «Anweisungen an das Modell» und wurde gegen wörtlich eingebettete Injection-Versuche getestet.",
+    "s9.num": "Design-Entscheidung, kein Zufall",
+    "s9.h2": "Was bewusst nicht gebaut wurde",
+    "s9.tag": "Verworfen — nicht aus technischen Gründen",
+    "s9.p1": "Eine frühe Version enthielt ein Modul, das aktiv unbekannte Geräte im Netz anspricht, um die Topologie schneller und vollständiger zu kartieren.",
+    "s9.p2": "Das wurde wieder entfernt. Aktives Anstupsen fremder Geräte in einem Netz, das man nicht selbst betreibt — etwa in einem Hotel-WLAN — ist eine Grenze, die ein Einzelgerät-Werkzeug nicht überschreiten sollte, unabhängig davon, wie harmlos die Absicht ist. Seither gilt: ausschliesslich Mithören von Broadcast-/Multicast-Verkehr und höchstens eine einzelne, für jedes Gerät ohnehin übliche Standardanfrage (etwa ein mDNS-Browse, wie ihn jeder Druck-Dialog selbst auslöst).",
+    "s10.num": "Betriebsreife",
+    "s10.h2": "Wer überwacht die Wächter?",
+    "s10.p": "Ein Sicherheitssystem, das selbst unbemerkt ausfallen oder manipuliert werden kann, ist keine Verbesserung. Drei Massnahmen adressieren genau das:",
+    "s10.i1k": "Watchdog", "s10.i1d": "Der Sensor-Dienst meldet sich periodisch bei systemd; bleibt das Lebenszeichen aus, wird er automatisch neu gestartet — kein manuelles Eingreifen nötig.",
+    "s10.i2k": "Integrität", "s10.i2d": "Eine SHA256-Baseline der eigenen Skripte liegt root-geschützt ausserhalb des normalen Nutzer-Zugriffs. Weicht ein Skript davon ab, löst das selbst einen Sicherheits-Alarm aus — und lässt sich nur per expliziter, manueller Freigabe neu setzen.",
+    "s10.i3k": "Log-Rotation", "s10.i3d": "Alle Protokolle sind grössen- und zeitbegrenzt. Unbegrenztes Wachstum, das am Ende die Platte füllt und die Überwachung selbst lahmlegt, ist damit ausgeschlossen.",
+    "s11.num": "Einordnung",
+    "s11.h2": "Kein Enterprise-SIEM — und das ist Absicht",
+    "s11.p1": "Dieses System ersetzt kein Team, keine Korrelation über hunderte Hosts, keine forensische Tiefe eines echten SOC. Es ist bewusst für genau einen Anwendungsfall gebaut: ein Gerät, ein Nutzer, wechselnde, nicht vertrauenswürdige Netze.",
+    "s11.p2": "Übertragbar ist dagegen das Grundmuster dahinter — eine KI-Komponente, die bewertet statt zu handeln, deren Vorschläge doppelt deterministisch geprüft werden, und deren Entscheidungswege nachvollziehbar bleiben. Genau diese drei Eigenschaften — menschliche Aufsicht, Nachvollziehbarkeit, Eingriffsmöglichkeit — sind auch der Kern dessen, was regulierte KI-Systeme unter EU AI Act und ISO 42001 verlangen. In diesem Projekt ging es zuerst um ein privates Sicherheitsproblem; das Architekturmuster dahinter ist dasselbe, das auch in professionellem Kontext für vertrauenswürdige KI-Automatisierung trägt.",
+    "foot.note": "Privates Infrastrukturprojekt · Details zu Hostnamen, Netzwerken und Adressbereichen anonymisiert. · <a href=\"../\" style=\"color:var(--ink-muted);\">← Zurück zum Profil</a>"
+  },
+  en: {
+    title: "Giw Aalam – Endpoint SOC Agent (Case Study)",
+    description: "Case study: a two-stage, AI-assisted security monitoring system for a single travel device, with human-in-the-loop approval instead of automatic execution.",
+    "nav.back": "← Back to profile",
+    "mast.eyebrow": "Case study · Security engineering",
+    "mast.h1": "An endpoint SOC for a single device",
+    "mast.dek": "How a two-stage AI agent system, deterministic guardrails and classic Unix sensing together watch over a travel device — without the AI ever executing anything itself.",
+    "mast.meta1": "<dt>Role</dt> Concept, architecture, implementation",
+    "mast.meta2": "<dt>Stack</dt> Bash · systemd · Python · Claude agents",
+    "mast.meta3": "<dt>Scope</dt> one device, not a server fleet",
+    "s1.num": "Starting point",
+    "s1.h2": "One device, many foreign networks",
+    "s1.p1": "A laptop that moves between hotel Wi-Fi, cafés and the home network doesn't have a corporate SOC behind it correlating traffic, triaging anomalies and reacting when it matters. Classic endpoint antivirus covers signatures, but not network manipulation, rogue access points, or quiet persistence attempts. The question was: how much real SOC practice can be scaled down to a single device — using tools that already exist on any Linux system, plus an AI layer for judgment?",
+    "s1.p2": "The answer wasn't meant to stay a prototype that gets ignored after the first false alarm — but something that actually runs, day after day.",
+    "s2.num": "Guiding principle",
+    "s2.h2": "Recommend, yes. Execute, no.",
+    "s2.p1": "Every LLM-driven security automation carries a structural risk: a model that misreads logs — or is manipulated through crafted log content — and holds execution power can become a security problem in its own right. So this system has one non-negotiable rule:",
+    "s2.tag": "Architecture principle",
+    "s2.principle": "The AI assesses and recommends. Execution happens only after explicit, manual confirmation by a human — and only after a second, purely deterministic check of that same recommendation.",
+    "s2.p2": "That confines the AI component to what it's good at — recognising and framing patterns in unstructured data — and keeps it away from what gets expensive on a misjudgement: actually changing something on the system.",
+    "s3.num": "Architecture",
+    "s3.h2": "From sensor to approval",
+    "s3.p": "Seven stations, each with a clear responsibility. Nothing skips a stage.",
+    "s3.stage1.t": "Sensors", "s3.stage1.d": "Passive network observation, file/log monitoring, USB events — nothing actively sends packets to devices it doesn't own.",
+    "s3.stage2.t": "Event log", "s3.stage2.d": "One shared JSON schema for every source: timestamp, level, category, message.",
+    "s3.stage3.t": "Triage agent", "s3.stage3.d": "Cheap, runs frequently. Grades criticality, only on a real signal.",
+    "s3.stage4.t": "Escalation agent", "s3.stage4.d": "Only when needed. Deeper context, exactly one structured recommendation.",
+    "s3.stage5.t": "Guardrails", "s3.stage5.d": "Deterministic rules check every recommendation — before it's shown, and again right before execution.",
+    "s3.stage6.t": "Human confirms", "s3.stage6.d": "Dialog or terminal, with a plain-text preview of the exact command.",
+    "s3.stage7.t": "Execution", "s3.stage7.d": "Exactly the checked command — never a string freely generated by the model.",
+    "s4.num": "View",
+    "s4.h2": "The result, in the dashboard",
+    "s4.p": "All sensors, both agents and the approval status come together in a local web UI bound exclusively to <span class=\"mono\" style=\"font-size:.85em;\">127.0.0.1</span>. A reconstruction of the actual layout — addresses, MAC addresses and network names are made up (RFC 5737 documentation ranges).",
+    "s4.titlebar": "127.0.0.1:8787 — anonymised sample data",
+    "s4.caption": "Reconstructed view with synthetic values — layout, colour logic and data fields match the production dashboard. The two analysis texts show the real format of the triage output; content anonymised. The dashboard UI itself is German-language and shown as-is.",
+    "s5.num": "Tools in the background",
+    "s5.h2": "What actually gets measured",
+    "s5.p": "Everything purely passive, or limited to standard requests a device already makes on its own — more on that in the ethics section further down. Every row in the table feeds into the same agent pipeline through the shared event schema.",
+    "s5.th1": "Source", "s5.th2": "Delivers", "s5.th3": "Feeds into",
+    "s5.r1d": "Device and ARP table, network topology", "s5.r1f": "Event log → triage",
+    "s5.r2d": "New hosts, ARP conflicts (spoofing suspicion)", "s5.r2f": "Event log → triage",
+    "s5.r3d": "Device class: printer, camera, IoT, speaker …", "s5.r3f": "Event log → triage",
+    "s5.r4d": "SSID/BSSID history, encryption strength", "s5.r4f": "Evil-twin detection",
+    "s5.r5d": "Passive OS fingerprinting per IP", "s5.r5f": "Escalation context",
+    "s5.r6d": "Port-scan patterns from firewall/kernel log", "s5.r6f": "Event log (own traffic pre-filtered)",
+    "s5.r7d": "Signature and heuristic findings", "s5.r7f": "Direct to escalation agent",
+    "s5.r8d": "Login failures, sudo, new users, USB/VPN/Wi-Fi warnings", "s5.r8f": "Event log → triage",
+    "s5.r9d": "Deviation in the security scripts themselves", "s5.r9f": "Direct to escalation agent",
+    "s5.r10d": "Firewall and kill-switch state", "s5.r10f": "Context for both agents",
+    "s5.caption": "Shortened — the full pipeline also processes additional sources such as connection and process lists.",
+    "s6.num": "Two agents, two jobs",
+    "s6.h2": "Cheap triage, expensive deep analysis",
+    "s6.p": "A single agent priced the same every time would be either too slow for constant monitoring or too expensive for rare deep analysis. The solution: two stages with different budgets.",
+    "s6.a1.h3": "Triage agent", "s6.a1.role": "Stage 1 · frequent",
+    "s6.a1.dt1": "Cadence", "s6.a1.dd1": "Every 5 minutes, but only triggered by genuinely new events",
+    "s6.a1.dt2": "Context", "s6.a1.dd2": "New events since the last run, active sessions, open connections, Wi-Fi name, own IP addresses, VPN status",
+    "s6.a1.dt3": "Output", "s6.a1.dd3": "<span class=\"badge ok\">low</span> <span class=\"badge warn\">medium</span> <span class=\"badge crit\">high/critical</span> + 3–5 sentence assessment",
+    "s6.a1.dt4": "On high/critical", "s6.a1.dd4": "Desktop notification, email, hand-off to stage 2",
+    "s6.a2.h3": "Escalation agent", "s6.a2.role": "Stage 2 · only when needed",
+    "s6.a2.dt1": "Cadence", "s6.a2.dd1": "Triggered only — by stage 1 or directly by AV/rootkit/integrity findings",
+    "s6.a2.dt2": "Context", "s6.a2.dd2": "Process list, all connections, login history, 200 lines of the auth log, active auto-blocks, authorised SSH keys, firewall status",
+    "s6.a2.dt3": "Output", "s6.a2.dd3": "Exactly one structured recommendation: target, reasoning, confidence — or “none”",
+    "s6.a2.dt4": "Executes", "s6.a2.dd4": "Nothing. Writes an approval request, nothing else.",
+    "s6.caption": "Anonymised example from the structured event schema — addresses replaced with RFC 5737 documentation ranges. Log text deliberately kept in the original German.",
+    "s7.num": "In practice",
+    "s7.h2": "What a recommendation actually looks like",
+    "s7.p1": "When the escalation agent has a genuine recommendation, it writes a single file — no executable command, only structured fields:",
+    "s7.p2": "That reaches me over four parallel channels: a desktop notification, an email, a yes/no dialog (runs as its own systemd unit, independent of the timer service that triggered it), and a terminal fallback available any time, which shows the target, reasoning, confidence and the exact command preview again before I confirm. If I don't react, the recommendation expires automatically after 30 minutes — no action taken.",
+    "s7.h3": "Five possible action types, no more",
+    "s7.p3": "The model supplies only <code class=\"mono\" style=\"font-size:.85em;\">action</code> and <code class=\"mono\" style=\"font-size:.85em;\">target</code> as short strings — never a finished command. The execution side builds the real action itself, from one fixed template per type:",
+    "s7.th1": "Recommendation", "s7.th2": "Command actually executed", "s7.th3": "Hard limit",
+    "s7.limit1": "Denylist (systemd, sshd, NetworkManager, own toolchain, terminal …), PID 1 never",
+    "s7.limit2": "Only the monitored interface, never another",
+    "s7.limit3": "Never the own account or root, only regular UID≥1000 accounts",
+    "s7.cmd4": "Delete the exact line from <code class=\"mono\" style=\"font-size:.83em;\">authorized_keys</code> (backed up first)",
+    "s7.limit4": "Line must still be present verbatim",
+    "s7.cmd5": "Move the file to <code class=\"mono\" style=\"font-size:.83em;\">/var/quarantine/</code>, <code class=\"mono\" style=\"font-size:.83em;\">chmod 000</code> (never deleted)",
+    "s7.limit5": "Only under defined, non-critical paths — scripts/SSH directory excluded",
+    "s7.caption": "Anything outside these five lines falls into a default branch in the executing script that does nothing. There is no sixth path.",
+    "s8.num": "Control layer",
+    "s8.h2": "Guardrails, not trust",
+    "s8.p1": "Every recommendation goes through the same guardrail check from the table above twice — once right after the analysis, and again immediately before execution, in case the state has changed in the meantime (the process having already ended on its own, say). A rejected recommendation gets logged, but never turns into an approval request.",
+    "s8.p2": "One more thing: log content is partly attacker-influenceable — an SSH username in a failed login attempt, for instance. Every prompt therefore explicitly separates “data to be assessed” from “instructions to the model”, and has been tested against literally embedded injection attempts.",
+    "s9.num": "A deliberate decision, not an oversight",
+    "s9.h2": "What was deliberately not built",
+    "s9.tag": "Discarded — not for technical reasons",
+    "s9.p1": "An early version included a module that actively pinged unknown devices on the network, to map the topology faster and more completely.",
+    "s9.p2": "That was removed again. Actively poking at devices you don't own on a network you don't operate — a hotel Wi-Fi, say — is a line a single-device tool shouldn't cross, no matter how harmless the intent. Since then, the rule is: listen only, to broadcast/multicast traffic, plus at most one single standard request every device makes routinely anyway (an mDNS browse, the same kind a print dialog triggers on its own).",
+    "s10.num": "Operational readiness",
+    "s10.h2": "Who watches the watchers?",
+    "s10.p": "A security system that can itself fail or be tampered with unnoticed is no improvement. Three measures address exactly that:",
+    "s10.i1k": "Watchdog", "s10.i1d": "The sensor service checks in with systemd periodically; if that heartbeat stops, it gets restarted automatically — no manual intervention needed.",
+    "s10.i2k": "Integrity", "s10.i2d": "A SHA256 baseline of the security scripts themselves is stored root-protected, outside normal user access. If a script drifts from it, that alone triggers a security alert — and can only be reset through an explicit, manual approval.",
+    "s10.i3k": "Log rotation", "s10.i3d": "All logs are size- and time-bounded. Unbounded growth that eventually fills the disk and takes the monitoring itself down is ruled out.",
+    "s11.num": "Where this fits",
+    "s11.h2": "Not an enterprise SIEM — on purpose",
+    "s11.p1": "This system doesn't replace a team, correlation across hundreds of hosts, or the forensic depth of a real SOC. It's deliberately built for exactly one use case: one device, one user, changing, untrusted networks.",
+    "s11.p2": "What does carry over is the underlying pattern — an AI component that assesses rather than acts, whose suggestions are checked twice by deterministic logic, and whose decision paths stay traceable. Those three properties — human oversight, traceability, the ability to intervene — are also at the core of what regulated AI systems must provide under the EU AI Act and ISO 42001. This project started as a personal security problem; the architecture pattern behind it is the same one that holds up for trustworthy AI automation in a professional context.",
+    "foot.note": "Personal infrastructure project · Hostnames, networks and address ranges anonymised. · <a href=\"../\" style=\"color:var(--ink-muted);\">← Back to profile</a>"
+  }
+};
+
+function setLang(lang){
+  if(!I18N[lang]) return;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.title = dict.title;
+  const descMeta = document.querySelector('meta[name="description"]');
+  if(descMeta) descMeta.setAttribute('content', dict.description);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.addEventListener('click', ()=>setLang(b.dataset.lang));
+});
+let initialLang = 'de';
+try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+setLang(initialLang);
+</script>
 
 </body>
 </html>
