@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <title>Giw Aalam – Endpoint-SOC-Agent (Fallstudie)</title>
 <meta name="description" content="Fallstudie: ein zweistufiges, KI-gestütztes Sicherheitsmonitoring für ein einzelnes Reisegerät mit Human-in-the-loop-Freigabe statt automatischer Ausführung.">
 <meta property="og:type" content="article">
@@ -16,33 +16,23 @@
 <link rel="canonical" href="https://aalam.ch/referenzprojekte/endpoint-soc-agent/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg:#F1F3F4;
+  --bg:#F3F4F5;
   --surface:#FFFFFF;
-  --surface-2:#E7EBEC;
-  --ink:#171B24;
-  --ink-muted:#545C68;
-  --line:#D3D8DA;
-  --accent:#2F4F8F;
-  --accent-soft:#E3E9F5;
+  --surface-2:#EAEBED;
+  --ink:#15171A;
+  --ink-muted:#4B5158;
+  --line:#D9DCDF;
+  --accent:#8A2A2E;
+  --accent-soft:#F1E1E2;
   --ok:#2E7D4F;      --ok-soft:#E4F2E9;
   --warn:#A6740A;    --warn-soft:#F6ECD6;
   --crit:#B23B3B;    --crit-soft:#F7E3E1;
-  --font-display:'IBM Plex Sans',system-ui,sans-serif;
-  --font-body:'IBM Plex Serif',Georgia,serif;
-  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#12151B; --surface:#1A1F27; --surface-2:#222834;
-    --ink:#E7E9EC; --ink-muted:#9BA3AE; --line:#2E3440;
-    --accent:#8AACEA; --accent-soft:#233152;
-    --ok:#6FBF8F; --ok-soft:#1C3327;
-    --warn:#DDB24A; --warn-soft:#3A2F16;
-    --crit:#E28787; --crit-soft:#3A1F1F;
-  }
+  --font-display:'Bricolage Grotesque',system-ui,sans-serif;
+  --font-body:'Public Sans',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
 }
 
 *{box-sizing:border-box;}
@@ -94,8 +84,11 @@ code{font-family:var(--font-mono);}
 .eyebrow{
   font-family:var(--font-display);font-size:0.78rem;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
-  margin:0 0 14px;
+  margin:0 0 14px;display:inline-flex;align-items:center;gap:9px;
 }
+.eyebrow::before{ content:""; width:9px; height:9px; flex:0 0 auto; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+.section-num{display:inline-flex;align-items:center;gap:8px;}
+.section-num::before{ content:""; width:7px; height:7px; flex:0 0 auto; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
 .dek{font-size:1.15rem;color:var(--ink-muted);max-width:58ch;margin:14px 0 22px;}
 .meta{
   display:flex;flex-wrap:wrap;gap:10px 28px;

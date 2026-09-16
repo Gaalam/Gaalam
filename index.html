@@ -66,11 +66,13 @@
   .lang-btn.active{ color:var(--ink); background:var(--surface); border-color:var(--ink-soft); }
   @media (max-width:700px){ nav.site a:not(.nav-cta){ display:none; } }
 
-  .hero{ padding:64px 0 12px; }
+  .hero{
+    padding:64px 0 12px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 420' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 330 L120 270 L200 310 L280 190 L360 270 L460 150 L560 250 L660 130 L760 230 L860 100 L980 220 L1080 160 L1180 250 L1300 180 L1400 270 L1600 210 L1600 420 L0 420 Z' fill='%2315171A' opacity='0.05'/%3E%3Cpath d='M0 370 L150 310 L260 350 L340 250 L440 330 L540 230 L660 310 L780 210 L880 310 L1000 240 L1120 320 L1240 270 L1360 340 L1600 290 L1600 420 L0 420 Z' fill='%2315171A' opacity='0.08'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:bottom center; background-size:100% auto;
+  }
   .hero h1{ font-size:clamp(2.3rem, 5.6vw, 3.6rem); line-height:1.08; max-width:16ch; text-wrap:balance; }
   .hero .lead{ margin-top:20px; }
-  .role{ margin-top:24px; display:flex; gap:10px; flex-wrap:wrap; }
-  .pill{ font-family:'JetBrains Mono', monospace; font-size:.74rem; letter-spacing:.02em; border:1px solid var(--rule); padding:5px 11px; color:var(--ink-soft); background:var(--surface); }
   .hero-cta{ margin-top:30px; display:flex; gap:22px; flex-wrap:wrap; align-items:center; }
   .btn-primary{ font-family:'JetBrains Mono', monospace; font-size:.85rem; font-weight:600; background:var(--accent); color:var(--accent-ink); padding:14px 24px; text-decoration:none; display:inline-block; border:1.5px solid var(--accent); }
   .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
@@ -143,11 +145,6 @@
       <p class="eyebrow" data-i18n="hero.eyebrow">Giw Aalam — Digitalisierung, Vendor Management, KI</p>
       <h1 data-i18n="hero.h1">IT-Verträge im Griff. Prozesse automatisiert. KI kontrolliert eingeführt.</h1>
       <p class="lead" data-i18n="hero.lead">Ich berate KMU in der Region D-A-CH bei drei eng verzahnten Themen: IT-Vertrags- und Lieferantenmanagement, Prozessautomatisierung und die verantwortungsvolle Einführung von KI. Als Projektmandat, Interim-Einsatz oder in Festanstellung — und, wo es passt, mit selbst entwickelter Software als Beleg statt als Behauptung.</p>
-      <div class="role">
-        <span class="pill" data-i18n="hero.pill1">Wohnhaft in Belp BE</span>
-        <span class="pill" data-i18n="hero.pill2">schweizweit reisebereit</span>
-        <span class="pill" data-i18n="hero.pill3">kurzfristig verfügbar</span>
-      </div>
       <div class="hero-cta">
         <a class="btn-primary" href="/leistungen/" data-i18n="hero.cta1">Leistungen ansehen →</a>
         <a class="cta-secondary" href="/kontakt/" data-i18n="hero.cta2">Erstgespräch buchen →</a>
@@ -264,9 +261,6 @@
       "hero.eyebrow": "Giw Aalam — Digitalisierung, Vendor Management, KI",
       "hero.h1": "IT-Verträge im Griff. Prozesse automatisiert. KI kontrolliert eingeführt.",
       "hero.lead": "Ich berate KMU in der Region D-A-CH bei drei eng verzahnten Themen: IT-Vertrags- und Lieferantenmanagement, Prozessautomatisierung und die verantwortungsvolle Einführung von KI. Als Projektmandat, Interim-Einsatz oder in Festanstellung — und, wo es passt, mit selbst entwickelter Software als Beleg statt als Behauptung.",
-      "hero.pill1": "Wohnhaft in Belp BE",
-      "hero.pill2": "schweizweit reisebereit",
-      "hero.pill3": "kurzfristig verfügbar",
       "hero.cta1": "Leistungen ansehen →",
       "hero.cta2": "Erstgespräch buchen →",
       "img.portrait.alt": "Portrait von Giw Aalam",
@@ -319,9 +313,6 @@
       "hero.eyebrow": "Giw Aalam — Digitalisation, Vendor Management, AI",
       "hero.h1": "IT contracts under control. Processes automated. AI adopted responsibly.",
       "hero.lead": "I advise SMEs across the DACH region on three closely linked topics: IT contract and vendor management, process automation, and the responsible adoption of AI. As a project engagement, interim role or permanent position — and, where it fits, with software I built myself as evidence rather than a claim.",
-      "hero.pill1": "Based in Belp BE",
-      "hero.pill2": "Available for travel across Switzerland",
-      "hero.pill3": "Available at short notice",
       "hero.cta1": "See services →",
       "hero.cta2": "Book intro call →",
       "img.portrait.alt": "Portrait of Giw Aalam",
