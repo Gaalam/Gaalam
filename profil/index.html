@@ -105,6 +105,13 @@
   .skill .proof{ font-family:'IBM Plex Mono', monospace; font-size:.75rem; line-height:1.5; color:var(--ink-faint); margin:12px 0 0; }
   @media (max-width:640px){ .skills{ grid-template-columns:1fr; } }
 
+  .method-list{ border-top:1px solid var(--rule); margin-top:6px; }
+  .method-item{ display:flex; gap:20px; padding:18px 0; border-bottom:1px solid var(--rule); }
+  .method-item .n{ font-family:'IBM Plex Mono', monospace; font-size:.85rem; color:var(--signal); font-weight:600; flex:0 0 28px; }
+  .method-item .t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:.98rem; margin-bottom:4px; color:var(--ink); }
+  .method-item .d{ font-size:.88rem; color:var(--ink-soft); margin:0; line-height:1.55; max-width:60ch; }
+  @media (max-width:640px){ .method-item{ gap:14px; } }
+
   .credlist{ border-top:1px solid var(--rule); margin-top:6px; }
   .cred{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:.9rem; }
   .cred .t{ color:var(--ink); }
@@ -217,6 +224,38 @@
   </div>
 </section>
 
+<section id="methodik">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="meth.eyebrow">Wie ich arbeite</p>
+      <h2 data-i18n="meth.h2">Vom unklaren Bedarf zur belastbaren Entscheidung</h2>
+      <p class="lead" data-i18n="meth.lead">Fünf Prinzipien, die sich durch jedes Mandat ziehen — von einer Digitalisierungsstrategie für ein mittelständisches Unternehmen bis zu den beiden Softwareprojekten weiter unten.</p>
+    </div>
+    <div class="method-list">
+      <div class="method-item"><span class="n">01</span><div>
+        <div class="t" data-i18n="meth1.t">Zuhören, bevor gebaut wird</div>
+        <p class="d" data-i18n="meth1.d">Einzel- und Gruppengespräche mit den Menschen, die mit dem Ergebnis arbeiten müssen — nicht nur mit dem Auftraggeber.</p>
+      </div></div>
+      <div class="method-item"><span class="n">02</span><div>
+        <div class="t" data-i18n="meth2.t">Nach aussen vergleichen</div>
+        <p class="d" data-i18n="meth2.d">Marktbeobachtung, Wettbewerbsvergleich, Gespräche mit Dienstleistern und Branchennetzwerken — bevor eine Richtung feststeht.</p>
+      </div></div>
+      <div class="method-item"><span class="n">03</span><div>
+        <div class="t" data-i18n="meth3.t">Entscheidungen messbar machen</div>
+        <p class="d" data-i18n="meth3.d">Anforderungen gewichten, Optionen strukturiert gegeneinander bewerten — reproduzierbar statt Bauchgefühl.</p>
+      </div></div>
+      <div class="method-item"><span class="n">04</span><div>
+        <div class="t" data-i18n="meth4.t">Den naheliegenden Weg hinterfragen</div>
+        <p class="d" data-i18n="meth4.d">Bevor der Standardvorschlag eines Dienstleisters übernommen wird, wird geprüft, ob er tatsächlich der beste ist.</p>
+      </div></div>
+      <div class="method-item"><span class="n">05</span><div>
+        <div class="t" data-i18n="meth5.t">Nachschärfen statt festschreiben</div>
+        <p class="d" data-i18n="meth5.d">Eine Strategie ist ein kontinuierlicher Prozess mit periodischer Neubewertung, kein einmal verabschiedetes Dokument.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
 <section id="zertifikate">
   <div class="wrap">
     <div class="section-head">
@@ -246,6 +285,7 @@
     <div class="section-head">
       <p class="eyebrow" data-i18n="flag.eyebrow">Eigenständige Projekte</p>
       <h2 data-i18n="flag.h2">Zwei Softwareprojekte</h2>
+      <p class="lead" data-i18n="flag.lead">Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt heute im Kern von Vendor Data Management — nur automatisiert statt manuell in Excel.</p>
     </div>
     <div class="flagship">
       <h3 data-i18n="flag.h3">Vendor Data Management</h3>
@@ -357,6 +397,19 @@
       "s3.li1": "KI-Potenziale mit den Fachbereichen finden und verantwortungsvoll einführen; ISO/IEC 42001 und EU AI Act für KMU praktikabel umsetzen",
       "s3.li2": "Kontrollierter KI-Einsatz: nachvollziehbar, mit deterministischer Absicherung, wo Anforderungen eindeutig prüfbar sind",
       "s3.proof": "Belegt durch: eigenes Softwareprojekt mit LLM-Pipeline und deterministischer Prüfschicht; ISO/IEC 42001 Foundation, Risikomanager (TÜV), CAS Frontier Technologies in Finance (Schwerpunkt KI)",
+      "meth.eyebrow": "Wie ich arbeite",
+      "meth.h2": "Vom unklaren Bedarf zur belastbaren Entscheidung",
+      "meth.lead": "Fünf Prinzipien, die sich durch jedes Mandat ziehen — von einer Digitalisierungsstrategie für ein mittelständisches Unternehmen bis zu den beiden Softwareprojekten weiter unten.",
+      "meth1.t": "Zuhören, bevor gebaut wird",
+      "meth1.d": "Einzel- und Gruppengespräche mit den Menschen, die mit dem Ergebnis arbeiten müssen — nicht nur mit dem Auftraggeber.",
+      "meth2.t": "Nach aussen vergleichen",
+      "meth2.d": "Marktbeobachtung, Wettbewerbsvergleich, Gespräche mit Dienstleistern und Branchennetzwerken — bevor eine Richtung feststeht.",
+      "meth3.t": "Entscheidungen messbar machen",
+      "meth3.d": "Anforderungen gewichten, Optionen strukturiert gegeneinander bewerten — reproduzierbar statt Bauchgefühl.",
+      "meth4.t": "Den naheliegenden Weg hinterfragen",
+      "meth4.d": "Bevor der Standardvorschlag eines Dienstleisters übernommen wird, wird geprüft, ob er tatsächlich der beste ist.",
+      "meth5.t": "Nachschärfen statt festschreiben",
+      "meth5.d": "Eine Strategie ist ein kontinuierlicher Prozess mit periodischer Neubewertung, kein einmal verabschiedetes Dokument.",
       "zert.eyebrow": "Zertifikate &amp; Ausbildung",
       "zert.h2": "Formale Qualifikationen",
       "cred1.t": "M.Eng. Information Science &amp; Engineering — Hochschule Darmstadt (Erasmus Granada)",
@@ -375,6 +428,7 @@
       "branche3": "Aviation",
       "flag.eyebrow": "Eigenständige Projekte",
       "flag.h2": "Zwei Softwareprojekte",
+      "flag.lead": "Vendor Data Management ist aus einer konkreten Erfahrung entstanden: Für die Digitalisierungsstrategie der Messe Essen musste ich 2021 unter mehreren konkurrierenden Softwarelösungen eine begründete Wahl treffen. Statt eines Bauchentscheids habe ich gemeinsam mit den Fachbereichen einen gewichteten Anforderungskatalog erarbeitet und jede Option strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, steckt heute im Kern von Vendor Data Management — nur automatisiert statt manuell in Excel.",
       "flag.h3": "Vendor Data Management",
       "flag.p": "Eine vollständige Desktop-Anwendung für IT-Vendor-, Vertrags- und Risikodaten: mit eigenem Datenmodell, regelbasierter Compliance-Prüfung und einer LLM-Pipeline samt deterministischer Prüfschicht. Dazu eine CAS-Transferarbeit über die Grenzen automatisierter KI-Prüfung. Zeigt zugleich, wie ich Anforderungen, Datenmodellierung und KI-Integration in der Praxis umsetze.",
       "flag.link": "Produkt und Case Study ansehen →",
@@ -432,6 +486,19 @@
       "s3.li1": "Find AI opportunities with the business units and adopt them responsibly; make ISO/IEC 42001 and the EU AI Act workable for an SME",
       "s3.li2": "Controlled use of AI: traceable, with deterministic safeguards wherever requirements are unambiguously checkable",
       "s3.proof": "Track record: own software project with an LLM pipeline and a deterministic validation layer; ISO/IEC 42001 Foundation, Certified Risk Manager (TÜV), CAS Frontier Technologies in Finance (AI focus)",
+      "meth.eyebrow": "How I work",
+      "meth.h2": "From an unclear need to a decision that holds up",
+      "meth.lead": "Five principles that run through every engagement — from a digitalisation strategy for a mid-size company to the two software projects further down.",
+      "meth1.t": "Listen before building",
+      "meth1.d": "One-on-one and group conversations with the people who'll actually work with the result — not just the client.",
+      "meth2.t": "Compare outward, not just inward",
+      "meth2.d": "Market observation, competitive comparison, conversations with vendors and industry networks — before a direction is fixed.",
+      "meth3.t": "Make decisions measurable",
+      "meth3.d": "Weight requirements, compare options against each other in a structured way — reproducible, not gut feeling.",
+      "meth4.t": "Question the obvious path",
+      "meth4.d": "Before adopting a vendor's default recommendation, check whether it's actually the best one.",
+      "meth5.t": "Sharpen, don't fix in stone",
+      "meth5.d": "A strategy is a continuous process with periodic reassessment, not a document signed off once.",
       "zert.eyebrow": "Certificates &amp; education",
       "zert.h2": "Formal qualifications",
       "cred1.t": "M.Eng. Information Science &amp; Engineering — Darmstadt University of Applied Sciences (Erasmus Granada)",
@@ -450,6 +517,7 @@
       "branche3": "Aviation",
       "flag.eyebrow": "Independent projects",
       "flag.h2": "Two software projects",
+      "flag.lead": "Vendor Data Management grew out of a concrete experience: for Messe Essen's digitalisation strategy in 2021, I had to make a defensible choice between several competing software options. Instead of a gut call, I worked with the business units to build a weighted requirements catalogue and scored each option against it in a structured way — traceable for management, not just an opinion. That same principle — making decisions measurable instead of just asserted — is at the core of Vendor Data Management today, just automated instead of manual in Excel.",
       "flag.h3": "Vendor Data Management",
       "flag.p": "A complete desktop application for IT vendor, contract and risk data: with its own data model, rule-based compliance checks and an LLM pipeline plus a deterministic validation layer. Alongside it, a CAS thesis on the limits of automated AI checking. It also shows how I turn requirements, data modelling and AI integration into practice.",
       "flag.link": "See the product and case study →",
