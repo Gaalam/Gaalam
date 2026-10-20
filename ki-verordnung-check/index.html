@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU AI Act Pflichten-Check</title>
+<meta name="description" content="Kostenlose Orientierungshilfe zum EU AI Act: Rolle und Risikoklasse für ein KI-System bestimmen und die Pflichten mit Gesetzeszitat und Fristen erhalten. Stand Digital Omnibus 2026.">
+<link rel="canonical" href="https://aalam.ch/ki-verordnung-check/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Farben und Schriften wie aalam.ch */
+  :root{
+    --bg:#F3F4F5; --card:#FFFFFF; --text:#15171A; --muted:#4B5158; --faint:#8A9099; --line:#D9DCDF;
+    --accent:#8A2A2E; --accent-soft:#F5ECEC; --accent-text:#FFFFFF;
+    --good:#2F6B4F; --warn:#A8701C; --bad:#8A2A2E;
+    --radar-fill:rgba(138,42,46,.14); --radar-stroke:#8A2A2E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Public Sans',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+  a{color:var(--accent);text-decoration-thickness:1.5px;text-underline-offset:3px}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);padding:26px 24px}
+  .card::before,.card::after{content:"";position:absolute;width:14px;height:14px;border:0 solid var(--accent);pointer-events:none}
+  .card::before{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px}
+  .card::after{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px}
+  h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;letter-spacing:-.015em;color:var(--text)}
+  h1{font-size:1.75rem;margin:0 0 10px;line-height:1.15}
+  h2{font-size:1.3rem;margin:0 0 4px}
+  h3{font-size:1.02rem;margin:0 0 10px}
+  p{margin:0 0 12px}
+  .muted{color:var(--muted)}
+  .small{font-size:.875rem}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:10px}
+  .eyebrow::before{content:"";width:9px;height:9px;flex:0 0 auto;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
+  ul.plain{padding-left:18px;margin:0 0 16px}
+  .btn{appearance:none;border:1.5px solid var(--accent);background:var(--accent);color:var(--accent-text);
+    font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;padding:12px 20px;cursor:pointer}
+  .btn:hover:not(:disabled){background:var(--text);border-color:var(--text)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.secondary{background:transparent;color:var(--accent)}
+  .btn.secondary:hover{background:transparent;color:var(--text)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .row.between{justify-content:space-between}
+  .progress{height:4px;background:var(--line);overflow:hidden;margin:6px 0 20px}
+  .progress > div{height:100%;background:var(--accent);transition:width .25s}
+  .q{margin:22px 0}
+  .opt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);
+    padding:10px 12px;margin:8px 0;cursor:pointer;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--accent)}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .lvl{flex:0 0 26px;height:26px;border:1px solid var(--line);font-family:'JetBrains Mono',monospace;
+    display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.8rem;color:var(--muted)}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .opt.sel .lvl{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+  .opt input:focus-visible + .lvl{outline:2px solid var(--accent);outline-offset:2px}
+  .score-big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:2.8rem;font-weight:700;line-height:1}
+  .grid2{display:grid;grid-template-columns:1fr;gap:18px}
+  @media (min-width:640px){.grid2{grid-template-columns:1fr 1fr;align-items:center}}
+  .bars .bar{margin:8px 0}
+  .bars .lbl{display:flex;justify-content:space-between;font-size:.875rem}
+  .bars .track{height:6px;background:var(--line);overflow:hidden;margin-top:4px}
+  .bars .fill{height:100%}
+  .rec{border-left:2px solid var(--accent);padding:4px 0 4px 14px;margin:16px 0}
+  .next{background:var(--accent-soft);padding:9px 12px;margin-top:8px}
+  .tool{background:var(--bg);border:1px solid var(--line);padding:12px 14px;margin-top:8px;font-size:.85rem}
+  .tool ul{margin:4px 0 6px;padding-left:18px}
+  .tool a{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600}
+  .disclaimer{font-size:.8rem;color:var(--faint);margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+  svg text{fill:var(--muted);font-size:12px;font-family:'Public Sans',system-ui,sans-serif}
+  @media print{
+    body{background:#fff}
+    .noprint{display:none!important}
+    .card{border:none;padding:0}
+    .card::before,.card::after{display:none}
+  }
+</style>
+<style>
+  .seg{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+  .seg label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:8px 16px;cursor:pointer;
+    font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;transition:border-color .15s,background .15s}
+  .seg label:hover{border-color:var(--accent)}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+  .seg input:focus-visible + span{outline:2px solid var(--accent);outline-offset:3px}
+  .qq{margin:22px 0;padding-top:4px}
+  .qq h3{margin-bottom:4px}
+  .hint{font-size:.85rem;color:var(--muted);margin:0 0 4px}
+  .ref{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--faint)}
+  .verdict{border-left:2px solid var(--accent);background:var(--accent-soft);padding:12px 14px;margin:18px 0 6px}
+  .verdict strong{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:1.1rem}
+  .pair{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0 6px}
+  @media (min-width:640px){.pair{grid-template-columns:1fr 1fr}}
+  .pair > div{border:1px solid var(--line);padding:12px 14px}
+  .pair .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .pair .v{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:1.2rem;margin:2px 0 4px}
+  .tl{list-style:none;margin:10px 0 0;padding:0;border-left:2px solid var(--line)}
+  .tl li{position:relative;padding:6px 0 10px 16px}
+  .tl li::before{content:"";position:absolute;left:-6px;top:11px;width:10px;height:10px;background:var(--card);border:2px solid var(--line)}
+  .tl li.rel::before{border-color:var(--accent);background:var(--accent)}
+  .tl .d{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600}
+  .tl .st{display:inline-block;white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:.7rem;margin-left:8px;padding:1px 6px;border:1px solid var(--line);color:var(--muted)}
+  .tl li.rel .st{border-color:var(--accent);color:var(--accent)}
+  .tl .t{display:block;font-size:.9rem}
+  .tl li:not(.rel) .t{color:var(--muted)}
+  .ob{border:1px solid var(--line);padding:14px 16px;margin:12px 0}
+  .ob h3{margin:4px 0 6px}
+  .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border:1px solid currentColor}
+  .badge.PFLICHT{color:var(--accent)} .badge.EMPFEHLUNG{color:var(--good)} .badge.HINWEIS{color:var(--muted)}
+  .ob details{margin-top:8px}
+  .ob summary{cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600;color:var(--accent)}
+  .ob blockquote{margin:8px 0 0;padding:8px 12px;border-left:2px solid var(--line);font-style:italic;font-size:.86rem;color:var(--text);background:var(--bg)}
+  @media print{ .ob details{display:block} .ob details > *{display:block} }
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card" id="app" aria-live="polite"></div></div>
+
+<script>
+const TODAY = new Date();
+
+// ── Rolle (Art. 3 Nr. 3, 4, 7, 68; Art. 25 Abs. 1) ─────────────────────────────
+const ROLE_Q = [
+  { id:"internal", q:"Setzen Sie das KI-System intern in eigener Verantwortung ein?",
+    hint:"Zum Beispiel ein KI-Assistent, eine KI-gestützte HR- oder Analyse-Software, die Ihre Beschäftigten nutzen.", ref:"Art. 3 Nr. 4" },
+  { id:"customers", q:"Stellen Sie das KI-System oder eine darauf aufbauende Lösung Ihren Kunden bereit?",
+    hint:"Zum Beispiel als Produkt, als Funktion in Ihrer Software oder als Dienstleistung.", ref:"Art. 3 Nr. 3, Nr. 7" },
+  { id:"ownName", q:"Geschieht das unter Ihrem eigenen Namen oder Ihrer Marke, oder ist die KI in Ihre eigene Lösung eingebaut?",
+    hint:"Auch wenn Sie dafür ein zugekauftes KI-Modell integrieren, etwa über eine Schnittstelle.", ref:"Art. 3 Nr. 3, Nr. 68", onlyIf:"customers" },
+  { id:"modified", q:"Haben Sie ein Hochrisiko-KI-System wesentlich verändert oder seinen Zweck so geändert, dass es hochriskant wird?",
+    hint:"Wer das tut, übernimmt die Pflichten eines Anbieters.", ref:"Art. 25 Abs. 1 lit. b, c", onlyIf:"customers" }
+];
+
+const ROLES = {
+  BETREIBER:{label:"Betreiber", d:true},
+  ANBIETER:{label:"Anbieter", p:true},
+  HAENDLER:{label:"Händler", h:true},
+  BETREIBER_UND_ANBIETER:{label:"Betreiber und Anbieter", d:true, p:true},
+  BETREIBER_UND_HAENDLER:{label:"Betreiber und Händler", d:true, h:true}
+};
+
+function suggestRole(a){
+  if(!a.customers){
+    return a.internal
+      ? {role:"BETREIBER", reason:"Sie verwenden das KI-System nur intern in eigener Verantwortung (Art. 3 Nr. 4)."}
+      : {role:null, reason:"Sie verwenden das System weder intern noch stellen Sie es Kunden bereit. Damit lässt sich keine Rolle nach dem EU AI Act ableiten."};
+  }
+  const provider = a.ownName || a.modified;
+  const why = a.ownName
+    ? "Die Bereitstellung an Kunden unter eigenem Namen bzw. als Teil Ihrer eigenen Lösung macht Sie zum Anbieter (Art. 3 Nr. 3), bei integriertem fremdem KI-Modell zum nachgelagerten Anbieter (Art. 3 Nr. 68)."
+    : a.modified
+    ? "Die wesentliche Veränderung oder Umwidmung zu einem Hochrisiko-Zweck macht Sie zum Anbieter (Art. 25 Abs. 1 lit. b, c)."
+    : "Sie geben das System unverändert unter dem Namen des Herstellers weiter: Sie sind Händler (Art. 3 Nr. 7).";
+  if(provider) return a.internal
+    ? {role:"BETREIBER_UND_ANBIETER", reason:why+" Die interne Nutzung bleibt eine Betreiberrolle."}
+    : {role:"ANBIETER", reason:why};
+  return a.internal
+    ? {role:"BETREIBER_UND_HAENDLER", reason:why+" Die interne Nutzung bleibt eine Betreiberrolle."}
+    : {role:"HAENDLER", reason:why};
+}
+
+// ── Risikoklasse ───────────────────────────────────────────────────────────────
+const RISK_Q = [
+  { id:"prohibited", q:"Fällt der Einsatz unter eine verbotene KI-Praktik?",
+    hint:"Zum Beispiel Social Scoring, unterschwellige Beeinflussung, Emotionserkennung am Arbeitsplatz, biometrische Echtzeit-Fernidentifizierung im öffentlichen Raum, Erzeugung nicht einvernehmlicher intimer Darstellungen.", ref:"Art. 5" },
+  { id:"annex3", q:"Wird das System in einem Hochrisiko-Bereich nach Anhang III eingesetzt?",
+    hint:"Zum Beispiel Bewerberauswahl oder Leistungsbewertung, Kreditwürdigkeit, Risikobewertung und Preisbildung bei Lebens- und Krankenversicherungen, Zulassung oder Bewertung in der Bildung, biometrische Identifizierung, kritische Infrastruktur.", ref:"Art. 6 Abs. 2, Anhang III" },
+  { id:"art50", q:"Interagiert das System direkt mit Menschen oder erzeugt es Inhalte?",
+    hint:"Zum Beispiel Chatbot oder KI-Assistent, erzeugte Texte, Bilder, Audio oder Video, Deepfakes, Emotionserkennung.", ref:"Art. 50" }
+];
+
+const RISK = {
+  PROHIBITED:{label:"Verboten (Art. 5)", summary:"Der Einsatz ist untersagt."},
+  HIGH_RISK:{label:"Hochrisiko (Anhang III)", summary:"Umfangreiche Pflichten, für Anhang-III-Systeme ab 02.12.2027."},
+  LIMITED_RISK:{label:"Begrenztes Risiko (Art. 50)", summary:"Transparenzpflichten, gelten seit 02.08.2026."},
+  MINIMAL_RISK:{label:"Minimales Risiko", summary:"Keine risikospezifischen Pflichten; KI-Kompetenz gilt trotzdem."}
+};
+const classify = a => a.prohibited ? "PROHIBITED" : a.annex3 ? "HIGH_RISK" : a.art50 ? "LIMITED_RISK" : "MINIMAL_RISK";
+
+// ── Pflichtenkatalog (wörtliche Zitate: amtliche deutsche Fassung, ABl. L 2024/1689;
+//    Art. 4 in der Fassung der VO (EU) 2026/1744) ─────────────────────────────────
+const O = (kind,title,expl,ref,quote) => ({kind,title,expl,ref,quote});
+const OB = {
+  AI_LITERACY: O("PFLICHT","KI-Kompetenz der Beschäftigten fördern",
+    "Gilt für jede Rolle und jede Risikoklasse, seit 02.02.2025. Halten Sie Schulungen, Unterweisungen oder interne Richtlinien schriftlich fest. Seit dem Digital Omnibus ist klargestellt, dass kein bestimmtes Kompetenzniveau garantiert werden muss.",
+    "Art. 4 Abs. 1 (Fassung seit 27.07.2026)",
+    "Die Anbieter und Betreiber von KI-Systemen ergreifen Maßnahmen, um die Entwicklung der KI-Kompetenz ihres Personals und anderer Personen zu unterstützen, die in ihrem Auftrag mit dem Betrieb und der Nutzung von KI-Systemen befasst sind, … Diese Verpflichtung verpflichtet Anbieter oder Betreiber nicht, für irgendeine Person ein bestimmtes Niveau an KI-Kompetenz zu garantieren."),
+  PROHIBITED: O("PFLICHT","Einsatz sofort beenden",
+    "Das System fällt unter eine verbotene Praktik. Es darf weder genutzt noch Kunden bereitgestellt oder in Verkehr gebracht werden. Prüfen Sie Abschaltung und Kündigung. Die ursprünglichen Verbote gelten seit 02.02.2025; die mit dem Digital Omnibus ergänzten Verbote (nicht einvernehmliche intime Darstellungen, Darstellungen sexuellen Kindesmissbrauchs) ab 02.12.2026.",
+    "Art. 5 Abs. 1", "Folgende Praktiken im KI-Bereich sind verboten:"),
+  NO_FURTHER: O("HINWEIS","Keine weiteren Pflichten nach dem EU AI Act",
+    "Für diese Kombination aus Rolle und Risikoklasse gilt nur die Pflicht zur KI-Kompetenz. Empfehlung: kurz dokumentieren, warum Rolle und Risikoklasse so eingeschätzt wurden.", null, null),
+
+  D_USE_AS_INSTRUCTED: O("PFLICHT","Nur gemäss Betriebsanleitung einsetzen",
+    "Setzen Sie das System nur so ein, wie es die Betriebsanleitung des Anbieters beschreibt, und sichern Sie das technisch und organisatorisch ab. Gilt ab 02.12.2027.",
+    "Art. 26 Abs. 1",
+    "Die Betreiber von Hochrisiko-KI-Systemen treffen geeignete technische und organisatorische Maßnahmen, um sicherzustellen, dass sie solche Systeme entsprechend der den Systemen beigefügten Betriebsanleitungen und gemäß den Absätzen 3 und 6 verwenden."),
+  D_HUMAN_OVERSIGHT: O("PFLICHT","Menschliche Aufsicht übertragen",
+    "Benennen Sie Personen, die die Ergebnisse des Systems verstehen, prüfen und übersteuern können, und geben Sie ihnen die nötige Schulung und Befugnis. Gilt ab 02.12.2027.",
+    "Art. 26 Abs. 2",
+    "Die Betreiber übertragen natürlichen Personen, die über die erforderliche Kompetenz, Ausbildung und Befugnis verfügen, die menschliche Aufsicht und lassen ihnen die erforderliche Unterstützung zukommen."),
+  D_LOGS: O("PFLICHT","Protokolle mindestens sechs Monate aufbewahren",
+    "Soweit die automatisch erzeugten Protokolle bei Ihnen liegen, bewahren Sie sie mindestens sechs Monate auf. Empfehlung: Liegen sie beim Anbieter, den Zugriff vertraglich sichern. Gilt ab 02.12.2027.",
+    "Art. 26 Abs. 6",
+    "Betreiber von Hochrisiko-KI-Systemen bewahren die von ihrem Hochrisiko-KI-System automatisch erzeugten Protokolle, soweit diese Protokolle ihrer Kontrolle unterliegen, für einen der Zweckbestimmung des Hochrisiko-KI-Systems angemessenen Zeitraum von mindestens sechs Monaten auf, …"),
+  D_INFORM_WORKERS: O("PFLICHT","Beschäftigte vor dem Einsatz informieren",
+    "Wird das System am Arbeitsplatz eingesetzt, informieren Sie vorher die betroffenen Beschäftigten und die Arbeitnehmervertretung. In Deutschland zusätzlich die Mitbestimmung des Betriebsrats prüfen (§ 87 Abs. 1 Nr. 6 BetrVG). Gilt ab 02.12.2027.",
+    "Art. 26 Abs. 7",
+    "Vor der Inbetriebnahme oder Verwendung eines Hochrisiko-KI-Systems am Arbeitsplatz informieren Betreiber, die Arbeitgeber sind, die Arbeitnehmervertreter und die betroffenen Arbeitnehmer darüber, dass sie der Verwendung des Hochrisiko-KI-Systems unterliegen werden."),
+  D_INFORM_AFFECTED: O("PFLICHT","Betroffene Personen informieren",
+    "Trifft oder unterstützt das System Entscheidungen über Menschen, etwa über Bewerbende, müssen diese erfahren, dass ein Hochrisiko-KI-System eingesetzt wird. Gilt ab 02.12.2027.",
+    "Art. 26 Abs. 11",
+    "Unbeschadet des Artikels 50 der vorliegenden Verordnung informieren die Betreiber der in Anhang III aufgeführten Hochrisiko-KI-Systeme, die natürliche Personen betreffende Entscheidungen treffen oder bei solchen Entscheidungen Unterstützung leisten, die natürlichen Personen darüber, dass sie der Verwendung des Hochrisiko-KI-Systems unterliegen."),
+  D_DISCLOSE_DEEPFAKES: O("PFLICHT","Deepfakes und veröffentlichte KI-Texte offenlegen",
+    "Veröffentlichen Sie mit dem System erzeugte Deepfakes oder Texte, die die Öffentlichkeit über Angelegenheiten von öffentlichem Interesse informieren sollen, machen Sie kenntlich, dass sie künstlich erzeugt sind. Bei Texten entfällt das, wenn sie redaktionell geprüft wurden und jemand die redaktionelle Verantwortung trägt. Gilt seit 02.08.2026.",
+    "Art. 50 Abs. 4",
+    "Betreiber eines KI-Systems, das Bild-, Ton- oder Videoinhalte erzeugt oder manipuliert, die ein Deepfake sind, müssen offenlegen, dass die Inhalte künstlich erzeugt oder manipuliert wurden."),
+  D_INFORM_EMOTION: O("PFLICHT","Über Emotionserkennung informieren (falls zutreffend)",
+    "Erkennt das System Emotionen oder ordnet es Personen anhand biometrischer Daten Kategorien zu, müssen die betroffenen Personen darüber informiert werden. Gilt seit 02.08.2026.",
+    "Art. 50 Abs. 3",
+    "Die Betreiber eines Emotionserkennungssystems oder eines Systems zur biometrischen Kategorisierung informieren die davon betroffenen natürlichen Personen über den Betrieb des Systems …"),
+
+  P_REQUIREMENTS: O("PFLICHT","Anforderungen an das System erfüllen",
+    "Ihr Hochrisiko-System muss die technischen Anforderungen erfüllen: Risikomanagement über den gesamten Lebenszyklus (Art. 9), geeignete Daten, falls Sie trainieren (Art. 10), technische Dokumentation (Art. 11), automatische Protokollierung (Art. 12), Transparenz für Ihre Kunden (Art. 13), technische Möglichkeiten zur menschlichen Aufsicht (Art. 14) sowie Genauigkeit, Robustheit und Cybersicherheit (Art. 15). Gilt ab 02.12.2027.",
+    "Art. 9 Abs. 1, Art. 15 Abs. 1 (Art. 9 bis 15)",
+    "Für Hochrisiko-KI-Systeme wird ein Risikomanagementsystem eingerichtet, angewandt, dokumentiert und aufrechterhalten. … Hochrisiko-KI-Systeme werden so konzipiert und entwickelt, dass sie ein angemessenes Maß an Genauigkeit, Robustheit und Cybersicherheit erreichen und in dieser Hinsicht während ihres gesamten Lebenszyklus beständig funktionieren."),
+  P_QMS: O("PFLICHT","Qualitätsmanagementsystem einrichten",
+    "Sie brauchen schriftliche Regeln, Verfahren und Anweisungen, die die Einhaltung der Verordnung sicherstellen, u. a. für Entwicklung, Tests, Änderungen, Datenmanagement und Risikomanagement. Gilt ab 02.12.2027.",
+    "Art. 17 Abs. 1",
+    "Anbieter von Hochrisiko-KI-Systemen richten ein Qualitätsmanagementsystem ein, das die Einhaltung dieser Verordnung gewährleistet. Dieses System wird systematisch und ordnungsgemäß in Form schriftlicher Regeln, Verfahren und Anweisungen dokumentiert …"),
+  P_INSTRUCTIONS: O("PFLICHT","Betriebsanleitung für Ihre Kunden erstellen",
+    "Ihre Kunden sind als Betreiber darauf angewiesen, das System nach Ihrer Betriebsanleitung einzusetzen (Art. 26 Abs. 1). Sie muss u. a. Zweckbestimmung, Genauigkeit, bekannte Grenzen und die Massnahmen zur menschlichen Aufsicht beschreiben (Art. 13 Abs. 3). Gilt ab 02.12.2027.",
+    "Art. 13 Abs. 2",
+    "Hochrisiko-KI-Systeme werden mit Betriebsanleitungen in einem geeigneten digitalen Format bereitgestellt oder auf andere Weise mit Betriebsanleitungen versehen, die präzise, vollständige, korrekte und eindeutige Informationen in einer für die Betreiber relevanten, barrierefrei zugänglichen und verständlichen Form enthalten."),
+  P_CONFORMITY: O("PFLICHT","Vor der Bereitstellung an Kunden: Konformität nachweisen",
+    "Vor der Bereitstellung brauchen Sie eine Konformitätsbewertung (Art. 43), eine EU-Konformitätserklärung (Art. 47), die CE-Kennzeichnung (Art. 48) und die Registrierung in der EU-Datenbank (Art. 49 Abs. 1). Gilt ab 02.12.2027. Zusammen mit den übrigen Anbieterpflichten ist das ein umfangreiches Vorhaben, das fachliche Begleitung braucht.",
+    "Art. 16 lit. f, g, i",
+    "Anbieter von Hochrisiko-KI-Systemen müssen … sicherstellen, dass das Hochrisiko-KI-System dem betreffenden Konformitätsbewertungsverfahren gemäß Artikel 43 unterzogen wird, bevor es in Verkehr gebracht oder in Betrieb genommen wird; … eine EU-Konformitätserklärung gemäß Artikel 47 ausstellen; … den in Artikel 49 Absatz 1 genannten Registrierungspflichten nachkommen;"),
+  P_RECORDS: O("PFLICHT","Unterlagen zehn Jahre aufbewahren",
+    "Technische Dokumentation, Unterlagen zum Qualitätsmanagementsystem und die EU-Konformitätserklärung halten Sie zehn Jahre für die Behörden bereit. Gilt ab 02.12.2027.",
+    "Art. 18 Abs. 1",
+    "Der Anbieter hält für einen Zeitraum von zehn Jahren ab dem Inverkehrbringen oder der Inbetriebnahme des Hochrisiko-KI-Systems folgende Unterlagen für die zuständigen nationalen Behörden bereit: …"),
+  P_POST_MARKET: O("PFLICHT","Nach der Bereitstellung beobachten, Vorfälle melden, korrigieren",
+    "Sie beobachten systematisch, wie sich das System bei Ihren Kunden bewährt (Art. 72), melden schwerwiegende Vorfälle der Marktüberwachungsbehörde (Art. 73) und ergreifen Korrekturmassnahmen bis hin zur Rücknahme, wenn das System nicht mehr konform ist (Art. 20). Gilt ab 02.12.2027.",
+    "Art. 72 Abs. 1, Art. 73 Abs. 1",
+    "Anbieter müssen ein System zur Beobachtung nach dem Inverkehrbringen, das im Verhältnis zur Art der KI-Technik und zu den Risiken des Hochrisiko-KI-Systems steht, einrichten und dokumentieren. … Anbieter von in der Union in Verkehr gebrachten Hochrisiko-KI-Systemen melden schwerwiegende Vorfälle den Marktüberwachungsbehörden der Mitgliedstaaten, in denen der Vorfall stattgefunden hat."),
+  P_SUPPLIER_AGREEMENT: O("PFLICHT","Zusammenarbeit mit dem Lieferanten schriftlich regeln",
+    "Vereinbaren Sie mit dem Lieferanten der zugekauften KI schriftlich, welche Informationen, Fähigkeiten und welchen technischen Zugang er liefert, damit Sie Ihre Anbieterpflichten erfüllen können.",
+    "Art. 25 Abs. 4",
+    "Der Anbieter eines Hochrisiko-KI-Systems und der Dritte, der ein KI-System, Instrumente, Dienste, Komponenten oder Verfahren bereitstellt, die in einem Hochrisiko-KI-System verwendet oder integriert werden, legen in einer schriftlichen Vereinbarung die Informationen, die Fähigkeiten, den technischen Zugang und die sonstige Unterstützung nach dem allgemein anerkannten Stand der Technik fest, …"),
+  P_SELF_ASSESSMENT: O("PFLICHT","Einstufung dokumentieren, wenn die Lösung in einem Anhang-III-Bereich liegt",
+    "Setzen Ihre Kunden die Lösung in einem Bereich aus Anhang III ein (z. B. Personalauswahl, Kreditwürdigkeit, Bildung) und halten Sie sie trotzdem nicht für hochriskant, etwa weil sie nur eine eng gefasste Verfahrensaufgabe erledigt (Art. 6 Abs. 3), müssen Sie diese Bewertung vor der Bereitstellung dokumentieren und der Behörde auf Verlangen vorlegen. Ob diese Systeme zusätzlich in der EU-Datenbank registriert werden müssen (Art. 49 Abs. 2), ist nach dem Digital Omnibus nicht eindeutig geklärt. Vor der Bereitstellung aktuell prüfen.",
+    "Art. 6 Abs. 4",
+    "Ein Anbieter, der der Auffassung ist, dass ein in Anhang III aufgeführtes KI-System nicht hochriskant ist, dokumentiert seine Bewertung, bevor dieses System in Verkehr gebracht oder in Betrieb genommen wird."),
+  P_AI_INTERACTION: O("PFLICHT","KI-Interaktion für Nutzer erkennbar machen",
+    "Ist Ihre Lösung für die direkte Interaktion mit Menschen gedacht, etwa als Chatbot, müssen Nutzer erkennen können, dass sie mit einer KI kommunizieren, sofern das nicht offensichtlich ist. Gilt seit 02.08.2026.",
+    "Art. 50 Abs. 1",
+    "Die Anbieter stellen sicher, dass KI-Systeme, die für die direkte Interaktion mit natürlichen Personen bestimmt sind, so konzipiert und entwickelt werden, dass die betreffenden natürlichen Personen informiert werden, dass sie mit einem KI-System interagieren, …"),
+  P_MARK_CONTENT: O("PFLICHT","Erzeugte Inhalte maschinenlesbar kennzeichnen",
+    "Erzeugt Ihre Lösung Texte, Bilder, Audio oder Video, müssen diese maschinenlesbar als künstlich erzeugt erkennbar sein, z. B. über Wasserzeichen oder Metadaten. Klären Sie, ob der Lieferant des KI-Modells das technisch unterstützt. Gilt seit 02.08.2026.",
+    "Art. 50 Abs. 2",
+    "Anbieter von KI-Systemen, einschließlich KI-Systemen mit allgemeinem Verwendungszweck, die synthetische Audio-, Bild-, Video- oder Textinhalte erzeugen, stellen sicher, dass die Ausgaben des KI-Systems in einem maschinenlesbaren Format gekennzeichnet und als künstlich erzeugt oder manipuliert erkennbar sind."),
+  P_MODEL_DOCUMENTATION: O("EMPFEHLUNG","Dokumentation des KI-Modells anfordern und auswerten",
+    "Beruht Ihre Lösung auf einem Allzweck-KI-Modell (z. B. GPT, Gemini, Claude), muss dessen Hersteller Ihnen Informationen bereitstellen. Das ist eine Pflicht des Herstellers, keine eigene Pflicht von Ihnen; anfordern sollten Sie die Unterlagen trotzdem. Sie brauchen sie, um zu prüfen, ob das Modell für den Kundenzweck genutzt werden darf, um die Risikoklasse Ihrer Lösung zu begründen und um die Kennzeichnung nach Art. 50 Abs. 2 umzusetzen. Mit Datum und Modellversion ablegen und bei jedem Modellwechsel erneut prüfen.",
+    "Art. 53 Abs. 1 lit. b",
+    "Anbieter von KI-Modellen mit allgemeinem Verwendungszweck … erstellen und aktualisieren Informationen und die Dokumentation und stellen sie Anbietern von KI-Systemen zur Verfügung, die beabsichtigen, das KI-Modell mit allgemeinem Verwendungszweck in ihre KI-Systeme zu integrieren."),
+  H_CHECK_BEFORE_RESALE: O("PFLICHT","Vor der Weitergabe Nachweise prüfen",
+    "Bevor Sie ein Hochrisiko-System an Kunden weitergeben, prüfen Sie, ob CE-Kennzeichnung, EU-Konformitätserklärung und Betriebsanleitung vorliegen. Gilt ab 02.12.2027.",
+    "Art. 24 Abs. 1",
+    "Bevor Händler ein Hochrisiko-KI-System auf dem Markt bereitstellen, überprüfen sie, ob es mit der erforderlichen CE-Kennzeichnung versehen ist, ob ihm eine Kopie der in Artikel 47 genannten EU-Konformitätserklärung und Betriebsanleitungen beigefügt sind …")
+};
+
+function obligations(roleKey, risk){
+  const r = ROLES[roleKey], out = [OB.AI_LITERACY];
+  if(risk === "PROHIBITED"){ out.push(OB.PROHIBITED); return out; }
+  const high = risk === "HIGH_RISK", limited = risk === "LIMITED_RISK";
+  if(r.d){
+    if(high) out.push(OB.D_USE_AS_INSTRUCTED, OB.D_HUMAN_OVERSIGHT, OB.D_LOGS, OB.D_INFORM_WORKERS, OB.D_INFORM_AFFECTED);
+    else if(limited) out.push(OB.D_DISCLOSE_DEEPFAKES, OB.D_INFORM_EMOTION);
+  }
+  if(r.p){
+    if(high) out.push(OB.P_REQUIREMENTS, OB.P_QMS, OB.P_INSTRUCTIONS, OB.P_CONFORMITY, OB.P_RECORDS, OB.P_POST_MARKET, OB.P_SUPPLIER_AGREEMENT);
+    else out.push(OB.P_SELF_ASSESSMENT);
+    if(high || limited) out.push(OB.P_AI_INTERACTION, OB.P_MARK_CONTENT);
+    out.push(OB.P_MODEL_DOCUMENTATION);
+  }
+  if(r.h && high) out.push(OB.H_CHECK_BEFORE_RESALE);
+  if(out.length === 1) out.push(OB.NO_FURTHER);
+  return out;
+}
+
+// ── Fristen (Stand: VO (EU) 2026/1744, in Kraft seit 27.07.2026) ────────────────
+const MILESTONES = [
+  { d:"2025-02-02", t:"Verbotene Praktiken (Art. 5) und KI-Kompetenz (Art. 4)", rel:()=>true },
+  { d:"2025-08-02", t:"Pflichten für Hersteller von Allzweck-KI-Modellen (Art. 53 ff.)", rel:(r,k)=>ROLES[r].p },
+  { d:"2026-08-02", t:"Transparenzpflichten (Art. 50)", rel:(r,k)=>k==="LIMITED_RISK"||k==="HIGH_RISK" },
+  { d:"2026-12-02", t:"Ergänzte Verbote aus dem Digital Omnibus (Art. 5)", rel:(r,k)=>k==="PROHIBITED" },
+  { d:"2027-12-02", t:"Hochrisiko-Pflichten für Systeme nach Anhang III", rel:(r,k)=>k==="HIGH_RISK" },
+  { d:"2028-08-02", t:"Hochrisiko-Pflichten für KI in Produkten nach Anhang I (z. B. Maschinen, Medizinprodukte)", rel:()=>false }
+];
+const fmt = iso => iso.split("-").reverse().join(".");
+function status(iso){
+  const d = new Date(iso+"T00:00:00"), days = Math.ceil((d - TODAY)/864e5);
+  return days <= 0 ? "gilt seit "+fmt(iso) : "gilt ab "+fmt(iso)+" · in "+days+" Tagen";
+}
+
+// ── UI ─────────────────────────────────────────────────────────────────────────
+const app = document.getElementById("app");
+const roleA = {}, riskA = {};
+let step = 0;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function render(){ [renderIntro, renderRole, renderRisk, renderResult][step](); }
+function go(n){ step = n; render(); window.scrollTo(0,0); }
+
+function renderIntro(){
+  app.innerHTML = `
+    <div class="eyebrow">Orientierungshilfe</div>
+    <h1>EU AI Act: Welche Pflichten gelten für Ihren KI-Einsatz?</h1>
+    <p class="muted">In rund 3 Minuten bestimmen Sie für ein KI-System Ihre Rolle und die Risikoklasse nach der KI-Verordnung (EU) 2024/1689. Sie erhalten die Pflichten, die daraus folgen, mit Gesetzeszitat und Fristen.</p>
+    <ul class="plain small muted">
+      <li>7 Ja/Nein-Fragen in zwei Schritten: Rolle und Risikoklasse</li>
+      <li>Fristen auf dem Stand des Digital Omnibus (VO (EU) 2026/1744, in Kraft seit 27.07.2026)</li>
+      <li>Betrifft auch Schweizer Unternehmen, wenn sie KI in der EU anbieten oder die Ergebnisse in der EU verwendet werden (Art. 2 Abs. 1)</li>
+      <li>Läuft vollständig im Browser, es werden keine Daten gespeichert oder übertragen</li>
+    </ul>
+    <p class="small muted">Beantworten Sie die Fragen jeweils für <strong>ein</strong> KI-System, zum Beispiel einen KI-Assistenten oder eine KI-gestützte Fachanwendung.</p>
+    <button class="btn" id="start">Check starten</button>`;
+  document.getElementById("start").onclick = () => go(1);
+}
+
+function yesNo(id, store, q){
+  const v = store[id];
+  return `<div class="qq"><h3>${esc(q.q)}</h3><p class="hint">${esc(q.hint)}</p><span class="ref">${esc(q.ref)}</span>
+    <div class="seg" role="radiogroup" aria-label="${esc(q.q)}">
+      <label class="${v===true?"sel":""}"><input type="radio" name="${id}" value="1" ${v===true?"checked":""}><span>Ja</span></label>
+      <label class="${v===false?"sel":""}"><input type="radio" name="${id}" value="0" ${v===false?"checked":""}><span>Nein</span></label>
+    </div></div>`;
+}
+function bind(store, after){
+  app.querySelectorAll("input[type=radio]").forEach(inp => inp.onchange = () => { store[inp.name] = inp.value === "1"; after(); });
+}
+
+function renderRole(){
+  const visible = ROLE_Q.filter(q => !q.onlyIf || roleA[q.onlyIf] === true);
+  ROLE_Q.forEach(q => { if(q.onlyIf && roleA[q.onlyIf] !== true) delete roleA[q.id]; });
+  const done = visible.every(q => roleA[q.id] !== undefined);
+  const s = done ? suggestRole(roleA) : null;
+  app.innerHTML = `
+    <div class="small muted">Schritt 1 von 2</div>
+    <div class="progress"><div style="width:33%"></div></div>
+    <h2>Ihre Rolle</h2>
+    <p class="muted small">Die Rolle hängt davon ab, wie Sie das System verwenden, nicht vom Produkt. Dasselbe System kann Sie zum Betreiber und zugleich zum Anbieter machen.</p>
+    ${visible.map(q => yesNo(q.id, roleA, q)).join("")}
+    ${s ? `<div class="verdict">${s.role ? `Ihre Rolle: <strong>${esc(ROLES[s.role].label)}</strong>` : `<strong>Keine Rolle ableitbar</strong>`}<p class="small" style="margin:6px 0 0">${esc(s.reason)}</p></div>` : ""}
+    <div class="row between" style="margin-top:22px">
+      <button class="btn secondary" id="back">Zurück</button>
+      <button class="btn" id="next" ${s && s.role ? "" : "disabled"}>Weiter zur Risikoklasse</button>
+    </div>`;
+  bind(roleA, renderRole);
+  document.getElementById("back").onclick = () => go(0);
+  document.getElementById("next").onclick = () => go(2);
+}
+
+function renderRisk(){
+  const done = RISK_Q.every(q => riskA[q.id] !== undefined);
+  const k = done ? classify(riskA) : null;
+  app.innerHTML = `
+    <div class="small muted">Schritt 2 von 2</div>
+    <div class="progress"><div style="width:66%"></div></div>
+    <h2>Risikoklasse</h2>
+    <p class="muted small">Die Fragen werden der Reihe nach ausgewertet: Ein Ja bei einer früheren Frage bestimmt die Klasse. Im Zweifel «Ja» wählen und den Fall fachlich prüfen lassen.</p>
+    ${RISK_Q.map(q => yesNo(q.id, riskA, q)).join("")}
+    ${k ? `<div class="verdict">Risikoklasse: <strong>${esc(RISK[k].label)}</strong><p class="small" style="margin:6px 0 0">${esc(RISK[k].summary)}</p></div>` : ""}
+    <div class="row between" style="margin-top:22px">
+      <button class="btn secondary" id="back">Zurück</button>
+      <button class="btn" id="next" ${k ? "" : "disabled"}>Pflichten anzeigen</button>
+    </div>`;
+  bind(riskA, renderRisk);
+  document.getElementById("back").onclick = () => go(1);
+  document.getElementById("next").onclick = () => go(3);
+}
+
+function renderResult(){
+  const s = suggestRole(roleA), k = classify(riskA), list = obligations(s.role, k);
+  const nP = list.filter(o => o.kind === "PFLICHT").length;
+  const tl = MILESTONES.map(m => {
+    const rel = m.rel(s.role, k);
+    return `<li class="${rel?"rel":""}"><span class="d">${fmt(m.d)}</span><span class="st">${status(m.d)}</span><span class="t">${esc(m.t)}</span></li>`;
+  }).join("");
+  const obs = list.map(o => `
+    <div class="ob"><span class="badge ${o.kind}">${o.kind === "PFLICHT" ? "Pflicht" : o.kind === "EMPFEHLUNG" ? "Empfehlung" : "Hinweis"}</span>
+      <h3>${esc(o.title)}</h3>
+      <p class="small" style="margin:0">${esc(o.expl)}</p>
+      ${o.ref ? `<div class="ref" style="margin-top:6px">${esc(o.ref)}</div>` : ""}
+      ${o.quote ? `<details><summary>Gesetzestext anzeigen</summary><blockquote>«${esc(o.quote)}» (${esc(o.ref)})</blockquote></details>` : ""}
+    </div>`).join("");
+  app.innerHTML = `
+    <div class="eyebrow">Ihr Ergebnis</div>
+    <h1 style="margin-bottom:4px">${nP} ${nP === 1 ? "Pflicht" : "Pflichten"} für dieses KI-System</h1>
+    <div class="pair">
+      <div><div class="k">Rolle</div><div class="v">${esc(ROLES[s.role].label)}</div><p class="small muted" style="margin:0">${esc(s.reason)}</p></div>
+      <div><div class="k">Risikoklasse</div><div class="v">${esc(RISK[k].label)}</div><p class="small muted" style="margin:0">${esc(RISK[k].summary)}</p></div>
+    </div>
+    <h3 style="margin-top:24px">Fristen</h3>
+    <p class="small muted" style="margin:0">Hervorgehoben sind die Fristen, die für Ihre Kombination aus Rolle und Risikoklasse gelten.</p>
+    <ul class="tl">${tl}</ul>
+    <h3 style="margin-top:24px">Was jetzt zu tun ist</h3>
+    ${obs}
+    <div class="tool noprint" style="margin-top:20px"><strong>Software-Unterstützung – umgesetzt in einem meiner Referenzprojekte:</strong>
+      <ul>
+        <li>KI-Systemverzeichnis mit Bestimmung der eigenen Rolle je KI-System</li>
+        <li>Einstufung der Risikoklasse je Software und Service bei der Datenverarbeitung</li>
+        <li>Pflichtenkatalog je Rolle und Risikoklasse mit Gesetzeszitaten und Fristen</li>
+        <li>Prüfkatalog EU AI Act für die Beschaffung von KI-Lösungen</li>
+      </ul>
+      <a href="https://aalam.ch/referenzprojekte/vendor-data-management/" target="_blank" rel="noopener">Referenzprojekt ansehen →</a></div>
+    <div class="row noprint" style="margin-top:22px">
+      <button class="btn" id="print">Als PDF speichern</button>
+      <button class="btn secondary" id="restart">Weiteres KI-System prüfen</button>
+    </div>
+    <p class="noprint small" style="margin-top:18px">Möchten Sie den KI-Einsatz in Ihrem Unternehmen strukturiert erfassen? <a href="https://aalam.ch/kontakt/" target="_blank" rel="noopener">Erstgespräch vereinbaren</a></p>
+    <div class="disclaimer">Dieser Check ist eine vereinfachte Orientierungshilfe und ersetzt keine rechtliche Prüfung im Einzelfall; er ist keine Rechtsberatung. Zitate aus der amtlichen deutschen Fassung der Verordnung (EU) 2024/1689 (ABl. L 2024/1689), Auslassungen mit «…» markiert; Art. 4 in der Fassung der Verordnung (EU) 2026/1744 (Digital Omnibus). Stand der Angaben: Oktober 2026. Alle Eingaben werden ausschliesslich in Ihrem Browser verarbeitet.</div>`;
+  document.getElementById("print").onclick = () => {
+    app.querySelectorAll("details").forEach(d => d.open = true); window.print();
+  };
+  document.getElementById("restart").onclick = () => {
+    for(const x in roleA) delete roleA[x]; for(const x in riskA) delete riskA[x]; go(0);
+  };
+}
+
+render();
+</script>
+</body>
+</html>
