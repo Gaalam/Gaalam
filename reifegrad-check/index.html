@@ -64,6 +64,7 @@
   .bars .track{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:3px}
   .bars .fill{height:100%;border-radius:6px}
   .rec{border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:14px 0}
+  .next{background:var(--accent-soft);border-radius:8px;padding:8px 12px;margin-top:8px}
   .tool{background:var(--accent-soft);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:.85rem}
   .tool ul{margin:4px 0 6px;padding-left:18px}
   .tool a{color:var(--accent);font-weight:600}
@@ -86,9 +87,9 @@ const DIMS = [
       { q:"Welche Grundlagen für Vendor Governance existieren schriftlich?", opts:[
         "Keine schriftlichen Regeln.",
         "Einzelne Vorgaben (z. B. in der Einkaufsrichtlinie), aber keine eigene Policy.",
-        "Eine eigene Vendor-Governance-Policy, von der Geschäftsleitung freigegeben.",
-        "Zusätzlich eine RACI bzw. Rollenbeschreibung und ein Nachweis der letzten Überprüfung der Policy.",
-        "Zusätzlich ein regelmässiger Management-Report zur Vendor Governance mit dokumentierten Entscheidungen."]},
+        "Eine eigene Vendor-Governance-Policy, von der Geschäftsleitung freigegeben, mit festgelegter Gesamtverantwortung auf Leitungsebene.",
+        "Zusätzlich eine RACI bzw. Rollenbeschreibung (inklusive Datenschutz und Compliance) und ein Nachweis der letzten Überprüfung der Policy.",
+        "Zusätzlich ein regelmässiger Bericht einer vom Fachbereich unabhängigen Stelle (z. B. Risk oder Compliance) an Geschäftsleitung bzw. Verwaltungsrat, mit dokumentierten Entscheidungen."]},
       { q:"Wann werden Einkauf, Vendor Management bzw. Security eingebunden, wenn ein Fachbereich einen neuen IT-Dienstleister beauftragen möchte?", opts:[
         "Die Fachbereiche beauftragen in der Regel eigenständig.",
         "Das hängt vom Projekt oder von den beteiligten Personen ab – eine verbindliche Regel gibt es nicht.",
@@ -97,11 +98,11 @@ const DIMS = [
         "Bevor überhaupt ein neuer Anbieter gesucht wird, wird geprüft, ob bestehende Lieferanten oder Verträge den Bedarf abdecken."]}
     ],
     rec:{
-      low:"Eine schlanke Vendor-Governance-Policy mit klaren Rollen (Vendor Owner, Einkauf, Legal, Security) und einer RACI aufsetzen – das ist das Fundament für alle weiteren Schritte.",
-      high:"Policy-Einhaltung über wenige Kennzahlen messbar machen und jährlich gegen die Sourcing-Strategie spiegeln."},
-    tool:[
-      "Rollenprüfung je Vertrag (z. B. Contract Owner, Legal Counsel, Vendor Manager, Datenschutz)",
-      "KPI-Dashboards und zeitgesteuerte Reports (PDF, HTML, Excel) per E-Mail"]
+      low:"Eine schlanke Vendor-Governance-Policy mit klaren Rollen (Vendor Owner, Einkauf, Legal, Datenschutz, Compliance, Security) und einer RACI aufsetzen und die Gesamtverantwortung auf Leitungsebene festlegen – das ist das Fundament für alle weiteren Schritte.",
+      high:"Policy-Einhaltung über wenige Kennzahlen messbar machen, durch eine vom Fachbereich unabhängige Stelle überwachen lassen und jährlich gegen die Sourcing-Strategie spiegeln."},
+    tool:{
+      low:["Rollenprüfung je Vertrag (z. B. Contract Owner, Legal Counsel, Vendor Manager, Datenschutz)"],
+      high:["KPI-Dashboards und zeitgesteuerte Reports (PDF, HTML, Excel) per E-Mail"]}
   },
   { name:"Inventar & Klassifizierung", short:"Inventar",
     questions:[
@@ -121,10 +122,10 @@ const DIMS = [
     rec:{
       low:"Ein zentrales Lieferanteninventar aufbauen und alle Lieferanten anhand weniger, klarer Kriterien in Kritikalitätsklassen einteilen.",
       high:"Sub-Dienstleister und Datenflüsse ins Inventar aufnehmen und die Neubewertung an Ereignisse (Vorfall, Scope-Änderung) koppeln."},
-    tool:[
-      "Zentrales Datenmodell Lieferant → Vertrag → Lizenz / Service",
-      "LEI-Abgleich über GLEIF und Tier-Klassifizierung je Lieferant",
-      "Erfassung von Datenverarbeitung, Fernzugriff, Sub-Dienstleistern und Datenstandorten je Lieferant bzw. Service"]
+    tool:{
+      low:["Zentrales Datenmodell Lieferant → Vertrag → Lizenz / Service",
+           "LEI-Abgleich über GLEIF und Tier-Klassifizierung je Lieferant"],
+      high:["Erfassung von Datenverarbeitung, Fernzugriff, Sub-Dienstleistern und Datenstandorten je Lieferant bzw. Service"]}
   },
   { name:"Vertragsmanagement", short:"Verträge",
     questions:[
@@ -137,41 +138,69 @@ const DIMS = [
       { q:"Welche Vertragsvorgaben existieren?", opts:[
         "Keine – meist wird auf Lieferantenpapier unterschrieben.",
         "Einzelne Musterverträge, deren Nutzung freiwillig ist.",
-        "Verbindliche Musterklauseln für Datenschutz, Audit-Rechte, SLAs und Exit.",
+        "Verbindliche Musterklauseln für Datenschutz, Audit-Rechte, SLAs, Haftung, Sub-Dienstleister, Meldefristen bei Vorfällen und Exit.",
         "Zusätzlich ein dokumentierter Freigabeprozess für Abweichungen.",
         "Zusätzlich ein Nachweis, dass die Klauseln regelmässig an neue Regulierung angepasst werden."]}
     ],
     rec:{
-      low:"Alle Verträge zentral erfassen – mindestens Laufzeit, Kündigungsfrist und Verantwortliche – und Musterklauseln für Datenschutz, Audit-Rechte, SLAs und Exit definieren.",
+      low:"Zuerst alle Verträge zentral erfassen, mindestens mit Laufzeit, Kündigungsfrist und Verantwortlichen. Danach Musterklauseln definieren, beginnend mit Datenschutz, Haftung und Exit; später folgen Audit-Rechte, SLAs, Sub-Dienstleister, Meldefristen bei Vorfällen und Kündigungsrechte.",
       high:"Fristen-Erinnerungen automatisieren und Klauselabweichungen auswerten, um Verhandlungspositionen datenbasiert zu stärken."},
-    tool:[
-      "Automatische Fristenüberwachung und Kündigungsassistent",
-      "Prüfung gegen eine 14-Punkte-Klausel-Baseline (z. B. AVV, Haftung, Audit-Rechte, Exit)",
-      "Vollständigkeits-Score mit konkreten Lückenhinweisen je Vertrag"]
+    tool:{
+      low:["Automatische Fristenüberwachung und Kündigungsassistent",
+           "Prüfung gegen eine 14-Punkte-Klausel-Baseline (z. B. AVV, Haftung, Audit-Rechte, Exit)"],
+      high:["Automatische Fristenüberwachung und Kündigungsassistent",
+            "Vollständigkeits-Score mit konkreten Lückenhinweisen je Vertrag"]}
   },
   { name:"Risiko & Compliance", short:"Risiko",
     questions:[
       { q:"Was existiert zur Bewertung von Lieferantenrisiken?", opts:[
         "Nichts – Risiken werden erst nach Vorfällen betrachtet.",
         "Einzelne Bewertungen, ohne einheitliche Vorlage.",
-        "Ein standardisierter Fragebogen bzw. eine Bewertungsvorlage, die vor Vertragsabschluss genutzt wird.",
+        "Ein standardisierter Fragebogen bzw. eine Bewertungsvorlage, die vor Vertragsabschluss genutzt wird, inklusive Grundprüfungen wie Sanktionslisten.",
         "Zusätzlich dokumentierte Re-Assessments mit nachverfolgten Massnahmen.",
         "Zusätzlich laufendes Monitoring (z. B. Ratings, Zertifikate, Meldungen) mit definierten Frühwarnindikatoren."]},
-      { q:"Ein Auditor verlangt Nachweise zu Ihren IT-Auslagerungen (z. B. nach DORA, NIS2 oder DSGVO / nDSG). Wie schnell können Sie liefern?", opts:[
-        "Gar nicht – unklar, welche Anforderungen überhaupt gelten.",
+      { q:"Ist geklärt, welche Regelwerke für Ihre Lieferantenbeziehungen gelten (z. B. nDSG, DSGVO, ISG, bei Finanzinstituten FINMA-Vorgaben oder DORA, je nach Sektor NIS2)?", opts:[
+        "Nein, das wurde nie geprüft.",
+        "Ungefähr bekannt, aber nicht dokumentiert.",
+        "Eine dokumentierte Einordnung liegt vor, inklusive der Frage, welche Leistungen als regulatorische Auslagerung gelten.",
+        "Zusätzlich sind die daraus folgenden Anforderungen in Verträgen und Prozessen umgesetzt.",
+        "Zusätzlich werden regulatorische Änderungen laufend verfolgt und die Einordnung bei Bedarf angepasst."]},
+      { q:"Ein Prüfer verlangt Nachweise zu Ihren wesentlichen Lieferanten bzw. Auslagerungen. Wie schnell können Sie liefern?", opts:[
+        "Gar nicht – Nachweise existieren kaum.",
         "In Wochen – die Nachweise müssen erst erstellt werden.",
         "In einigen Tagen – Unterlagen existieren, müssen aber zusammengetragen werden.",
-        "Innerhalb eines Tages – z. B. aus einem gepflegten Informationsregister.",
+        "Innerhalb eines Tages – z. B. aus einem gepflegten Lieferanten- bzw. Auslagerungsregister.",
         "Sofort – die Nachweise sind aktuell, regulatorische Änderungen bereits eingearbeitet."]}
     ],
     rec:{
-      low:"Ein standardisiertes Risk Assessment vor jedem neuen Vertrag einführen und klären, welche Regulierungen (DORA, NIS2, DSGVO / nDSG) konkret gelten.",
+      low:"Ein standardisiertes Risk Assessment inklusive Grundprüfungen (z. B. Sanktionslisten) vor jedem neuen Vertrag einführen und dokumentiert klären, welche Regelwerke konkret gelten (z. B. nDSG, DSGVO, ISG, bei Finanzinstituten FINMA-Vorgaben oder DORA).",
       high:"Re-Assessments nach Kritikalität takten und um kontinuierliches Monitoring mit Frühwarnindikatoren ergänzen."},
-    tool:[
-      "Compliance-Kataloge für DSGVO, nDSG, IT-Sicherheit, ISO/IEC 42001 und EU AI Act mit Status je Kriterium",
-      "Verarbeitungsverzeichnis nach Art. 30 DSGVO",
-      "Frühwarnung über Schwachstellen-Daten (ENISA EUVD) und quellenbelegte Nachrichtenauswertung je Lieferant",
-      "KI-gestützte Vertragsanalyse mit Risiko-Report, Massnahmenplan und Audit-Fragebögen"]
+    tool:{
+      low:["KI-gestützte Vertragsanalyse mit Risiko-Report, Massnahmenplan und Audit-Fragebögen",
+           "Compliance-Kataloge für DSGVO, nDSG, IT-Sicherheit, ISO/IEC 42001 und EU AI Act mit Status je Kriterium"],
+      high:["Frühwarnung über Schwachstellen-Daten (ENISA EUVD) und quellenbelegte Nachrichtenauswertung je Lieferant"]}
+  },
+  { name:"Datenschutz & Vorfälle", short:"Datenschutz",
+    questions:[
+      { q:"Wie ist geregelt, wenn Lieferanten personenbezogene Daten in Ihrem Auftrag bearbeiten, auch im Ausland?", opts:[
+        "Gar nicht – Verträge zur Auftragsbearbeitung gibt es kaum.",
+        "Teilweise – für einzelne Lieferanten liegen Verträge vor, ein Überblick fehlt.",
+        "Für alle betroffenen Lieferanten liegen Verträge zur Auftragsbearbeitung vor (Art. 9 nDSG bzw. Art. 28 DSGVO).",
+        "Zusätzlich ist dokumentiert, in welche Länder Daten fliessen und auf welcher Grundlage (z. B. Standardvertragsklauseln).",
+        "Zusätzlich werden neue oder geänderte Sub-Dienstleister vor dem Einsatz geprüft und freigegeben."]},
+      { q:"Ein Lieferant hat eine Datenpanne oder einen Cyberangriff. Was ist geregelt?", opts:[
+        "Nichts – ob und wann wir informiert würden, ist offen.",
+        "Der Lieferant würde uns vermutlich informieren, vertraglich geregelt ist es nicht.",
+        "Vertraglich vereinbarte Meldefristen, die zu unseren eigenen Meldepflichten passen (z. B. nDSG, DSGVO, ISG).",
+        "Zusätzlich ein interner Ablauf mit Zuständigkeiten, der Vorfälle bei Lieferanten ausdrücklich einschliesst.",
+        "Zusätzlich wurde der Ablauf geübt, und Vorfälle werden ausgewertet und fliessen in die Lieferantenbewertung ein."]}
+    ],
+    rec:{
+      low:"Verträge zur Auftragsbearbeitung für alle Lieferanten mit Zugriff auf Personendaten nachziehen und Meldefristen für Vorfälle vertraglich vereinbaren, abgestimmt auf die eigenen Meldepflichten.",
+      high:"Datenübermittlungen ins Ausland laufend dokumentieren, Sub-Dienstleister vor dem Einsatz freigeben und den Ablauf bei Vorfällen von Lieferanten regelmässig üben."},
+    tool:{
+      low:["Prüfung, ob ein Auftragsverarbeitungsvertrag (AVV) und eine Sub-Dienstleister-Klausel vorliegen (Teil der Klausel-Baseline)"],
+      high:["Verarbeitungsverzeichnis nach Art. 30 DSGVO"]}
   },
   { name:"Performance-Steuerung", short:"Performance",
     questions:[
@@ -198,7 +227,7 @@ const DIMS = [
         "Wir merken es erst beim Ausfall und improvisieren.",
         "Man weiss ungefähr, was zu tun wäre – aufgeschrieben ist nichts.",
         "Ein dokumentierter Exit-Plan liegt vor.",
-        "Der Exit-Plan ist aktuell, und Exit-Unterstützung ist vertraglich abgesichert.",
+        "Der Exit-Plan ist aktuell, und Exit-Unterstützung ist vertraglich abgesichert (Rückgabe und Löschung der Daten, Übergangsfrist, Mitwirkung bei der Migration).",
         "Der Exit-Plan wurde getestet, und eine bewertete Alternative steht bereit."]},
       { q:"Was existiert zu Konzentrationsrisiken und Abhängigkeiten?", opts:[
         "Nichts.",
@@ -208,12 +237,12 @@ const DIMS = [
         "Zusätzlich definierte Grenzen im Risikoappetit und Massnahmen wie Multi-Sourcing oder Portabilität."]}
     ],
     rec:{
-      low:"Für die kritischsten Lieferanten Exit-Strategien dokumentieren und Exit-Unterstützung vertraglich absichern.",
+      low:"Für die kritischsten Lieferanten Exit-Strategien dokumentieren und Exit-Unterstützung vertraglich absichern: Rückgabe und Löschung der Daten, Übergangsfrist und Mitwirkung bei der Migration.",
       high:"Exit-Pläne praktisch testen und Konzentrationsrisiken – auch bei Cloud- und Sub-Dienstleistern – regelmässig berichten."},
-    tool:[
-      "Prüfung, ob Exit-Regelungen vertraglich abgedeckt sind (Teil der Klausel-Baseline)",
-      "Beziehungsgraph der IT-Assets zur Sichtbarmachung von Abhängigkeiten",
-      "KI-gestützter Entwurf einer Ausschreibung (RfX) aus bestehenden Lizenz- und Nutzungsdaten"]
+    tool:{
+      low:["Prüfung, ob Exit-Regelungen vertraglich abgedeckt sind (Teil der Klausel-Baseline)"],
+      high:["Beziehungsgraph der IT-Assets zur Sichtbarmachung von Abhängigkeiten",
+            "KI-gestützter Entwurf einer Ausschreibung (RfX) aus bestehenden Lizenz- und Nutzungsdaten"]}
   }
 ];
 
@@ -231,7 +260,8 @@ let step = -1; // -1 = Intro, 0..5 = Dimensionen, 6 = Ergebnis
 
 const key = (d,q) => d + "-" + q;
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const dimScore = d => DIMS[d].questions.reduce((s,_,q)=>s+answers[key(d,q)],0) / DIMS[d].questions.length;
+const answered = k => answers[k] !== undefined;
+const dimScore = d => DIMS[d].questions.reduce((s,_,q)=>s+Math.max(1,answers[key(d,q)]),0) / DIMS[d].questions.length;
 const levelFor = v => LEVELS.find(l => v < l.max);
 const colorFor = v => v < 2.6 ? "var(--bad)" : v < 3.4 ? "var(--warn)" : "var(--good)";
 
@@ -245,9 +275,10 @@ function renderIntro(){
   app.innerHTML = `
     <div class="eyebrow">Selbsteinschätzung</div>
     <h1>Vendor Governance Reifegrad-Check</h1>
-    <p class="muted">Wie professionell steuert Ihre Organisation ihre IT-Lieferanten? In rund 4 Minuten erhalten Sie eine Einordnung über sechs Dimensionen – mit konkreten Handlungsempfehlungen.</p>
+    <p class="muted">Wie professionell steuert Ihre Organisation ihre IT-Lieferanten? In rund 5 Minuten erhalten Sie eine Einordnung über sieben Dimensionen – mit konkreten Handlungsempfehlungen.</p>
     <ul class="plain small muted">
-      <li>12 Fragen, je 5 Reifegradstufen (angelehnt an die CMMI-Logik)</li>
+      <li>15 Fragen, je 5 Reifegradstufen (angelehnt an die CMMI-Logik)</li>
+      <li>Im Zweifel «Weiss ich nicht» wählen – das wird wie Stufe 1 gewertet</li>
       <li>Ergebnis als Radar-Diagramm mit Top-3-Handlungsfeldern</li>
       <li>Läuft vollständig im Browser – es werden keine Daten gespeichert oder übertragen</li>
     </ul>
@@ -273,9 +304,14 @@ function renderStep(){
         <span class="lvl" aria-hidden="true">${v}</span>
         <span>${esc(o)}</span></label>`;
     });
+    const unk = answers[k] === 0;
+    html += `<label class="opt${unk?" sel":""}">
+      <input type="radio" name="${k}" value="0" ${unk?"checked":""}>
+      <span class="lvl" aria-hidden="true">?</span>
+      <span class="muted">Weiss ich nicht</span></label>`;
     html += `</fieldset>`;
   });
-  const done = d.questions.every((_,qi) => answers[key(step,qi)]);
+  const done = d.questions.every((_,qi) => answered(key(step,qi)));
   html += `<div class="row between">
     <button class="btn secondary" id="back">Zurück</button>
     <button class="btn" id="next" ${done?"":"disabled"}>${step === DIMS.length-1 ? "Auswertung anzeigen" : "Weiter"}</button>
@@ -288,7 +324,7 @@ function renderStep(){
       app.querySelectorAll(`input[name="${inp.name}"]`).forEach(i =>
         i.closest(".opt").classList.toggle("sel", i.checked));
       document.getElementById("next").disabled =
-        !d.questions.every((_,qi) => answers[key(step,qi)]);
+        !d.questions.every((_,qi) => answered(key(step,qi)));
     };
   });
   document.getElementById("back").onclick = () => { step--; render(); window.scrollTo(0,0); };
@@ -301,7 +337,7 @@ function radarSVG(scores){
     const a = -Math.PI/2 + i*2*Math.PI/n;
     return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
   };
-  let s = `<svg viewBox="0 0 400 330" width="100%" role="img" aria-label="Radar-Diagramm der Reifegrade je Dimension">`;
+  let s = `<svg viewBox="-40 0 480 330" width="100%" role="img" aria-label="Radar-Diagramm der Reifegrade je Dimension">`;
   for(let l=1;l<=5;l++){
     const poly = scores.map((_,i)=>pt(i,R*l/5).join(",")).join(" ");
     s += `<polygon points="${poly}" fill="none" stroke="var(--line)" stroke-width="1"/>`;
@@ -330,18 +366,36 @@ function renderResult(){
   const total = scores.reduce((a,b)=>a+b,0)/scores.length;
   const lvl = levelFor(total);
   const weakest = scores.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v).slice(0,3);
+  const unknown = Object.values(answers).filter(v => v === 0).length;
 
   let bars = scores.map((v,i)=>`
     <div class="bar"><div class="lbl"><span>${esc(DIMS[i].name)}</span><span>${v.toFixed(1)} / 5</span></div>
     <div class="track"><div class="fill" style="width:${v/5*100}%;background:${colorFor(v)}"></div></div></div>`).join("");
 
-  let recs = weakest.map(w=>`
+  // Schwächste Frage der Dimension; die Antwort der nächsthöheren Stufe ist der nächste Schritt
+  const nextStep = d => {
+    const w = DIMS[d].questions.map((qq,qi)=>({qq, a:answers[key(d,qi)]}))
+      .sort((x,y)=>Math.max(1,x.a)-Math.max(1,y.a))[0];
+    if(w.a === 0) return {q:w.qq.q, text:"Zuerst den Ist-Stand klären: Wer in Ihrer Organisation kann diese Frage beantworten, und was lässt sich belegen?"};
+    if(w.a >= 5) return null;
+    return {q:w.qq.q, lvl:w.a+1, text:w.qq.opts[w.a]};
+  };
+
+  let recs = weakest.map(w=>{
+    const ns = nextStep(w.i);
+    return `
     <div class="rec"><strong>${esc(DIMS[w.i].name)}</strong> <span class="small muted">(${w.v.toFixed(1)} / 5)</span>
     <p class="small" style="margin:4px 0 0">${esc(w.v < 3 ? DIMS[w.i].rec.low : DIMS[w.i].rec.high)}</p>
-    ${DIMS[w.i].tool ? `<div class="tool noprint"><strong>Software-Unterstützung – umgesetzt in einem meiner Referenzprojekte:</strong>
-      <ul>${DIMS[w.i].tool.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
-      <a href="https://aalam.ch/referenzprojekte/vendor-data-management/" target="_blank" rel="noopener">Referenzprojekt ansehen →</a></div>` : ""}
-    </div>`).join("");
+    ${ns ? `<div class="next small"><span class="muted">Ihr schwächster Punkt: ${esc(ns.q)}</span><br>
+      <strong>${ns.lvl ? `Nächste Stufe (${ns.lvl}):` : "Nächster Schritt:"}</strong> ${esc(ns.text)}</div>` : ""}
+    </div>`;}).join("");
+
+  const tools = weakest
+    .map(w=>({name:DIMS[w.i].name, items:DIMS[w.i].tool ? DIMS[w.i].tool[w.v < 3 ? "low" : "high"] : []}))
+    .filter(t=>t.items.length);
+  const toolBox = tools.length ? `<div class="tool noprint" style="margin-top:20px"><strong>Software-Unterstützung – umgesetzt in einem meiner Referenzprojekte:</strong>
+      ${tools.map(t=>`<div style="margin-top:8px">${esc(t.name)}</div><ul>${t.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`).join("")}
+      <a href="https://aalam.ch/referenzprojekte/vendor-data-management/" target="_blank" rel="noopener">Referenzprojekt ansehen →</a></div>` : "";
 
   app.innerHTML = `
     <div class="eyebrow">Ihr Ergebnis</div>
@@ -354,8 +408,10 @@ function renderResult(){
       <div>${radarSVG(scores)}</div>
     </div>
     <div class="bars" style="margin-top:8px">${bars}</div>
+    ${unknown ? `<p class="small muted" style="margin-top:12px">${unknown} ${unknown === 1 ? "Antwort" : "Antworten"} mit «Weiss ich nicht» wurden wie Stufe 1 gewertet. Was sich nicht nachweisen lässt, zählt in einer Prüfung in der Regel als nicht vorhanden.</p>` : ""}
     <h3 style="margin-top:26px">Ihre drei grössten Hebel</h3>
     ${recs}
+    ${toolBox}
     <div class="row noprint" style="margin-top:22px">
       <button class="btn" id="print">Als PDF speichern</button>
       <button class="btn secondary" id="restart">Neu starten</button>
