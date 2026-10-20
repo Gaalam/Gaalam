@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor Governance Check</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --text:#1b2330; --muted:#5d6878; --line:#dfe3ea;
+    --accent:#1f5f8b; --accent-soft:#e3eef6; --accent-text:#ffffff;
+    --good:#2e7d5b; --warn:#b7791f; --bad:#b23b3b;
+    --radar-fill:rgba(31,95,139,.22); --radar-stroke:#1f5f8b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12161c; --card:#1b212a; --text:#e6eaf0; --muted:#9aa5b4; --line:#2c3440;
+      --accent:#5ea6d6; --accent-soft:#1e3242; --accent-text:#0d1218;
+      --good:#5cc19a; --warn:#e0a84a; --bad:#e07474;
+      --radar-fill:rgba(94,166,214,.25); --radar-stroke:#5ea6d6;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161c; --card:#1b212a; --text:#e6eaf0; --muted:#9aa5b4; --line:#2c3440;
+    --accent:#5ea6d6; --accent-soft:#1e3242; --accent-text:#0d1218;
+    --good:#5cc19a; --warn:#e0a84a; --bad:#e07474;
+    --radar-fill:rgba(94,166,214,.25); --radar-stroke:#5ea6d6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  h1{font-size:1.6rem;margin:0 0 8px;line-height:1.25}
+  h2{font-size:1.25rem;margin:0 0 4px}
+  h3{font-size:1rem;margin:0 0 10px}
+  p{margin:0 0 12px}
+  .muted{color:var(--muted)}
+  .small{font-size:.875rem}
+  .eyebrow{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  ul.plain{padding-left:18px;margin:0 0 16px}
+  .btn{appearance:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-text);
+    font:inherit;font-weight:600;padding:11px 18px;border-radius:10px;cursor:pointer}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.secondary{background:transparent;color:var(--accent)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .row.between{justify-content:space-between}
+  .progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 20px}
+  .progress > div{height:100%;background:var(--accent);transition:width .25s}
+  .q{margin:22px 0}
+  .opt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px;margin:8px 0;cursor:pointer;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--accent)}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .lvl{flex:0 0 26px;height:26px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--muted)}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .opt.sel .lvl{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+  .opt input:focus-visible + .lvl{outline:2px solid var(--accent);outline-offset:2px}
+  .score-big{font-size:2.6rem;font-weight:700;line-height:1}
+  .grid2{display:grid;grid-template-columns:1fr;gap:18px}
+  @media (min-width:640px){.grid2{grid-template-columns:1fr 1fr;align-items:center}}
+  .bars .bar{margin:8px 0}
+  .bars .lbl{display:flex;justify-content:space-between;font-size:.875rem}
+  .bars .track{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:3px}
+  .bars .fill{height:100%;border-radius:6px}
+  .rec{border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:14px 0}
+  .tool{background:var(--accent-soft);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:.85rem}
+  .tool ul{margin:4px 0 6px;padding-left:18px}
+  .tool a{color:var(--accent);font-weight:600}
+  .disclaimer{font-size:.8rem;color:var(--muted);margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+  svg text{fill:var(--muted);font-size:12px;font-family:inherit}
+  @media print{
+    body{background:#fff}
+    .noprint{display:none!important}
+    .card{border:none;padding:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card" id="app" aria-live="polite"></div></div>
+
+<script>
+const DIMS = [
+  { name:"Strategie & Policy", short:"Strategie",
+    questions:[
+      { q:"Welche Grundlagen für Vendor Governance existieren schriftlich?", opts:[
+        "Keine schriftlichen Regeln.",
+        "Einzelne Vorgaben (z. B. in der Einkaufsrichtlinie), aber keine eigene Policy.",
+        "Eine eigene Vendor-Governance-Policy, von der Geschäftsleitung freigegeben.",
+        "Zusätzlich eine RACI bzw. Rollenbeschreibung und ein Nachweis der letzten Überprüfung der Policy.",
+        "Zusätzlich ein regelmässiger Management-Report zur Vendor Governance mit dokumentierten Entscheidungen."]},
+      { q:"Wann werden Einkauf, Vendor Management bzw. Security eingebunden, wenn ein Fachbereich einen neuen IT-Dienstleister beauftragen möchte?", opts:[
+        "Die Fachbereiche beauftragen in der Regel eigenständig.",
+        "Das hängt vom Projekt oder von den beteiligten Personen ab – eine verbindliche Regel gibt es nicht.",
+        "Es gibt eine verbindliche Regel: Ohne Freigabe durch diese Stellen wird kein Vertrag unterschrieben.",
+        "Diese Stellen sind schon dabei, bevor Angebote eingeholt werden – ihre Anforderungen bestimmen mit, welche Anbieter infrage kommen.",
+        "Bevor überhaupt ein neuer Anbieter gesucht wird, wird geprüft, ob bestehende Lieferanten oder Verträge den Bedarf abdecken."]}
+    ],
+    rec:{
+      low:"Eine schlanke Vendor-Governance-Policy mit klaren Rollen (Vendor Owner, Einkauf, Legal, Security) und einer RACI aufsetzen – das ist das Fundament für alle weiteren Schritte.",
+      high:"Policy-Einhaltung über wenige Kennzahlen messbar machen und jährlich gegen die Sourcing-Strategie spiegeln."},
+    tool:[
+      "Rollenprüfung je Vertrag (z. B. Contract Owner, Legal Counsel, Vendor Manager, Datenschutz)",
+      "KPI-Dashboards und zeitgesteuerte Reports (PDF, HTML, Excel) per E-Mail"]
+  },
+  { name:"Inventar & Klassifizierung", short:"Inventar",
+    questions:[
+      { q:"Wie schnell könnten Sie alle Lieferanten auflisten, die Zugriff auf personenbezogene Daten haben?", opts:[
+        "Gar nicht verlässlich.",
+        "In Wochen – per Rundmail an die Fachbereiche.",
+        "In einigen Tagen – aus einer zentralen Liste, mit Nacharbeit.",
+        "Innerhalb von Stunden – per Abfrage im Lieferanteninventar.",
+        "Sofort – inklusive Sub-Dienstleistern und Datenstandorten."]},
+      { q:"Woran erkennt man bei Ihnen, ob ein Lieferant besonders wichtig oder riskant ist?", opts:[
+        "Gar nicht – alle Lieferanten werden gleich behandelt.",
+        "Die Beteiligten wissen es aus Erfahrung, festgehalten ist es aber nirgends.",
+        "Es gibt feste Kriterien (z. B. Folgen eines Ausfalls, Zugriff auf Daten, Vertragsvolumen), und jeder Lieferant ist danach eingestuft.",
+        "Die Einstufung hat Folgen: Wichtige Lieferanten werden z. B. gründlicher und häufiger überprüft als andere.",
+        "Die Einstufung wird aktualisiert, sobald sich etwas ändert – etwa nach einem Vorfall oder wenn der Lieferant neue Leistungen übernimmt."]}
+    ],
+    rec:{
+      low:"Ein zentrales Lieferanteninventar aufbauen und alle Lieferanten anhand weniger, klarer Kriterien in Kritikalitätsklassen einteilen.",
+      high:"Sub-Dienstleister und Datenflüsse ins Inventar aufnehmen und die Neubewertung an Ereignisse (Vorfall, Scope-Änderung) koppeln."},
+    tool:[
+      "Zentrales Datenmodell Lieferant → Vertrag → Lizenz / Service",
+      "LEI-Abgleich über GLEIF und Tier-Klassifizierung je Lieferant",
+      "Erfassung von Datenverarbeitung, Fernzugriff, Sub-Dienstleistern und Datenstandorten je Lieferant bzw. Service"]
+  },
+  { name:"Vertragsmanagement", short:"Verträge",
+    questions:[
+      { q:"Wie schnell finden Sie für einen beliebigen Lieferanten den gültigen Vertrag samt Kündigungsfrist?", opts:[
+        "Oft gar nicht – Verträge sind teilweise unauffindbar.",
+        "In Tagen – Suche in Postfächern und Ordnern.",
+        "In Minuten – zentrale Ablage, die Frist muss aber im Dokument nachgelesen werden.",
+        "Sofort – Laufzeit und Frist sind als Daten erfasst, Erinnerungen laufen automatisch.",
+        "Sofort – inklusive Übersicht über Konditionen und Abweichungen von Musterklauseln."]},
+      { q:"Welche Vertragsvorgaben existieren?", opts:[
+        "Keine – meist wird auf Lieferantenpapier unterschrieben.",
+        "Einzelne Musterverträge, deren Nutzung freiwillig ist.",
+        "Verbindliche Musterklauseln für Datenschutz, Audit-Rechte, SLAs und Exit.",
+        "Zusätzlich ein dokumentierter Freigabeprozess für Abweichungen.",
+        "Zusätzlich ein Nachweis, dass die Klauseln regelmässig an neue Regulierung angepasst werden."]}
+    ],
+    rec:{
+      low:"Alle Verträge zentral erfassen – mindestens Laufzeit, Kündigungsfrist und Verantwortliche – und Musterklauseln für Datenschutz, Audit-Rechte, SLAs und Exit definieren.",
+      high:"Fristen-Erinnerungen automatisieren und Klauselabweichungen auswerten, um Verhandlungspositionen datenbasiert zu stärken."},
+    tool:[
+      "Automatische Fristenüberwachung und Kündigungsassistent",
+      "Prüfung gegen eine 14-Punkte-Klausel-Baseline (z. B. AVV, Haftung, Audit-Rechte, Exit)",
+      "Vollständigkeits-Score mit konkreten Lückenhinweisen je Vertrag"]
+  },
+  { name:"Risiko & Compliance", short:"Risiko",
+    questions:[
+      { q:"Was existiert zur Bewertung von Lieferantenrisiken?", opts:[
+        "Nichts – Risiken werden erst nach Vorfällen betrachtet.",
+        "Einzelne Bewertungen, ohne einheitliche Vorlage.",
+        "Ein standardisierter Fragebogen bzw. eine Bewertungsvorlage, die vor Vertragsabschluss genutzt wird.",
+        "Zusätzlich dokumentierte Re-Assessments mit nachverfolgten Massnahmen.",
+        "Zusätzlich laufendes Monitoring (z. B. Ratings, Zertifikate, Meldungen) mit definierten Frühwarnindikatoren."]},
+      { q:"Ein Auditor verlangt Nachweise zu Ihren IT-Auslagerungen (z. B. nach DORA, NIS2 oder DSGVO / nDSG). Wie schnell können Sie liefern?", opts:[
+        "Gar nicht – unklar, welche Anforderungen überhaupt gelten.",
+        "In Wochen – die Nachweise müssen erst erstellt werden.",
+        "In einigen Tagen – Unterlagen existieren, müssen aber zusammengetragen werden.",
+        "Innerhalb eines Tages – z. B. aus einem gepflegten Informationsregister.",
+        "Sofort – die Nachweise sind aktuell, regulatorische Änderungen bereits eingearbeitet."]}
+    ],
+    rec:{
+      low:"Ein standardisiertes Risk Assessment vor jedem neuen Vertrag einführen und klären, welche Regulierungen (DORA, NIS2, DSGVO / nDSG) konkret gelten.",
+      high:"Re-Assessments nach Kritikalität takten und um kontinuierliches Monitoring mit Frühwarnindikatoren ergänzen."},
+    tool:[
+      "Compliance-Kataloge für DSGVO, nDSG, IT-Sicherheit, ISO/IEC 42001 und EU AI Act mit Status je Kriterium",
+      "Verarbeitungsverzeichnis nach Art. 30 DSGVO",
+      "Frühwarnung über Schwachstellen-Daten (ENISA EUVD) und quellenbelegte Nachrichtenauswertung je Lieferant",
+      "KI-gestützte Vertragsanalyse mit Risiko-Report, Massnahmenplan und Audit-Fragebögen"]
+  },
+  { name:"Performance-Steuerung", short:"Performance",
+    questions:[
+      { q:"Wie schnell können Sie sagen, wie gut Ihr wichtigster Lieferant im letzten Quartal geliefert hat?", opts:[
+        "Nur nach Bauchgefühl.",
+        "Nach Rückfrage bei den Fachbereichen – das Ergebnis bleibt subjektiv.",
+        "In einigen Tagen – SLA-Berichte existieren, müssen aber ausgewertet werden.",
+        "Sofort – aus einer Scorecard, die im regelmässigen Review besprochen wird.",
+        "Sofort – inklusive Trend und Auswirkung auf Verlängerung oder Ausbau."]},
+      { q:"Was existiert für die Steuerung strategischer Lieferanten?", opts:[
+        "Nichts – Kontakt nur bei Problemen.",
+        "Persönliche Kontakte Einzelner, nichts dokumentiert.",
+        "Feste Ansprechpartner und regelmässige Termine mit Protokoll.",
+        "Zusätzlich gemeinsam vereinbarte Ziele und nachverfolgte Massnahmenlisten.",
+        "Zusätzlich eine gemeinsame Roadmap, die regelmässig mit dem Management abgestimmt wird."]}
+    ],
+    rec:{
+      low:"Für die wichtigsten Lieferanten 3–5 Kennzahlen festlegen (z. B. Verfügbarkeit, Reaktionszeit, Termintreue) und diese quartalsweise in einem festen Termin mit dem Lieferanten besprechen.",
+      high:"Die Leistungsbewertung für Entscheidungen nutzen: Vor jeder Vertragsverlängerung prüfen, wie der Lieferant abgeschnitten hat, und danach entscheiden – verlängern, nachverhandeln, ausbauen oder wechseln. Mit den wichtigsten Lieferanten zusätzlich gemeinsame Ziele für die nächsten 1–2 Jahre festhalten."}
+  },
+  { name:"Exit & Abhängigkeiten", short:"Exit",
+    questions:[
+      { q:"Ihr kritischster Lieferant fällt morgen aus oder kündigt. Was passiert?", opts:[
+        "Wir merken es erst beim Ausfall und improvisieren.",
+        "Man weiss ungefähr, was zu tun wäre – aufgeschrieben ist nichts.",
+        "Ein dokumentierter Exit-Plan liegt vor.",
+        "Der Exit-Plan ist aktuell, und Exit-Unterstützung ist vertraglich abgesichert.",
+        "Der Exit-Plan wurde getestet, und eine bewertete Alternative steht bereit."]},
+      { q:"Was existiert zu Konzentrationsrisiken und Abhängigkeiten?", opts:[
+        "Nichts.",
+        "Abhängigkeiten sind bekannt, aber nirgends festgehalten.",
+        "Eine Übersicht, welche Leistungen von einzelnen Lieferanten abhängen.",
+        "Zusätzlich eine regelmässige Bewertung und Berichterstattung, inklusive Cloud- und Sub-Dienstleistern.",
+        "Zusätzlich definierte Grenzen im Risikoappetit und Massnahmen wie Multi-Sourcing oder Portabilität."]}
+    ],
+    rec:{
+      low:"Für die kritischsten Lieferanten Exit-Strategien dokumentieren und Exit-Unterstützung vertraglich absichern.",
+      high:"Exit-Pläne praktisch testen und Konzentrationsrisiken – auch bei Cloud- und Sub-Dienstleistern – regelmässig berichten."},
+    tool:[
+      "Prüfung, ob Exit-Regelungen vertraglich abgedeckt sind (Teil der Klausel-Baseline)",
+      "Beziehungsgraph der IT-Assets zur Sichtbarmachung von Abhängigkeiten",
+      "KI-gestützter Entwurf einer Ausschreibung (RfX) aus bestehenden Lizenz- und Nutzungsdaten"]
+  }
+];
+
+const LEVELS = [
+  { max:1.8, name:"Initial", text:"Lieferanten werden weitgehend ad hoc gesteuert. Erfolg hängt an einzelnen Personen; Risiken bleiben oft unentdeckt." },
+  { max:2.6, name:"Wiederholbar", text:"Erste Strukturen sind vorhanden, aber uneinheitlich. Ein verbindlicher Rahmen würde den grössten Hebel bringen." },
+  { max:3.4, name:"Definiert", text:"Prozesse und Rollen sind dokumentiert und unternehmensweit gültig. Nächster Schritt: Wirksamkeit messen und steuern." },
+  { max:4.2, name:"Gesteuert", text:"Vendor Governance wird über Kennzahlen gesteuert und regelmässig überprüft. Optimierungspotenzial liegt in Automatisierung und Vorausschau." },
+  { max:9,   name:"Optimierend", text:"Vendor Governance ist strategisch verankert, datengetrieben und wird kontinuierlich verbessert." }
+];
+
+const app = document.getElementById("app");
+const answers = {};
+let step = -1; // -1 = Intro, 0..5 = Dimensionen, 6 = Ergebnis
+
+const key = (d,q) => d + "-" + q;
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dimScore = d => DIMS[d].questions.reduce((s,_,q)=>s+answers[key(d,q)],0) / DIMS[d].questions.length;
+const levelFor = v => LEVELS.find(l => v < l.max);
+const colorFor = v => v < 2.6 ? "var(--bad)" : v < 3.4 ? "var(--warn)" : "var(--good)";
+
+function render(){
+  if(step === -1) return renderIntro();
+  if(step >= DIMS.length) return renderResult();
+  renderStep();
+}
+
+function renderIntro(){
+  app.innerHTML = `
+    <div class="eyebrow">Selbsteinschätzung</div>
+    <h1>Vendor Governance Reifegrad-Check</h1>
+    <p class="muted">Wie professionell steuert Ihre Organisation ihre IT-Lieferanten? In rund 4 Minuten erhalten Sie eine Einordnung über sechs Dimensionen – mit konkreten Handlungsempfehlungen.</p>
+    <ul class="plain small muted">
+      <li>12 Fragen, je 5 Reifegradstufen (angelehnt an die CMMI-Logik)</li>
+      <li>Ergebnis als Radar-Diagramm mit Top-3-Handlungsfeldern</li>
+      <li>Läuft vollständig im Browser – es werden keine Daten gespeichert oder übertragen</li>
+    </ul>
+    <button class="btn" id="start">Check starten</button>`;
+  document.getElementById("start").onclick = () => { step = 0; render(); };
+}
+
+function renderStep(){
+  const d = DIMS[step];
+  const pct = Math.round(step / DIMS.length * 100);
+  let html = `
+    <div class="small muted">Dimension ${step+1} von ${DIMS.length}</div>
+    <div class="progress"><div style="width:${pct}%"></div></div>
+    <h2>${esc(d.name)}</h2>`;
+  d.questions.forEach((qq,qi) => {
+    const k = key(step,qi);
+    html += `<fieldset class="q" style="border:0;padding:0;margin-left:0;margin-right:0">
+      <legend><h3>${esc(qq.q)}</h3></legend>`;
+    qq.opts.forEach((o,oi) => {
+      const v = oi+1, sel = answers[k] === v;
+      html += `<label class="opt${sel?" sel":""}">
+        <input type="radio" name="${k}" value="${v}" ${sel?"checked":""}>
+        <span class="lvl" aria-hidden="true">${v}</span>
+        <span>${esc(o)}</span></label>`;
+    });
+    html += `</fieldset>`;
+  });
+  const done = d.questions.every((_,qi) => answers[key(step,qi)]);
+  html += `<div class="row between">
+    <button class="btn secondary" id="back">Zurück</button>
+    <button class="btn" id="next" ${done?"":"disabled"}>${step === DIMS.length-1 ? "Auswertung anzeigen" : "Weiter"}</button>
+  </div>`;
+  app.innerHTML = html;
+
+  app.querySelectorAll("input[type=radio]").forEach(inp => {
+    inp.onchange = () => {
+      answers[inp.name] = +inp.value;
+      app.querySelectorAll(`input[name="${inp.name}"]`).forEach(i =>
+        i.closest(".opt").classList.toggle("sel", i.checked));
+      document.getElementById("next").disabled =
+        !d.questions.every((_,qi) => answers[key(step,qi)]);
+    };
+  });
+  document.getElementById("back").onclick = () => { step--; render(); window.scrollTo(0,0); };
+  document.getElementById("next").onclick = () => { step++; render(); window.scrollTo(0,0); };
+}
+
+function radarSVG(scores){
+  const cx=200, cy=165, R=105, n=scores.length;
+  const pt = (i,r) => {
+    const a = -Math.PI/2 + i*2*Math.PI/n;
+    return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+  };
+  let s = `<svg viewBox="0 0 400 330" width="100%" role="img" aria-label="Radar-Diagramm der Reifegrade je Dimension">`;
+  for(let l=1;l<=5;l++){
+    const poly = scores.map((_,i)=>pt(i,R*l/5).join(",")).join(" ");
+    s += `<polygon points="${poly}" fill="none" stroke="var(--line)" stroke-width="1"/>`;
+  }
+  scores.forEach((_,i)=>{
+    const [x,y]=pt(i,R);
+    s += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line)"/>`;
+  });
+  const data = scores.map((v,i)=>pt(i,R*v/5).join(",")).join(" ");
+  s += `<polygon points="${data}" fill="var(--radar-fill)" stroke="var(--radar-stroke)" stroke-width="2"/>`;
+  scores.forEach((v,i)=>{
+    const [x,y]=pt(i,R*v/5);
+    s += `<circle cx="${x}" cy="${y}" r="3.5" fill="var(--radar-stroke)"/>`;
+  });
+  DIMS.forEach((d,i)=>{
+    const [x,y]=pt(i,R+20);
+    const anchor = Math.abs(x-cx) < 5 ? "middle" : (x > cx ? "start" : "end");
+    const dy = y < cy-50 ? -2 : (y > cy+50 ? 12 : 4);
+    s += `<text x="${x}" y="${y+dy}" text-anchor="${anchor}">${esc(d.short)} ${scores[i].toFixed(1)}</text>`;
+  });
+  return s + `</svg>`;
+}
+
+function renderResult(){
+  const scores = DIMS.map((_,i)=>dimScore(i));
+  const total = scores.reduce((a,b)=>a+b,0)/scores.length;
+  const lvl = levelFor(total);
+  const weakest = scores.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v).slice(0,3);
+
+  let bars = scores.map((v,i)=>`
+    <div class="bar"><div class="lbl"><span>${esc(DIMS[i].name)}</span><span>${v.toFixed(1)} / 5</span></div>
+    <div class="track"><div class="fill" style="width:${v/5*100}%;background:${colorFor(v)}"></div></div></div>`).join("");
+
+  let recs = weakest.map(w=>`
+    <div class="rec"><strong>${esc(DIMS[w.i].name)}</strong> <span class="small muted">(${w.v.toFixed(1)} / 5)</span>
+    <p class="small" style="margin:4px 0 0">${esc(w.v < 3 ? DIMS[w.i].rec.low : DIMS[w.i].rec.high)}</p>
+    ${DIMS[w.i].tool ? `<div class="tool noprint"><strong>Software-Unterstützung – umgesetzt in einem meiner Referenzprojekte:</strong>
+      <ul>${DIMS[w.i].tool.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+      <a href="https://aalam.ch/referenzprojekte/vendor-data-management/" target="_blank" rel="noopener">Referenzprojekt ansehen →</a></div>` : ""}
+    </div>`).join("");
+
+  app.innerHTML = `
+    <div class="eyebrow">Ihr Ergebnis</div>
+    <div class="grid2">
+      <div>
+        <div class="score-big">${total.toFixed(1)} <span class="small muted" style="font-size:1rem;font-weight:400">/ 5</span></div>
+        <h2 style="margin-top:6px">Reifegrad: ${lvl.name}</h2>
+        <p class="muted">${lvl.text}</p>
+      </div>
+      <div>${radarSVG(scores)}</div>
+    </div>
+    <div class="bars" style="margin-top:8px">${bars}</div>
+    <h3 style="margin-top:26px">Ihre drei grössten Hebel</h3>
+    ${recs}
+    <div class="row noprint" style="margin-top:22px">
+      <button class="btn" id="print">Als PDF speichern</button>
+      <button class="btn secondary" id="restart">Neu starten</button>
+    </div>
+    <p class="noprint small" style="margin-top:18px">Möchten Sie das Ergebnis einordnen oder nächste Schritte besprechen? <a href="https://aalam.ch/kontakt/" target="_blank" rel="noopener" style="color:var(--accent)">Erstgespräch vereinbaren</a></p>
+    <div class="disclaimer">Dieser Check ist eine vereinfachte Selbsteinschätzung und ersetzt kein Audit oder keine rechtliche Prüfung. Die Stufen sind an die Logik gängiger Reifegradmodelle (CMMI) angelehnt. Alle Eingaben werden ausschliesslich in Ihrem Browser verarbeitet.</div>`;
+
+  document.getElementById("print").onclick = () => window.print();
+  document.getElementById("restart").onclick = () => {
+    for(const k in answers) delete answers[k];
+    step = -1; render(); window.scrollTo(0,0);
+  };
+}
+
+render();
+</script>
+</body>
+</html>
