@@ -88,6 +88,13 @@
   footer .wrap{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
   footer a, footer .fbrand{ font-family:'JetBrains Mono', monospace; font-size:.78rem; color:var(--ink-soft); text-decoration:none; }
   footer .fbrand{ font-family:'Bricolage Grotesque', sans-serif; font-weight:700; color:var(--ink-soft); }
+  .check-teaser{ margin:0; padding:20px 22px; background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--accent); display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; justify-content:space-between; }
+  .check-teaser + .check-teaser{ margin-top:12px; }
+  .check-teaser p{ margin:0; color:var(--ink); font-size:1.05rem; max-width:52ch; }
+  .check-teaser strong{ font-family:'Bricolage Grotesque', sans-serif; }
+  /* The page's base button is inverted for the dark contact box; here it sits on a light card. */
+  .check-teaser .btn-primary{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+  .check-teaser .btn-primary:hover{ background:var(--ink); color:var(--accent-ink); border-color:var(--ink); }
 </style>
 </head>
 <body>
@@ -131,6 +138,20 @@
         <h3 data-i18n="flag2.h3">Endpoint-SOC-Agent</h3>
         <p style="margin-bottom:10px;" data-i18n="flag2.p">Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.</p>
         <p style="margin-bottom:0;"><a href="/referenzprojekte/endpoint-soc-agent/" data-i18n="flag2.link">Fallstudie ansehen →</a></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="checks.h2">Kostenlose Online-Checks</h2>
+      </div>
+      <div class="check-teaser">
+        <p data-i18n="check.p"><strong>Wie reif ist Ihre Vendor Governance?</strong> Machen Sie den kostenlosen 5-Minuten-Check.</p>
+        <a class="btn-primary" href="/reifegrad-check/" data-i18n="check.link">Zum Reifegrad-Check →</a>
+      </div>
+      <div class="check-teaser">
+        <p data-i18n="check2.p"><strong>Welche Pflichten aus dem EU AI Act gelten für Ihren KI-Einsatz?</strong> Rolle und Risikoklasse im kostenlosen 3-Minuten-Check bestimmen.</p>
+        <a class="btn-primary" href="/ki-verordnung-check/" data-i18n="check2.link">Zum EU AI Act Check →</a>
       </div>
     </section>
 
@@ -236,6 +257,11 @@
       "flag.link": "Desktop und KI-Pipeline: Case Study →",
       "flag2.h3": "Endpoint-SOC-Agent",
       "flag2.p": "Ein zweistufiges KI-Agenten-System für Sicherheits-Monitoring auf einem einzelnen Gerät: passive Netzwerk- und Log-Sensorik, deterministische Guardrails, die jede Empfehlung zweimal prüfen, Ausführung ausschliesslich nach manueller Freigabe. Dasselbe Prinzip wie bei Vendor Data Management — KI empfiehlt, ein Mensch entscheidet — hier angewendet auf Endpoint-Sicherheit statt Vertragsprüfung.",
+      "checks.h2": "Kostenlose Online-Checks",
+      "check.p": "<strong>Wie reif ist Ihre Vendor Governance?</strong> Machen Sie den kostenlosen 5-Minuten-Check.",
+      "check.link": "Zum Reifegrad-Check →",
+      "check2.p": "<strong>Welche Pflichten aus dem EU AI Act gelten für Ihren KI-Einsatz?</strong> Rolle und Risikoklasse im kostenlosen 3-Minuten-Check bestimmen.",
+      "check2.link": "Zum EU AI Act Check →",
       "flag2.link": "Fallstudie ansehen →",
       "consult.h3": "IT- und Digitalisierungsstrategie, Messe Essen",
       "consult.p": "Als Digitalisierungsbeauftragter und Teamleiter IT habe ich die IT- und Digitalisierungsstrategie der Messe Essen ausgearbeitet: über 20 Einzelmassnahmen entlang Governance, ERP-Modernisierung, Digital Workplace, Data Governance und Cyber-Resilienz, freigegeben von Geschäftsleitung und CEO. Kernstück war 2021 eine umfassende Analyse der Geschäftsprozesse und eingesetzten IT-Systeme aller Abteilungen des Unternehmens, des Geschäftsmodells der Messe Essen und der Veranstalter sowie der Customer Journey von Ausstellern und Besuchern. Dabei entstand ein umfassendes Programm zur Digitalisierung bzw. Optimierung datenverarbeitender Prozesse, dessen Grundlage ein gemeinsam mit den Fachbereichen erarbeiteter und gewichteter Anforderungskatalog war. Jede am Markt betrachtete Option wurde strukturiert dagegen bewertet — nachvollziehbar für die Geschäftsführung, nicht nur eine Meinung. Genau dieses Prinzip, Entscheidungen messbar statt behauptet zu machen, trägt auch die beiden Softwareprojekte oben.",
@@ -287,6 +313,11 @@
       "flag.link": "Desktop and AI pipeline: case study →",
       "flag2.h3": "Endpoint SOC Agent",
       "flag2.p": "A two-stage AI-agent system for security monitoring on a single device: passive network and log sensing, deterministic guardrails that check every recommendation twice, execution only after manual approval. Same principle as Vendor Data Management — AI recommends, a human decides — applied here to endpoint security instead of contract review.",
+      "checks.h2": "Free online checks",
+      "check.p": "<strong>How mature is your vendor governance?</strong> Take the free 5-minute check (German only).",
+      "check.link": "Go to the maturity check (German only) →",
+      "check2.p": "<strong>Which EU AI Act obligations apply to your use of AI?</strong> Determine role and risk class in the free 3-minute check (German only).",
+      "check2.link": "Go to the EU AI Act check →",
       "flag2.link": "See the case study →",
       "consult.h3": "IT and digitalisation strategy, Messe Essen",
       "consult.p": "As digitalisation officer and IT team lead, I authored Messe Essen's IT and digitalisation strategy: more than 20 individual measures spanning governance, ERP modernisation, digital workplace, data governance and cyber resilience, approved by management and the CEO. The centrepiece, in 2021, was a comprehensive analysis of the business processes and IT systems used across every department, of Messe Essen's and the organisers' business model, and of the customer journey of exhibitors and visitors. That produced a comprehensive programme for digitalising and optimising data-processing workflows, built on a weighted requirements catalogue developed together with the business units. Every option available on the market was scored against it in a structured way — traceable for management, not just an opinion. That same principle, making decisions measurable instead of just asserted, also carries the two software projects above.",
