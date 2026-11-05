@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor Data Management: die Web-Anwendung für IT-Lieferanten, Verträge und Compliance | Giw Aalam</title>
+<meta name="description" content="Die Web-Anwendung von Vendor Data Management begleitet Lieferanten-, Asset- und Compliance-Prozesse: Überblick über Verträge und Risiken, ein klarer nächster Schritt je Rolle, nachvollziehbare Entscheidungen.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aalam.ch/referenzprojekte/vendor-data-management/web-anwendung/">
+<meta property="og:site_name" content="Giw Aalam">
+<meta property="og:title" content="Vendor Data Management: die Web-Anwendung">
+<meta property="og:description" content="Lieferanten, Verträge und Compliance im laufenden Betrieb begleiten: ein Bestand, ein nächster Schritt je Rolle, ein Nachweis je Vertrag.">
+<meta property="og:image" content="https://aalam.ch/referenzprojekte/vendor-data-management/web-anwendung/asset-zusammenhaenge.png">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aalam.ch/referenzprojekte/vendor-data-management/web-anwendung/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F4F5; --surface:#FFFFFF; --ink:#15171A; --ink-soft:#4B5158; --ink-faint:#8A9099; --rule:#D9DCDF;
+    --accent:#8A2A2E; --accent-ink:#FFFFFF; --max:1180px;
+    --mono:'JetBrains Mono', ui-monospace, monospace; --display:'Bricolage Grotesque', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:76px}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Public Sans', system-ui, sans-serif; font-size:17px; line-height:1.6; }
+  ::selection{ background:var(--accent); color:var(--accent-ink); }
+  a{ color:var(--accent); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:focus-visible, button:focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; }
+  h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:-.01em; margin:0 0 .4em; }
+  h2{ font-size:clamp(1.6rem, 3vw, 2.15rem); line-height:1.15; }
+  h3{ font-size:1.12rem; line-height:1.3; }
+  p{ margin:0 0 1.1em; color:var(--ink-soft); max-width:66ch; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding-inline:28px; }
+  @media (max-width:520px){ .wrap{ padding-inline:18px; } }
+  .eyebrow{ font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); display:inline-flex; align-items:center; gap:9px; margin:0 0 12px; }
+  .eyebrow::before{ content:""; width:9px; height:9px; flex:0 0 auto; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+  .lead{ font-size:1.18rem; color:var(--ink); }
+
+  header.site{ padding:16px 0; position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--rule); z-index:10; }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .brand{ font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; white-space:nowrap; }
+  nav.site{ display:flex; align-items:center; }
+  nav.site a{ font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; color:var(--ink-soft); margin-left:22px; text-decoration:none; border-bottom:1px solid transparent; }
+  nav.site a:hover{ border-color:var(--ink-soft); color:var(--ink); }
+  nav.site a.nav-cta, nav.site a.nav-cta:hover{ color:var(--accent-ink); background:var(--accent); padding:8px 14px; white-space:nowrap; border:0; font-weight:500; }
+  nav.site a.nav-cta:hover{ background:var(--ink); }
+  .lang-switch{ display:flex; gap:2px; margin-left:22px; }
+  .lang-btn{ font-family:var(--mono); font-size:.72rem; color:var(--ink-faint); background:none; border:1px solid var(--rule); padding:3px 8px; cursor:pointer; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ color:var(--ink); background:var(--surface); border-color:var(--ink-soft); }
+  @media (max-width:860px){ nav.site a:not(.nav-cta){ display:none; } }
+  @media (max-width:520px){ nav.site a.nav-cta{ margin-left:0; font-size:.7rem; padding:7px 10px; } .lang-switch{ margin-left:10px; } }
+  .backlink{ padding-top:14px; }
+  .backlink a{ font-family:var(--mono); font-size:.82rem; color:var(--ink-soft); text-decoration:none; }
+  .backlink a:hover{ color:var(--ink); }
+
+  .hero{ padding:44px 0 56px; }
+  .hero h1{ font-weight:700; font-size:clamp(2.1rem, 4.6vw, 3.4rem); line-height:1.07; max-width:20ch; letter-spacing:-.02em; }
+  .hero .lead{ max-width:60ch; margin-top:16px; }
+  .hero-cta{ margin:26px 0 40px; display:flex; gap:22px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{ font-family:var(--mono); font-size:.85rem; font-weight:500; background:var(--accent); color:var(--accent-ink); padding:13px 22px; text-decoration:none; display:inline-block; border:1.5px solid var(--accent); }
+  .btn-primary:hover{ background:var(--ink); border-color:var(--ink); }
+  .cta-secondary{ font-family:var(--mono); font-size:.82rem; font-weight:500; }
+
+  .shot{ margin:0; position:relative; }
+  .shot::before{ content:attr(data-badge); position:absolute; top:-11px; left:16px; font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; background:var(--paper); color:var(--ink); padding:2px 8px; border:1.5px solid var(--ink); z-index:1; }
+  .shot img{ width:100%; height:auto; display:block; border:1.5px solid var(--ink); background:var(--surface); cursor:zoom-in; }
+  .shot img:focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; }
+  .shot figcaption{ margin-top:12px; font-size:.92rem; color:var(--ink-soft); max-width:74ch; }
+  .shot figcaption strong{ color:var(--ink); font-family:var(--display); font-weight:600; font-size:1.02rem; display:block; margin-bottom:3px; }
+
+  section{ padding:60px 0; border-top:1px solid var(--rule); }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); margin-top:30px; border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .step{ display:block; padding:20px 20px 22px; border-left:1px solid var(--rule); color:inherit; text-decoration:none; }
+  .step:first-child{ border-left:0; }
+  .step:hover{ background:var(--surface); }
+  .step-n{ font-family:var(--mono); font-size:.72rem; color:var(--accent); margin-bottom:8px; }
+  .step-t{ font-family:var(--display); font-weight:600; font-size:1.02rem; margin-bottom:5px; }
+  .step-d{ font-size:.9rem; color:var(--ink-soft); margin:0; line-height:1.45; }
+  @media (max-width:820px){ .steps{ grid-template-columns:1fr 1fr; } .step:nth-child(3){ border-left:0; } .step:nth-child(n+3){ border-top:1px solid var(--rule); } }
+  @media (max-width:480px){ .steps{ grid-template-columns:1fr; } .step{ border-left:0; } .step:nth-child(n+2){ border-top:1px solid var(--rule); } }
+
+  .chapter-head{ margin-bottom:34px; }
+  .shots{ display:flex; flex-direction:column; gap:44px; }
+
+  .table-wrap{ overflow-x:auto; margin-top:26px; }
+  table{ border-collapse:collapse; width:100%; min-width:640px; background:var(--surface); font-size:.93rem; line-height:1.45; }
+  th,td{ text-align:left; vertical-align:top; padding:12px 14px; border-bottom:1px solid var(--rule); }
+  th{ font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1.5px solid var(--ink); }
+  td:first-child{ font-weight:600; white-space:nowrap; }
+  tr:last-child td{ border-bottom:0; }
+
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  @media (max-width:820px){ .split{ grid-template-columns:1fr; gap:34px; } }
+  .plain{ list-style:none; padding:0; margin:0; }
+  .plain li{ padding:12px 0; border-top:1px solid var(--rule); color:var(--ink-soft); font-size:.97rem; }
+  .plain li strong{ color:var(--ink); font-weight:600; }
+
+  .status{ margin-top:34px; padding:20px 22px; background:var(--surface); border:1.5px solid var(--ink); }
+  .status p{ margin:0; max-width:80ch; }
+  .status strong{ color:var(--ink); }
+  .closing{ display:flex; gap:22px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+
+  footer{ border-top:1px solid var(--rule); padding:30px 0 44px; }
+  footer .note{ font-size:.86rem; max-width:90ch; }
+  .flinks{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .flinks a{ font-family:var(--mono); font-size:.78rem; }
+  .fbrand{ font-family:var(--display); font-weight:600; font-size:.92rem; }
+
+  .lightbox{ position:fixed; inset:0; background:rgba(20,21,26,.94); z-index:100; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8vh 3vw 5vh; }
+  .lightbox[hidden]{ display:none; }
+  .lightbox img{ max-width:100%; min-height:0; flex:0 1 auto; width:auto; height:auto; display:block; border:1.5px solid var(--paper); cursor:zoom-out; object-fit:contain; }
+  .lightbox figcaption{ font-family:var(--mono); font-size:.76rem; color:var(--paper); opacity:.85; text-align:center; max-width:78vw; margin-top:14px; }
+  .lightbox-close{ position:absolute; top:18px; right:20px; width:38px; height:38px; border:1.5px solid var(--paper); background:none; color:var(--paper); font-size:1.3rem; line-height:1; cursor:pointer; }
+  .lightbox-close:hover{ background:var(--paper); color:var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">Giw Aalam</a>
+    <nav class="site">
+      <a href="/leistungen/" data-i18n="nav.leistungen">Leistungen</a><a href="/referenzprojekte/" data-i18n="nav.referenzprojekte">Referenzprojekte</a><a href="/profil/" data-i18n="nav.profil">Berufliches Profil</a><a class="nav-cta" href="/kontakt/" data-i18n="nav.cta">Erstgespräch buchen</a>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="de" type="button">DE</button><button class="lang-btn" data-lang="en" type="button">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap backlink"><a href="/referenzprojekte/" data-i18n="backlink">← Referenzprojekte</a></div>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Vendor Data Management · Web-Anwendung</p>
+    <h1 data-i18n="hero.h1">Lieferanten, Verträge und Compliance im laufenden Betrieb begleiten</h1>
+    <p class="lead" data-i18n="hero.lead">Ein gemeinsamer Bestand für IT-Vendoren, Verträge, Lizenzen, Services und Assets. CIO, CISO, Datenschutz und Legal sehen darin ihren nächsten Schritt, statt Excel-Listen und E-Mails hinterherzulaufen. Jede Entscheidung bleibt je Vertrag nachvollziehbar.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="/kontakt/" data-i18n="hero.cta1">Erstgespräch vereinbaren →</a>
+      <a class="cta-secondary" href="#ueberblick" data-i18n="hero.cta2">Rundgang ansehen ↓</a>
+    </div>
+    <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+      <img src="vertragslaufzeiten.png" width="1903" height="862" alt="Vertragsliste der Web-Anwendung mit Zeitachse aller Laufzeiten und Kündigungsstichtage" data-i18n-alt="alt.laufzeiten">
+    </figure>
+  </div>
+</div>
+
+<section id="ablauf">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="flow.eyebrow">Der Rundgang</p>
+    <h2 data-i18n="flow.h2">Vom Überblick zum belegbaren Entscheid</h2>
+    <p data-i18n="flow.p">Die Anwendung folgt der Arbeit, nicht der Datenbankstruktur. Sie antwortet der Reihe nach auf die Fragen, die sich im Lieferanten- und Compliance-Alltag immer wieder stellen.</p>
+    <div class="steps">
+      <a class="step" href="#ueberblick"><div class="step-n">1</div><div class="step-t" data-i18n="s1.t">Überblicken</div><p class="step-d" data-i18n="s1.d">Was läuft wann aus, und welche Lieferanten zählen?</p></a>
+      <a class="step" href="#zusammenhaenge"><div class="step-n">2</div><div class="step-t" data-i18n="s2.t">Zusammenhänge sehen</div><p class="step-d" data-i18n="s2.d">Was hängt an einem System, und was fehlt noch?</p></a>
+      <a class="step" href="#entscheiden"><div class="step-n">3</div><div class="step-t" data-i18n="s3.t">Entscheiden</div><p class="step-d" data-i18n="s3.d">Wer ist jetzt am Zug, und ist das Risiko tragbar?</p></a>
+      <a class="step" href="#nachweisen"><div class="step-n">4</div><div class="step-t" data-i18n="s4.t">Nachweisen</div><p class="step-d" data-i18n="s4.d">Was lässt sich im Audit oder gegenüber der Geschäftsleitung belegen?</p></a>
+    </div>
+  </div>
+</section>
+
+<section id="ueberblick">
+  <div class="wrap">
+    <div class="chapter-head">
+      <p class="eyebrow" data-i18n="c1.eyebrow">1 · Lieferanten- und Vertragsmanagement</p>
+      <h2 data-i18n="c1.h2">Kündigungsfristen und Lieferantenrisiken früh sehen</h2>
+      <p data-i18n="c1.p">Kündigungsstichtage liegen oft in einem Vertrag und dem Kopf einer einzelnen Person. Die Zeitachse zeigt sie für das ganze Portfolio, ein Kalender ergänzt sie je Funktion. Der Vendor-Report ordnet die Lieferanten nach Geschäftsrelevanz, Servicequalität und gewährten Rechten.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+        <img src="vendor-report.png" width="1903" height="954" loading="lazy" alt="Vendor-Report mit Portfolio-Matrix, Zugriffsrisiko-Matrix und Tabelle der gewährten Berechtigungen" data-i18n-alt="alt.report">
+        <figcaption data-i18n="cap.report"><strong>Welche Lieferanten zählen, und wer darf was?</strong>Die Tabelle zeigt je Lieferant Fernzugriff, privilegierte Rechte, Zugang zu sensiblen Daten und Unterauftragnehmer. Das Berechtigungsniveau verbindet die Anzahl dieser Merkmale mit Zugangskontrollen wie MFA und Verschlüsselung, die Berechnung ist direkt unter der Tabelle erklärt. Ein Klick auf einen Vendor filtert den Report.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="zusammenhaenge">
+  <div class="wrap">
+    <div class="chapter-head">
+      <p class="eyebrow" data-i18n="c2.eyebrow">2 · Asset-, Lizenz- und Servicebezug</p>
+      <h2 data-i18n="c2.h2">Ein Bestand, in dem alles zusammenhängt</h2>
+      <p data-i18n="c2.p">Wer vor einer Kündigung oder Migration wissen will, was betroffen ist, muss sonst mehrere Listen abgleichen. Hier führt jede Zeile über Links zu den zugehörigen Datensätzen, vom Asset über den Vertrag bis zur einzelnen Lizenz.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+        <img src="asset-zusammenhaenge.png" width="1903" height="954" loading="lazy" alt="Asset-Liste mit Schutzbedarf und Graph der Verträge, Lizenzen und Services eines Systems" data-i18n-alt="alt.asset">
+        <figcaption data-i18n="cap.asset"><strong>Was hängt an diesem System?</strong>Der Graph zeigt für ein Asset die Verträge samt Lizenzen und Services, die Liste darunter Status, Verantwortliche, Standort und Schutzbedarf nach Vertraulichkeit, Integrität und Verfügbarkeit.</figcaption>
+      </figure>
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+        <img src="service-herleitung.png" width="1903" height="954" loading="lazy" alt="Aufgeklappter Service mit Herleitung aus Service, Vertrag, Vendor und Datenreife" data-i18n-alt="alt.service">
+        <figcaption data-i18n="cap.service"><strong>Woher kommt ein Wert, und was fehlt?</strong>Ein Klick auf eine Zeile legt Service, Vertrag, Vendor und Datenreife nebeneinander. Fehlende Angaben stehen mit Regel und Prüfpunkt da, zum Beispiel eine fehlende Rollenzuweisung. So gibt es keinen Score, dessen Herkunft niemand erklären kann.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="entscheiden">
+  <div class="wrap">
+    <div class="chapter-head">
+      <p class="eyebrow" data-i18n="c3.eyebrow">3 · Risiko- und Freigabeprozess</p>
+      <h2 data-i18n="c3.h2">Immer nur ein Schritt, klar zugeordnet</h2>
+      <p data-i18n="c3.p">Befunde aus der Vertragsanalyse werden zu einer Kette je Vertrag: einschätzen, entscheiden, umsetzen, Risiko freigeben. Die Fachrolle beurteilt, der CIO entscheidet. Jede Karte kennzeichnet, ob der Befund heute gilt, erst bei Unterschrift droht oder auf einer ungeprüften Grundlage beruht.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+        <img src="vertragsseite-schritt.png" width="1903" height="954" loading="lazy" alt="Vertragsseite mit Schrittleiste, einem Befund für Legal Counsel und den Antworten Tragbar und Nicht tragbar" data-i18n-alt="alt.step">
+        <figcaption data-i18n="cap.step"><strong>Wer ist jetzt am Zug?</strong>Legal sieht einen Befund und eine einfache Frage: Ist das für uns tragbar? Darunter steht, was bei anderen Rollen liegt und was den Ablauf aufhält. Bei hohem Risiko verlangt «Tragbar» eine Begründung in eigenen Worten, das Prüfdatum legt der CIO beim Akzeptieren fest.</figcaption>
+      </figure>
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN (FIKTIVER ANBIETER)">
+        <img src="legal-briefing.png" width="1914" height="955" loading="lazy" alt="Legal Briefing mit Prüfauftrag und Tabelle der Klauselbefunde samt KI-Bewertung und Handlungsbedarf" data-i18n-alt="alt.briefing">
+        <figcaption data-i18n="cap.briefing"><strong>Worauf stützt sich die Beurteilung?</strong>Das Legal Briefing fasst die Klauselbefunde eines Vertrags für die juristische Prüfung zusammen und ist nur für Legal und CIO sichtbar. KI-Texte sind als solche gekennzeichnet. Sie bereiten die Beurteilung vor, entschieden wird in der Anwendung durch die zuständige Person.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="nachweisen">
+  <div class="wrap">
+    <div class="chapter-head">
+      <p class="eyebrow" data-i18n="c4.eyebrow">4 · Compliance und Nachweise</p>
+      <h2 data-i18n="c4.h2">Belegen, statt im Audit zusammenzusuchen</h2>
+      <p data-i18n="c4.p">Verzeichnisse und Entscheidungen entstehen aus denselben Daten, mit denen ohnehin gearbeitet wird. Der Nachweis je Vertrag zeigt wann, wer, was für jeden Befund. Die Compliance-Seite misst täglich und hält Restrisiken aus Befunden getrennt von Ampeln aus Stammdaten. Akzeptierte Risiken bleiben Risiken und zählen nie als reduziert.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot" data-i18n-badge="badge" data-badge="DEMODATEN">
+        <img src="verarbeitungsverzeichnis.png" width="1675" height="952" loading="lazy" alt="Verarbeitungsverzeichnis nach Art. 30 DSGVO mit Kennzahlen und Einträgen je Bereich" data-i18n-alt="alt.vvt">
+        <figcaption data-i18n="cap.vvt"><strong>Wo werden welche Personendaten verarbeitet?</strong>Das Verarbeitungsverzeichnis nach Art. 30 DSGVO nennt Zweck, Rechtsgrundlage, Empfänger, Löschfrist und Auftragsverarbeiter und markiert Drittlandbezug und DSFA-Hinweise. Daneben steht ein eigenes KI-Verzeichnis. Beides ist eine Arbeitshilfe und ersetzt keine rechtliche Prüfung.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="rollen">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="roles.eyebrow">Rollen</p>
+    <h2 data-i18n="roles.h2">Wer in der Anwendung was tut</h2>
+    <p data-i18n="roles.p">Die Anmeldung läuft über Rollen. Sie bestimmen, was jemand entscheiden oder bearbeiten darf.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th data-i18n="roles.th1">Rolle</th><th data-i18n="roles.th2">Aufgabe in der Web-Anwendung</th></tr></thead>
+        <tbody>
+          <tr><td>CIO</td><td data-i18n="roles.cio">Entscheidet über Befunde und Sammelentscheide, legt die Risikorichtlinie fest und gibt Restrisiken frei.</td></tr>
+          <tr><td>CISO</td><td data-i18n="roles.ciso">Schätzt Sicherheitsbefunde ein und erteilt die Sicherheitsfreigabe.</td></tr>
+          <tr><td data-i18n="roles.dsb.n">Datenschutz (DSB)</td><td data-i18n="roles.dsb">Schätzt Datenschutzbefunde ein und meldet Aufgaben als erledigt.</td></tr>
+          <tr><td>Legal Counsel</td><td data-i18n="roles.legal">Schätzt Vertragsbefunde ein, nutzt das Legal Briefing und pflegt im Playbook die Position zu jedem Klauseltyp.</td></tr>
+          <tr><td data-i18n="roles.read.n">Controlling, TPRM, Compliance</td><td data-i18n="roles.read">Lesen Bestand, Berichte und Verzeichnisse.</td></tr>
+          <tr><td>Vendor Manager</td><td data-i18n="roles.vm">Pflegt die Stammdaten und stösst Vertragsanalysen in der Desktop-Anwendung an.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="einordnung">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow" data-i18n="fit.eyebrow">Einordnung</p>
+      <h2 data-i18n="fit.h2">Ergänzt Ihre Systeme, ersetzt sie nicht</h2>
+      <ul class="plain">
+        <li data-i18n="fit.li1"><strong>Kein ITSM-Tool:</strong> Tickets, Incidents und Changes bleiben, wo sie sind. Die Anwendung deckt die Lieferanten-, Vertrags- und Assetseite ab. Eine Schnittstelle zu ITSM-Werkzeugen gibt es bisher nicht.</li>
+        <li data-i18n="fit.li2"><strong>Kein Einkaufssystem:</strong> Bestellungen, Unterschriften und Dokumentenablage bleiben in Coupa, SAP oder dem führenden System. Freigaben gibt es nur dort, wo es um Risiko und Compliance geht.</li>
+        <li data-i18n="fit.li3"><strong>Keine KI-Entscheidungen:</strong> KI schlägt vor und ist gekennzeichnet. Eine vorbereitete Einschätzung lässt sich nur bei mittleren und niedrigen Befunden übernehmen und ist dann im Nachweis als übernommen vermerkt.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow" data-i18n="tech.eyebrow">Technik</p>
+      <h2 data-i18n="tech.h2">Web für die Beteiligten, Desktop für die Datenpflege</h2>
+      <ul class="plain">
+        <li data-i18n="tech.li1"><strong>Gemeinsame Fachlogik:</strong> Die Web-Anwendung (Spring Boot, Thymeleaf, Spring Security) nutzt dieselbe Bibliothek und Datenbank wie die Desktop-Anwendung, also dieselben Prüfregeln.</li>
+        <li data-i18n="tech.li2"><strong>Klare Schreibgrenze:</strong> Im Web entstehen nur Einschätzungen, Entscheidungen, Aufgaben und tägliche Messungen. Verträge, Vendoren, Lizenzen, Services und Assets lassen sich dort nicht ändern.</li>
+        <li data-i18n="tech.li3"><strong>Ihre Infrastruktur:</strong> Server und Datenbank sind für den Betrieb beim Kunden ausgelegt, nicht als Cloud-Dienst des Anbieters.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="status">
+      <p data-i18n="status.p"><strong>Stand November 2026:</strong> Die Web-Anwendung ist neu und läuft bisher mit erfundenen Demodaten in einer Testumgebung, noch nicht im produktiven Kundeneinsatz. Der nächste sinnvolle Schritt wäre ein begrenztes Pilotprojekt mit Ihren eigenen Verträgen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <h2 data-i18n="end.h2">Mehr sehen oder direkt sprechen</h2>
+    <p data-i18n="end.p">Wie die Vertragsanalyse dahinter arbeitet und wie ihre Ergebnisse regelbasiert geprüft werden, zeigt die Fallstudie zur Desktop-Anwendung. Für Fragen zu Ihrer eigenen Situation reicht ein kurzes Gespräch.</p>
+    <div class="closing">
+      <a class="btn-primary" href="/kontakt/" data-i18n="end.cta">Erstgespräch vereinbaren →</a>
+      <a class="cta-secondary" href="/referenzprojekte/vendor-data-management/" data-i18n="end.case">Fallstudie Desktop und KI-Pipeline →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="note" data-i18n="footer.note">Alle Inhalte der Screenshots sind Demodaten. Verträge, Befunde, Bewertungen, Personen und das Beispielunternehmen sind erfunden. Genannte Hersteller und Produkte dienen nur der Anschauung, die gezeigten Angaben sagen nichts über deren tatsächliche Verträge oder Leistungen aus.</p>
+    <div class="flinks">
+      <a href="/leistungen/" data-i18n="footer.leistungen">Leistungen →</a>
+      <a href="/referenzprojekte/" data-i18n="footer.referenzprojekte">Referenzprojekte →</a>
+      <a href="/profil/" data-i18n="footer.profile">Berufliches Profil →</a>
+      <a href="/kontakt/" data-i18n="footer.kontakt">Kontakt →</a>
+      <a href="/rechtliches/" data-i18n="footer.legal">Impressum &amp; Datenschutz</a>
+      <span class="fbrand">Giw Aalam</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="lightbox-close" type="button">&times;</button>
+  <img id="lightbox-img" src="data:," alt="">
+  <figcaption id="lightbox-caption"></figcaption>
+</div>
+
+<script>
+  // German text lives in the markup and is captured on load; only English needs a dictionary.
+  const EN = {
+    title: "Vendor Data Management: the web application for IT suppliers, contracts and compliance | Giw Aalam",
+    description: "The Vendor Data Management web application supports supplier, asset and compliance processes: an overview of contracts and risks, a clear next step per role, traceable decisions.",
+    "nav.leistungen": "Services",
+    "nav.referenzprojekte": "Reference Projects",
+    "nav.profil": "Professional Profile",
+    "nav.cta": "Book intro call",
+    "backlink": "← Reference Projects",
+    "badge": "DEMO DATA",
+    "hero.eyebrow": "Vendor Data Management · Web application",
+    "hero.h1": "Supporting suppliers, contracts and compliance in day-to-day operations",
+    "hero.lead": "One shared inventory for IT vendors, contracts, licenses, services and assets. CIO, CISO, data protection and legal each see their next step there, instead of chasing spreadsheets and emails. Every decision stays traceable per contract.",
+    "hero.cta1": "Book an intro call →",
+    "hero.cta2": "Take the tour ↓",
+    "alt.laufzeiten": "Contract list of the web application with a timeline of all terms and notice dates",
+    "flow.eyebrow": "The tour",
+    "flow.h2": "From overview to a decision you can evidence",
+    "flow.p": "The application follows the work, not the database structure. It answers, in order, the questions that keep coming up in day-to-day supplier and compliance work.",
+    "s1.t": "Get the overview",
+    "s1.d": "What expires when, and which suppliers matter?",
+    "s2.t": "See the connections",
+    "s2.d": "What depends on a system, and what is still missing?",
+    "s3.t": "Decide",
+    "s3.d": "Whose turn is it, and is the risk acceptable?",
+    "s4.t": "Provide evidence",
+    "s4.d": "What can be shown in an audit or to executive management?",
+    "c1.eyebrow": "1 · Supplier and contract management",
+    "c1.h2": "Seeing notice periods and supplier risks early",
+    "c1.p": "Notice dates often live in a contract and in one person's head. The timeline shows them for the whole portfolio, and a calendar adds them per function. The vendor report ranks suppliers by business relevance, service quality and granted privileges.",
+    "alt.report": "Vendor report with portfolio matrix, access risk matrix and a table of granted privileges",
+    "cap.report": "<strong>Which suppliers matter, and who may do what?</strong>The table shows remote access, privileged rights, access to sensitive data and subcontractors per supplier. The privilege level combines the number of these attributes with access controls such as MFA and encryption, and the calculation is explained right below the table. One click on a vendor filters the report.",
+    "c2.eyebrow": "2 · Assets, licenses and services",
+    "c2.h2": "One inventory where everything connects",
+    "c2.p": "Anyone who wants to know what a termination or migration affects usually has to reconcile several lists. Here every row links to its related records, from the asset through the contract to the individual license.",
+    "alt.asset": "Asset list with protection needs and a graph of the contracts, licenses and services of one system",
+    "cap.asset": "<strong>What depends on this system?</strong>The graph shows an asset's contracts with their licenses and services. The list adds status, owners, location and protection needs by confidentiality, integrity and availability.",
+    "alt.service": "Expanded service showing its derivation from service, contract, vendor and data maturity",
+    "cap.service": "<strong>Where does a value come from, and what is missing?</strong>One click on a row puts service, contract, vendor and data maturity side by side. Missing information is listed with its rule and check item, such as a missing role assignment. So there is no score whose origin nobody can explain.",
+    "c3.eyebrow": "3 · Risk and approval process",
+    "c3.h2": "Always one step, clearly assigned",
+    "c3.p": "Findings from the contract analysis become a chain per contract: assess, decide, implement, approve the risk. The specialist role assesses, the CIO decides. Each card shows whether a finding applies today, only looms on signature, or rests on an unverified basis.",
+    "alt.step": "Contract page with step bar, one finding for legal counsel and the answers acceptable and not acceptable",
+    "cap.step": "<strong>Whose turn is it?</strong>Legal sees one finding and one simple question: is this acceptable for us? Below it you can see what sits with other roles and what is holding things up. For high risk, \"acceptable\" requires a justification in one's own words, and the CIO sets the review date when accepting.",
+    "alt.briefing": "Legal briefing with review scope and a table of clause findings with AI assessment and required action",
+    "cap.briefing": "<strong>What is the assessment based on?</strong>The legal briefing summarises a contract's clause findings for legal review and is visible to legal and the CIO only. AI texts are labelled as such. They prepare the assessment, and the responsible person decides in the application.",
+    "c4.eyebrow": "4 · Compliance and evidence",
+    "c4.h2": "Evidence on hand, not gathered for the audit",
+    "c4.p": "Registers and decisions come from the same data people work with anyway. The evidence view per contract shows when, who and what for every finding. The compliance page measures daily and keeps residual risks from findings separate from traffic lights based on master data. Accepted risks remain risks and never count as reduced.",
+    "alt.vvt": "Record of processing activities under Art. 30 GDPR with key figures and entries per department",
+    "cap.vvt": "<strong>Where is which personal data processed?</strong>The record of processing activities under Art. 30 GDPR lists purpose, legal basis, recipients, retention period and processors, and flags third-country transfers and DPIA hints. An AI system register sits alongside it. Both are working aids and no substitute for legal review.",
+    "roles.eyebrow": "Roles",
+    "roles.h2": "Who does what in the application",
+    "roles.p": "Login is role-based. The role determines what someone may decide or edit. The interface is in German.",
+    "roles.th1": "Role",
+    "roles.th2": "Task in the web application",
+    "roles.cio": "Decides on findings and bundled decisions, sets the risk policy and approves residual risks.",
+    "roles.ciso": "Assesses security findings and grants the security approval.",
+    "roles.dsb.n": "Data protection (DPO)",
+    "roles.dsb": "Assesses data protection findings and reports tasks as done.",
+    "roles.legal": "Assesses contract findings, uses the legal briefing and maintains the position on each clause type in the playbook.",
+    "roles.read.n": "Controlling, TPRM, compliance",
+    "roles.read": "Read the inventory, reports and registers.",
+    "roles.vm": "Maintains master data and starts contract analyses in the desktop application.",
+    "fit.eyebrow": "Where it fits",
+    "fit.h2": "Complements your systems, does not replace them",
+    "fit.li1": "<strong>Not an ITSM tool:</strong> tickets, incidents and changes stay where they are. The application covers the supplier, contract and asset side. There is no interface to ITSM tools so far.",
+    "fit.li2": "<strong>Not a procurement system:</strong> orders, signatures and document storage stay in Coupa, SAP or your leading system. Approvals exist only where risk and compliance are at stake.",
+    "fit.li3": "<strong>No AI decisions:</strong> AI proposes and is labelled. A prepared assessment can only be adopted for medium and low findings, and the evidence view then records it as adopted.",
+    "tech.eyebrow": "Technology",
+    "tech.h2": "Web for those involved, desktop for data maintenance",
+    "tech.li1": "<strong>Shared business logic:</strong> the web application (Spring Boot, Thymeleaf, Spring Security) uses the same library and database as the desktop application, and therefore the same check rules.",
+    "tech.li2": "<strong>A clear write boundary:</strong> the web only creates assessments, decisions, tasks and daily measurements. Contracts, vendors, licenses, services and assets cannot be changed there.",
+    "tech.li3": "<strong>Your infrastructure:</strong> server and database are designed to run at the customer's site, not as the vendor's cloud service.",
+    "status.p": "<strong>As of November 2026:</strong> the web application is new and so far runs with made-up demo data in a test environment, not yet in productive customer use. The sensible next step would be a limited pilot with your own contracts.",
+    "end.h2": "See more or talk directly",
+    "end.p": "How the contract analysis behind it works and how its results are checked by rules is covered in the desktop application case study. For questions about your own situation, a short call is enough.",
+    "end.cta": "Book an intro call →",
+    "end.case": "Case study: desktop and AI pipeline →",
+    "footer.note": "All screenshot contents are demo data. Contracts, findings, ratings, people and the sample company are made up. Manufacturers and products are named for illustration only, and what is shown says nothing about their actual contracts or services.",
+    "footer.leistungen": "Services →",
+    "footer.referenzprojekte": "Reference Projects →",
+    "footer.profile": "Professional Profile →",
+    "footer.kontakt": "Contact →",
+    "footer.legal": "Imprint & Privacy"
+  };
+
+  const DE = { title: document.title, description: document.querySelector('meta[name="description"]').content };
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ DE[el.dataset.i18n] = el.innerHTML; });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{ DE[el.dataset.i18nAlt] = el.alt; });
+
+  function setLang(lang){
+    const dict = lang === 'en' ? EN : DE;
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    document.querySelector('meta[name="description"]').content = dict.description;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ el.innerHTML = dict[el.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el=>{ el.alt = dict[el.dataset.i18nAlt]; });
+    document.querySelectorAll('[data-i18n-badge]').forEach(el=>{
+      if(!el.dataset.badgeDe) el.dataset.badgeDe = el.dataset.badge;
+      const fictional = el.dataset.badgeDe.includes('FIKTIV');
+      el.dataset.badge = lang === 'en' ? (fictional ? 'DEMO DATA (FICTIONAL VENDOR)' : EN.badge) : el.dataset.badgeDe;
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
+  let initialLang = 'de';
+  try{ if(localStorage.getItem('lang') === 'en') initialLang = 'en'; }catch(e){}
+  setLang(initialLang);
+
+  // Screenshot lightbox
+  (function(){
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+    const lbClose = lb.querySelector('.lightbox-close');
+    let lastFocused = null;
+    function onKey(e){ if(e.key === 'Escape') close(); }
+    function open(img){
+      const en = document.documentElement.lang === 'en';
+      lastFocused = document.activeElement;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.alt + (en ? ' (demo data)' : ' (Demodaten)');
+      lb.setAttribute('aria-label', en ? 'Image preview' : 'Bildvorschau');
+      lbClose.setAttribute('aria-label', en ? 'Close' : 'Schliessen');
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if(lastFocused) lastFocused.focus();
+    }
+    document.querySelectorAll('.shot img').forEach(img=>{
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', ()=>open(img));
+      img.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); } });
+    });
+    lbClose.addEventListener('click', close);
+    lbImg.addEventListener('click', close);
+    lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
+  })();
+</script>
+</body>
+</html>
