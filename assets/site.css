@@ -247,3 +247,5 @@ td:first-child{font-weight:600; color:var(--ink); white-space:nowrap}
 .facts{grid-template-columns:repeat(4,minmax(0,1fr))}
 .fact b{hyphens:auto; -webkit-hyphens:auto; overflow-wrap:break-word}
 @media (max-width:860px){ .facts{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+.hero-photo .badge{max-width:300px}
