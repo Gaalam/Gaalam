@@ -77,10 +77,15 @@
           <h3 data-i18n="st1.t">Reality-Snapshot</h3>
           <p data-i18n="st1.p">Programmlogik fasst den dokumentierten Datenstand als strukturiertes JSON zusammen, kein Fliesstext.</p>
         </li>
+        <li class="pl-stage pl-rule">
+          <div class="pl-head"><span class="pl-step" data-i18n="st1b.s">Vorprüfung</span><span class="pl-type" data-i18n="t.rule">Regel</span></div>
+          <h3 data-i18n="st1b.t">Regelbasierte Befunde</h3>
+          <p data-i18n="st1b.p">Was eindeutig entscheidbar ist, berechnet Programmlogik vorab und übergibt es an Pass 1: Prüfkataloge mit erfüllt oder nicht erfüllt, Status der Vertragsklauseln, Risikosignale, Fristen und Vorlaufzeiten, Abgleich von Vertragsdokument und Stammdaten, Zuständigkeiten.</p>
+        </li>
         <li class="pl-stage pl-ai">
           <div class="pl-head"><span class="pl-step" data-i18n="st2.s">Pass 1</span><span class="pl-type" data-i18n="t.ai">KI</span></div>
           <h3 data-i18n="st2.t">Analyse</h3>
-          <p data-i18n="st2.p">Das Sprachmodell (Gemini) erstellt Bericht, Risikoeinordnung und Massnahmenplan.</p>
+          <p data-i18n="st2.p">Das Sprachmodell (Gemini) erstellt Bericht, Risikoeinordnung und Massnahmenplan. Es baut dabei auf den regelbasierten Befunden auf.</p>
         </li>
         <li class="pl-stage pl-ai">
           <div class="pl-head"><span class="pl-step" data-i18n="st3.s">Pass 2</span><span class="pl-type" data-i18n="t.ai">KI</span></div>
@@ -225,9 +230,12 @@ window.EN = {
  "st1.s": "Basis",
  "st1.t": "Reality snapshot",
  "st1.p": "Program logic turns the documented data into structured JSON, not free text.",
+ "st1b.s": "Pre-check",
+ "st1b.t": "Rule-based findings",
+ "st1b.p": "Whatever can be decided unambiguously is computed by program logic beforehand and passed to pass 1: check catalogue results (met or not met), contract clause status, risk signals, deadlines and lead times, comparison of contract document and master data, responsibilities.",
  "st2.s": "Pass 1",
  "st2.t": "Analysis",
- "st2.p": "The language model (Gemini) writes the report, risk assessment and action plan.",
+ "st2.p": "The language model (Gemini) writes the report, risk assessment and action plan, building on the rule-based findings.",
  "st3.s": "Pass 2",
  "st3.t": "Data check",
  "st3.p": "A second model call checks figures and status against the snapshot.",
