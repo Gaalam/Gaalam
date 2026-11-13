@@ -1,68 +1,11 @@
 ### Hi, I'm Giw Aalam 👋
 
-I build practical software at the intersection of **contracts, compliance, and AI**.
+Computer scientist (B.Sc., M.Eng.) working in bid management, IT vendor management and digitalisation. Based near Bern, Switzerland.
 
-My focus: turning scattered vendor, contract, and license documents into a workflow teams can actually use **before deadlines and risks escalate**.
+In my spare time I build small applications that combine rule-based logic with AI, always with a human making the final decision.
 
-**Website:** [aalam.ch](https://aalam.ch) — product page · [professional profile](https://aalam.ch/profil/)
+**Private projects**
+- **Vendor Data Management:** a desktop and web application for IT suppliers, contracts and risks, with an AI-assisted contract analysis that is checked by rule-based validators. Java 21 · Swing/FlatLaf · Spring Boot · JPA · Google Gemini · JUnit 5
+- **Endpoint SOC agent:** a two-stage AI agent system for security monitoring on a single device. The AI recommends, a human approves.
 
-**Flagship project:** [**Vendor Data Management**](https://github.com/Gaalam/Vendor-Data-Management)
-
----
-
-## What I build
-
-**Vendor Data Management** is a desktop-first platform for SMEs that want to replace fragile spreadsheet-based vendor tracking with structured, auditable processes.
-
-It supports teams that need clarity on:
-- contract expiries and renewal windows,
-- compliance gaps,
-- negotiation and risk preparation,
-- documentation quality and traceability.
-
----
-
-## Product impression
-
-![Dashboard screenshot](https://raw.githubusercontent.com/Gaalam/Gaalam/main/screenshot-dashboard.png)
-
-Key capabilities:
-- **AI-augmented contract-expiry workflow**: a first pass generates management-ready risk and negotiation guidance based on documented vendor state.
-- **Second deterministic validation pass**: all AI output is checked against rule-based validators so decisions stay reviewable and reproducible.
-- **Compliance scoring from stored evidence**: DSGVO / EU AI Act / ISO 42001 indicators are derived from actual captured data, not static checkbox forms.
-- **Tested core logic**: business-critical checks are covered with 500+ unit tests and are intentionally structured to run independently from database or heavy mocking.
-
----
-
-## Public presentation, private codebase
-
-The **source code is private by design**.
-
-Public materials focus on:
-- product capabilities,
-- screenshots and workflows,
-- architecture approach,
-- and collaboration opportunities.
-
----
-
-## Tech stack
-
-Java 21 · Swing/FlatLaf · JPA/EclipseLink · Google Gemini · JUnit 5 · Maven
-
----
-
-## Collaboration / contact
-
-I’m open to:
-- pilot projects,
-- consulting/advisory conversations around contract/compliance tooling,
-- professional opportunities in software engineering where product ownership and applied AI matter.
-
-🌐 Website: [aalam.ch](https://aalam.ch)
-
-📫 Email: [gaalam@gmail.com](mailto:gaalam@gmail.com)
-
-🔗 GitHub: [github.com/Gaalam](https://github.com/Gaalam)
-
-⭐ Follow the project: [Vendor-Data-Management](https://github.com/Gaalam/Vendor-Data-Management)
+**Website:** [aalam.ch](https://aalam.ch)

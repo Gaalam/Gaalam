@@ -3,14 +3,13 @@
   // Header and footer strings, shared by every page (data-hl).
   const CHROME = {
     "skip": ["Zum Inhalt", "Skip to content"],
-    "brand.sub": ["Digitalisierung · IT-Einkauf · Bid Management", "Digitalisation · IT procurement · Bid management"],
+    "brand.sub": ["Bid Management · IT-Einkauf · Digitalisierung", "Bid management · IT procurement · Digitalisation"],
     "nav.leistungen": ["Schwerpunkte", "Focus areas"], "nav.referenzen": ["Referenzprojekte", "Reference projects"],
     "nav.profil": ["Profil", "Profile"], "nav.kontakt": ["Kontakt", "Contact"],
-    "ft.p": ["Persönliche Website mit Profil und eigenen Projekten rund um Digitalisierung, IT-Einkauf und Bid Management.",
-             "Personal website with profile and own projects on digitalisation, IT procurement and bid management."],
+    "ft.p": ["Persönliche Website mit Profil und eigenen Projekten rund um Bid Management, IT-Einkauf und Digitalisierung.",
+             "Personal website with profile and own projects on bid management, IT procurement and digitalisation."],
     "ft.h1": ["Schwerpunkte", "Focus areas"], "ft.h2": ["Mehr", "More"],
     "ft.l1": ["Digitalisierung", "Digitalisation"], "ft.l2": ["KI &amp; Risiko", "AI &amp; risk"], "ft.l3": ["IT-Ausschreibungen", "IT tenders"],
-    "ft.l4": ["Reifegrad-Check", "Maturity check"], "ft.l5": ["EU AI Act Check", "EU AI Act check"],
     "ft.legal": ["Impressum &amp; Datenschutz", "Imprint &amp; privacy"]
   };
   // Page content: German lives in the markup, window.EN holds English (pages with their own I18N handle themselves).
