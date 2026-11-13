@@ -4,13 +4,13 @@
   const CHROME = {
     "skip": ["Zum Inhalt", "Skip to content"],
     "brand.sub": ["Digitalisierung · IT-Einkauf · Bid Management", "Digitalisation · IT procurement · Bid management"],
-    "nav.leistungen": ["Leistungen", "Services"], "nav.referenzen": ["Referenzprojekte", "Reference projects"],
-    "nav.profil": ["Profil", "Profile"], "nav.kontakt": ["Kontakt", "Contact"], "nav.cta": ["Erstgespräch", "Intro call"],
-    "ft.p": ["Digitalisierung, IT-Einkauf und Bid Management für Unternehmen in der Schweiz und im D-A-CH-Raum.",
-             "Digitalisation, IT procurement and bid management for companies in Switzerland and the D-A-CH region."],
-    "ft.h1": ["Leistungen", "Services"], "ft.h2": ["Mehr", "More"],
+    "nav.leistungen": ["Schwerpunkte", "Focus areas"], "nav.referenzen": ["Referenzprojekte", "Reference projects"],
+    "nav.profil": ["Profil", "Profile"], "nav.kontakt": ["Kontakt", "Contact"],
+    "ft.p": ["Persönliche Website mit Profil und eigenen Projekten rund um Digitalisierung, IT-Einkauf und Bid Management.",
+             "Personal website with profile and own projects on digitalisation, IT procurement and bid management."],
+    "ft.h1": ["Schwerpunkte", "Focus areas"], "ft.h2": ["Mehr", "More"],
     "ft.l1": ["Digitalisierung", "Digitalisation"], "ft.l2": ["KI &amp; Risiko", "AI &amp; risk"], "ft.l3": ["IT-Ausschreibungen", "IT tenders"],
-    "ft.l4": ["Reifegrad-Check", "Maturity check"], "ft.l5": ["EU AI Act Check", "EU AI Act check"], "ft.l6": ["Termin buchen", "Book a slot"],
+    "ft.l4": ["Reifegrad-Check", "Maturity check"], "ft.l5": ["EU AI Act Check", "EU AI Act check"],
     "ft.legal": ["Impressum &amp; Datenschutz", "Imprint &amp; privacy"]
   };
   // Page content: German lives in the markup, window.EN holds English (pages with their own I18N handle themselves).

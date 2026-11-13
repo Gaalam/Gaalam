@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EU AI Act Pflichten-Check</title>
-<meta name="description" content="Kostenlose Orientierungshilfe zum EU AI Act: Rolle und Risikoklasse für ein KI-System bestimmen und die Pflichten mit Gesetzeszitat und Fristen erhalten. Stand Digital Omnibus 2026.">
+<meta name="description" content="Orientierungshilfe zum EU AI Act: Rolle und Risikoklasse für ein KI-System bestimmen und die Pflichten mit Gesetzeszitat und Fristen erhalten. Stand Digital Omnibus 2026.">
 <link rel="canonical" href="https://aalam.ch/ki-verordnung-check/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,14 +138,13 @@
   <div class="container">
     <a class="brand" href="/"><span class="brand-mark">GA</span><span>Giw Aalam<small data-hl="brand.sub">Digitalisierung · IT-Einkauf · Bid Management</small></span></a>
     <nav class="nav" aria-label="Hauptnavigation">
-      <a href="/leistungen/" data-hl="nav.leistungen">Leistungen</a>
+      <a href="/leistungen/" data-hl="nav.leistungen">Schwerpunkte</a>
       <a href="/referenzprojekte/" data-hl="nav.referenzen">Referenzprojekte</a>
       <a href="/profil/" data-hl="nav.profil">Profil</a>
       <a href="/kontakt/" data-hl="nav.kontakt">Kontakt</a>
     </nav>
     <div class="nav-tools">
       <div class="lang" role="group" aria-label="Sprache"><button class="lang-btn" type="button" data-lang="de">DE</button><button class="lang-btn" type="button" data-lang="en">EN</button></div>
-      <a class="btn btn-primary nav-cta" href="/kontakt/" data-hl="nav.cta">Erstgespräch</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menü"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
     </div>
   </div>
@@ -157,10 +156,10 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="/"><span class="brand-mark">GA</span><span>Giw Aalam</span></a>
-        <p data-hl="ft.p">Digitalisierung, IT-Einkauf und Bid Management für Unternehmen in der Schweiz und im D-A-CH-Raum.</p>
+        <p data-hl="ft.p">Persönliche Website mit Profil und eigenen Projekten rund um Digitalisierung, IT-Einkauf und Bid Management.</p>
       </div>
       <div>
-        <h4 data-hl="ft.h1">Leistungen</h4>
+        <h4 data-hl="ft.h1">Schwerpunkte</h4>
         <ul>
           <li><a href="/leistungen/#digitalisierung" data-hl="ft.l1">Digitalisierung</a></li>
           <li><a href="/leistungen/#ki" data-hl="ft.l2">KI &amp; Risiko</a></li>
@@ -183,7 +182,6 @@
           <li>Belp, Bern</li>
           <li><a href="mailto:gaalam@googlemail.com">gaalam@googlemail.com</a></li>
           <li><a href="https://github.com/Gaalam">GitHub</a></li>
-          <li><a href="/kontakt/" data-hl="ft.l6">Termin buchen</a></li>
         </ul>
       </div>
     </div>
@@ -497,7 +495,6 @@ function renderResult(){
       <button class="btn" id="print">Als PDF speichern</button>
       <button class="btn secondary" id="restart">Weiteres KI-System prüfen</button>
     </div>
-    <p class="noprint small" style="margin-top:18px">Möchten Sie den KI-Einsatz in Ihrem Unternehmen strukturiert erfassen? <a href="https://aalam.ch/kontakt/" target="_blank" rel="noopener">Erstgespräch vereinbaren</a></p>
     <div class="disclaimer">Dieser Check ist eine vereinfachte Orientierungshilfe und ersetzt keine rechtliche Prüfung im Einzelfall; er ist keine Rechtsberatung. Zitate aus der amtlichen deutschen Fassung der Verordnung (EU) 2024/1689 (ABl. L 2024/1689), Auslassungen mit «…» markiert; Art. 4 in der Fassung der Verordnung (EU) 2026/1744 (Digital Omnibus). Stand der Angaben: Oktober 2026. Alle Eingaben werden ausschliesslich in Ihrem Browser verarbeitet.</div>`;
   document.getElementById("print").onclick = () => {
     app.querySelectorAll("details").forEach(d => d.open = true); window.print();
